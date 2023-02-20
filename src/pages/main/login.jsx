@@ -1,11 +1,15 @@
 import React from 'react';
+import { Nav } from 'react-bootstrap';
 
-function login(props) {
+function Login(props) {
   return (
-    <div>
-      
-    </div>
+    <Nav>
+    <Nav.Link href="#deets">로그인</Nav.Link>
+    <Nav.Link eventKey={2} href="#memes">
+      회원가입
+    </Nav.Link>
+  </Nav>
   );
 }
 
-export default login;
+export default Login;

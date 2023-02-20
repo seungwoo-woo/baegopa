@@ -12,7 +12,6 @@ function App() {
     <div className="App">
       <div style={style}>
         <Header></Header>
-        <h1>배고파 - BAEGOPA ~~~1</h1>
       </div>
     </div>
   );
