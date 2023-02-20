@@ -1,21 +1,50 @@
 import React from 'react';
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { useNavigate, Outlet } from "react-router-dom";
+import { Button, Container, Form, Nav, Navbar } from "react-bootstrap";
+import styled from "styled-components"
+
 
 function Header(props) {
   return (
-      {/* 헤어 영역: 상단 내비게이션 바 */}
-      <>
-        <Navbar bg="dark" variant="dark">
-          <Container>
-            <Navbar.Brand href="#" onClick={() => { navigate('/'); }}>고니네 샵</Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link onClick={() => { navigate('/'); }}>홈</Nav.Link>
-              <Nav.Link onClick={() => { navigate('/cart'); }}>장바구니</Nav.Link>
+    <>
+      {/* 헤더영역 */}
+      <header id='full'>
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#home">배고파</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+        </Navbar.Collapse>
+          <Form className="d-flex">
+                <Form.Control
+                  type="search"
+                  placeholder="Search"
+                  className="me-2"
+                  aria-label="Search"
+                />
+                <Button variant="outline-success">Search</Button>
+              </Form>
+              <Nav>
+              <Nav.Link href="#deets">로그인</Nav.Link>
+              <Nav.Link eventKey={2} href="#memes">
+                회원가입
+              </Nav.Link>
             </Nav>
-          </Container>
-        </Navbar>
-      </>
+      </Container>
+    </Navbar>
+      </header>
+      <subheader>
+      <Navbar bg="light" variant="light">
+        <Container>
+          <Nav.Link href="#home">Navbar</Nav.Link>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+      </subheader>
+    </>
   );
 }
 
