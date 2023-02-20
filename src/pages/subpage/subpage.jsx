@@ -21,11 +21,16 @@ function subpage(props) {
                 <h1>오늘의 요리 결과물들</h1>
                 <Table>
           <tr>
-            <th>No</th>
-            <th>상품명</th>
-            <th>수량</th>
-            <th>가격</th>
-            <th>삭제</th>
+            <th>카드1</th>
+            <th>카드2</th>
+            <th>카드3</th>
+            <th>카드4</th>
+          </tr>
+          <tr>
+            <th>카드1</th>
+            <th>카드2</th>
+            <th>카드3</th>
+            <th>카드4</th>
           </tr>
       </Table>
             </div>
