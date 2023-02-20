@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+
+.lecipeMain {
+  margin: 0 auto;
+  width: 1400px;
+}
+
+.lecipeCard {
+  margin-bottom: 100px;
+  border-bottom: 1px solid gray;
+
+}
+.lecipeCardImg {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.material {
+  font-size: 18px;
+}
