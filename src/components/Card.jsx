@@ -21,7 +21,7 @@ function Card(props) {
       
         <div className='thumbnailBox'>
           <div className='thumbnailImage'> 
-            <img scr={thumbnailImagePath}></img>
+            <img scr={thumbnailImagePath} width={25} height={25}></img>
           </div>
           <p>{userId}</p>
         </div>
