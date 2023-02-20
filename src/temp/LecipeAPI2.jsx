@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import TempCard from './temp/TempCard';
+import TempCard from './TempCard';
 import axios from 'axios';
 import './App.css';
 
