@@ -1,13 +1,16 @@
 import React from 'react';
 import '../App.css';
+import likeIconImage from "../img/like_icon.png";
+import viewIconImage from "../img/view_icon.png";
 
 function Card(props) {
-  const cardImagePath = "https://via.placeholder.com/300";
+  const cardImagePath = "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs";
   const title ="애호박구이 간장조림";
   const thumbnailImagePath ="https://via.placeholder.com/30"
   const userId = "샬라라";
-  const viewNo = 100000;
+  const viewNo = 137479;
   const likeNo = 3657;
+
   return (
     <div className='card'>
 
@@ -25,19 +28,18 @@ function Card(props) {
 
         <div className='noBox'>
           <div className='viewNoBox'>
-            <img src="https://via.placeholder.com/25" style={{margin: 10}}></img>
-            {viewNo}
+            <img src={viewIconImage} width={25} style={{margin: 10}}></img>
+            {viewNo.toLocaleString('ko-KR')}
           </div>
 
           <div className='likeNoBox'>
-            <img src="https://via.placeholder.com/25" style={{margin: 10}}></img>
-            {likeNo}
+            <img src={likeIconImage} width={25} style={{margin: 10}}></img>
+            {likeNo.toLocaleString('ko-KR')}
           </div>
         </div>
-      
+
       </div>
       
-      Card 1 
     </div>
   );
 }
