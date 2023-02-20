@@ -1,4 +1,5 @@
 import './App.css';
+import Card from './components/Card';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <div style={style}>
         <h1>배고파 - BAEGOPA ~~~</h1>
+        <Card />
       </div>
     </div>
   );
