@@ -3,7 +3,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 
 export default function SubHeader() {
   return (
-    <header>
+
     <Navbar bg="light" variant="light">
       <Container>
         <Nav className="me-auto">
@@ -14,7 +14,6 @@ export default function SubHeader() {
         </Nav>
       </Container>
     </Navbar>
-  </header>
   );
 }
 

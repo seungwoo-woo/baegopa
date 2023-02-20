@@ -5,12 +5,17 @@ function Search(props) {
   return (
     <Form className="d-flex">
     <Form.Control
+    style={{
+      width: '300px'
+    }}
       type="search"
-      placeholder="Search"
+      placeholder="레시피를 검색해주세요."
       className="me-2"
       aria-label="Search"
     />
-    <Button variant="outline-success">Search</Button>
+    <Button style={{
+      width: '80px'
+    }} variant="outline-success">검색</Button>
   </Form>
   );
 }
