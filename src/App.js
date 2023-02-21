@@ -1,5 +1,6 @@
 import './App.css';
 import Card from './components/Card';
+import CardList from './components/CardList';
 
 function App() {
 
@@ -10,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <div style={style}>
-        <h1>배고파 - BAEGOPA ~~~</h1>
-        <Card />
+        {/* <Card /> */}
+        <CardList />
       </div>
     </div>
   );

@@ -72,6 +72,7 @@
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  margin-top: 20px;
 }
 
 .bottomTextBox {
@@ -111,20 +112,22 @@
 
 .thumbnailBox p {
   line-height: 0;
+  font-weight: 200;
 }
 
 .thumbnailImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 25px;
   height: 25px;
   border-radius: 15px;
   overflow: hidden;
   margin-right: 10px;
-
-  background-color: #61dafb;
+  background-color: gray;
 }
 
 .noBox {
-  /* border: 1px solid orange; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -133,12 +136,12 @@
 
 .viewNoBox {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   width: 120px;
-  height: 25px;
-  font-size: 20px;
-  font-weight: 200;
+  height: 22px;
+  font-size: 16px;
+  font-weight: 100;
   font-style: italic;
   color: white;
   background-color: rgb(100, 100, 100); 
@@ -155,4 +158,17 @@
   font-weight: 500;
   color: yellow;
 }
+
+.commentBox {
+  width: 270px;
+  height: 100px;
+  padding: 10px;
+}
+
+.userComment {
+  margin-top: 10px;
+}
+
+
+
 
