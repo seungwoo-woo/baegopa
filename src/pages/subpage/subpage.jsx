@@ -18,21 +18,14 @@ const box = styled.div`
 
 function Subpage(props) {
     return (
-        <div>
+        <div></div>
            <nav>NAV영역</nav>
            <div>
-            <h1>레시피종류</h1>
-            <img src='https://via.placeholder.com/285x285' alt='#'/>
-            <img src='https://via.placeholder.com/285x285' alt='#'/>
-            <img src='https://via.placeholder.com/285x285' alt='#'/>
-        
+            <h1>레시피종류</h1>        
             </div> 
             <div>
                 <h1>오늘의 요리 결과물들</h1>
-                    <img src='https://via.placeholder.com/285x285' alt='#'/>
-                    <img src='https://via.placeholder.com/285x285' alt='#'/>
-                    <img src='https://via.placeholder.com/285x285' alt='#'/>
-                    <img src='https://via.placeholder.com/285x285' alt='#'/>
+                 
             </div>
         </div>
     );
