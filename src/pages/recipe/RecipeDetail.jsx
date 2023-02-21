@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import {  } from "";
+
 
 // --------------------------------------------임의 데이터------------------------------------------
 const recipes = [
@@ -69,19 +69,113 @@ const recipeInfo = [
     hashtags: ["삼계부대찌개", "찌개", "해장", "시원한", "건강한", "닭", "보양식", "밥도둑", "아픈날", "두부", "알싸한", "얼큰한"],
   },
 ];
+
+const userReviews = [
+  {
+    userId: "지민마누라",
+    userImg: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_1.png",
+    userReview: "오 맛있었어요. 고추장넣은 찌개 별로 안좋아하는데 맛도 안강하고 딱 좋아요! 저도 설탕조금, 소금조금 추가했어요~~버섯도 잘 어울리네요!",
+  },
+  {
+    userId: "정국짝",
+    userImg: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_1.png",
+    userReview: "처음으로 요리를 시작하면서 따라한 요리입니다. 처음임에도 불구하고 맛있게 잘 먹었습니다. 감사합니다.",
+  },
+  {
+    userId: "진내꼬얌",
+    userImg: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_1.png",
+    userReview: "덕분에 오늘 비오는날 하게되었어요^^ 저녁밥찌개에 매운걸 싫어하는 조카가 있어서 저는 올리고당 한스푼에 넣구 간장 한스푼에 넣구 조금더 끓이니 달달하면서도 국물도 좀더 진해지구 얼큰 하더라구요 고추장과 고추가루가 태양초에 청양이다보니.. 다음에는 여기에다가 맑게한번 새우젓넣구 시원하게 해보려구요ㅎ 비오는날 얼큰하게 잘 먹었습니다.",
+  }
+];
+
 // -------------------------------------------------------------------------------------------------
 
 // --------------------------------------------CSS 컴포넌트------------------------------------------
-const MainWrapper = styled.div`
 
-
-`;
 
 
 function RecipeDetail(props) {
+  console.log(recipes[0].subtitle);
+  console.log(recipeInfo[0].level);
+  console.log(recipeInfo[0].hashtags[0]);
+
+  // 도전! 요리-------------------------------------------------------------------------
+  const [value, setValue] = useState('가장 좋아하는 것에 대한 에세이를 장석하세요');
+  const handleChange = (e) => {
+    setValue(e.target.value);  
+  }
+  const handleSubmit = () => {
+    alert(`제출된 에세이: ${value}`);
+  };
+  //-------------------------------------------------------------------------------------
+
   return (
     <div>
-      
+      <section className='main'>
+        <div className='main--left'>
+          <img src={recipes[0].image} alt="이미지" />
+        </div>
+        <div className='main--right'>
+          <h2>{recipes[0].subtitle}</h2>
+          <h1>{recipes[0].title}</h1>
+          <div className='main--right--info'>
+            <span>난이도: {recipeInfo[0].level}</span>
+            <span>양: {recipeInfo[0].meals} 인분</span>
+            <span>조리시간: {recipeInfo[0].time}</span>
+          </div>
+          <div className='main--right--hashtag'>
+            {recipeInfo[0].hashtags.map((hashtag, index) => {
+              return (
+                <div key={index}>#{hashtag}</div>
+              )
+            })}
+          </div>
+          <div className='main--right--buttons'>
+            {/* <div className='btn-keeper'><img src='./image/btn-keeper.png'/></div> */}
+            <div className='btn-keeper'><img src="./images/btn_keeper.png"/></div>
+            <div className='btn-share'>공유</div>
+            <div className='btn-linkcopy'>링크복사</div>
+            <div className='btn-kakaoshare'>카카오공유</div>
+          </div>
+        </div>
+      </section>
+
+      <section className='content'>
+        <div className='content--ingredients'>
+          <h4>재료</h4>
+          <p>{recipes[0].ingredients}</p>
+        </div>
+        <ul className='content--ingredients'>
+          <li>{recipes[0].manual01}</li>
+          <li>{recipes[0].manual02}</li>
+          <li>{recipes[0].manual03}</li>
+          <li>{recipes[0].manual04}</li>
+          <li>{recipes[0].manual05}</li>
+          <li>{recipes[0].manual06}</li>
+        </ul>
+      </section>
+
+      <section className='review'>
+        <h4>도전! 요리</h4>
+        <div className='review--inner'>
+          {/* TODO: 카드 컴포넌트 연결  */}
+          {userReviews.map((userReview, index) => {
+            return (
+              <div className='review--inner--cards' key={index}>
+                <img src={userReview.userImg} alt="userReviewImage" />
+                <p>{userReview.userId}</p>
+                <p>{userReview.userReview}</p>
+              </div>
+            )
+          })} 
+        </div>
+        <div>
+          <label htmlFor="">
+            <textarea value={value} onChange={handleChange} name="" id="" cols="80" rows="8"/>
+          </label>
+          <button type="button" onClick={handleSubmit}>제출</button>
+        </div>
+      </section>
     </div>
   );
 }
