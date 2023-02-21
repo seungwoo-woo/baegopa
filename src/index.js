@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-// import LecipeAPI from './LecipeAPI';
 import LecipeAPI2 from '../src/temp/LecipeAPI2';
 import RecipeDetail from './pages/recipe/RecipeDetail';
 
@@ -12,3 +11,4 @@ root.render(
     // <LecipeAPI2 />
     <RecipeDetail />
 );
+
