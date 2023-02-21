@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import "./css/recipeDetail.css";
+
+import CardList from '../../components/CardList';
+
 
 
 // --------------------------------------------임의 데이터------------------------------------------
@@ -88,6 +92,60 @@ const userReviews = [
   }
 ];
 
+// const groupTitme = '배고플 때 생각나는...';
+const cookItemList = [ 
+  {id: 1,
+  title: "애호박구이 간장조림",
+  cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+  userId: "샬라라",
+  viewNo: 137479,
+  likeNo: 3657,
+  userComment: [
+    {
+    commentUserId: "삐리리",
+    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+    } 
+  ]},
+  {id: 2,
+  title: "애호박구이 간장조림",
+  cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+  userId: "샬라라",
+  viewNo: 137479,
+  likeNo: 3657,
+  userComment: [
+    {
+    commentUserId: "삐리리",
+    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+    } 
+  ]},
+  {id: 3,
+  title: "애호박구이 간장조림",
+  cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+  userId: "샬라라",
+  viewNo: 137479,
+  likeNo: 3657,
+  userComment: [
+    {
+    commentUserId: "삐리리",
+    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+    } 
+  ]},
+  {id: 4,
+  title: "애호박구이 간장조림",
+  cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+  userId: "샬라라",
+  viewNo: 137479,
+  likeNo: 3657,
+  userComment: [
+    {
+    commentUserId: "삐리리",
+    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+    } 
+  ]},
+];
+
+const viewIndex = 'comment';
+
 // -------------------------------------------------------------------------------------------------
 
 // --------------------------------------------CSS 컴포넌트------------------------------------------
@@ -110,14 +168,18 @@ function RecipeDetail(props) {
   //-------------------------------------------------------------------------------------
 
   return (
-    <div>
+    <div className='recipe-page'>
+      <section className='nav'>
+        NAV영역
+      </section>
+
       <section className='main'>
         <div className='main--left'>
           <img src={recipes[0].image} alt="이미지" />
         </div>
         <div className='main--right'>
-          <h2>{recipes[0].subtitle}</h2>
-          <h1>{recipes[0].title}</h1>
+          <h2 className='main--right--subtitle'>{recipes[0].subtitle}</h2>
+          <h1 className='main--right--title'>{recipes[0].title}</h1>
           <div className='main--right--info'>
             <span>난이도: {recipeInfo[0].level}</span>
             <span>양: {recipeInfo[0].meals} 인분</span>
@@ -132,10 +194,10 @@ function RecipeDetail(props) {
           </div>
           <div className='main--right--buttons'>
             {/* <div className='btn-keeper'><img src='./image/btn-keeper.png'/></div> */}
-            <div className='btn-keeper'><img src="./images/btn_keeper.png"/></div>
-            <div className='btn-share'>공유</div>
-            <div className='btn-linkcopy'>링크복사</div>
-            <div className='btn-kakaoshare'>카카오공유</div>
+            <button type='button' className='btn-keeper'></button>
+            <button type='button' className='btn-share'></button>
+            <button type='button' className='btn-linkcopy'></button>
+            <button type='button' className='btn-kakaoshare'></button>
           </div>
         </div>
       </section>
@@ -145,7 +207,8 @@ function RecipeDetail(props) {
           <h4>재료</h4>
           <p>{recipes[0].ingredients}</p>
         </div>
-        <ul className='content--ingredients'>
+        <ul className='content--method'>
+          <h4>조리 방법</h4>
           <li>{recipes[0].manual01}</li>
           <li>{recipes[0].manual02}</li>
           <li>{recipes[0].manual03}</li>
@@ -159,23 +222,22 @@ function RecipeDetail(props) {
         <h4>도전! 요리</h4>
         <div className='review--inner'>
           {/* TODO: 카드 컴포넌트 연결  */}
-          {userReviews.map((userReview, index) => {
-            return (
-              <div className='review--inner--cards' key={index}>
-                <img src={userReview.userImg} alt="userReviewImage" />
-                <p>{userReview.userId}</p>
-                <p>{userReview.userReview}</p>
-              </div>
-            )
-          })} 
+          <CardList cookItemList={cookItemList} viewIndex="comment" />
         </div>
-        <div>
-          <label htmlFor="">
-            <textarea value={value} onChange={handleChange} name="" id="" cols="80" rows="8"/>
+        <div className='review--register'>
+          <label className="input-file-button" for="input-file"></label>
+          <input type="file" id="input-file" style={{display:"none"}}/>
+          <label htmlFor="" className='review--register--write'>
+            <textarea value={value} onChange={handleChange} name="" id="" cols="2" rows="8"/>
           </label>
-          <button type="button" onClick={handleSubmit}>제출</button>
+          <button type="button" onClick={handleSubmit} className="review--register--submit">제출</button>
         </div>
       </section>
+
+      <section className='footer'>
+        Footer영역
+      </section>
+
     </div>
   );
 }

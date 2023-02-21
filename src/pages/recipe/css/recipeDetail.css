@@ -1,0 +1,197 @@
+.recipe-page {
+  background-color: #FFF5E7;
+}
+.nav {
+  width: 100%;
+  height: 80px;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  line-height: 80px;
+  background-color: #000;
+}
+.footer {
+  width: 100%;
+  height: 300px;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  line-height: 80px;
+  background-color: #ccc;
+}
+
+.main {
+  display: flex;
+  /* column-gap: 20px; */   /* TODO: 질문! main--right에 padding-left가 정상적으로 안먹는 이유  */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.main--left {
+  flex: 1;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+.main--left > img {
+  position: absolute;
+  top: -50%;
+  left: 0px;
+  width: 100%;
+}
+.main--right {
+  flex: 1;
+  padding-left: 40px;
+  padding-top: 8px;
+  box-sizing: border-box;
+}
+.main--right--subtitle{
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  display: -webkit-box; /* 해당 영역을 box형태로 관리한다 */
+  -webkit-line-clamp: 2; /* 영역 박스 안 내용의 최대 라인수 */
+  -webkit-box-orient: vertical; 
+}
+.main--right--title {
+  margin: 24px 0px;
+}
+.main--right--info {
+  display: flex;
+  column-gap: 5.0rem;
+  flex-wrap: wrap;
+}
+/* .main--right--info > span {
+  padding-right: 100px;
+} */
+.main--right--hashtag{
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  column-gap: 8px;
+  margin: 24px 0px;
+}
+.main--right--hashtag > div {
+  height: 40px;
+  line-height: 40px;
+  padding: 0px 8px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  background-color: #D6D6D6;
+}
+.main--right--buttons {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 8px;
+}
+.main--right--buttons > button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.btn-keeper {
+  background-image: url(../images/btn_keeper.png);
+}
+.btn-share {
+  background-image: url(../images/btn-share.png);
+}
+.btn-linkcopy {
+  background-image: url(../images/btn-linkcopy.png);
+}
+.btn-kakaoshare {
+  background-image: url(../images/btn-kakaoshare.png);
+}
+
+
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+.content--ingredients {
+  margin: 22px 0px 50px 0px;
+}
+.content--ingredients > p {
+  width: 50%;
+  line-height: 28px;  /* TODO: html font-size 정해지면 px -> rem으로 변경  */
+  padding-top: 10px;
+}
+.content--method {
+  padding: 0px;
+}
+.content--method > h4 {
+  padding-bottom: 10px;
+}
+.content--method > li {
+  list-style: none;
+  padding-bottom: 8px;
+}
+
+
+
+.review {
+  max-width: 1200px;
+  padding-top: 50px;
+  margin: 0 auto;
+  border-top: 1px solid #555;
+}
+.review--register {
+  display: flex;
+  column-gap: 10px;
+  margin-top: 46px;
+  margin-bottom: 80px;
+}
+.input-file-button{
+  position: relative;
+  width: 150px;
+  height: 146px;
+  background-color:#DFDFDF;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  flex: 1;
+}
+.input-file-button::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 68px;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.input-file-button::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 68px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.review--register--write {
+  flex: 6;
+  height: 146px;
+}
+.review--register--write > textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  box-sizing: border-box;
+  border-radius: 9px;
+  border: 1px solid #DFDFDF;
+}
+.review--register--submit {
+  flex: 1;
+  border-radius: 9px;
+  border: 1px solid #DFDFDF;
+  background-color: #fff;
+}
