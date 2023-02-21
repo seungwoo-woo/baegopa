@@ -7,6 +7,10 @@ import Best from './pages/main/best/Best';
 import Slider from "react-slick"; // 슬라이드 적용
 import 'slick-carousel/slick/slick.css';// 슬라이드 적용
 import 'slick-carousel/slick/slick-theme.css';// 슬라이드 적용
+import Card from './components/Card';
+import CardList from './components/CardList';
+
+
 function App() {
 
   const style = {
@@ -20,6 +24,9 @@ function App() {
         <Header/>
         <Today/>
         <Best/>
+        <h1>배고파 - BAEGOPA ~~~1</h1>
+        {/* <Card /> */}
+        <CardList />
       </div>
     </div>
   );
