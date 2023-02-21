@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import CardList from '../../components/CardList';
 
 
 const Nav = styled.nav`
@@ -18,16 +19,18 @@ const box = styled.div`
 
 function Subpage(props) {
     return (
-        <div></div>
-           <nav>NAV영역</nav>
-           <div>
-            <h1>레시피종류</h1>        
-            </div> 
+        <div>
+            <nav>NAV영역</nav>
             <div>
-                <h1>오늘의 요리 결과물들</h1>
-                 
+            <h1>레시피종류</h1>    
+            <CardList/>    
+            </div> 
+
+            <div>
+            <h1>오늘의 요리 결과물들</h1>
             </div>
         </div>
+        
     );
 }
 
