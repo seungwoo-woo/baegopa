@@ -3,10 +3,15 @@ import { Button, Form } from 'react-bootstrap';
 
 function Search(props) {
   return (
-    <Form className="d-flex">
+    <Form className="d-flex"
+    style={{
+      justifyContent:'center'
+    }} >
     <Form.Control
     style={{
-      width: '300px'
+      width: '300px',
+    
+      
     }}
       type="search"
       placeholder="레시피를 검색해주세요."
