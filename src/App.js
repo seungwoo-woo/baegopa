@@ -4,11 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css' //부트스트랩 적용
 import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS 추가
 import Today from './pages/main/best/Today';
 import Best from './pages/main/best/Best';
-import Slider from "react-slick"; // 슬라이드 적용
-import 'slick-carousel/slick/slick.css';// 슬라이드 적용
-import 'slick-carousel/slick/slick-theme.css';// 슬라이드 적용
 import Card from './components/Card';
 import CardList from './components/CardList';
+import BestSlider from './pages/main/best/BestSlider';
+import MembersFood from './pages/main/membersFood/MembersFood';
+import MainButton from './pages/main/button/MainButton';
+import Footer from './pages/main/Footer';
+
 
 
 function App() {
@@ -20,13 +22,20 @@ function App() {
   
   return (
     <div className="App">
-      <div style={style}>
+      <div>
         <Header/>
         <Today/>
         <Best/>
-        <h1>배고파 - BAEGOPA ~~~1</h1>
+        <img src='https://via.placeholder.com/285x285' />
+        <img src='https://via.placeholder.com/285x285' />
+        <img src='https://via.placeholder.com/285x285' />
+        <img src='https://via.placeholder.com/285x285' />
+        <MembersFood/>
+        <MainButton/> 
+        <Footer/>
+        {/* <BestSlider/> */}
         {/* <Card /> */}
-        <CardList />
+        {/* <CardList /> */}
       </div>
     </div>
   );

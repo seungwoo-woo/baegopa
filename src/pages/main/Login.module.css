@@ -1,0 +1,19 @@
+.wrap:active .ic{
+  display: block;
+}
+.wrap:active .lo{
+  display: none;
+}
+.wrap:active .ic{
+  display: block;
+}
+.wrap .ic{
+  display: none;
+}
+.ic{
+  width: 72px;
+ 
+}
+h4{
+  color: white;
+}
