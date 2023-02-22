@@ -3,7 +3,7 @@ import './CardList.css';
 import Card from './Card';
 
 function CardList(props) {
-  const groupTitme = '배고플 때 생각나는...';
+  const groupTitle = '배고플 때 생각나는...';
   const cookItemList = [ 
     {id: 1,
     title: "애호박구이 간장조림",
@@ -107,7 +107,7 @@ function CardList(props) {
 
   return (
     <div className='group'>
-      <h1>{groupTitme}</h1>
+      <h1>{groupTitle}</h1>
       <div className='cardList'>
         {cookItemList.map((cookItem) => {
           return <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />
