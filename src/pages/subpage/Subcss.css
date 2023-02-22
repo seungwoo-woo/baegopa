@@ -1,5 +1,8 @@
 /* w 1200 */
 
+.wrapper {
+    position: relative;
+}
 .menu {
     width: 1200px;
     height: 80px;
@@ -22,4 +25,78 @@
     display: flex;
     list-style: none;
     margin-right:20px;
+}
+
+.recipe {
+    width: 1200px;
+    height: 300px;
+    background-color: antiquewhite;
+}
+.recipe > h1 {
+    margin-left: 40px;
+}
+
+.value {
+    display: flex;
+    margin: 35px 50px;
+    
+}
+.korean {
+    width: 200px;
+    height: 200px;
+    background-image: url('./images/korean.jpeg'); 
+    background-position: center;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 200px;
+    color: #1f9633;
+    font-size: 40px;
+}
+
+.snack {
+    width: 200px;
+    height: 200px;
+    background-image: url('./images/snack\ .jpg'); 
+    background-position: center;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 200px;
+    color: #1f9633;
+    font-size: 40px;
+}
+
+.china {
+    width: 200px;
+    height: 200px;
+    background-image: url('./images/china.jpg'); 
+    background-position: center;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 200px;
+    color: #1f9633;
+    font-size: 40px;
+}
+
+.japan {
+    width: 200px;
+    height: 200px;
+    background-image: url('./images/japan.jpg'); 
+    background-position: center;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 200px;
+    color: #1f9633;
+    font-size: 40px;
+}
+
+.pasta {
+    width: 200px;
+    height: 200px;
+    background-image: url('./images/pasta.png'); 
+    background-position: center;
+    border-radius: 100px;
+    text-align: center;
+    line-height: 200px;
+    color: #1f9633;
+    font-size: 40px;
 }
