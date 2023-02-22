@@ -1,29 +1,48 @@
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import styled from "styled-components";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+const StyledSwiper = styled(Swiper)`
+  width: 1200px;
+  height: 300px;
+`;
+const CoveredImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
 function BestSlider(props) {
 
   return (
-    <div className="App">
-    <Swiper
+    <StyledSwiper className='swipers'
       modules={[Navigation, Pagination]}
       spaceBetween={50}
-      slidesPerView={3}
+      slidesPerView={4}
       navigation
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      <SwiperSlide>Slide 5</SwiperSlide>
-    </Swiper>
-    </div>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+
+
+
+    </StyledSwiper>
   );
 }
 

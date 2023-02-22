@@ -1,19 +1,29 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import styled from "styled-components";
+const StyledMainNav = styled(Navbar)`
+  width: 1200px;
+`
+const StyledNav = styled(Nav)`
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 
 export default function SubHeader() {
   return (
 
-    <Navbar bg="light" variant="light">
+    <StyledMainNav bg="light" variant="light">
       <Container>
-        <Nav className="me-auto">
-          <Nav.Link href="#home">Navbar</Nav.Link>
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
+        <StyledNav className="me-auto">
+          <Nav.Link href="#home">오늘의 요리</Nav.Link>
+          <Nav.Link href="#home">베스트 요리</Nav.Link>
+          <Nav.Link href="#features">분류</Nav.Link>
+          <Nav.Link href="#pricing">나머지</Nav.Link>
+        </StyledNav>
       </Container>
-    </Navbar>
+    </StyledMainNav>
   );
 }
 

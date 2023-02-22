@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import { GiCampCookingPot } from "react-icons/gi";
-import styled from "styled-components";
 import styles from './MembersFood.module.css'
-import Card from '../../../components/CardList';
 import CardList from '../../../components/CardList';
 
 function MembersFood(props) {

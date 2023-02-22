@@ -9,7 +9,7 @@ function Login(props) {
     <Nav.Link className={styles.lo} href="#deets">로그인</Nav.Link>
     <Nav.Link className={styles.ic} href="#deets"> <h4><BsBookmarkPlus/></h4></Nav.Link>
     <Nav.Link className={styles.ic} href="#deets"> <h4><CgProfile/></h4></Nav.Link>
-
+    
     <Nav.Link className={styles.lo} eventKey={2} href="#memes">
       회원가입
     </Nav.Link>
