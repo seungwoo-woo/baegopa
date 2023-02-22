@@ -14,8 +14,11 @@ function Addrecipe(props) {
           <span>사진첨부</span>
           <sapn style={{color: 'red'}}>*</sapn>
           <div>
-            <input type="text"></input>
-            <button>사진첨부</button>
+            <input type="file" name='photo' id='upload-photo' accept="image/*" multiple style={{ display: "none" }}/>
+            <div className='input-file-button'>
+              <label for='upload-photo'>파일 선택</label>
+              <p class="material-symbols-outlined">attach_file_add </p>
+            </div>
           </div>
 
           <span>요리명</span>
