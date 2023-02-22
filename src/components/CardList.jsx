@@ -3,7 +3,7 @@ import './CardList.css';
 import Card from './Card';
 
 function CardList(props) {
-  console.log(props);
+  // console.log(props);
   const {groupTitme, cookItemList, viewIndex} = props;
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import "./css/recipeDetail.css";
 
@@ -93,90 +93,127 @@ const userReviews = [
 ];
 
 // const groupTitme = '배고플 때 생각나는...';
-const cookItemList = [ 
-  {id: 1,
-  title: "애호박구이 간장조림",
-  cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-  userId: "샬라라",
-  viewNo: 137479,
-  likeNo: 3657,
-  userComment: [
-    {
-    commentUserId: "삐리리",
-    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-    } 
-  ]},
-  {id: 2,
-  title: "애호박구이 간장조림",
-  cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-  userId: "샬라라",
-  viewNo: 137479,
-  likeNo: 3657,
-  userComment: [
-    {
-    commentUserId: "삐리리",
-    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-    } 
-  ]},
-  {id: 3,
-  title: "애호박구이 간장조림",
-  cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-  userId: "샬라라",
-  viewNo: 137479,
-  likeNo: 3657,
-  userComment: [
-    {
-    commentUserId: "삐리리",
-    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-    } 
-  ]},
-  {id: 4,
-  title: "애호박구이 간장조림",
-  cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-  userId: "샬라라",
-  viewNo: 137479,
-  likeNo: 3657,
-  userComment: [
-    {
-    commentUserId: "삐리리",
-    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-    } 
-  ]},
-];
-
-const viewIndex = 'comment';
-
-// -------------------------------------------------------------------------------------------------
-
-// --------------------------------------------CSS 컴포넌트------------------------------------------
-
-
-
-function RecipeDetail(props) {
-  console.log(recipes[0].subtitle);
-  console.log(recipeInfo[0].level);
-  console.log(recipeInfo[0].hashtags[0]);
-
-  // 도전! 요리-------------------------------------------------------------------------
-  const [value, setValue] = useState({
+const cookItemLists = [
+  {
     id: 1,
     title: "애호박구이 간장조림",
     cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
     userId: "샬라라",
     viewNo: 137479,
     likeNo: 3657,
-    userComment: [{
+    userComment: [
+      {
       commentUserId: "삐리리",
       comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-    }]
-  });
-  const handleChange = (e) => {
-    setValue(e.target.value);  
-  }
-  const handleSubmit = () => {
-    alert(`제출된 에세이: ${value}`);
-  };
+      }
+    ]
+  },
+  {
+    id: 2,
+    title: "애호박구이 간장조림",
+    cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+    userId: "샬라라",
+    viewNo: 137479,
+    likeNo: 3657,
+    userComment: [
+      {
+      commentUserId: "삐리리",
+      comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+      } 
+    ]
+  },
+  {
+    id: 3,
+    title: "애호박구이 간장조림",
+    cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+    userId: "샬라라",
+    viewNo: 137479,
+    likeNo: 3657,
+    userComment: [
+      {
+      commentUserId: "삐리리",
+      comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+      } 
+    ]
+  },
+  {
+    id: 4,
+    title: "애호박구이 간장조림",
+    cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+    userId: "샬라라",
+    viewNo: 137479,
+    likeNo: 3657,
+    userComment: [
+      {
+      commentUserId: "삐리리",
+      comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+      } 
+    ]
+  },
+];
+
+const viewIndex = 'comment';
+
+// -------------------------------------------------------------------------------------------------
+
+
+
+
+function RecipeDetail(props) {
+  // console.log(recipes[0].subtitle);
+  // console.log(recipeInfo[0].level);
+  // console.log(recipeInfo[0].hashtags[0]);
+
+  // 도전! 요리-------------------------------------------------------------------------
+
+
   //-------------------------------------------------------------------------------------
+  const [reviewValue, setReviewValue] = useState('');
+  console.log(reviewValue);
+  const handleChange = (e) => {
+    setReviewValue(e.target.value);
+    console.log(e.target.value);
+  }
+  // const handleSubmit = {};
+  // const fileInput = useRef(null);  // fileInput에 초기값은 null
+  const handleSubmit = () => {
+    console.log(imgRef.current.value);
+    handleInsert(reviewValue);
+    saveImgFile();
+  };
+  
+
+
+  const handleInsert = useCallback((data) => {
+    const { id, cardImagePath, commentUserId, comment } = data;
+    
+    const cookItemList = {
+      id: uuidv4(),
+      cardImagePath,
+      commentUserId,
+      comment,
+    };
+
+    setReviewValue(cookItemLists.concat(cookItemList));
+    // localStorage.setItem('todos', JSON.stringify(todos.concat(todo)))
+
+  }, [cookItemLists]);
+
+  const [imgFile, setImgFile] = useState("");
+  const imgRef = useRef(null);
+  console.log(imgRef.current);
+  console.log(imgRef);
+
+  // 이미지 업로드 input의 onChange
+  const saveImgFile = () => {
+    const file = imgRef.current.files[0];
+    console.log(file);
+    const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+          setImgFile(reader.result);
+      };
+  };
 
   return (
     <div className='recipe-page'>
@@ -233,15 +270,42 @@ function RecipeDetail(props) {
         <h4>도전! 요리</h4>
         <div className='review--inner'>
           {/* TODO: 카드 컴포넌트 연결  */}
-          <CardList cookItemList={cookItemList} viewIndex="comment" />
+          <CardList cookItemList={cookItemLists} viewIndex="comment" />
         </div>
         <div className='review--register'>
-          <label className="input-file-button" for="input-file"></label>
-          <input type="file" id="input-file" style={{display:"none"}}/>
-          <label htmlFor="" className='review--register--write'>
-            <textarea value={value} onChange={handleChange} name="" id="" cols="2" rows="8" placeholder='가장 좋아하는 것에 대한 에세이를 장석하세요'/>
+          {imgRef.current
+            ? <img src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
+            :<label className="input-file-button" for="input-file"></label>}
+          <input
+            type="file" 
+            id="input-file" 
+            accept="image/*"
+            onChange={saveImgFile}
+            ref={imgRef}
+            style={{display:"none"}} 
+          />
+
+
+          <label 
+            htmlFor="review--content" 
+            className='review--register--write'
+          >
+            
+            <textarea 
+              value={reviewValue} 
+              onChange={handleChange}
+              id='review--content'
+              name="text" 
+              cols="2" rows="8" 
+              placeholder='가장 좋아하는 것에 대한 에세이를 장석하세요'
+            />
           </label>
-          <button type="button" onClick={handleSubmit} className="review--register--submit">제출</button>
+          <button 
+            type="button" 
+            onClick={handleSubmit} 
+            // onInsert={handleInsert} 
+            className="review--register--submit"
+          >제출</button>
         </div>
       </section>
 
