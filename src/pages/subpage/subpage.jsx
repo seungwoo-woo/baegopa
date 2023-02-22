@@ -1,9 +1,7 @@
 import React from 'react';
-import CardList from '../../components/CardList';
+import SubCard from './SubCard';
+import './CardList.css';
 import './SubCss.css';
-
-
-
 
 
 
@@ -12,7 +10,10 @@ import './SubCss.css';
 function Subpage(props) {
 
     return (
+        <>
         <div className='wrapper'>
+
+            {/* 메뉴 */}
             <div className='menu'>
                 <nav>NAV영역</nav>
             </div>
@@ -24,9 +25,12 @@ function Subpage(props) {
                     <li>하위메뉴4</li>
                 </ul>
             </div>
+
+            {/* 분류 */}
             <div className='recipe'>
                 <h1>레시피종류</h1>
                 <div className='value'>                    
+
                 <div className='korean'>
                     #한식
                 <img src={ require('./images/korean.jpeg') } />
@@ -50,10 +54,17 @@ function Subpage(props) {
                 </div>
             </div> 
 
+            {/* 카드섹션 */}
             <div>
-                <CardList/>    
+                <SubCard/>    
+            </div>
+
+            {/* 푸터 */}
+            <div className='footer'>
+                Footer
             </div>
         </div>
+        </>
         
     );
 }

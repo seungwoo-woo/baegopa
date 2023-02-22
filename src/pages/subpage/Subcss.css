@@ -1,10 +1,10 @@
 /* w 1200 */
 
 .wrapper {
-    position: relative;
+    width: 1200px;
+    margin: 0 auto;
 }
 .menu {
-    width: 1200px;
     height: 80px;
     color: #fff;
     text-align: center;
@@ -14,7 +14,6 @@
 }
 
 .menu2 {
-    width: 1200px;
     height: 50px;
     color: #fff;
     font-size: 20px;
@@ -29,8 +28,7 @@
 
 .recipe {
     width: 1200px;
-    height: 300px;
-    margin: 0 100px;
+    margin: 0 auto;
     background-color: antiquewhite;
 }
 .recipe > h1 {
@@ -38,16 +36,15 @@
 }
 
 .value {
+    margin: 20px 100px;
     display: flex;
-    margin: 0 auto;
-    
 }
 
 .value > div {
     width: 200px;
     height: 200px;
+    align-items: center;
     text-align: center;
-    line-height: 200px;
     color: #2f48d1;
     font-size: 40px;
 } 
@@ -56,4 +53,15 @@
     width: 200px;
     height: 200px;
     border-radius: 100px;
+    
+}
+
+.footer {
+    width: 1200px;
+    height: 200px;
+    background-color: antiquewhite;
+    text-align: center;
+    line-height: 200px;
+    font-size: 50px;
+    font-weight: 600;
 }
