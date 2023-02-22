@@ -22,6 +22,7 @@
 
 .main {
   display: flex;
+  padding-top: 80px;
   /* column-gap: 20px; */   /* TODO: 질문! main--right에 padding-left가 정상적으로 안먹는 이유  */
   max-width: 1200px;
   margin: 0 auto;

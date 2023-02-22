@@ -158,7 +158,18 @@ function RecipeDetail(props) {
   console.log(recipeInfo[0].hashtags[0]);
 
   // 도전! 요리-------------------------------------------------------------------------
-  const [value, setValue] = useState('가장 좋아하는 것에 대한 에세이를 장석하세요');
+  const [value, setValue] = useState({
+    id: 1,
+    title: "애호박구이 간장조림",
+    cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+    userId: "샬라라",
+    viewNo: 137479,
+    likeNo: 3657,
+    userComment: [{
+      commentUserId: "삐리리",
+      comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+    }]
+  });
   const handleChange = (e) => {
     setValue(e.target.value);  
   }
@@ -228,7 +239,7 @@ function RecipeDetail(props) {
           <label className="input-file-button" for="input-file"></label>
           <input type="file" id="input-file" style={{display:"none"}}/>
           <label htmlFor="" className='review--register--write'>
-            <textarea value={value} onChange={handleChange} name="" id="" cols="2" rows="8"/>
+            <textarea value={value} onChange={handleChange} name="" id="" cols="2" rows="8" placeholder='가장 좋아하는 것에 대한 에세이를 장석하세요'/>
           </label>
           <button type="button" onClick={handleSubmit} className="review--register--submit">제출</button>
         </div>
