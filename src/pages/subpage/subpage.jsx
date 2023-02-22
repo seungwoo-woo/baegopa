@@ -27,11 +27,26 @@ function Subpage(props) {
             <div className='recipe'>
                 <h1>레시피종류</h1>
                 <div className='value'>                    
-                <div className='korean'>#한식</div>
-                <div className='snack'>#분식</div>
-                <div className='china'>#중식</div>
-                <div className='japan'>#일식</div>
-                <div className='pasta'>#양식</div>
+                <div className='korean'>
+                    #한식
+                <img src={ require('./images/korean.jpeg') } />
+                    </div>
+                <div className='snack'>
+                    #분식
+                <img src={ require('./images/snack.jpg') } />
+                    </div>
+                <div className='china'>
+                    #중식
+                <img src={ require('./images/china.jpg') } />
+                    </div>
+                <div className='japan'>
+                    #일식
+                <img src={ require('./images/japan.jpg') } />
+                    </div>
+                <div className='pasta'>
+                    #양식
+                <img src={ require('./images/pasta.png') } />
+                    </div>
                 </div>
             </div> 
 

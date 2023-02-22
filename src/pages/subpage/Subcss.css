@@ -30,6 +30,7 @@
 .recipe {
     width: 1200px;
     height: 300px;
+    margin: 0 100px;
     background-color: antiquewhite;
 }
 .recipe > h1 {
@@ -38,65 +39,21 @@
 
 .value {
     display: flex;
-    margin: 35px 50px;
+    margin: 0 auto;
     
 }
-.korean {
-    width: 200px;
-    height: 200px;
-    background-image: url('./images/korean.jpeg'); 
-    background-position: center;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 200px;
-    color: #1f9633;
-    font-size: 40px;
-}
 
-.snack {
+.value > div {
     width: 200px;
     height: 200px;
-    background-image: url('./images/snack\ .jpg'); 
-    background-position: center;
-    border-radius: 100px;
     text-align: center;
     line-height: 200px;
-    color: #1f9633;
+    color: #2f48d1;
     font-size: 40px;
-}
+} 
 
-.china {
+.value > div > img {
     width: 200px;
     height: 200px;
-    background-image: url('./images/china.jpg'); 
-    background-position: center;
     border-radius: 100px;
-    text-align: center;
-    line-height: 200px;
-    color: #1f9633;
-    font-size: 40px;
-}
-
-.japan {
-    width: 200px;
-    height: 200px;
-    background-image: url('./images/japan.jpg'); 
-    background-position: center;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 200px;
-    color: #1f9633;
-    font-size: 40px;
-}
-
-.pasta {
-    width: 200px;
-    height: 200px;
-    background-image: url('./images/pasta.png'); 
-    background-position: center;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 200px;
-    color: #1f9633;
-    font-size: 40px;
 }
