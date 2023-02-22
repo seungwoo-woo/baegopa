@@ -1,33 +1,33 @@
 import React from 'react';
-import styled from "styled-components";
 import CardList from '../../components/CardList';
+import './SubCss.css';
 
 
-const Nav = styled.nav`
-    background: #000;
-`;
+
 // w 1200
-const Ennen = styled.div`
-`;
 
-const box = styled.div`
-    width: 1200px;
-    display: flex;
-    
-`;
 
 
 function Subpage(props) {
     return (
         <div>
-            <nav>NAV영역</nav>
+            <div className='menu'>
+                <nav>NAV영역</nav>
+            </div>
+            <div className='menu2'>
+                <ul>
+                    <li>하위메뉴1</li>
+                    <li>하위메뉴2</li>
+                    <li>하위메뉴3</li>
+                    <li>하위메뉴4</li>
+                </ul>
+            </div>
             <div>
-            <h1>레시피종류</h1>    
-            <CardList/>    
+                <h1>레시피종류</h1>    
             </div> 
 
             <div>
-            <h1>오늘의 요리 결과물들</h1>
+                <CardList/>    
             </div>
         </div>
         
