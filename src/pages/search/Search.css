@@ -24,13 +24,15 @@
     margin: 0;
     display: flex;
     justify-content: space-around;
-
 }
 
 .recipe {
     width: 1200px;
     height: 120px;
     background-color: antiquewhite;
+}
+.recipe > div {
+    /* margin: 30px ; */
 }
 .recipe h1 {
     font-size: 40px;

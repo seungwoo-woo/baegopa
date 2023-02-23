@@ -26,29 +26,24 @@ function SearchPage(props) {
             {/* 분류 */}
             <div className='recipe'>
                 <div>
-                <h1>오늘의 레시피</h1>
+                <h1>뫄뫄의 검색 결과</h1>
                 </div>
                 <div className='value'>                    
-                <div className='korean'>
+                {/* <div className='korean'>
                     #한식
-                {/* <img src={ require('./images/korean.jpeg') } /> */}
                     </div>
                 <div className='snack'>
                     #분식
-                {/* <img src={ require('./images/snack.jpg') } /> */}
                     </div>
                 <div className='china'>
                     #중식
-                {/* <img src={ require('./images/china.jpg') } /> */}
                     </div>
                 <div className='japan'>
                     #일식
-                {/* <img src={ require('./images/japan.jpg') } /> */}
                     </div>
                 <div className='pasta'>
                     #양식
-                {/* <img src={ require('./images/pasta.png') } /> */}
-                    </div>
+                    </div> */}
                 </div>
             </div> 
         </div>

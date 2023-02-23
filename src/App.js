@@ -24,11 +24,11 @@ function App() {
       <div>
         {/* <h1>배고파 - BAEGOPA ~~~1</h1> */}
         {/* <Card /> */}
-        <Subpage/>
+        {/* <Subpage/> */}
+        <SearchPage/>
         <CardList />
         <Footer/>
       </div>
-      <SearchPage/>
     </>
   );
 }
