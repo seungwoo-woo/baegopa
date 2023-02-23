@@ -26,8 +26,6 @@ function App() {
         <MembersFood/>
         <MainButton/> 
         <Footer/>
-        {/* <Card /> */}
-        {/* <CardList /> */}
       </div>
     </div>
   );

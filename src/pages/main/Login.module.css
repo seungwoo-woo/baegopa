@@ -2,13 +2,13 @@
   display: block;
 }
 .wrap:active .lo{
-  display: block;
+  display: none;
 }
 .wrap:active .ic{
   display: block;
 }
 .wrap .ic{
-  display: block;
+  display: none;
 }
 .ic{
   width: 72px;
@@ -17,13 +17,15 @@
 h4{
   color: white;
 }
-.btn-keeper{
-  background-image: url(./img/mingcute_bowl-line.png) no-repeat center center;
-  color: aqua;
-  width: 60px;
-  height: 60px;
+.keeper{
+  background-image: url('./img/mingcute_bowl-line.png');
+  width: 30px;
+  height: 30px;
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
+  margin: auto;
+  display: block;
+  
 }

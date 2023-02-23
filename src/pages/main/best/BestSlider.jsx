@@ -5,6 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Card } from 'react-bootstrap';
 
 const StyledSwiper = styled(Swiper)`
   width: 1200px;
@@ -26,7 +27,7 @@ function BestSlider(props) {
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
     >
-      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
+      <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/><Card /></SwiperSlide>
       <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
       <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
       <SwiperSlide className='swiperi'><CoveredImage  src='https://via.placeholder.com/285x285'/></SwiperSlide>
