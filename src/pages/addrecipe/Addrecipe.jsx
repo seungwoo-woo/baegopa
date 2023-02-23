@@ -24,7 +24,7 @@ function Addrecipe(props) {
           <span>요리명</span>
           <sapn style={{color: 'red'}}>*</sapn>
           <div>
-            <input type="text"></input>
+            <input type="text" className='recipeTitme'></input>
           </div>
 
           <span>요리시간/난이도</span>
@@ -52,10 +52,15 @@ function Addrecipe(props) {
           <span>조리방법</span>
           <sapn style={{color: 'red'}}>*</sapn>
           <div>
-            <input type="text"></input>
+            <input type="text" placeholder='조리순서 1.'></input>
             <button className='plusMinus'>+</button>
             <button className='plusMinus'>-</button>
           </div>    
+          <div>
+            <input type="text" placeholder='조리순서 2.'></input>
+            <button className='plusMinus'>+</button>
+            <button className='plusMinus'>-</button>
+          </div> 
           
         </div>
 

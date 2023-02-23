@@ -22,6 +22,7 @@
   position: absolute;
   right: 30px;
   top: 35px;
+  cursor: pointer;
 }
 
 .addRecipeBody {
@@ -31,15 +32,12 @@
 }
 
 .addRecipeBody div.input-file-button {
-  /* display: flex;
-  justify-content: flex-end;
-  align-items: center; */
   
   display: inline-block;
   text-align: center;
   line-height: 68px;
   color: #CCC;
-  width: 502px;
+  width: 620px;
   height: 68px;
   border: 1px solid #CCC;
   border-radius: 10px;
@@ -67,6 +65,9 @@
   padding-left: 20px;
 }
 
+.addRecipeBody input.recipeTitme {
+  width: 600px;
+}
 .addRecipeBody input.timeRecipe {
   width: 200px;
   padding-left: 0;
@@ -109,6 +110,7 @@
   width: 50px;
   margin-right: 10px;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .addRecipeFooter {
@@ -116,7 +118,7 @@
   width: 600px;
   margin: 0px auto;
   margin-bottom: 150px;
-  padding-left: 10px;
+  padding-left: 0px;
 }
 
 .addRecipeFooter button {
@@ -126,6 +128,7 @@
   border-radius: 40px;
   margin-left: 20px;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .addRecipeFooter button.submitButton {
