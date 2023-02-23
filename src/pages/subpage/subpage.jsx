@@ -4,13 +4,15 @@ import './SubCss.css';
 
 
 
-// w 1200
+
+
 
 
 
 function Subpage(props) {
+
     return (
-        <div>
+        <div className='wrapper'>
             <div className='menu'>
                 <nav>NAV영역</nav>
             </div>
@@ -22,8 +24,15 @@ function Subpage(props) {
                     <li>하위메뉴4</li>
                 </ul>
             </div>
-            <div>
-                <h1>레시피종류</h1>    
+            <div className='recipe'>
+                <h1>레시피종류</h1>
+                <div className='value'>                    
+                <div className='korean'>#한식</div>
+                <div className='snack'>#분식</div>
+                <div className='china'>#중식</div>
+                <div className='japan'>#일식</div>
+                <div className='pasta'>#양식</div>
+                </div>
             </div> 
 
             <div>
