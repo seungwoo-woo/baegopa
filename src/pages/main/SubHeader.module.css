@@ -1,5 +1,18 @@
-.me-auto{
+.stynav{
+  width: 1200px;
+  height: 40px;
+  border-bottom: rgb(211, 211, 211) 1px solid;
+}
+.stylednav{
+  width: 1200px;
   display: flex;
   justify-content: space-between;
-  background-color: aqua;
+  align-items: center;
+}
+.ft{
+  color: #000;
+  
+}
+.ft:hover{
+  text-decoration:underline;
 }

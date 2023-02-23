@@ -1,35 +1,6 @@
 import React, { Fragment } from 'react';
 import { AiOutlineLike } from "react-icons/ai";
-import styled from "styled-components";
-const MainStyled = styled.div`
-  width: 1200px;
-  height: 530;
-  display: flex;
-`
-
-const Todaylist = styled.div`
-width: 220px;
-height: 530px;
-margin-right: 30px;
-border-radius: 20px;
-display: block;
-justify-content: center;
-align-items: center;
-background-color: #1f87e3;
-text-align: center;
-`
-
-const StyledImage = styled.img`
-width: 950px;
-height: 530px;
-border-radius: 20px;
-font-size: 50px;
-`
-const StyledIcon = styled.div`
-  font-size: 20px;
-  display: flex;
-  justify-content: space-between;
-`
+import styles from './Today.module.css'
 
 const recipes = [
   {
@@ -56,19 +27,19 @@ function Today(props) {
       <Fragment>
         <h1><AiOutlineLike />오늘의 요리</h1>
       </Fragment>
-      <MainStyled>
-        <Todaylist>
+      <div className={styles.stymain}>
+        <div className={styles.styli}>
           <h1 style={{ marginTop: 20, marginBottom: 100, }}>{recipes[0].title}</h1>
-          <p style={{ marginTop: 20, marginBottom: 180, fontSize: 20}} >{recipes[0].subtitle}</p>
-          <StyledIcon>
+          <p style={{ marginTop: 20, marginBottom: 180, fontSize: 15}} >{recipes[0].subtitle}</p>
+          <div className={styles.styicon}>
             <span>❤ 3000</span>
             <span>👁‍🗨 200</span>
-          </StyledIcon>
-        </Todaylist>
-        <div>
-          <StyledImage src={recipes[0].image} />
+          </div>
         </div>
-      </MainStyled>
+        <div>
+          <img className={styles.styimage} src={recipes[0].image} />
+        </div>
+      </div>
 
     </>
 

@@ -5,9 +5,9 @@ import { GiBowlOfRice } from "react-icons/gi";
 import Login from './Login';
 import Search from './Search';
 import styled from "styled-components";
-const StyledMainNav = styled(Navbar)`
-  width: 1200px;
-`
+import styles from './Header.module.css'
+
+
 const StyledLogo = styled(Navbar.Brand)`
 display: flex;
 justify-content: start;
@@ -39,7 +39,7 @@ function Header(props) {
   return (
     <>
       {/* 헤더영역 */}
-      <StyledMainNav collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar className={styles.stymain} collapseOnSelect expand="lg" bg="dark" variant="dark">
         <StyledContainer>
           <StyledLogo style={{fontSize: '30px'}} href="#home"><GiBowlOfRice />배고파</StyledLogo>
           <Navbar.Toggle aria-controls="navbar-dark-example" />
@@ -54,7 +54,7 @@ function Header(props) {
             </StyledLogin>
           </StyledNavbar>
         </StyledContainer>
-      </StyledMainNav>
+      </Navbar>
       {/* 서브메뉴영역 */}
       <SubHeader />
     </>

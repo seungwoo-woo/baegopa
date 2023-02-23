@@ -9,6 +9,7 @@ import MembersFood from './pages/main/membersFood/MembersFood';
 import MainButton from './pages/main/button/MainButton';
 import Footer from './pages/main/Footer';
 import LatestView from './pages/main/view/LastView';
+import BestCard from './pages/main/best/BestCard';
 
 
 

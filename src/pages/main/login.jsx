@@ -1,7 +1,6 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import styles from './Login.module.css'
-import { CgProfile } from "react-icons/cg";
 
 
 function Login(props) {
