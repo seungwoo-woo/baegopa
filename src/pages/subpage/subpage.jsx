@@ -1,7 +1,7 @@
 import React from 'react';
-import SubCard from './SubCard';
-import './CardList.css';
 import './SubCss.css';
+
+
 
 
 
@@ -30,7 +30,6 @@ function Subpage(props) {
             <div className='recipe'>
                 <h1>레시피종류</h1>
                 <div className='value'>                    
-
                 <div className='korean'>
                     #한식
                 <img src={ require('./images/korean.jpeg') } />
@@ -56,7 +55,7 @@ function Subpage(props) {
 
             {/* 카드섹션 */}
             <div>
-                <SubCard/>    
+                {/* <CardList/>     */}
             </div>
 
             {/* 푸터 */}

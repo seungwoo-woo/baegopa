@@ -21,9 +21,11 @@
     background-color: #1f9633;
 }
 .menu2 > ul {
+    margin: 0;
     display: flex;
     list-style: none;
-    margin-right:20px;
+    /* margin-right:20px; */
+    padding: 0 50px;
 }
 
 .recipe {
@@ -36,7 +38,8 @@
 }
 
 .value {
-    margin: 20px 100px;
+    width: 1200px;
+    margin: 0 100px;
     display: flex;
 }
 
@@ -47,6 +50,7 @@
     text-align: center;
     color: #2f48d1;
     font-size: 40px;
+    justify-content: space-between;
 } 
 
 .value > div > img {
