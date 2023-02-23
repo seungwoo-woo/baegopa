@@ -1,11 +1,14 @@
 .inner{
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   text-align: center;
 }
 .btn{
 width: 120px;
 height: 60px;
 margin-top: 80px;
+}
+.wr{
+  display: flex;
 }

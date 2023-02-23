@@ -11,6 +11,8 @@ import BestCard from './BestCard';
 const StyledSwiper = styled(Swiper)`
   width: 1200px;
   height: 330px;
+  display: flex;
+  flex-wrap: nowrap;
 `;
 
 

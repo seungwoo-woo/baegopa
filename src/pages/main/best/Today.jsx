@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { AiOutlineLike } from "react-icons/ai";
 import styles from './Today.module.css'
-
+import likeIconImage from "../img/like_icon.png";
 const recipes = [
   {
     // 요리명, 이미지, 재료, 설명, 방법, 난이도, 양, 조리시간, 해시태그
@@ -25,14 +25,14 @@ function Today(props) {
   return (
     <>
       <Fragment>
-        <h1><AiOutlineLike />오늘의 요리</h1>
+        <h1 className={styles.hd}><AiOutlineLike />오늘의 요리</h1>
       </Fragment>
       <div className={styles.stymain}>
         <div className={styles.styli}>
           <h1 style={{ marginTop: 20, marginBottom: 100, }}>{recipes[0].title}</h1>
           <p style={{ marginTop: 20, marginBottom: 180, fontSize: 15}} >{recipes[0].subtitle}</p>
           <div className={styles.styicon}>
-            <span>❤ 3000</span>
+            <span><img className={styles.stylike} src={likeIconImage}/> 3000</span>
             <span>👁‍🗨 200</span>
           </div>
         </div>
