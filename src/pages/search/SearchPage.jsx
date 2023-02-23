@@ -4,7 +4,7 @@ import React from 'react';
 
 
 
-function Subpage(props) {
+function SearchPage(props) {
 
     return (
         <>
@@ -57,4 +57,4 @@ function Subpage(props) {
     );
 }
 
-export default Subpage;
+export default SearchPage;

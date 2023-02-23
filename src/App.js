@@ -5,8 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 import Card from './components/Card';
 import CardList from './components/CardList';
 import Subpage from './pages/subpage/Subpage';
-import Footer, {  } from './pages/subpage/Footer';
+import Footer from './pages/subpage/Footer';
+import SearchPage, {  } from './pages/search/SearchPage.jsx';
 import './pages/subpage/Subcss.css';
+import './pages/search/Search.css';
+
 
 function App() {
 
@@ -25,6 +28,7 @@ function App() {
         <CardList />
         <Footer/>
       </div>
+      <SearchPage/>
     </>
   );
 }
