@@ -17,6 +17,7 @@
     "react-xml-parser": "^1.1.8",
     "styled-components": "^5.3.6",
     "styled-reset": "^4.4.5",
+    "swiper": "^9.0.5",
     "web-vitals": "^2.1.4",
     "xml2js": "^0.4.23"
   },

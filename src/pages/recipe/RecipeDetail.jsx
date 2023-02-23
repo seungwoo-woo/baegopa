@@ -1,8 +1,11 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import "./css/recipeDetail.css";
 
+
 import CardList from '../../components/CardList';
+import Card from './../../components/Card';
 
 
 
@@ -171,15 +174,16 @@ const viewIndex = 'comment';
 // -------------------------------------------------------------------------------------------------
 
 
-
-
 function RecipeDetail(props) {
+
+
   // console.log(recipes[0].subtitle);
   // console.log(recipeInfo[0].level);
   // console.log(recipeInfo[0].hashtags[0]);
-
   // 도전! 요리-------------------------------------------------------------------------
-
+  // const {groupTitme, cookItemLists, viewIndex} = props;
+  console.log(cookItemLists);
+  
 
   //-------------------------------------------------------------------------------------
   const [reviewValue, setReviewValue] = useState('');
@@ -288,6 +292,21 @@ function RecipeDetail(props) {
           {/* TODO: 카드 컴포넌트 연결  */}
           <CardList cookItemList={cookItemLists} viewIndex="comment" />
         </div>
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={3}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+        >
+            {cookItemLists.map((cookItem) => {
+              return (
+                <SwiperSlide>
+                  <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />
+                </SwiperSlide>
+                )
+              })
+            }
+        </Swiper>
         <div className='review--register'>
           {imgRef.current
             ? <img className='review--register-image' src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
