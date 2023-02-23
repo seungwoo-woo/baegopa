@@ -2,6 +2,8 @@ import React, { useCallback, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
+import { styled } from 'styled-components';
+
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,6 +14,9 @@ import "./css/recipeDetail.css";
 
 import CardList from '../../components/CardList';
 import Card from './../../components/Card';
+import LikeCount from './components/LikeCount';
+import ViewCount from './components/ViewCount';
+import ButtonKeeper from './components/ButtonKeeper';
 
 
 
@@ -66,6 +71,8 @@ const recipeInfo = [
     time: 100,
     meals: 2,
     hashtags: ["김치찌개", "찌개", "해장", "시원한", "매운", "김치", "해장국", "밥도둑", "비오는날", "두부", "알싸한", "얼큰한"],
+    likeCounts: 11111,   // TODO: 추후 삭제데이터
+    viewCount: 1212,     // TODO: 추후 삭제데이터
   },
   {
     id: 2,
@@ -73,6 +80,8 @@ const recipeInfo = [
     time: 20,
     meals: 2,
     hashtags: ["나가사키부대찌개", "찌개", "해장", "시원한", "매운", "일본", "해장국", "밥도둑", "비오는날", "두부", "알싸한", "얼큰한"],
+    likeCounts: 22222,
+    viewCount: 1212,
   },
   {
     id: 3,
@@ -80,6 +89,8 @@ const recipeInfo = [
     time: 50,
     meals: 2,
     hashtags: ["삼계부대찌개", "찌개", "해장", "시원한", "건강한", "닭", "보양식", "밥도둑", "아픈날", "두부", "알싸한", "얼큰한"],
+    likeCounts: 33333,
+    viewCount: 1212,
   },
 ];
 
@@ -182,6 +193,7 @@ const viewIndex = 'comment';
 
 function RecipeDetail(props) {
 
+  const [recipeInfos, setrecipeInfos] = useState(recipeInfo);
 
   // console.log(recipes[0].subtitle);
   // console.log(recipeInfo[0].level);
@@ -189,7 +201,7 @@ function RecipeDetail(props) {
   // 도전! 요리-------------------------------------------------------------------------
   // const {groupTitme, cookItemLists, viewIndex} = props;
   console.log(cookItemLists);
-  
+
 
   //-------------------------------------------------------------------------------------
   const [reviewValue, setReviewValue] = useState('');
@@ -241,6 +253,18 @@ function RecipeDetail(props) {
 
   const swiperRef = useRef();
 
+  // 링크 복사 기능---------------------------------
+  const handleCopyClipBoard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('클립보드에 링크가 복사되었습니다.');
+    } catch (e) {
+      alert('복사에 실패하였습니다');
+    }
+};
+console.log(handleCopyClipBoard);
+let content = window.location.href;
+// console.log(content);
 
   return (
     <div className='recipe-page'>
@@ -251,6 +275,15 @@ function RecipeDetail(props) {
       <section className='main'>
         <div className='main--left'>
           <img src={recipes[0].image} alt="이미지" />
+          <div className='main--left--counts'>
+              {/* {
+                recipeInfos.map((info, index) => {
+                  return <LikeCount index={[0]} likeCounts={info.likeCounts} setrecipeInfos={setrecipeInfos}/>
+                })
+              } */}
+              <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos}/>
+              <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos}/>
+          </div>
         </div>
         <div className='main--right'>
           <h2 className='main--right--subtitle'>{recipes[0].subtitle}</h2>
@@ -268,13 +301,19 @@ function RecipeDetail(props) {
             })}
           </div>
           <div className='main--right--buttons'>
-            {/* <div className='btn-keeper'><img src='./image/btn-keeper.png'/></div> */}
-            <button type='button' className='btn-keeper'>
-              {/* <img src={ require('./images/btn_keeper.png') } /> */}
+            <ButtonKeeper />
+            <button type='button' className='btn-share'>
+              <img src={ require('./images/btn-share.png') } />
+              <p class="arrow_box">공유하기</p>
             </button>
-            <button type='button' className='btn-share'></button>
-            <button type='button' className='btn-linkcopy'></button>
-            <button type='button' className='btn-kakaoshare'></button>
+            <button type='button' className='btn-linkcopy' onClick={() => {handleCopyClipBoard(content)}}>
+              <img src={ require('./images/btn-linkcopy.png') } />
+              <p class="arrow_box">주소 복사하기</p>
+            </button>
+            <button type='button' className='btn-kakaoshare'>
+              <img src={ require('./images/btn-kakaoshare.png') } />
+              <p class="arrow_box">카카오톡 공유</p>
+            </button>
           </div>
         </div>
       </section>
@@ -303,8 +342,8 @@ function RecipeDetail(props) {
           <Swiper
             spaceBetween={10}
             slidesPerView={4}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log('slide change')}
+            // onSwiper={(swiper) => console.log(swiper)}
             pagination={{ clickable: true }}
             // navigation
             modules={[Navigation]}
