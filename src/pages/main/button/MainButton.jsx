@@ -12,22 +12,23 @@ import styles from './MainButton.module.css'
 // };
 
   
-  
-  function MainButton(props) {
-  const [showComponent, setShowComponent] = useState(false);
+function MainButton(props) {
+  const [showComponents, setShowComponents] = useState([]);
 
   const handleClick = () => {
-    setShowComponent(!showComponent);
+    setShowComponents([...showComponents, <BestCard4 key={showComponents.length} />]);
   };
 
   return (
     <div className={styles.inner}>
       <div className={styles.wr}>
-      {showComponent && <BestCard4 />}
+        {showComponents}
       </div>
-      <Button className={styles.btn} variant="outline-success" onClick={handleClick}>더보기</Button>{' '}
+      <Button className={styles.btn} variant="outline-success" onClick={handleClick}>
+        더보기
+      </Button>{' '}
     </div>
   );
-  }
+}
 
 export default MainButton;

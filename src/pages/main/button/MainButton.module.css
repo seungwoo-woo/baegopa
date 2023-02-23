@@ -10,5 +10,9 @@ height: 60px;
 margin-top: 80px;
 }
 .wr{
+  width: 1200px;
   display: flex;
+  /* flex-direction: column; */
+  flex-direction: row;
+  flex-wrap: wrap;
 }
