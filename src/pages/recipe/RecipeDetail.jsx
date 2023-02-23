@@ -150,6 +150,20 @@ const cookItemLists = [
       } 
     ]
   },
+  {
+    id: 5,
+    title: "",
+    cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+    userId: "",
+    viewNo: 137479,
+    likeNo: 3657,
+    userComment: [
+      {
+      commentUserId: "",
+      comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+      } 
+    ]
+  },
 ];
 
 const viewIndex = 'comment';
@@ -242,7 +256,9 @@ function RecipeDetail(props) {
           </div>
           <div className='main--right--buttons'>
             {/* <div className='btn-keeper'><img src='./image/btn-keeper.png'/></div> */}
-            <button type='button' className='btn-keeper'></button>
+            <button type='button' className='btn-keeper'>
+              {/* <img src={ require('./images/btn_keeper.png') } /> */}
+            </button>
             <button type='button' className='btn-share'></button>
             <button type='button' className='btn-linkcopy'></button>
             <button type='button' className='btn-kakaoshare'></button>
@@ -274,7 +290,7 @@ function RecipeDetail(props) {
         </div>
         <div className='review--register'>
           {imgRef.current
-            ? <img src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
+            ? <img className='review--register-image' src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
             :<label className="input-file-button" for="input-file"></label>}
           <input
             type="file" 
@@ -284,13 +300,10 @@ function RecipeDetail(props) {
             ref={imgRef}
             style={{display:"none"}} 
           />
-
-
           <label 
             htmlFor="review--content" 
             className='review--register--write'
           >
-            
             <textarea 
               value={reviewValue} 
               onChange={handleChange}
