@@ -8,6 +8,7 @@ import BestSlider from './pages/main/best/BestSlider';
 import MembersFood from './pages/main/membersFood/MembersFood';
 import MainButton from './pages/main/button/MainButton';
 import Footer from './pages/main/Footer';
+import LatestView from './pages/main/view/LastView';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Today/>
         <Best/>
         <BestSlider/>
+        {/* <LatestView/> */}
         <MembersFood/>
         <MainButton/> 
         <Footer/>
