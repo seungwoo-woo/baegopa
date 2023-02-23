@@ -1,8 +1,14 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import "./css/recipeDetail.css";
+import { Navigation, Pagination } from 'swiper';
 
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+
+import "./css/recipeDetail.css";
 
 import CardList from '../../components/CardList';
 import Card from './../../components/Card';
@@ -233,6 +239,9 @@ function RecipeDetail(props) {
       };
   };
 
+  const swiperRef = useRef();
+
+
   return (
     <div className='recipe-page'>
       <section className='nav'>
@@ -290,23 +299,33 @@ function RecipeDetail(props) {
         <h4>도전! 요리</h4>
         <div className='review--inner'>
           {/* TODO: 카드 컴포넌트 연결  */}
-          <CardList cookItemList={cookItemLists} viewIndex="comment" />
+          {/* <CardList cookItemList={cookItemLists} viewIndex="comment" /> */}
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={4}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            pagination={{ clickable: true }}
+            // navigation
+            modules={[Navigation]}
+            onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
+            }}
+          >
+              {cookItemLists.map((cookItem) => {
+                return (
+                  <SwiperSlide>
+                    <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />
+                  </SwiperSlide>
+                  )
+                })
+              }
+          </Swiper>
+          <div>
+            <button onClick={() => swiperRef.current?.slidePrev()} className="btn_navigation btn_prev"></button>
+            <button onClick={() => swiperRef.current?.slideNext()} className="btn_navigation btn_next"></button>
+          </div>
         </div>
-        <Swiper
-          spaceBetween={50}
-          slidesPerView={3}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
-            {cookItemLists.map((cookItem) => {
-              return (
-                <SwiperSlide>
-                  <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />
-                </SwiperSlide>
-                )
-              })
-            }
-        </Swiper>
         <div className='review--register'>
           {imgRef.current
             ? <img className='review--register-image' src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>

@@ -140,6 +140,41 @@
   margin: 0 auto;
   border-top: 1px solid #555;
 }
+.review--inner {
+  position: relative;
+}
+.btn_navigation {
+  position: absolute;
+  top: 200px;
+  z-index: 999;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.btn_navigation:hover {
+  background-color: #DFDFDF;
+}
+.btn_prev {
+  left: -60px;
+  background-image: url(../images/btn-prev.png);
+}
+.btn_prev:hover {
+  background-image: url(../images/btn-prev-hover.png);
+}
+.btn_next {
+  right: -60px;
+  background-image: url(../images/btn-next.png);
+}
+.btn_next:hover {
+  background-image: url(../images/btn-next-hover.png);
+}
 .review--register {
   display: flex;
   column-gap: 10px;
