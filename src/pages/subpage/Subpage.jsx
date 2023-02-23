@@ -1,7 +1,4 @@
 import React from 'react';
-import './SubCss.css';
-
-
 
 
 
@@ -28,7 +25,9 @@ function Subpage(props) {
 
             {/* 분류 */}
             <div className='recipe'>
+                <div>
                 <h1>레시피종류</h1>
+                </div>
                 <div className='value'>                    
                 <div className='korean'>
                     #한식
@@ -52,16 +51,6 @@ function Subpage(props) {
                     </div>
                 </div>
             </div> 
-
-            {/* 카드섹션 */}
-            <div>
-                {/* <CardList/>     */}
-            </div>
-
-            {/* 푸터 */}
-            <div className='footer'>
-                Footer
-            </div>
         </div>
         </>
         

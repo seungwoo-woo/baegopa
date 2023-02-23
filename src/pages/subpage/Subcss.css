@@ -23,18 +23,19 @@
 .menu2 > ul {
     margin: 0;
     display: flex;
-    list-style: none;
-    /* margin-right:20px; */
-    padding: 0 50px;
+    justify-content: space-around;
+
 }
 
 .recipe {
     width: 1200px;
-    margin: 0 auto;
+    margin: 0;
     background-color: antiquewhite;
 }
-.recipe > h1 {
-    margin-left: 40px;
+h1 {
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
 }
 
 .value {
@@ -46,6 +47,7 @@
 .value > div {
     width: 200px;
     height: 200px;
+    margin-top: 30px;
     align-items: center;
     text-align: center;
     color: #2f48d1;
@@ -60,12 +62,3 @@
     
 }
 
-.footer {
-    width: 1200px;
-    height: 200px;
-    background-color: antiquewhite;
-    text-align: center;
-    line-height: 200px;
-    font-size: 50px;
-    font-weight: 600;
-}
