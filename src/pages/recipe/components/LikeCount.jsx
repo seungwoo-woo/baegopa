@@ -1,8 +1,6 @@
 import React from 'react';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import "../css/recipeDetail.css";
-
-
 
 
 function LikeCount(props) {
@@ -28,8 +26,8 @@ function LikeCount(props) {
         }}
       >
         {isClicked 
-          ? <img src={ require('../images/btn-likecount-on.png') } />
-          : <img src={ require('../images/btn-likecount-off.png') } />
+          ? <img src={ require('../images/btn-likecount-brown-on.png') } />
+          : <img src={ require('../images/btn-likecount-brown-off.png') } />
         }
         {/* <img 
           src={ require('../images/btn-likecount-off.png') } 

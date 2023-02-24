@@ -8,7 +8,7 @@ import RecipeDetail from './pages/recipe/RecipeDetail';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <App />
-    // <LecipeAPI2 />
-    <RecipeDetail />
+    <LecipeAPI2 />
+    // <RecipeDetail />
 );
 

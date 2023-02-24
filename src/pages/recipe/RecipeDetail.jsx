@@ -1,13 +1,13 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
-import { styled } from 'styled-components';
+import { Navigation, Pagination, Scrollbar } from 'swiper';
 
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 
 import "./css/recipeDetail.css";
@@ -26,7 +26,11 @@ const recipes = [
     // 요리명, 이미지, 재료, 설명, 방법, 난이도, 양, 조리시간, 해시태그
     id: 1, 
     title: "김치찌개",
-    image: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_1.png",
+    image01: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_1.png",
+    image02: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_2.png",
+    image03: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_3.png",
+    image04: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_4.png",
+    image05: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_5.png",
     ingredients: "재료 바지락(100g), 주꾸미(100g), 김치(150g), 무(50g), 마늘(10g) 대파(10g), 양파(40g), 두부(50g), 참기름(5g), 배즙(50g), 팽이버섯(10g) 육수 다시마(5g), 멸치(10g), 물(300g)",
     subtitle: "간단하게 만들어 보는 김치 톡톡톡 김치찌개♥ 다 먹고 한 방울까지 싹싹 밥이랑 비벼먹는게 최고죠~ 색깔도 너무 이쁘고 한 그릇만 있으면 반찬도 필요없는 김치찌개",
     manual01: "1. 냄비에 육수 재료를 넣고 끓이다가 물이 끓어오르면 다시마를 건지고 조금 더 끓여 육수를 우려낸다.",
@@ -184,6 +188,48 @@ const cookItemLists = [
       } 
     ]
   },
+  {
+    id: 4,
+    title: "애호박구이 간장조림",
+    cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+    userId: "샬라라",
+    viewNo: 137479,
+    likeNo: 3657,
+    userComment: [
+      {
+      commentUserId: "삐리리",
+      comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+      } 
+    ]
+  },
+  {
+    id: 4,
+    title: "애호박구이 간장조림",
+    cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+    userId: "샬라라",
+    viewNo: 137479,
+    likeNo: 3657,
+    userComment: [
+      {
+      commentUserId: "삐리리",
+      comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+      } 
+    ]
+  },
+  {
+    id: 4,
+    title: "애호박구이 간장조림",
+    cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+    userId: "샬라라",
+    viewNo: 137479,
+    likeNo: 3657,
+    userComment: [
+      {
+      commentUserId: "삐리리",
+      comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
+      } 
+    ]
+  },
 ];
 
 const viewIndex = 'comment';
@@ -272,48 +318,83 @@ let content = window.location.href;
         NAV영역
       </section>
 
-      <section className='main'>
-        <div className='main--left'>
-          <img src={recipes[0].image} alt="이미지" />
-          <div className='main--left--counts'>
-              {/* {
-                recipeInfos.map((info, index) => {
-                  return <LikeCount index={[0]} likeCounts={info.likeCounts} setrecipeInfos={setrecipeInfos}/>
-                })
-              } */}
-              <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos}/>
-              <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos}/>
+      <section className='main-wraper'>
+        <div className='main'>
+          <div className='main--left'>
+            {/* <img src={recipes[0].image} alt="이미지" /> */}
+            <div className='main--left--img'>
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={0}
+                slidesPerView={1}
+                onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) => console.log(swiper)}
+                // pagination={{ clickable: true }}
+                // scrollbar={{ draggable: true }}
+                // navigation
+                onBeforeInit={(swiper) => {
+                swiperRef.current = swiper;
+                }}
+              >
+                  {/* {recipes.map((recipe) => {
+                    return (
+                      <>
+                        <SwiperSlide><img src={recipe.image01} alt="이미지1" /></SwiperSlide>
+                        <SwiperSlide><img src={recipe.image02} alt="이미지2" /></SwiperSlide>
+                        <SwiperSlide><img src={recipe.image03} alt="이미지3" /></SwiperSlide>
+                        <SwiperSlide><img src={recipe.image04} alt="이미지4" /></SwiperSlide>
+                        <SwiperSlide><img src={recipe.image05} alt="이미지5" /></SwiperSlide>
+                      </>
+                      )
+                    })
+                  } */}
+                <SwiperSlide><img src={recipes[0].image01} alt="이미지1" /></SwiperSlide>
+                <SwiperSlide><img src={recipes[0].image02} alt="이미지2" /></SwiperSlide>
+                <SwiperSlide><img src={recipes[0].image03} alt="이미지3" /></SwiperSlide>
+                <SwiperSlide><img src={recipes[0].image04} alt="이미지4" /></SwiperSlide>
+                <SwiperSlide><img src={recipes[0].image05} alt="이미지5" /></SwiperSlide>
+              </Swiper>
+            </div>
+            <div className='main--left--counts'>
+                {/* {
+                  recipeInfos.map((info, index) => {
+                    return <LikeCount index={[0]} likeCounts={info.likeCounts} setrecipeInfos={setrecipeInfos}/>
+                  })
+                } */}
+                <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos}/>
+                <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos}/>
+            </div>
           </div>
-        </div>
-        <div className='main--right'>
-          <h2 className='main--right--subtitle'>{recipes[0].subtitle}</h2>
-          <h1 className='main--right--title'>{recipes[0].title}</h1>
-          <div className='main--right--info'>
-            <span>난이도: {recipeInfo[0].level}</span>
-            <span>양: {recipeInfo[0].meals} 인분</span>
-            <span>조리시간: {recipeInfo[0].time}</span>
-          </div>
-          <div className='main--right--hashtag'>
-            {recipeInfo[0].hashtags.map((hashtag, index) => {
-              return (
-                <div key={index}>#{hashtag}</div>
-              )
-            })}
-          </div>
-          <div className='main--right--buttons'>
-            <ButtonKeeper />
-            <button type='button' className='btn-share'>
-              <img src={ require('./images/btn-share.png') } />
-              <p class="arrow_box">공유하기</p>
-            </button>
-            <button type='button' className='btn-linkcopy' onClick={() => {handleCopyClipBoard(content)}}>
-              <img src={ require('./images/btn-linkcopy.png') } />
-              <p class="arrow_box">주소 복사하기</p>
-            </button>
-            <button type='button' className='btn-kakaoshare'>
-              <img src={ require('./images/btn-kakaoshare.png') } />
-              <p class="arrow_box">카카오톡 공유</p>
-            </button>
+          <div className='main--right'>
+            <h2 className='main--right--subtitle'>{recipes[0].subtitle}</h2>
+            <h1 className='main--right--title'>{recipes[0].title}</h1>
+            <div className='main--right--info'>
+              <span>난이도: {recipeInfo[0].level}</span>
+              <span>양: {recipeInfo[0].meals} 인분</span>
+              <span>조리시간: {recipeInfo[0].time}</span>
+            </div>
+            <div className='main--right--hashtag'>
+              {recipeInfo[0].hashtags.map((hashtag, index) => {
+                return (
+                  <div key={index}>#{hashtag}</div>
+                )
+              })}
+            </div>
+            <div className='main--right--buttons'>
+              <ButtonKeeper />
+              <button type='button' className='btn-share'>
+                <img src={ require('./images/btn-share_brown.png') } />
+                <p class="arrow_box">공유하기</p>
+              </button>
+              <button type='button' className='btn-linkcopy' onClick={() => {handleCopyClipBoard(content)}}>
+                <img src={ require('./images/btn-linkcopy_brown.png') } />
+                <p class="arrow_box">주소 복사하기</p>
+              </button>
+              <button type='button' className='btn-kakaoshare'>
+                <img src={ require('./images/btn-kakaoshare.png') } />
+                <p class="arrow_box">카카오톡 공유</p>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -335,34 +416,44 @@ let content = window.location.href;
       </section>
 
       <section className='review'>
-        <h4>도전! 요리</h4>
-        <div className='review--inner'>
-          {/* TODO: 카드 컴포넌트 연결  */}
-          {/* <CardList cookItemList={cookItemLists} viewIndex="comment" /> */}
-          <Swiper
-            spaceBetween={10}
-            slidesPerView={4}
-            // onSlideChange={() => console.log('slide change')}
-            // onSwiper={(swiper) => console.log(swiper)}
-            pagination={{ clickable: true }}
-            // navigation
-            modules={[Navigation]}
-            onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
-            }}
-          >
-              {cookItemLists.map((cookItem) => {
-                return (
-                  <SwiperSlide>
-                    <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />
-                  </SwiperSlide>
-                  )
-                })
-              }
-          </Swiper>
-          <div>
-            <button onClick={() => swiperRef.current?.slidePrev()} className="btn_navigation btn_prev"></button>
-            <button onClick={() => swiperRef.current?.slideNext()} className="btn_navigation btn_next"></button>
+        <div className='review--wrapper'>
+          <div className='review--title'>
+            <h4 className='font_eng'>REVIEW</h4>
+            <div className='review--title--bottom'>
+              <p>오늘의 주제</p>
+              <span className='review--title--bottom--subject'>김치찌개</span>
+              <p className='review--title--bottom-subtitle'>회원들이 만든 요리</p>
+            </div>
+          </div>
+          <div className='review--inner'>
+            {/* TODO: 카드 컴포넌트 연결  */}
+            {/* <CardList cookItemList={cookItemLists} viewIndex="comment" /> */}
+            <Swiper
+              modules={[Navigation, Pagination, Scrollbar]}
+              spaceBetween={0}
+              slidesPerView={4}
+              onSlideChange={() => console.log('slide change')}
+              onSwiper={(swiper) => console.log(swiper)}
+              // pagination={{ clickable: true }}
+              // scrollbar={{ draggable: true }}
+              // navigation
+              onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
+              }}
+            >
+                {cookItemLists.map((cookItem) => {
+                  return (
+                    <SwiperSlide>
+                      <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />
+                    </SwiperSlide>
+                    )
+                  })
+                }
+            </Swiper>
+            <div>
+              <button onClick={() => swiperRef.current?.slidePrev()} className="btn_navigation btn_prev"></button>
+              <button onClick={() => swiperRef.current?.slideNext()} className="btn_navigation btn_next"></button>
+            </div>
           </div>
         </div>
         <div className='review--register'>
@@ -395,7 +486,7 @@ let content = window.location.href;
             onClick={handleSubmit} 
             // onInsert={handleInsert} 
             className="review--register--submit"
-          >제출</button>
+          >SUBMIT</button>
         </div>
       </section>
 

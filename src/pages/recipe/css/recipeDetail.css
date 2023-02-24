@@ -1,3 +1,19 @@
+/* --------------------------공통CSS------------------------------------ */
+body {
+  font-family: "Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #212121;
+}
+a {
+  text-decoration: none;
+}
+.font_eng {
+  font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
+}
+/* --------------------------------------------------------------------- */
+
 .recipe-page {
   background-color: #fff;
 }
@@ -18,6 +34,10 @@
   text-align: center;
   line-height: 80px;
   background-color: #FFF5E7;
+}
+
+.main-wraper {
+  padding-bottom: 80px;
 }
 
 .main {
@@ -61,6 +81,8 @@
   flex-direction: column;
   justify-content: center;
   row-gap: 40px;
+  background-color: #fff;
+
 }
 .main--right--subtitle{
   /* white-space: nowrap; */
@@ -168,7 +190,7 @@
   padding-bottom: 80px;
 }
 .content--ingredients {
-  margin: 22px 0px 50px 0px;
+  margin: 22px 0px 80px 0px;
 }
 .content--ingredients > p {
   width: 50%;
@@ -189,51 +211,74 @@
 
 
 .review {
-  max-width: 1200px;
-  padding-top: 50px;
-  margin: 0 auto;
-  border-top: 1px solid #555;
+  padding: 80px 0px 50px 0px;
+  background-color: rgb(244, 240, 239);
 }
+.review--wrapper {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.review--title{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 30px 0px;
+}
+.review--title > h4 {
+  font-size: 30px;
+  color: rgb(147, 112, 98);
+}
+.review--title--bottom--subject {
+  display: inline-block;
+  font-size: 27px;
+  margin: 8px 0px 12px;
+  letter-spacing:-0.5px;
+  border-bottom: 1px solid rgb(147, 112, 98);
+}
+.review--title--bottom-subtitle {
+  font-size: 15px;
+}
+
 .review--inner {
   position: relative;
+  max-width: 1160px;
+  /* margin: 0 auto; */
+  flex: 4;
 }
 .btn_navigation {
   position: absolute;
   top: 200px;
   z-index: 999;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 80%;
+  background-size: contain;
   transition: 0.3s;
   cursor: pointer;
-}
-.btn_navigation:hover {
-  background-color: #DFDFDF;
+  padding: 0px;
+  box-shadow: 1px 1px 5px #555;
 }
 .btn_prev {
-  left: -60px;
-  background-image: url(../images/btn-prev.png);
-}
-.btn_prev:hover {
-  background-image: url(../images/btn-prev-hover.png);
+  left: -30px;
+  background-image: url(../images/btn-round-prev.png);
 }
 .btn_next {
-  right: -60px;
-  background-image: url(../images/btn-next.png);
+  right: -30px;
+  background-image: url(../images/btn-round-next.png);
 }
-.btn_next:hover {
-  background-image: url(../images/btn-next-hover.png);
-}
+
 .review--register {
   display: flex;
+  max-width: 1200px;
+  margin: 0px auto;
   column-gap: 10px;
   margin-top: 46px;
-  margin-bottom: 80px;
 }
 .review--register-image {
   width: 150px;
@@ -244,7 +289,7 @@
   position: relative;
   width: 150px;
   height: 146px;
-  background-color:#DFDFDF;
+  background-color:rgb(147, 112, 98);
   border-radius: 4px;
   color: white;
   cursor: pointer;
@@ -282,14 +327,24 @@
   height: 100%;
   resize: none;
   box-sizing: border-box;
-  border-radius: 9px;
+  border-radius: 4px;
   border: 1px solid #DFDFDF;
+}
+.review--register--write > textarea:focus {
+  outline-color: rgb(147, 112, 98);
 }
 .review--register--submit {
   flex: 1;
-  border-radius: 9px;
-  border: 1px solid #DFDFDF;
+  border-radius: 4px;
+  color: rgb(147, 112, 98);
+  border: 1px solid rgb(147, 112, 98);
   background-color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.review--register--submit:hover {
+  color: #fff;
+  background-color: rgb(147, 112, 98);
 }
 
 
@@ -304,6 +359,9 @@
 .likecount > img {
   width: 30px;
 }
+.likecount > span {
+  color: rgb(147, 112, 98);
+}
 
 /* -------------------------ViewCount---------------------------- */
 .viewcount {
@@ -315,7 +373,7 @@
   font-size: 0px;
   padding: 0px 15px;
   border-radius: 40px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(147, 112, 98, 0.7);
   /* vertical-align:middle ; */
   text-align: center;
 }
