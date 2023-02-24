@@ -16,6 +16,7 @@ function App() {
   const GlobalStyle = createGlobalStyle`
    /* reset css 적용 */
     ${reset}
+    font-family:"Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif";
 `;
   
   return (
