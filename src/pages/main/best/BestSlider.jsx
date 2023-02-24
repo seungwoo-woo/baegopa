@@ -12,6 +12,9 @@ const StyledSwiper = styled(Swiper)`
   height: 330px;
   display: flex;
   flex-wrap: nowrap;
+  .swiper-button-next{
+  background-image: url('../img/mingcute_bowl-line.png');
+  }
   .swiper-button-next, .swiper-button-prev {
     color: red; /* 원하는 색깔로 변경 */
   }

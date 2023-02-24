@@ -5,25 +5,25 @@
 
 .logo {
   display: flex;
-  justify-content: start;
   cursor: pointer;
-  margin-right: 200px;
+  margin-right: 300px;
   font-size: 30px;
   text-align: center;
   color: rgb(147, 112, 98);
   font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
   
-};
-/* .logo:hover{
-  color: red !important;
-}; */
+}
+
+.logo:hover{
+  color: rgb(207, 147, 121);
+}
 
 .StyledContainer {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-};
+}
 
 /* 스타일 네브 바 */
 .StyledNavbar{

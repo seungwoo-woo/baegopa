@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import styles from './Today.module.css'
 import likeIconImage from "../img/like_icon.png";
+
+
 const recipes = [
   {
     // 요리명, 이미지, 재료, 설명, 방법, 난이도, 양, 조리시간, 해시태그
@@ -30,12 +32,26 @@ function Today(props) {
         <div>
           <img className={styles.styimage} src={recipes[0].image} />
         </div>
-        <div className={styles.styli}>
-          <h1 style={{ marginTop: 20, marginBottom: 100, }}>{recipes[0].title}</h1>
-          <p style={{ marginTop: 20, marginBottom: 180, fontSize: 15}} >{recipes[0].subtitle}</p>
-          <div className={styles.styicon}>
-            <span><img className={styles.stylike} src={likeIconImage}/> 3000</span>
-            <span>👁‍🗨 200</span>
+        <div className={styles.boximg}>
+          <div className={styles.box}>
+            <img src={recipes[0].image} alt="이미지" />
+          </div>
+          <div className={styles.box}>
+            <img src={recipes[0].image} alt="이미지" />
+          </div>
+          <div className={styles.styli}>
+            <div>
+            <h1 >{recipes[0].title}</h1>
+            </div>
+            <div>
+            <p  >{recipes[0].subtitle}</p>
+            </div>
+            <div>
+            <div className={styles.styicon}>
+              <span><img className={styles.stylike} src={likeIconImage} /> 3000</span>
+              <span>👁‍🗨 200</span>
+            </div>
+            </div>
           </div>
         </div>
       </div>
