@@ -24,26 +24,15 @@ function SearchPage(props) {
             </div>
 
             {/* 분류 */}
-            <div className='recipe'>
+            <div className='title'>
                 <div>
-                <h1>뫄뫄의 검색 결과</h1>
+                <h1>레시피 검색</h1>
                 </div>
-                <div className='value'>                    
-                {/* <div className='korean'>
-                    #한식
+                <div className='search'>                    
+                <div className='content'>
+                    <input type={'text'} placeholder={'검색 키워드 입력란'}/>
+                    <img src={ require('../subpage/images/tabler_search.png') } alt={'검색'} title={'검색'}/> 
                     </div>
-                <div className='snack'>
-                    #분식
-                    </div>
-                <div className='china'>
-                    #중식
-                    </div>
-                <div className='japan'>
-                    #일식
-                    </div>
-                <div className='pasta'>
-                    #양식
-                    </div> */}
                 </div>
             </div> 
         </div>

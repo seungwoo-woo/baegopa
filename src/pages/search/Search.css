@@ -6,19 +6,19 @@
 }
 .menu {
     height: 80px;
-    color: #fff;
+    color: #212121;
     text-align: center;
     line-height: 80px;
     font-size: 30px;
-    background-color: #000000;
+    background-color: #937062;
 }
 
 .menu2 {
     height: 50px;
-    color: #fff;
+    color: #212121;
     font-size: 20px;
     line-height: 50px;
-    background-color: #1f9633;
+    background-color: #F4F0EF;
 }
 .menu2 > ul {
     margin: 0;
@@ -26,44 +26,52 @@
     justify-content: space-around;
 }
 
-.recipe {
+.title {
     width: 1200px;
+    /* background-color: #F4F0EF; */
+}
+.title > div {
     height: 120px;
-    background-color: antiquewhite;
 }
-.recipe > div {
-    /* margin: 30px ; */
-}
-.recipe h1 {
-    font-size: 40px;
+.title h1 {
+    font-size: 35px;
+    line-height: 120px;
     margin: 0;
     text-align: center;
+    color: #212121;
 }
 
-.value {
-    width: 1200px;
-    /* margin: 0 100px; */
+.search {
+    /* width: 1200px; */
+    margin: 0 auto;
     display: flex;
     justify-content: center;
 }
 
-.value > div {
-    width: 200px;
-    height: 50px;
+.content {
+    width: 250px;
+    /* height: 100px; */
+    /* display: flex; */
     line-height: 50px;
-    margin-top: 10px;
-    align-items: center;
-    text-align: center;
-    color: #918d55;
+    /* margin-top: 10px; */
+    color: #F4F0EF;
     font-size: 30px;
-    /* border: 1px solid #000000; */
-    border-radius: 100px
+    border-bottom: 1px solid #212121;
 } 
-
-.value > div > img {
+input {
     width: 200px;
-    height: 200px;
-    border-radius: 100px;
-    
+    height: 45px;
+    line-height: 45px;
+    font-size: 20px;
+    text-align: center;
+    border: 0;
+    box-sizing: border-box;
+    text-align: center;
+    background: none;
 }
+
+/* .search > div > img {
+    width: 100%;
+    height: 100%;    
+} */
 

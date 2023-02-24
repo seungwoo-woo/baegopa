@@ -4,11 +4,11 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 1200px;
-  height: 200px;
+  height: 150px;
   margin: 0 auto;
-  background-color: beige;
+  background-color: #F4F0EF;
   text-align: center;
-  line-height: 200px;
+  line-height: 150px;
   color: #000;
   font-size: 40px;
   font-weight: 600;
