@@ -1,3 +1,44 @@
-.stymain{
+.stymain {
   width: 1200px;
+  background-color: rgb(244, 240, 239);
+}
+
+.logo {
+  display: flex;
+  justify-content: start;
+  cursor: pointer;
+  margin-right: 200px;
+  font-size: 30px;
+  text-align: center;
+  color: rgb(147, 112, 98);
+  font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
+  
+};
+/* .logo:hover{
+  color: red !important;
+}; */
+
+.StyledContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+};
+
+/* 스타일 네브 바 */
+.StyledNavbar{
+  display: flex;
+  align-items: center;
+}
+
+.Styleddiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.StyledLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

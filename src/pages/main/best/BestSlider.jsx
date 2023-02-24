@@ -4,7 +4,6 @@ import styled from "styled-components";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import BestCard from './BestCard';
 
 
@@ -13,6 +12,13 @@ const StyledSwiper = styled(Swiper)`
   height: 330px;
   display: flex;
   flex-wrap: nowrap;
+  .swiper-button-next, .swiper-button-prev {
+    color: red; /* 원하는 색깔로 변경 */
+  }
+  .swiper-container {
+  height: 100%;
+
+}
 `;
 
 
@@ -25,7 +31,6 @@ function BestSlider(props) {
       slidesPerView={4}
       navigation
       pagination={{ clickable: true }}
-      scrollbar={{ draggable: true }}
     >
 
       <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>

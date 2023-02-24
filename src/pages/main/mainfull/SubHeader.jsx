@@ -8,10 +8,10 @@ export default function SubHeader() {
     <Navbar className={styles.stynav} bg="light" variant="light">
       <Container>
         <Nav className={styles.stylednav}>
-          <Nav.Link className={styles.ft} href="#home">오늘의 요리</Nav.Link>
-          <Nav.Link className={styles.ft} href="#home">베스트 요리</Nav.Link>
-          <Nav.Link className={styles.ft} href="features">분류</Nav.Link>
-          <Nav.Link className={styles.ft} href="#pricing">추천</Nav.Link>
+          <Nav.Link className={styles.ft} href="#home">Today's menu</Nav.Link>
+          <Nav.Link className={styles.ft} href="#home">Best menu</Nav.Link>
+          <Nav.Link className={styles.ft} href="features">Various</Nav.Link>
+          <Nav.Link className={styles.ft} href="#pricing">Specialties</Nav.Link>
         </Nav>
       </Container>
     </Navbar>
