@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TempCard from './TempCard';
 import axios from 'axios';
-import './App.css';
+// import './App.css';
 
 function parseStr(dataSet) {
   const XMLParser = require('react-xml-parser');
@@ -43,7 +43,6 @@ function LecipeAPI2(props) {
       { data && 
         data.map((lecipe, index) => {
           return <TempCard key={index} lecipe={lecipe} />
-
         })
       }
       </div>

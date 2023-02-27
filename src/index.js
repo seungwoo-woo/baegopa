@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import LecipeAPI2 from '../src/temp/LecipeAPI2';
+import RecipeDetail from './pages/recipe/RecipeDetail';
 
 
 
@@ -10,5 +12,5 @@ root.render(
     <>
     <App />
     </>
-
 );
+
