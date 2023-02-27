@@ -1,0 +1,27 @@
+.df {
+  display: flex;
+  justify-content: center;
+}
+
+.cr {
+  width: 300px;
+  margin-right: 10px;
+  border-radius: 7px;
+  outline: none;
+  border-color: rgb(147, 112, 98);
+  border-style: double;
+
+}
+
+.cr:focus {
+  border-color:  rgb(207, 147, 121);
+}
+.btn{
+  width: 80px;
+  border-color: rgb(147, 112, 98);
+  color: rgb(147, 112, 98);
+}
+.btn:hover{
+  background-color: rgb(207, 147, 121);
+  border-color: rgb(207, 147, 121);
+}

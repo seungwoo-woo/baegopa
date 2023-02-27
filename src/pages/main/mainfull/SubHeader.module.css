@@ -1,0 +1,24 @@
+.stynav {
+  width: 1200px;
+  height: 40px;
+  border-bottom: rgb(211, 211, 211) 1px solid;
+}
+
+.stylednav {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+.ft {
+  color: rgb(147, 112, 98);
+  font-family: "Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif";
+}
+
+.ft:hover {
+  color: rgb(207, 147, 121);
+}
