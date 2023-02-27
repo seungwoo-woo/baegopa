@@ -36,8 +36,8 @@ function Addrecipe(props) {
 
   // const mountainsRef = ref(storage, 'mountains.jpg');
   // const mountainImagesRef = ref(storage, 'images/mountains.jpg');
-  const storageRef = ref(storage, 'some-child');
-  const storageRef2 = ref(storage, 'some-child2');
+ 
+  // const storageRef2 = ref(storage, 'some-child2');
 
   // uploadBytes(storageRef, file).then((snapshot) => {
   //   console.log('Uploaded a blob or file!');
@@ -49,14 +49,18 @@ function Addrecipe(props) {
   const handleChangeImage = (e) => {
     console.log(e.target.files[0]);
     console.log(e.target.files[1]);
+    let storageRef = ref(storage, e.target.files[0]['name'] );
 
     uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
         console.log('Uploaded a blob or file!');
       })
-
-      uploadBytes(storageRef2, e.target.files[1]).then((snapshot) => {
+    
+      storageRef = ref(storage, e.target.files[1]['name'] );
+      uploadBytes(storageRef, e.target.files[1]).then((snapshot) => {
         console.log('Uploaded a blob or file!');
       })
+
+
   }
  
 
