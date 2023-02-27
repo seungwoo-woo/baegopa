@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 
-import "./css/recipeDetail.css";
+import styles from "./css/recipeDetail.module.css";
 
 import CardList from '../../components/CardList';
 import Card from './../../components/Card';
@@ -313,7 +313,7 @@ let content = window.location.href;
 // console.log(content);
 
   return (
-    <div className='recipe-page'>
+    <div className={styles['recipe-page']}>
       <section className='nav'>
         NAV영역
       </section>

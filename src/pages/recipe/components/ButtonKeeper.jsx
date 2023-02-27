@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css/recipeDetail.css";
+import "../css/recipeDetail.module.css";
 
 
 function ButtonKeeper(props) {

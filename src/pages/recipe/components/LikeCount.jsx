@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import "../css/recipeDetail.css";
+import "../css/recipeDetail.module.css";
 
 
 function LikeCount(props) {

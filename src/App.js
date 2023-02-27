@@ -6,8 +6,11 @@ import Subpage from './pages/subpage/Subpage';
 import Footer from './pages/subpage/Footer';
 import SearchPage from './pages/search/SearchPage';
 
-import './pages/search/Search.css';
+
+import './pages/search/Search.module.css';
+import './pages/subpage/Subcss.module.css';
 import CardList from './components/CardList';
+import RecipeDetail from './pages/recipe/RecipeDetail';
 
 function App() {
 
@@ -17,10 +20,10 @@ function App() {
       <div>
         {/* <Main /> */}
         {/* <Subpage/> */}
-        {/* <Main /> */}
-        <SearchPage/>
-        <CardList />
-        <Footer/>
+        {/* <SearchPage/> */}
+        {/* <CardList />
+        <Footer/> */}
+        <RecipeDetail />
       </div>
     </div>
   );
