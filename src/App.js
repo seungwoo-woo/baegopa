@@ -4,8 +4,9 @@ import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS 추가
 import Main from './pages/main/Main';
 import Subpage from './pages/subpage/Subpage';
 import Footer from './pages/subpage/Footer';
+import SearchPage from './pages/search/SearchPage';
 
-
+import './pages/search/Search.css';
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
     <div className="App">
       <div>
         {/* <Main /> */}
-        <Subpage />
+        <SearchPage />
+        {/* <Subpage /> */}
         <Footer />
       </div>
     </div>
