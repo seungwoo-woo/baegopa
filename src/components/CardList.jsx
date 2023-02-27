@@ -3,6 +3,8 @@ import './CardList.css';
 import Card from './Card';
 
 function CardList(props) {
+  // console.log(props);
+  // const {groupTitme, cookItemList, viewIndex} = props;
   const groupTitme = '배고플 때 생각나는...';
   const cookItemList = [ 
     {id: 1,
