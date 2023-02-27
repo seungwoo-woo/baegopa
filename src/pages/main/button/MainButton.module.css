@@ -1,0 +1,18 @@
+.inner{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  text-align: center;
+}
+.btn{
+width: 120px;
+height: 60px;
+margin-top: 80px;
+}
+.wr{
+  width: 1200px;
+  display: flex;
+  /* flex-direction: column; */
+  flex-direction: row;
+  flex-wrap: wrap;
+}

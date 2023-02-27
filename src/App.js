@@ -9,10 +9,12 @@ import Footer from './pages/subpage/Footer';
 import SearchPage from './pages/search/SearchPage.jsx';
 import './pages/subpage/Subcss.css';
 import './pages/search/Search.css';
+import 'bootstrap/dist/css/bootstrap.min.css' //부트스트랩 적용 
+import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS 추가
+import Main from './pages/main/Main';
 
 
 function App() {
-
   const GlobalStyle = createGlobalStyle`
    /* reset css 적용 */
     ${reset}
@@ -26,6 +28,7 @@ function App() {
         {/* <h1>배고파 - BAEGOPA ~~~1</h1> */}
         {/* <Card /> */}
         {/* <Subpage/> */}
+        <Main />
         <SearchPage/>
         <CardList />
         <Footer/>
