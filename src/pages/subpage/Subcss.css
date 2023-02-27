@@ -1,10 +1,10 @@
 /* w 1200 */
 
 .wrapper {
-    position: relative;
+    width: 1200px;
+    margin: 0 auto;
 }
 .menu {
-    width: 1200px;
     height: 80px;
     color: #fff;
     text-align: center;
@@ -14,7 +14,6 @@
 }
 
 .menu2 {
-    width: 1200px;
     height: 50px;
     color: #fff;
     font-size: 20px;
@@ -22,81 +21,47 @@
     background-color: #1f9633;
 }
 .menu2 > ul {
+    margin: 0;
     display: flex;
-    list-style: none;
-    margin-right:20px;
+    justify-content: space-around;
+
 }
 
 .recipe {
     width: 1200px;
-    height: 300px;
+    height: 120px;
     background-color: antiquewhite;
 }
-.recipe > h1 {
-    margin-left: 40px;
+.recipe h1 {
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
 }
 
 .value {
+    width: 1200px;
+    /* margin: 0 100px; */
     display: flex;
-    margin: 35px 50px;
+    justify-content: center;
+}
+
+.value > div {
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10px;
+    align-items: center;
+    text-align: center;
+    color: #918d55;
+    font-size: 30px;
+    /* border: 1px solid #000000; */
+    border-radius: 100px
+} 
+
+.value > div > img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
     
 }
-.korean {
-    width: 200px;
-    height: 200px;
-    background-image: url('./images/korean.jpeg'); 
-    background-position: center;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 200px;
-    color: #1f9633;
-    font-size: 40px;
-}
 
-.snack {
-    width: 200px;
-    height: 200px;
-    background-image: url('./images/snack\ .jpg'); 
-    background-position: center;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 200px;
-    color: #1f9633;
-    font-size: 40px;
-}
-
-.china {
-    width: 200px;
-    height: 200px;
-    background-image: url('./images/china.jpg'); 
-    background-position: center;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 200px;
-    color: #1f9633;
-    font-size: 40px;
-}
-
-.japan {
-    width: 200px;
-    height: 200px;
-    background-image: url('./images/japan.jpg'); 
-    background-position: center;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 200px;
-    color: #1f9633;
-    font-size: 40px;
-}
-
-.pasta {
-    width: 200px;
-    height: 200px;
-    background-image: url('./images/pasta.png'); 
-    background-position: center;
-    border-radius: 100px;
-    text-align: center;
-    line-height: 200px;
-    color: #1f9633;
-    font-size: 40px;
-}

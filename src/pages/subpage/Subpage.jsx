@@ -1,9 +1,4 @@
 import React from 'react';
-import CardList from '../../components/CardList';
-import './SubCss.css';
-
-
-
 
 
 
@@ -12,7 +7,10 @@ import './SubCss.css';
 function Subpage(props) {
 
     return (
+        <>
         <div className='wrapper'>
+
+            {/* 메뉴 */}
             <div className='menu'>
                 <nav>NAV영역</nav>
             </div>
@@ -24,21 +22,37 @@ function Subpage(props) {
                     <li>하위메뉴4</li>
                 </ul>
             </div>
+
+            {/* 분류 */}
             <div className='recipe'>
-                <h1>레시피종류</h1>
+                <div>
+                <h1>오늘의 레시피</h1>
+                </div>
                 <div className='value'>                    
-                <div className='korean'>#한식</div>
-                <div className='snack'>#분식</div>
-                <div className='china'>#중식</div>
-                <div className='japan'>#일식</div>
-                <div className='pasta'>#양식</div>
+                <div className='korean'>
+                    #한식
+                {/* <img src={ require('./images/korean.jpeg') } /> */}
+                    </div>
+                <div className='snack'>
+                    #분식
+                {/* <img src={ require('./images/snack.jpg') } /> */}
+                    </div>
+                <div className='china'>
+                    #중식
+                {/* <img src={ require('./images/china.jpg') } /> */}
+                    </div>
+                <div className='japan'>
+                    #일식
+                {/* <img src={ require('./images/japan.jpg') } /> */}
+                    </div>
+                <div className='pasta'>
+                    #양식
+                {/* <img src={ require('./images/pasta.png') } /> */}
+                    </div>
                 </div>
             </div> 
-
-            <div>
-                <CardList/>    
-            </div>
         </div>
+        </>
         
     );
 }
