@@ -10,9 +10,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 
-import "./css/recipeDetail.css";
-
-import CardList from '../../components/CardList';
+import "./css/recipeDetail.module.css";
 import Card from './../../components/Card';
 import LikeCount from './components/LikeCount';
 import ViewCount from './components/ViewCount';
@@ -426,8 +424,6 @@ let content = window.location.href;
             </div>
           </div>
           <div className='review--inner'>
-            {/* TODO: 카드 컴포넌트 연결  */}
-            {/* <CardList cookItemList={cookItemLists} viewIndex="comment" /> */}
             <Swiper
               modules={[Navigation, Pagination, Scrollbar]}
               spaceBetween={0}
