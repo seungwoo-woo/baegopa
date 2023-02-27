@@ -4,7 +4,10 @@ import Card from './Card';
 
 function CardList(props) {
   // console.log(props);
-  const {groupTitme, cookItemList=[], viewIndex} = props;
+  const {groupTitme, cookItemList, viewIndex} = props;
+  console.log(groupTitme);
+  console.log(cookItemList);
+  console.log(viewIndex);
 
   return (
     <div className='group'>

@@ -1,16 +1,3 @@
-
-/* .group { */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* width: 2000px; */          /* TODO: 삭제 */
-  /* max-width: 1200px;            TODO: 추가 */
-  /* padding-top: 30px; */      /* TODO: 삭제 */
-  /* padding-top: 15px;            TODO: 추가 */
-  /* padding-bottom: 30px; */
-  /* background-color: rgb(245, 245, 234); */
-/* } */
-
 .group {
   display: flex;
   flex-direction: column;

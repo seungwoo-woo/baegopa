@@ -26,9 +26,6 @@ const recipes = [
     title: "김치찌개",
     image01: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_1.png",
     image02: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_2.png",
-    image03: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_3.png",
-    image04: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_4.png",
-    image05: "http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00275_5.png",
     ingredients: "재료 바지락(100g), 주꾸미(100g), 김치(150g), 무(50g), 마늘(10g) 대파(10g), 양파(40g), 두부(50g), 참기름(5g), 배즙(50g), 팽이버섯(10g) 육수 다시마(5g), 멸치(10g), 물(300g)",
     subtitle: "간단하게 만들어 보는 김치 톡톡톡 김치찌개♥ 다 먹고 한 방울까지 싹싹 밥이랑 비벼먹는게 최고죠~ 색깔도 너무 이쁘고 한 그릇만 있으면 반찬도 필요없는 김치찌개",
     manual01: "1. 냄비에 육수 재료를 넣고 끓이다가 물이 끓어오르면 다시마를 건지고 조금 더 끓여 육수를 우려낸다.",
@@ -115,7 +112,7 @@ const userReviews = [
 ];
 
 // const groupTitme = '배고플 때 생각나는...';
-const cookItemLists = [
+const cookItemList = [
   {
     id: 1,
     title: "애호박구이 간장조림",
@@ -187,7 +184,7 @@ const cookItemLists = [
     ]
   },
   {
-    id: 4,
+    id: 6,
     title: "애호박구이 간장조림",
     cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
     userId: "샬라라",
@@ -201,7 +198,7 @@ const cookItemLists = [
     ]
   },
   {
-    id: 4,
+    id: 7,
     title: "애호박구이 간장조림",
     cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
     userId: "샬라라",
@@ -215,7 +212,7 @@ const cookItemLists = [
     ]
   },
   {
-    id: 4,
+    id: 8,
     title: "애호박구이 간장조림",
     cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
     userId: "샬라라",
@@ -244,7 +241,7 @@ function RecipeDetail(props) {
   // console.log(recipeInfo[0].hashtags[0]);
   // 도전! 요리-------------------------------------------------------------------------
   // const {groupTitme, cookItemLists, viewIndex} = props;
-  console.log(cookItemLists);
+  console.log(cookItemList);
 
 
   //-------------------------------------------------------------------------------------
@@ -267,17 +264,17 @@ function RecipeDetail(props) {
   const handleInsert = useCallback((data) => {
     const { id, cardImagePath, commentUserId, comment } = data;
     
-    const cookItemList = {
+    const cookItemListAdd = {
       id: uuidv4(),
       cardImagePath,
       commentUserId,
       comment,
     };
 
-    setReviewValue(cookItemLists.concat(cookItemList));
+    setReviewValue(cookItemList.concat(cookItemListAdd));
     // localStorage.setItem('todos', JSON.stringify(todos.concat(todo)))
 
-  }, [cookItemLists]);
+  }, [cookItemList]);
 
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef(null);
@@ -437,10 +434,10 @@ let content = window.location.href;
               swiperRef.current = swiper;
               }}
             >
-                {cookItemLists.map((cookItem) => {
+                {cookItemList.map((cookItem) => {
                   return (
-                    <SwiperSlide>
-                      <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />
+                    <SwiperSlide key={cookItem.id}>
+                      <Card cookItem={cookItem} viewIndex={viewIndex} />
                     </SwiperSlide>
                     )
                   })
