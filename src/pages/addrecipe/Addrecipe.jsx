@@ -1,23 +1,17 @@
 import React, { useRef, useState } from 'react';
 import './Addrecipe.css';
 
-// === Firebase ========================================================
-
-// Import the functions you need from the SDKs you need
+// === Firebase ======================================================
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+// -------------------------------------------------------------------
 
 
 
 function Addrecipe(props) {
 
   // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyDT5M_fwLAtIvcInwdTXni3wQIWW5JUx2A",
     authDomain: "baegopa-e886a.firebaseapp.com",
@@ -30,179 +24,186 @@ function Addrecipe(props) {
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
   const db = getFirestore(app);
   const storage = getStorage(app);
 
-  // const mountainsRef = ref(storage, 'mountains.jpg');
-  // const mountainImagesRef = ref(storage, 'images/mountains.jpg');
- 
-  // const storageRef2 = ref(storage, 'some-child2');
-
-  // uploadBytes(storageRef, file).then((snapshot) => {
-  //   console.log('Uploaded a blob or file!');
-  // })
-
-  // console.log(mountainsRef);
-  // console.log(mountainImagesRef);
-
+  let imageFiles = [];
+  let imageFilesPath = [];
+  
   const handleChangeImage = (e) => {
+    imageFiles = Array.from(e.target.files);
     console.log(e.target.files[0]);
     console.log(e.target.files[1]);
-    let storageRef = ref(storage, e.target.files[0]['name'] );
+    console.log(imageFiles);
+  }
 
-    uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
+
+  const dbImageUpload = (imageFiles) => {
+
+    imageFiles.forEach((element) => {
+      let storageRef = ref(storage, `images/${element['name']}`);
+
+      uploadBytes(storageRef, element).then((snapshot) => {
         console.log('Uploaded a blob or file!');
-      })
-    
-      storageRef = ref(storage, e.target.files[1]['name'] );
-      uploadBytes(storageRef, e.target.files[1]).then((snapshot) => {
-        console.log('Uploaded a blob or file!');
+        console.log(snapshot);
       })
 
+
+      // getDownloadURL(ref(storage, `images/${element['name']}`)).then((url) => {
+      getDownloadURL(storageRef).then((url) => {
+        console.log(url);
+        imageFilesPath.push(url);
+        console.log(imageFilesPath);
+        if(imageFiles.length === imageFilesPath.length) {
+          dbWrite(recipeSummary, materialItems, processItems, imageFilesPath);
+        }
+        
+        
+      })
+      
+    })
 
   }
- 
 
 
-  const dbtest = async (recipeName, material, process) => {
+
+// DB에 쓰기 함수 ---------------------------------------------------
+  const dbWrite = (recipe, material, process, imageFilesPath) => {
 
   try {
-    const docRef = await addDoc(collection(db, "RecipeDB"), {
-      title: recipeName[0]['title'],
-      time: recipeName[0]['time'],
+    const docRef = addDoc(collection(db, "RecipeDB"), {
+      title: recipe['title'],
+      time: recipe['time'],
+      difficulty: recipe['difficulty'],
       userId: "어우동",
       material: material,
-      process: process
+      process: process,
+      imageFilesPath: imageFilesPath
     });
-    console.log("Document written with ID: ", docRef.id);
+    alert("레시피가 저장되었습니다.");
   } catch (e) {
     console.error("Error adding document: ", e);
   }
 }
 
-  const handleClickSubmit = () => {
-    dbtest(recipeName, inputItems2, inputItems);
+
+// DB에 쓰기위한 핸들함수 ---------------------------------------------
+  const handleClickSubmit = async () => {
+    console.log('in');
+    dbImageUpload(imageFiles);
+    // dbWrite(recipeSummary, materialItems, processItems, imageFilesPath);
   }
 
 
 
 
-  // 요리명, 요리시간/난이도 ------------------------------------------------------------
-  const [recipeName, setRecipeName] = useState([{ title: '', time: '', difficulty: '' },]);
+  // 1. 요리명, 요리시간/난이도  ------------------------------------------------------------
+  const [recipeSummary, setRecipeSummary] = useState({ title: '', time: '', difficulty: '' });
 
-  function handleChange5(e) {
-    
-  // 인풋배열을 copy 해주자
-  const recipeNameCopy = JSON.parse(JSON.stringify(recipeName));
-  recipeNameCopy[0].title = e.target.value; // 그리고 해당 인덱스를 가진 <input>의 내용을 변경해주자 
-  setRecipeName(recipeNameCopy);		            // 그걸 InputItems 에 저장해주자
+  // 요리명 변경 -------------------------------------------------------------
+  function handleChangeRecipeTitle(e) {    
+    const recipeSummaryCopy = JSON.parse(JSON.stringify(recipeSummary));
+    recipeSummaryCopy.title = e.target.value;  
+    setRecipeSummary(recipeSummaryCopy);		            
   }
 
-  function handleChange6(e) {
-    const recipeNameCopy = JSON.parse(JSON.stringify(recipeName));
-    recipeNameCopy[0].time = e.target.value; // 그리고 해당 인덱스를 가진 <input>의 내용을 변경해주자
+  // 요리시간/난이도 변경 -------------------------------------------------------------
+  function handleChangeTimeDifficulty(e) {
+    const recipeSummaryCopy = JSON.parse(JSON.stringify(recipeSummary));
+    recipeSummaryCopy.time = e.target.value; 
     if (Number(e.target.value) <= 30) {
-      recipeNameCopy[0].difficulty = '하';
+      recipeSummaryCopy.difficulty = '하';
     } else if (Number(e.target.value) <= 60) {
-      recipeNameCopy[0].difficulty = '중';
+      recipeSummaryCopy.difficulty = '중';
     } else if (Number(e.target.value) > 60) {
-      recipeNameCopy[0].difficulty = '상';
+      recipeSummaryCopy.difficulty = '상';
     }
-    setRecipeName(recipeNameCopy);		            // 그걸 InputItems 에 저장해주자
-    }
-
+    setRecipeSummary(recipeSummaryCopy);		            
+  }
   // ------------------------------------------------------------------------------------------------------
 
 
 
-  // 재료 추가/삭제 ------------------------------------------------------------
-  const nextID2 = useRef(1);
-  const [inputItems2, setInputItems2] = useState([{ id: 0, material: '', unit: '', value: '' },]);
-  // const [inputItems3, setInputItems3] = useState([{ id: 0, title: '' },]);
 
-  function addInput2() {
-    const input = {			                   // 새로운 인풋객체를 하나 만들고,
-      id: nextID2.current,		               // id 값은 변수로 넣어주고,
+  // 2. 재료 추가/삭제 ------------------------------------------------------------
+  const nextID2 = useRef(1);
+  const [materialItems, setMaterialItems] = useState([{ id: 0, material: '', unit: '', value: '' },]);
+
+  function addMaterialItem() {
+    const input = {			                   
+      id: nextID2.current,		               
       material: '',
       unit: '',
-      value: ''			                     // 내용은 빈칸으로 만들자
+      value: ''			                     
     };
 
-    setInputItems2([...inputItems2, input]); // 기존 값에 새로운 인풋객체를 추가해준다.
-    // setInputItems3([...inputItems3, input]); // 기존 값에 새로운 인풋객체를 추가해준다.
+    setMaterialItems([...materialItems, input]); 
     
-    nextID2.current += 1; 		               // id값은 1씩 늘려준다.
+    nextID2.current += 1; 		               
   }
 
-  function deleteInput2(index) {                                    // 인덱스 값을 받아서
+  function deleteMaterialItem(index) {                                    
     if (nextID2.current > 1) {
-      setInputItems2(inputItems2.filter(item => item.id !== index)); // 인덱스 값과 같지 않은 애들만 남겨둔다
-      // setInputItems3(inputItems3.filter(item => item.id !== index)); // 인덱스 값과 같지 않은 애들만 남겨둔다
+      setMaterialItems(materialItems.filter(item => item.id !== index)); 
 
       nextID2.current -= 1;
     } 
   }
 
-  function handleChange2(e, index) {
-  if (index > inputItems2.length) return; // 예외처리
+  function handleChangeMaterial(e, index) {
+  if (index > materialItems.length) return;  
   
-  // 인풋배열을 copy 해주자
-  const inputItemsCopy2 = JSON.parse(JSON.stringify(inputItems2));
-  inputItemsCopy2[index].material = e.target.value; // 그리고 해당 인덱스를 가진 <input>의 내용을 변경해주자 
-  setInputItems2(inputItemsCopy2);		  // 그걸 InputItems 에 저장해주자
+  const materialItemsCopy = JSON.parse(JSON.stringify(materialItems));
+  materialItemsCopy[index].material = e.target.value;  
+  setMaterialItems(materialItemsCopy);		  
   }
 
+  function handleChangeMaterialUnit(e, index) {
+    if (index > materialItems.length) return; 
 
-  function handleChange3(e, index) {
-    if (index > inputItems2.length) return; // 예외처리
-
-  // 인풋배열을 copy 해주자
-  const inputItemsCopy2 = JSON.parse(JSON.stringify(inputItems2));
-  inputItemsCopy2[index].value = e.target.value; // 그리고 해당 인덱스를 가진 <input>의 내용을 변경해주자 
-  setInputItems2(inputItemsCopy2);		  // 그걸 InputItems 에 저장해주자
+  const materialItemsCopy = JSON.parse(JSON.stringify(materialItems));
+  materialItemsCopy[index].unit = e.target.value;  
+  setMaterialItems(materialItemsCopy);		  
   }
 
-  function handleChange4(e, index) {
-    if (index > inputItems2.length) return; // 예외처리
+  function handleChangeMaterialValue(e, index) {
+    if (index > materialItems.length) return; 
 
-  // 인풋배열을 copy 해주자
-  const inputItemsCopy2 = JSON.parse(JSON.stringify(inputItems2));
-  inputItemsCopy2[index].unit = e.target.value; // 그리고 해당 인덱스를 가진 <input>의 내용을 변경해주자 
-  setInputItems2(inputItemsCopy2);		  // 그걸 InputItems 에 저장해주자
+  const materialItemsCopy = JSON.parse(JSON.stringify(materialItems));
+  materialItemsCopy[index].value = e.target.value;  
+  setMaterialItems(materialItemsCopy);		  
   }
   // ------------------------------------------------------------------------------------------------------
 
 
 
-  // 조리방법 추가/삭제 ------------------------------------------------------------
+  // 3. 조리방법 추가/삭제 ------------------------------------------------------------
   const nextID = useRef(1);
-  const [inputItems, setInputItems] = useState([{ id: 0, process: '' },]);
+  const [processItems, setProcessItems] = useState([{ id: 0, process: '' },]);
 
-  function addInput() {
-    const input = {			                   // 새로운 인풋객체를 하나 만들고,
-      id: nextID.current,		               // id 값은 변수로 넣어주고,
-      process: '',			                     // 내용은 빈칸으로 만들자
+  function addProcessItem() {
+    const input = {			                   
+      id: nextID.current,		               
+      process: '',			                     
     };
 
-    setInputItems([...inputItems, input]); // 기존 값에 새로운 인풋객체를 추가해준다.
-    nextID.current += 1; 		               // id값은 1씩 늘려준다.
+    setProcessItems([...processItems, input]); 
+    nextID.current += 1; 		               
   }
 
-  function deleteInput(index) {                                    // 인덱스 값을 받아서
+  function deleteProcessItem(index) {                                    
     if (nextID.current > 1) {
-      setInputItems(inputItems.filter(item => item.id !== index)); // 인덱스 값과 같지 않은 애들만 남겨둔다
+      setProcessItems(processItems.filter(item => item.id !== index)); 
       nextID.current -= 1;
     } 
   }
 
-  function handleChange(e, index) {
-  if (index > inputItems.length) return; // 예외처리
+  function handleChangeProcess(e, index) {
+  if (index > processItems.length) return; 
   
-  // 인풋배열을 copy 해주자
-  const inputItemsCopy = JSON.parse(JSON.stringify(inputItems));
-  inputItemsCopy[index].process = e.target.value; // 그리고 해당 인덱스를 가진 <input>의 내용을 변경해주자 
-  setInputItems(inputItemsCopy);		  // 그걸 InputItems 에 저장해주자
+  const processItemsCopy = JSON.parse(JSON.stringify(processItems));
+  processItemsCopy[index].process = e.target.value; 
+  setProcessItems(processItemsCopy);		  
 }
 // ------------------------------------------------------------------------------------------------------
 
@@ -229,15 +230,15 @@ function Addrecipe(props) {
           <span>요리명</span>
           <sapn style={{color: 'red'}}>*</sapn>
           <div>
-            <input type="text" className='recipeTitle' onChange={e => handleChange5(e)}></input>
+            <input type="text" className='recipeTitle' onChange={e => handleChangeRecipeTitle(e)}></input>
           </div>
 
           <span>요리시간(분) / 난이도</span>
           <sapn style={{color: 'red'}}>*</sapn>
           <div>
-            <input type="text" className='timeRecipe' onChange={e => handleChange6(e)}></input>
+            <input type="text" className='timeRecipe' onChange={e => handleChangeTimeDifficulty(e)}></input>
             <span style={{color: 'black', fontWeight: 400}}>분 / </span>
-            <input type="text" className='timeRecipe' value={recipeName[0].difficulty || '난이도'}></input>
+            <input type="text" className='timeRecipe' value={recipeSummary.difficulty || '난이도'}></input>
           </div>
 
           <div style={{ marginBottom: 10}} >
@@ -245,27 +246,27 @@ function Addrecipe(props) {
             <sapn style={{color: 'red'}}>*</sapn>
           </div>
 
-          {inputItems2.map((item, index) => {
+          {materialItems.map((item, index) => {
             return (
             <div className='materialBox'>
               <input type="text" className='materialRecipe' style={{marginTop: "10"}}
-                onChange={e => handleChange2(e, index)}
+                onChange={e => handleChangeMaterial(e, index)}
                 value={item.title}
               ></input>
-              <select onChange={e => handleChange4(e, index) }>
+              <select onChange={e => handleChangeMaterialUnit(e, index) }>
                 <option value="단위">단위</option>
                 <option value="컵">컵</option>
                 <option value="스푼">스푼</option>
               </select>
               <input type="text" className='unitRecipe'
-                onChange={e => handleChange3(e, index)}
+                onChange={e => handleChangeMaterialValue(e, index)}
                 value={item.value}
               ></input>
 
               { index === 0 && 
                 <>
-                <button className='plusMinus' onClick={addInput2}>+</button>
-                <button className='plusMinus' onClick={() => deleteInput2(nextID2.current-1)}>-</button>
+                <button className='plusMinus' onClick={addMaterialItem}>+</button>
+                <button className='plusMinus' onClick={() => deleteMaterialItem(nextID2.current-1)}>-</button>
                 </> }
             </div>)})}
 
@@ -275,34 +276,31 @@ function Addrecipe(props) {
             <sapn style={{color: 'red'}}>*</sapn>
           </div>
 
-          {inputItems.map((item, index) => {
+          {processItems.map((item, index) => {
             return (
             <div className='processlBox'>
               <input type="text" className='processRecipe' 
                 placeholder='조리순서...'
-                onChange={e => handleChange(e, index)}
+                onChange={e => handleChangeProcess(e, index)}
                 value={item.title}
                 >
               </input>
               { index === 0 && 
                 <>
-                  <button className='plusMinus' onClick={addInput}>+</button>
-                  <button className='plusMinus' onClick={() => deleteInput(nextID.current-1)}>-</button>
+                  <button className='plusMinus' onClick={addProcessItem}>+</button>
+                  <button className='plusMinus' onClick={() => deleteProcessItem(nextID.current-1)}>-</button>
                 </>}
               
             
             </div>
 
           )})}
-          {/* <div> */}
-            {/* <input type="text" className='processRecipe' placeholder='조리순서 2.'></input> */}
-          {/* </div>  */}
           
         </div>
 
-        {console.log(recipeName)}
-        {console.log(inputItems2)}
-        {console.log(inputItems)}
+        {console.log(recipeSummary)}
+        {console.log(materialItems)}
+        {console.log(processItems)}
 
         <div className='addRecipeFooter'> 
           <button>CANCLE</button>
