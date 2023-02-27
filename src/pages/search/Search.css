@@ -63,8 +63,8 @@ input {
     height: 45px;
     line-height: 45px;
     font-size: 20px;
-    text-align: center;
-    border: 0;
+    border: none;
+    outline: none;
     box-sizing: border-box;
     text-align: center;
     background: none;
