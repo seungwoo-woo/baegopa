@@ -1,0 +1,14 @@
+.header{
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.img{
+  margin-top: 40px;
+}
+.hd{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

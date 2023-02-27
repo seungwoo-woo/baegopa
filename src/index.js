@@ -5,10 +5,12 @@ import App from './App';
 import LecipeAPI2 from '../src/temp/LecipeAPI2';
 import RecipeDetail from './pages/recipe/RecipeDetail';
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    // <App />
-    <LecipeAPI2 />
-    // <RecipeDetail />
+    <>
+    <App />
+    </>
 );
 

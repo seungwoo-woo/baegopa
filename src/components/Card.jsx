@@ -51,7 +51,7 @@ function Card(props) {
         <div className='thumbnailBox'>
           <div className='thumbnailImage'> 
             {/* <img scr={thumbnailImagePath} width={25} height={25}></img> */}
-            <i class="fa-solid fa-user"></i>
+            <i className="fa-solid fa-user"></i>
           </div>
           <p>{cookItem.userId}</p>
         </div>
@@ -60,7 +60,7 @@ function Card(props) {
 
           <div className='viewNoBox'>
             {/* <img src={viewIconImage} width={25} style={{margin: 10}}></img> */}
-            <i class="fa-regular fa-eye"></i>
+            <i className="fa-regular fa-eye"></i>
             {cookItem.viewNo.toLocaleString('ko-KR')}
           </div>
 
@@ -81,7 +81,7 @@ function Card(props) {
       <div className='thumbnailBox'>
         <div className='thumbnailImage'> 
           {/* <img scr={thumbnailImagePath} width={25} height={25}></img> */}
-          <i class="fa-solid fa-user"></i>
+          <i className="fa-solid fa-user"></i>
         </div>
         <p>{cookItem.userComment[0].commentUserId}</p>
       </div>
