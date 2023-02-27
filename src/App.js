@@ -7,6 +7,7 @@ import Footer from './pages/subpage/Footer';
 import SearchPage from './pages/search/SearchPage';
 
 import './pages/search/Search.css';
+import CardList from './components/CardList';
 
 function App() {
 
@@ -15,9 +16,11 @@ function App() {
     <div className="App">
       <div>
         {/* <Main /> */}
-        <SearchPage />
-        {/* <Subpage /> */}
-        <Footer />
+        {/* <Subpage/> */}
+        {/* <Main /> */}
+        <SearchPage/>
+        <CardList />
+        <Footer/>
       </div>
     </div>
   );
