@@ -1,0 +1,54 @@
+/* 회사소개 광고문의 */
+.ft{
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid
+}
+h5{
+  font-weight: bold;
+}
+/* 배고파 sns구간 */
+.ri{
+  margin-right: 20px;
+}
+.header{
+  display: flex;
+
+}
+.sns{
+  margin-top: 20px;
+  white-space : nowrap;
+  width: 300px;
+}
+
+.snss{
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.snss h1:hover{
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* 인포 */
+.ff{
+  width: 1200px;
+  display: flex;
+  align-items: center;
+}
+.info{
+  color: #808080;
+  font-size: 11px;
+  width: 100%;
+  padding-top: 20px;
+}
+.cp{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #808080;
+  font-size: 11px;
+}
