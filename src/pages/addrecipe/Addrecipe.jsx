@@ -1,7 +1,88 @@
 import React, { useRef, useState } from 'react';
 import './Addrecipe.css';
 
+// === Firebase ========================================================
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+
+
 function Addrecipe(props) {
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDT5M_fwLAtIvcInwdTXni3wQIWW5JUx2A",
+    authDomain: "baegopa-e886a.firebaseapp.com",
+    projectId: "baegopa-e886a",
+    storageBucket: "baegopa-e886a.appspot.com",
+    messagingSenderId: "30036889772",
+    appId: "1:30036889772:web:fabf6d0ba28fc8eaf4cf09",
+    measurementId: "G-DKGSL9EP7X"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+
+  // const mountainsRef = ref(storage, 'mountains.jpg');
+  // const mountainImagesRef = ref(storage, 'images/mountains.jpg');
+  const storageRef = ref(storage, 'some-child');
+  const storageRef2 = ref(storage, 'some-child2');
+
+  // uploadBytes(storageRef, file).then((snapshot) => {
+  //   console.log('Uploaded a blob or file!');
+  // })
+
+  // console.log(mountainsRef);
+  // console.log(mountainImagesRef);
+
+  const handleChangeImage = (e) => {
+    console.log(e.target.files[0]);
+    console.log(e.target.files[1]);
+
+    uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+      })
+
+      uploadBytes(storageRef2, e.target.files[1]).then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+      })
+  }
+ 
+
+
+  const dbtest = async (recipeName, material, process) => {
+
+  try {
+    const docRef = await addDoc(collection(db, "RecipeDB"), {
+      title: recipeName[0]['title'],
+      time: recipeName[0]['time'],
+      userId: "어우동",
+      material: material,
+      process: process
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
+  const handleClickSubmit = () => {
+    dbtest(recipeName, inputItems2, inputItems);
+  }
+
+
+
 
   // 요리명, 요리시간/난이도 ------------------------------------------------------------
   const [recipeName, setRecipeName] = useState([{ title: '', time: '', difficulty: '' },]);
@@ -28,10 +109,6 @@ function Addrecipe(props) {
     }
 
   // ------------------------------------------------------------------------------------------------------
-
-
-
-
 
 
 
@@ -138,7 +215,7 @@ function Addrecipe(props) {
           <span>사진첨부</span>
           <sapn style={{color: 'red'}}>*</sapn>
           <div>
-            <input type="file" name='photo' id='upload-photo' accept="image/*" multiple style={{ display: "none" }}/>
+            <input type="file" name='photo' id='upload-photo' onChange={handleChangeImage} accept="image/*" multiple style={{ display: "none" }}/>
             <div className='input-file-button'>
               <label for='upload-photo'>파일 선택</label>
               <p class="material-symbols-outlined">attach_file_add </p>
@@ -225,7 +302,7 @@ function Addrecipe(props) {
 
         <div className='addRecipeFooter'> 
           <button>CANCLE</button>
-          <button className='submitButton'>SUBMIT</button>
+          <button className='submitButton' onClick={handleClickSubmit}>SUBMIT</button>
         </div>
 
       </div>
