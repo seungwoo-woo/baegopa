@@ -10,9 +10,10 @@
   background-color: rgb(245, 245, 234);
 }
 
+
 .cardList {
   display: flex;
   justify-content: space-between;
   width: 1200px;
-  flex-wrap: wrap;
+  flex-wrap:nowrap;
 }
