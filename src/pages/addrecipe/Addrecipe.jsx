@@ -27,39 +27,47 @@ function Addrecipe(props) {
   const db = getFirestore(app);
   const storage = getStorage(app);
 
-  let imageFiles = [];
-  let imageFilesPath = [];
+
+  const [imageFiles, setImageFiles ] = useState([]);
+  const [imageFilesPath, setImageFilesPath] = useState([]);
   
-  const handleChangeImage = (e) => {
-    imageFiles = Array.from(e.target.files);
-    console.log(e.target.files[0]);
-    console.log(e.target.files[1]);
+  const handleChangeImage = async (e) => {
+    setImageFiles((imageFiles) => [Array.from(e.target.files), ...imageFiles]);
     console.log(imageFiles);
   }
 
 
-  const dbImageUpload = (imageFiles) => {
+  const dbImageUpload = async (imageFiles) => {
+    console.log('dbImageUpload in');
 
-    imageFiles.forEach((element) => {
+    console.log(imageFiles[0]);
+    console.log(imageFiles[0].length);
+
+    imageFiles[0].forEach((element) => {
+
+      console.log('forEach in');
       let storageRef = ref(storage, `images/${element['name']}`);
 
-      uploadBytes(storageRef, element).then((snapshot) => {
+      uploadBytes(storageRef, element).then(() => {
         console.log('Uploaded a blob or file!');
-        console.log(snapshot);
-      })
 
 
-      // getDownloadURL(ref(storage, `images/${element['name']}`)).then((url) => {
-      getDownloadURL(storageRef).then((url) => {
-        console.log(url);
-        imageFilesPath.push(url);
-        console.log(imageFilesPath);
-        if(imageFiles.length === imageFilesPath.length) {
-          dbWrite(recipeSummary, materialItems, processItems, imageFilesPath);
-        }
-        
-        
+        // getDownloadURL(ref(storage, `images/${element['name']}`)).then((url) => {
+        getDownloadURL(storageRef).then((url) => {
+          console.log(url);
+          setImageFilesPath((imageFilesPath) => [url, ...imageFilesPath]);
+          console.log(imageFilesPath);
+
+          console.log(imageFiles[0].length);
+          console.log(imageFilesPath.length);
+          if(imageFiles.length === imageFilesPath.length) {
+            dbWrite(recipeSummary, materialItems, processItems, imageFilesPath);
+          } 
+        })
+
+
       })
+
       
     })
 
@@ -88,7 +96,7 @@ function Addrecipe(props) {
 
 
 // DB에 쓰기위한 핸들함수 ---------------------------------------------
-  const handleClickSubmit = async () => {
+  const handleClickSubmit = () => {
     console.log('in');
     dbImageUpload(imageFiles);
     // dbWrite(recipeSummary, materialItems, processItems, imageFilesPath);
@@ -300,7 +308,8 @@ function Addrecipe(props) {
 
         {console.log(recipeSummary)}
         {console.log(materialItems)}
-        {console.log(processItems)}
+        {console.log(processItems)}        
+        {console.log(imageFilesPath)}
 
         <div className='addRecipeFooter'> 
           <button>CANCLE</button>
