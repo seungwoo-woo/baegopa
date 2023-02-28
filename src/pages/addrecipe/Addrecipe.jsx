@@ -30,11 +30,13 @@ function Addrecipe(props) {
 
 
   // image files 선택 ------------------------------------------ 
-  const [imageFiles, setImageFiles ] = useState([]);
-  
+  const [ imageFiles, setImageFiles ] = useState([]);
+  const [ fileSelect, setFileSelect ] = useState('파일 선택');
+
   const handleChangeImage = (e) => {
     setImageFiles((imageFiles) => {
       return [Array.from(e.target.files), ...imageFiles]});
+    setFileSelect(`${Array.from(e.target.files)[0]['name']} 파일 외 ${Array.from(e.target.files).length-1}개 파일 선택 됨`);
     console.log(imageFiles);
   }
 
@@ -223,7 +225,7 @@ function Addrecipe(props) {
           <div>
             <input type="file" name='photo' id='upload-photo' onChange={handleChangeImage} accept="image/*" multiple style={{ display: "none" }}/>
             <div className='input-file-button'>
-              <label for='upload-photo'>파일 선택</label>
+              <label for='upload-photo'>{fileSelect}</label>
               <p class="material-symbols-outlined">attach_file_add </p>
             </div>
           </div>
