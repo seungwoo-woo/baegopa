@@ -4,12 +4,13 @@ import './Addrecipe.css';
 // === Firebase ======================================================
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 // -------------------------------------------------------------------
 
 
 
 function Addrecipe(props) {
+
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -28,49 +29,13 @@ function Addrecipe(props) {
   const storage = getStorage(app);
 
 
+  // image files 선택 ------------------------------------------ 
   const [imageFiles, setImageFiles ] = useState([]);
-  const [imageFilesPath, setImageFilesPath] = useState([]);
   
-  const handleChangeImage = async (e) => {
-    setImageFiles((imageFiles) => [Array.from(e.target.files), ...imageFiles]);
+  const handleChangeImage = (e) => {
+    setImageFiles((imageFiles) => {
+      return [Array.from(e.target.files), ...imageFiles]});
     console.log(imageFiles);
-  }
-
-
-  const dbImageUpload = async (imageFiles) => {
-    console.log('dbImageUpload in');
-
-    console.log(imageFiles[0]);
-    console.log(imageFiles[0].length);
-
-    imageFiles[0].forEach((element) => {
-
-      console.log('forEach in');
-      let storageRef = ref(storage, `images/${element['name']}`);
-
-      uploadBytes(storageRef, element).then(() => {
-        console.log('Uploaded a blob or file!');
-
-
-        // getDownloadURL(ref(storage, `images/${element['name']}`)).then((url) => {
-        getDownloadURL(storageRef).then((url) => {
-          console.log(url);
-          setImageFilesPath((imageFilesPath) => [url, ...imageFilesPath]);
-          console.log(imageFilesPath);
-
-          console.log(imageFiles[0].length);
-          console.log(imageFilesPath.length);
-          if(imageFiles.length === imageFilesPath.length) {
-            dbWrite(recipeSummary, materialItems, processItems, imageFilesPath);
-          } 
-        })
-
-
-      })
-
-      
-    })
-
   }
 
 
@@ -95,13 +60,42 @@ function Addrecipe(props) {
 }
 
 
-// DB에 쓰기위한 핸들함수 ---------------------------------------------
+// Submit 핸들함수 -----------------------------------------------------------------
   const handleClickSubmit = () => {
-    console.log('in');
-    dbImageUpload(imageFiles);
-    // dbWrite(recipeSummary, materialItems, processItems, imageFilesPath);
-  }
+    console.log('in');  
+    
+    let imageFilesPath = [];
 
+    imageFiles[0].forEach((element) => {
+      let storageRef = ref(storage, `images/${element['name']}`);
+
+      const uploadTask = uploadBytesResumable(storageRef, element);
+
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');  
+        },
+        (error) => {
+          // Handle unsuccessful uploads
+        },
+        () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log('File available at', downloadURL);
+          imageFilesPath.push(downloadURL);
+          console.log(imageFiles[0].length);
+          console.log(imageFilesPath.length);
+
+          if(imageFiles[0].length === imageFilesPath.length) { 
+            dbWrite(recipeSummary, materialItems, processItems, imageFilesPath);
+          }
+        });
+        }
+      );  
+    });
+  }
 
 
 
@@ -129,7 +123,6 @@ function Addrecipe(props) {
     setRecipeSummary(recipeSummaryCopy);		            
   }
   // ------------------------------------------------------------------------------------------------------
-
 
 
 
@@ -226,7 +219,7 @@ function Addrecipe(props) {
 
         <div className='addRecipeBody'>
           <span>사진첨부</span>
-          <sapn style={{color: 'red'}}>*</sapn>
+          <span style={{color: 'red'}}>*</span>
           <div>
             <input type="file" name='photo' id='upload-photo' onChange={handleChangeImage} accept="image/*" multiple style={{ display: "none" }}/>
             <div className='input-file-button'>
@@ -236,13 +229,13 @@ function Addrecipe(props) {
           </div>
 
           <span>요리명</span>
-          <sapn style={{color: 'red'}}>*</sapn>
+          <span style={{color: 'red'}}>*</span>
           <div>
             <input type="text" className='recipeTitle' onChange={e => handleChangeRecipeTitle(e)}></input>
           </div>
 
           <span>요리시간(분) / 난이도</span>
-          <sapn style={{color: 'red'}}>*</sapn>
+          <span style={{color: 'red'}}>*</span>
           <div>
             <input type="text" className='timeRecipe' onChange={e => handleChangeTimeDifficulty(e)}></input>
             <span style={{color: 'black', fontWeight: 400}}>분 / </span>
@@ -251,7 +244,7 @@ function Addrecipe(props) {
 
           <div style={{ marginBottom: 10}} >
             <span>재료</span>
-            <sapn style={{color: 'red'}}>*</sapn>
+            <span style={{color: 'red'}}>*</span>
           </div>
 
           {materialItems.map((item, index) => {
@@ -281,7 +274,7 @@ function Addrecipe(props) {
 
           <div style={{marginTop: 20, marginBottom: 10}} >
             <span>조리방법</span>
-            <sapn style={{color: 'red'}}>*</sapn>
+            <span style={{color: 'red'}}>*</span>
           </div>
 
           {processItems.map((item, index) => {
@@ -297,19 +290,13 @@ function Addrecipe(props) {
                 <>
                   <button className='plusMinus' onClick={addProcessItem}>+</button>
                   <button className='plusMinus' onClick={() => deleteProcessItem(nextID.current-1)}>-</button>
-                </>}
-              
+                </>}   
             
             </div>
 
           )})}
           
         </div>
-
-        {console.log(recipeSummary)}
-        {console.log(materialItems)}
-        {console.log(processItems)}        
-        {console.log(imageFilesPath)}
 
         <div className='addRecipeFooter'> 
           <button>CANCLE</button>
