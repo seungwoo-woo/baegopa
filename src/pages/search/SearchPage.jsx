@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from "./Search.module.css";
 
 
 
@@ -8,13 +9,13 @@ function SearchPage(props) {
 
     return (
         <>
-        <div className='wrapper'>
+        <div className={styles.wrapper}>
 
             {/* 메뉴 */}
-            <div className='menu'>
+            <div className={styles.menu}>
                 <nav>NAV영역</nav>
             </div>
-            <div className='menu2'>
+            <div className={styles.menu2}>
                 <ul>
                     <li>하위메뉴1</li>
                     <li>하위메뉴2</li>
@@ -24,12 +25,12 @@ function SearchPage(props) {
             </div>
 
             {/* 분류 */}
-            <div className='title'>
+            <div className={styles.title}>
                 <div>
                 <h1>레시피 검색</h1>
                 </div>
-                <div className='search'>                    
-                <div className='content'>
+                <div className={styles.search}>                    
+                <div className={styles.content}>
                     <input type={'text'} placeholder={'검색 키워드 입력란'}/>
                     <img src={ require('../subpage/images/tabler_search.png') } alt={'검색'} title={'검색'}/> 
                     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from "./Sub.module.css";
 
 
 
@@ -8,13 +9,13 @@ function Subpage(props) {
 
     return (
         <>
-        <div className='wrapper'>
+        <div className={styles.wrapper}>
 
             {/* 메뉴 */}
-            <div className='menu'>
+            <div className={styles.menu}>
                 <nav>NAV영역</nav>
             </div>
-            <div className='menu2'>
+            <div className={styles.menu2}>
                 <ul>
                     <li>하위메뉴1</li>
                     <li>하위메뉴2</li>
@@ -24,30 +25,28 @@ function Subpage(props) {
             </div>
 
             {/* 분류 */}
-            <div className='recipe'>
+            <div className={styles.recipe}>
                 <div>
                 <h1>오늘의 레시피</h1>
                 </div>
-                <div className='value'>                    
-                <div className='korean'>
+                <div className={styles.value}>                    
+                <div>
                     #한식
-                {/* <img src={ require('./images/korean.jpeg') } /> */}
                     </div>
-                <div className='snack'>
+                <div>
                     #분식
-                {/* <img src={ require('./images/snack.jpg') } /> */}
                     </div>
-                <div className='china'>
+                    <div>
+                    #야식
+                    </div>
+                <div>
                     #중식
-                {/* <img src={ require('./images/china.jpg') } /> */}
                     </div>
-                <div className='japan'>
+                <div>
                     #일식
-                {/* <img src={ require('./images/japan.jpg') } /> */}
                     </div>
-                <div className='pasta'>
+                <div>
                     #양식
-                {/* <img src={ require('./images/pasta.png') } /> */}
                     </div>
                 </div>
             </div> 
