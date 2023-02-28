@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import styles from './Card.module.css';
 import likeIconImage from "../img/like_icon.png";
 
 function Card(props) {
@@ -40,31 +40,31 @@ function Card(props) {
     <>
     <div>
 
-    <div className='card'>
+    <div className={styles.card}>
       
       <img src={cookItem.cardImagePath} width={285} height={285}></img>
 
       { view && 
-      <div className='bottomTextBox'>
-        <div className='bottomTtextTitle'>{cookItem.title}</div>
+      <div className={styles.bottomTextBox}>
+        <div className={styles.bottomTtextTitle}>{cookItem.title}</div>
       
-        <div className='thumbnailBox'>
-          <div className='thumbnailImage'> 
+        <div className={styles.thumbnailBox}>
+          <div className={styles.thumbnailImage}> 
             {/* <img scr={thumbnailImagePath} width={25} height={25}></img> */}
             <i className="fa-solid fa-user"></i>
           </div>
           <p>{cookItem.userId}</p>
         </div>
 
-        <div className='noBox'>
+        <div className={styles.noBox}>
 
-          <div className='viewNoBox'>
+          <div className={styles.viewNoBox}>
             {/* <img src={viewIconImage} width={25} style={{margin: 10}}></img> */}
             <i className="fa-regular fa-eye"></i>
             {cookItem.viewNo.toLocaleString('ko-KR')}
           </div>
 
-          <div className='likeNoBox'>
+          <div className={styles.likeNoBox}>
             <img src={likeIconImage} width={25} style={{margin: 10}}></img>
             {cookItem.likeNo.toLocaleString('ko-KR')}
           </div>
@@ -76,17 +76,17 @@ function Card(props) {
     </div>
 
     { comment &&
-    <div className='commentBox'>
+    <div className={styles.commentBox}>
 
-      <div className='thumbnailBox'>
-        <div className='thumbnailImage'> 
+      <div className={styles.thumbnailBox}>
+        <div className={styles.thumbnailImage}> 
           {/* <img scr={thumbnailImagePath} width={25} height={25}></img> */}
           <i className="fa-solid fa-user"></i>
         </div>
         <p>{cookItem.userComment[0].commentUserId}</p>
       </div>
 
-      <div className='userComment'>
+      <div className={styles.userComment}>
         <p>{cookItem.userComment[0].comment}</p>
       </div>
 

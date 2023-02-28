@@ -1,0 +1,103 @@
+.card {
+  width: 285px;
+  height: 285px;
+  /* border: 1px solid gray; */
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+}
+
+.bottomTextBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  width: 285px;
+  height: 85px;
+  position: absolute;
+  bottom: 0px;
+
+  padding: 5px 15px;
+
+  background-color:rgba(0, 0,0, 0.4);
+}
+
+.bottomTtextTitle {
+  color: yellow;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.bottomTextBox p {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  line-height: 0;
+}
+
+.thumbnailBox {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid orange; */
+}
+
+.thumbnailBox p {
+  line-height: 0;
+  font-weight: 200;
+}
+
+.thumbnailImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-right: 10px;
+  background-color: gray;
+}
+
+.noBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 255px;
+}
+
+.viewNoBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 120px;
+  height: 22px;
+  font-size: 16px;
+  font-weight: 100;
+  font-style: italic;
+  color: white;
+  background-color: rgb(100, 100, 100); 
+  border-radius: 20px;
+}
+
+.likeNoBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100px;
+  height: 25px;
+  font-size: 20px;
+  font-weight: 500;
+  color: yellow;
+}
+
+.commentBox {
+  width: 270px;
+  height: 100px;
+  padding: 10px;
+}
+
+.userComment {
+  margin-top: 10px;
+}
