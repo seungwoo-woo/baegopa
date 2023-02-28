@@ -10,6 +10,7 @@ import Footer from './pages/subpage/Footer';
 import SearchPage from './pages/search/SearchPage';
 import CardList from './components/CardList';
 import RecipeDetail from './pages/recipe/RecipeDetail';
+import ReviewRegiter from './pages/recipe/components/ReviewRegiter';
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
         {/* <SearchPage/> */}
         {/* <CardList />
         <Footer/> */}
-        <RecipeDetail />
+        {/* <RecipeDetail /> */}
+        <ReviewRegiter />
       </div>
     </div>
   );
