@@ -243,50 +243,69 @@ function RecipeDetail(props) {
   // console.log(recipeInfo[0].hashtags[0]);
   // 도전! 요리-------------------------------------------------------------------------
   // const {groupTitme, cookItemLists, viewIndex} = props;
-  console.log(cookItemList);
+  // console.log(cookItemList);
 
 
   //-------------------------------------------------------------------------------------
-  const [reviewValue, setReviewValue] = useState('');
-  console.log(reviewValue);
+  const [reviewValue, setReviewValue] = React.useState({
+    id: "",
+    title: "",
+    cardImagePath: "",
+    userId: "",
+    viewNo: "",
+    likeNo: "",
+    userComment: [{
+      commentUserId: "",
+      comment: "",
+    }]
+  });
+  console.log(reviewValue.cardImagePath);
   const handleChange = (e) => {
-    setReviewValue(e.target.value);
-    console.log(e.target.value);
+    const value = e.target.value;
+    setReviewValue({
+      ...reviewValue,
+      [e.target.name] : value
+    });
   }
   // const handleSubmit = {};
   // const fileInput = useRef(null);  // fileInput에 초기값은 null
-  const handleSubmit = () => {
-    console.log(imgRef.current.value);
-    handleInsert(reviewValue);
-    saveImgFile();
+  const handleSubmit = (e) => {
+    // console.log(imgRef.current.value);
+    // handleInsert(reviewValue);
+    // saveImgFile();
+    console.log(reviewValue.userComment[0].comment);
+    // onInsert(reviewValue);
+    setReviewValue('');
+    e.preventDefault();
+    // onHide();
   };
   
 
 
-  const handleInsert = useCallback((data) => {
-    const { id, cardImagePath, commentUserId, comment } = data;
+  // const handleInsert = useCallback((data) => {
+  //   const { id, cardImagePath, commentUserId, comment } = data;
     
-    const cookItemListAdd = {
-      id: uuidv4(),
-      cardImagePath,
-      commentUserId,
-      comment,
-    };
+  //   const cookItemListAdd = {
+  //     id: uuidv4(),
+  //     cardImagePath,
+  //     commentUserId,
+  //     comment,
+  //   };
 
-    setReviewValue(cookItemList.concat(cookItemListAdd));
-    // localStorage.setItem('todos', JSON.stringify(todos.concat(todo)))
+  //   setReviewValue(cookItemList.concat(cookItemListAdd));
+  //   // localStorage.setItem('todos', JSON.stringify(todos.concat(todo)))
 
-  }, [cookItemList]);
+  // }, [cookItemList]);
 
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef(null);
-  console.log(imgRef.current);
-  console.log(imgRef);
+  // console.log(imgRef.current);
+  // console.log(imgRef);
 
   // 이미지 업로드 input의 onChange
   const saveImgFile = () => {
     const file = imgRef.current.files[0];
-    console.log(file);
+    console.log(file.name);
     const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
@@ -305,9 +324,11 @@ function RecipeDetail(props) {
       alert('복사에 실패하였습니다');
     }
 };
-console.log(handleCopyClipBoard);
+// console.log(handleCopyClipBoard);
 let content = window.location.href;
 // console.log(content);
+console.log(reviewValue.cardImagePath);
+// console.log(imgRef.current.files[0].name);
 
   return (
     <div className={styles['recipe-page']}>
@@ -325,7 +346,7 @@ let content = window.location.href;
                 spaceBetween={0}
                 slidesPerView={1}
                 onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
+                // onSwiper={(swiper) => console.log(swiper)}
                 // pagination={{ clickable: true }}
                 // scrollbar={{ draggable: true }}
                 // navigation
@@ -430,7 +451,7 @@ let content = window.location.href;
               spaceBetween={0}
               slidesPerView={4}
               onSlideChange={() => console.log('slide change')}
-              onSwiper={(swiper) => console.log(swiper)}
+              // onSwiper={(swiper) => console.log(swiper)}
               // pagination={{ clickable: true }}
               // scrollbar={{ draggable: true }}
               // navigation
@@ -464,16 +485,17 @@ let content = window.location.href;
             onChange={saveImgFile}
             ref={imgRef}
             style={{display:"none"}} 
+            name={reviewValue.cardImagePath}
           />
           <label 
             htmlFor="review--content" 
             className={styles['review--register--write']}
           >
             <textarea 
-              value={reviewValue} 
+              // value={reviewValue.userComment}
               onChange={handleChange}
               id='review--content'
-              name="text" 
+              name={reviewValue.userComment[0].comment}
               cols="2" rows="8" 
               placeholder='가장 좋아하는 것에 대한 에세이를 장석하세요'
             />
