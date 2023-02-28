@@ -1,3 +1,7 @@
+* {
+  font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
+}
+
 .card {
   width: 285px;
   height: 285px;
@@ -18,23 +22,22 @@
   height: 85px;
   position: absolute;
   bottom: 0px;
-
   padding: 5px 15px;
-
-  background-color:rgba(0, 0,0, 0.4);
+  /* background-color:rgba(0, 0,0, 0.4); */
 }
 
 .bottomTtextTitle {
-  color: yellow;
+  color: #F4F0EF;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .bottomTextBox p {
   font-size: 18px;
   font-weight: 600;
-  color: white;
+  color: #ddcd75;
   line-height: 0;
+  margin: 0;
 }
 
 .thumbnailBox {
@@ -71,25 +74,24 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 120px;
+  width: 85px;
   height: 22px;
-  font-size: 16px;
-  font-weight: 100;
-  font-style: italic;
-  color: white;
-  background-color: rgb(100, 100, 100); 
-  border-radius: 20px;
+  font-size: 15px;
+  /* font-weight: 600; */
+  color: #F4F0EF;
+  /* background-color: #F4F0EF;  */
+  border: none;
 }
 
 .likeNoBox {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100px;
-  height: 25px;
-  font-size: 20px;
-  font-weight: 500;
-  color: yellow;
+  /* display: flex; */
+  /* justify-content: flex-end;
+  align-items: center; */
+  width: 40px;
+  height: 40px;
+  margin: 40px 0 0 220px;
+  font-size: 15px;
+  /* color: #F4F0EF; */
 }
 
 .commentBox {

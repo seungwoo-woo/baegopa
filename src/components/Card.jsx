@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Card.module.css';
-import likeIconImage from "../img/like_icon.png";
+// import likeIconImage from "../img/ph_heart.png";
 
 function Card(props) {
 
@@ -42,31 +42,31 @@ function Card(props) {
 
     <div className={styles.card}>
       
-      <img src={cookItem.cardImagePath} width={285} height={285}></img>
+      <img src={cookItem.cardImagePath} width={285} height={285}/>
 
       { view && 
       <div className={styles.bottomTextBox}>
-        <div className={styles.bottomTtextTitle}>{cookItem.title}</div>
+        {/* <div className={styles.bottomTtextTitle}>{cookItem.title}</div> */}
       
-        <div className={styles.thumbnailBox}>
+        {/* <div className={styles.thumbnailBox}>
           <div className={styles.thumbnailImage}> 
-            {/* <img scr={thumbnailImagePath} width={25} height={25}></img> */}
+            <img scr={thumbnailImagePath} width={25} height={25}></img>
             <i className="fa-solid fa-user"></i>
           </div>
           <p>{cookItem.userId}</p>
-        </div>
+        </div> */}
 
         <div className={styles.noBox}>
 
-          <div className={styles.viewNoBox}>
-            {/* <img src={viewIconImage} width={25} style={{margin: 10}}></img> */}
+          {/* <div className={styles.viewNoBox}>
+            <img src={viewIconImage} width={25} style={{margin: 10}}></img>
             <i className="fa-regular fa-eye"></i>
             {cookItem.viewNo.toLocaleString('ko-KR')}
-          </div>
+          </div> */}
 
           <div className={styles.likeNoBox}>
-            <img src={likeIconImage} width={25} style={{margin: 10}}></img>
-            {cookItem.likeNo.toLocaleString('ko-KR')}
+            <img src={require ('../img/ph_heart.png')} width={35}/>
+            {/* {cookItem.likeNo.toLocaleString('ko-KR')} */}
           </div>
 
         </div>
@@ -79,10 +79,10 @@ function Card(props) {
     <div className={styles.commentBox}>
 
       <div className={styles.thumbnailBox}>
-        <div className={styles.thumbnailImage}> 
-          {/* <img scr={thumbnailImagePath} width={25} height={25}></img> */}
+        {/* <div className={styles.thumbnailImage}> 
+          <img scr={require ('../img/bi_person-fill.png')}/>
           <i className="fa-solid fa-user"></i>
-        </div>
+        </div> */}
         <p>{cookItem.userComment[0].commentUserId}</p>
       </div>
 
