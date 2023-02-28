@@ -18,9 +18,9 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Main />
+        {/* <Main /> */}
         {/* <Subpage/> */}
-        {/* <SearchPage/> */}
+        <SearchPage/>
         {/* <CardList />
         <Footer/> */}
         {/* <RecipeDetail /> */}
