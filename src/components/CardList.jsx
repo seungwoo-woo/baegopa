@@ -1,6 +1,9 @@
+import styles from './CardList.module.css';
+
 import React from 'react';
-import './CardList.css';
 import Card from './Card';
+
+
 const groupTitme = '배고플 때 생각나는...';
 const cookItemList = [
   {id: 1,
@@ -206,13 +209,13 @@ function CardList(props) {
   const viewIndex = 'comment';
 
   return (
-    <div className='group'>
+    <div className={styles.group}>
       <h1>{groupTitme}</h1>
-      <div className='cardList'>
+      <div className={styles.cardList}>
         {cookItemList.map((cookItem) => {
           return <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />
         })
-        }      
+        }
       </div>
     </div>
   );
