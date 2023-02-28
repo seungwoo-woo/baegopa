@@ -1,30 +1,32 @@
 /* w 1200 */
-
+* {
+    font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
+}
 .wrapper {
     width: 1200px;
     margin: 0 auto;
 }
 .menu {
     height: 80px;
-    color: #fff;
+    color: #212121;
     text-align: center;
     line-height: 80px;
     font-size: 30px;
-    background-color: #000000;
+    background-color: #937062;
 }
 
 .menu2 {
     height: 50px;
-    color: #fff;
+    color: #212121;
     font-size: 20px;
     line-height: 50px;
-    background-color: #1f9633;
+    background-color: #F4F0EF;
 }
 .menu2 > ul {
     margin: 0;
     display: flex;
     justify-content: space-around;
-
+    list-style: none;
 }
 
 .recipe {
