@@ -18,7 +18,7 @@ function MembersFood(props) {
     <h1 className={styles.hd}> <GiCampCookingPot/>회원들 요리</h1>
     </div>
     <div className={styles.header}>
-      <CardList viewIndex={viewIndex} groupTitme={groupTitme} cookItemList={cookItemList}/>
+      <CardList viewIndex={viewIndex}/>
     </div>
     </Fragment>
   );

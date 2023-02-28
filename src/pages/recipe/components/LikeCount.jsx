@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import "../css/recipeDetail.module.css";
+import styles from "../css/recipeDetail.module.css";
 
 
 function LikeCount(props) {
@@ -14,7 +14,7 @@ function LikeCount(props) {
   return (
     <>
       <div 
-        className='likecount'
+        className={styles.likecount}
         onClick={(e) => {
           e.stopPropagation();
           const copyLikeCount = [...infos];

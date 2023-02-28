@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
+import styles from "./css/recipeDetail.module.css";
 
 
 import 'swiper/css';
@@ -10,7 +11,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 
-import "./css/recipeDetail.module.css";
+
+import CardList from '../../components/CardList';
 import Card from './../../components/Card';
 import LikeCount from './components/LikeCount';
 import ViewCount from './components/ViewCount';
@@ -308,16 +310,16 @@ let content = window.location.href;
 // console.log(content);
 
   return (
-    <div className='recipe-page'>
-      <section className='nav'>
+    <div className={styles['recipe-page']}>
+      <section className={styles.nav}>
         NAV영역
       </section>
 
-      <section className='main-wraper'>
-        <div className='main'>
-          <div className='main--left'>
+      <section className={styles['main-wraper']}>
+        <div className={styles.main}>
+          <div className={styles['main--left']}>
             {/* <img src={recipes[0].image} alt="이미지" /> */}
-            <div className='main--left--img'>
+            <div className={styles['main--left--img']}>
               <Swiper
                 modules={[Navigation, Pagination]}
                 spaceBetween={0}
@@ -350,7 +352,7 @@ let content = window.location.href;
                 <SwiperSlide><img src={recipes[0].image05} alt="이미지5" /></SwiperSlide>
               </Swiper>
             </div>
-            <div className='main--left--counts'>
+            <div className={styles['main--left--counts']}>
                 {/* {
                   recipeInfos.map((info, index) => {
                     return <LikeCount index={[0]} likeCounts={info.likeCounts} setrecipeInfos={setrecipeInfos}/>
@@ -360,46 +362,46 @@ let content = window.location.href;
                 <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos}/>
             </div>
           </div>
-          <div className='main--right'>
-            <h2 className='main--right--subtitle'>{recipes[0].subtitle}</h2>
-            <h1 className='main--right--title'>{recipes[0].title}</h1>
-            <div className='main--right--info'>
+          <div className={styles['main--right']}>
+            <h2 className={styles['main--right--subtitle']}>{recipes[0].subtitle}</h2>
+            <h1 className={styles['main--right--title']}>{recipes[0].title}</h1>
+            <div className={styles['main--right--info']}>
               <span>난이도: {recipeInfo[0].level}</span>
               <span>양: {recipeInfo[0].meals} 인분</span>
               <span>조리시간: {recipeInfo[0].time}</span>
             </div>
-            <div className='main--right--hashtag'>
+            <div className={styles['main--right--hashtag']}>
               {recipeInfo[0].hashtags.map((hashtag, index) => {
                 return (
                   <div key={index}>#{hashtag}</div>
                 )
               })}
             </div>
-            <div className='main--right--buttons'>
+            <div className={styles['main--right--buttons']}>
               <ButtonKeeper />
-              <button type='button' className='btn-share'>
+              <button type='button' className={styles['btn-share']}>
                 <img src={ require('./images/btn-share_brown.png') } />
-                <p class="arrow_box">공유하기</p>
+                <p className={styles['arrow_box']}>공유하기</p>
               </button>
-              <button type='button' className='btn-linkcopy' onClick={() => {handleCopyClipBoard(content)}}>
+              <button type='button' className={styles['btn-linkcopy']} onClick={() => {handleCopyClipBoard(content)}}>
                 <img src={ require('./images/btn-linkcopy_brown.png') } />
-                <p class="arrow_box">주소 복사하기</p>
+                <p className={styles['arrow_box']}>주소 복사하기</p>
               </button>
-              <button type='button' className='btn-kakaoshare'>
+              <button type='button' className={styles['btn-kakaoshare']}>
                 <img src={ require('./images/btn-kakaoshare.png') } />
-                <p class="arrow_box">카카오톡 공유</p>
+                <p className={styles['arrow_box']}>카카오톡 공유</p>
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      <section className='content'>
-        <div className='content--ingredients'>
+      <section className={styles.content}>
+        <div className={styles['content--ingredients']}>
           <h4>재료</h4>
           <p>{recipes[0].ingredients}</p>
         </div>
-        <ul className='content--method'>
+        <ul className={styles['content--method']}>
           <h4>조리 방법</h4>
           <li>{recipes[0].manual01}</li>
           <li>{recipes[0].manual02}</li>
@@ -410,17 +412,19 @@ let content = window.location.href;
         </ul>
       </section>
 
-      <section className='review'>
-        <div className='review--wrapper'>
-          <div className='review--title'>
-            <h4 className='font_eng'>REVIEW</h4>
-            <div className='review--title--bottom'>
+      <section className={styles.review}>
+        <div className={styles['review--wrapper']}>
+          <div className={styles['review--title']}>
+            <h4 className={styles['font_eng']}>REVIEW</h4>
+            <div className={styles['review--title--bottom']}>
               <p>오늘의 주제</p>
-              <span className='review--title--bottom--subject'>김치찌개</span>
-              <p className='review--title--bottom-subtitle'>회원들이 만든 요리</p>
+              <span className={styles['review--title--bottom--subject']}>김치찌개</span>
+              <p className={styles['review--title--bottom-subtitle']}>회원들이 만든 요리</p>
             </div>
           </div>
-          <div className='review--inner'>
+          <div className={styles['review--inner']}>
+            {/* TODO: 카드 컴포넌트 연결  */}
+            {/* <CardList cookItemList={cookItemLists} viewIndex="comment" /> */}
             <Swiper
               modules={[Navigation, Pagination, Scrollbar]}
               spaceBetween={0}
@@ -444,15 +448,15 @@ let content = window.location.href;
                 }
             </Swiper>
             <div>
-              <button onClick={() => swiperRef.current?.slidePrev()} className="btn_navigation btn_prev"></button>
-              <button onClick={() => swiperRef.current?.slideNext()} className="btn_navigation btn_next"></button>
+              <button onClick={() => swiperRef.current?.slidePrev()} className={`${styles.btn_navigation} ${styles.btn_prev}`}></button>
+              <button onClick={() => swiperRef.current?.slideNext()} className={`${styles.btn_navigation} ${styles.btn_next}`}></button>
             </div>
           </div>
         </div>
-        <div className='review--register'>
+        <div className={styles['review--register']}>
           {imgRef.current
-            ? <img className='review--register-image' src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
-            :<label className="input-file-button" for="input-file"></label>}
+            ? <img className={styles['review--register-image']} src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
+            :<label className={styles['input-file-button']} for="input-file"></label>}
           <input
             type="file" 
             id="input-file" 
@@ -463,7 +467,7 @@ let content = window.location.href;
           />
           <label 
             htmlFor="review--content" 
-            className='review--register--write'
+            className={styles['review--register--write']}
           >
             <textarea 
               value={reviewValue} 
@@ -478,12 +482,12 @@ let content = window.location.href;
             type="button" 
             onClick={handleSubmit} 
             // onInsert={handleInsert} 
-            className="review--register--submit"
+            className={styles['review--register--submit']}
           >SUBMIT</button>
         </div>
       </section>
 
-      <section className='footer'>
+      <section className={styles.footer}>
         Footer영역
       </section>
 
