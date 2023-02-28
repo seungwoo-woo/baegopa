@@ -1,5 +1,7 @@
 /* w 1200 */
-
+* {
+    font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
+}
 .wrapper {
     width: 1200px;
     margin: 0 auto;
@@ -24,6 +26,7 @@
     margin: 0;
     display: flex;
     justify-content: space-around;
+    list-style: none;
 }
 
 .title {
