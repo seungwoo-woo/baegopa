@@ -11,6 +11,7 @@ import SearchPage from './pages/search/SearchPage';
 import CardList from './components/CardList';
 import RecipeDetail from './pages/recipe/RecipeDetail';
 import ReviewRegiter from './pages/recipe/components/ReviewRegiter';
+import LikeCount from './pages/recipe/components/LikeCount';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Footer/> */}
         {/* <RecipeDetail /> */}
         <ReviewRegiter />
+        {/* <LikeCount /> */}
       </div>
     </div>
   );

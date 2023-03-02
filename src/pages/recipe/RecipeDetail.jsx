@@ -17,6 +17,7 @@ import Card from './../../components/Card';
 import LikeCount from './components/LikeCount';
 import ViewCount from './components/ViewCount';
 import ButtonKeeper from './components/ButtonKeeper';
+import ReviewRegiter from './components/ReviewRegiter';
 
 
 
@@ -507,6 +508,7 @@ console.log(reviewValue.cardImagePath);
             className={styles['review--register--submit']}
           >SUBMIT</button>
         </div>
+        <ReviewRegiter />
       </section>
 
       <section className={styles.footer}>
