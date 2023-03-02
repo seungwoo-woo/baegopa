@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import './Addrecipe.css';
+import { firebaseConfig } from './firestore.js';
 
 // === Firebase ======================================================
 import { initializeApp } from "firebase/app";
@@ -11,17 +12,16 @@ import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } fr
 
 function Addrecipe(props) {
 
-
   // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDT5M_fwLAtIvcInwdTXni3wQIWW5JUx2A",
-    authDomain: "baegopa-e886a.firebaseapp.com",
-    projectId: "baegopa-e886a",
-    storageBucket: "baegopa-e886a.appspot.com",
-    messagingSenderId: "30036889772",
-    appId: "1:30036889772:web:fabf6d0ba28fc8eaf4cf09",
-    measurementId: "G-DKGSL9EP7X"
-  };
+  // const firebaseConfig = {
+  //   apiKey: "AIzaSyDT5M_fwLAtIvcInwdTXni3wQIWW5JUx2A",
+  //   authDomain: "baegopa-e886a.firebaseapp.com",
+  //   projectId: "baegopa-e886a",
+  //   storageBucket: "baegopa-e886a.appspot.com",
+  //   messagingSenderId: "30036889772",
+  //   appId: "1:30036889772:web:fabf6d0ba28fc8eaf4cf09",
+  //   measurementId: "G-DKGSL9EP7X"
+  // };
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
@@ -43,17 +43,22 @@ function Addrecipe(props) {
 
 
 // DB에 쓰기 함수 ---------------------------------------------------
-  const dbWrite = (recipe, material, process, imageFilesPath) => {
+  const dbWrite = (recipe, ingredients, process, imageFilesPath) => {
 
   try {
     const docRef = addDoc(collection(db, "RecipeDB"), {
       title: recipe['title'],
+      subtitle: recipe['subtitle'],
+      hashtags: recipe['hashtags'],
+      meals: recipe['meals'],
       time: recipe['time'],
       difficulty: recipe['difficulty'],
       userId: "어우동",
-      material: material,
+      ingredients: ingredients,
       process: process,
-      imageFilesPath: imageFilesPath
+      imageFilesPath: imageFilesPath,
+      likeCount: 0,
+      viewCount: 0
     });
     alert("레시피가 저장되었습니다.");
   } catch (e) {
@@ -91,7 +96,7 @@ function Addrecipe(props) {
           console.log(imageFilesPath.length);
 
           if(imageFiles[0].length === imageFilesPath.length) { 
-            dbWrite(recipeSummary, materialItems, processItems, imageFilesPath);
+            dbWrite(recipeSummary, ingredients, processItems, imageFilesPath);
           }
         });
         }
@@ -102,7 +107,7 @@ function Addrecipe(props) {
 
 
   // 1. 요리명, 요리시간/난이도  ------------------------------------------------------------
-  const [recipeSummary, setRecipeSummary] = useState({ title: '', time: '', difficulty: '' });
+  const [recipeSummary, setRecipeSummary] = useState({ title: '', subtitle: '', hashtags: [] , meals: '', time: '', difficulty: '' });
 
   // 요리명 변경 -------------------------------------------------------------
   function handleChangeRecipeTitle(e) {    
@@ -110,6 +115,28 @@ function Addrecipe(props) {
     recipeSummaryCopy.title = e.target.value;  
     setRecipeSummary(recipeSummaryCopy);		            
   }
+
+  // 간단한 요리 설명 변경 -------------------------------------------------------------
+  function handleChangeRecipeSubTitle(e) {    
+    const recipeSummaryCopy = JSON.parse(JSON.stringify(recipeSummary));
+    recipeSummaryCopy.subtitle = e.target.value;  
+    setRecipeSummary(recipeSummaryCopy);		            
+  }
+
+  // hashtags 변경 -------------------------------------------------------------
+  function handleChangeHashtags(e) {    
+    const recipeSummaryCopy = JSON.parse(JSON.stringify(recipeSummary));
+    recipeSummaryCopy.hashtags = (e.target.value).split(',');  
+    setRecipeSummary(recipeSummaryCopy);		            
+  }
+
+  // 요리양(인분)변경 -------------------------------------------------------------
+  function handleChangeMeals(e) {    
+    const recipeSummaryCopy = JSON.parse(JSON.stringify(recipeSummary));
+    recipeSummaryCopy.meals = e.target.value;  
+    setRecipeSummary(recipeSummaryCopy);		            
+  }
+
 
   // 요리시간/난이도 변경 -------------------------------------------------------------
   function handleChangeTimeDifficulty(e) {
@@ -130,51 +157,51 @@ function Addrecipe(props) {
 
   // 2. 재료 추가/삭제 ------------------------------------------------------------
   const nextID2 = useRef(1);
-  const [materialItems, setMaterialItems] = useState([{ id: 0, material: '', unit: '', value: '' },]);
+  const [ingredients, setIngredients] = useState([{ id: 0, ingredient: '', unit: '', value: '' },]);
 
-  function addMaterialItem() {
+  function addIngredients() {
     const input = {			                   
       id: nextID2.current,		               
-      material: '',
+      ingredient: '',
       unit: '',
       value: ''			                     
     };
 
-    setMaterialItems([...materialItems, input]); 
+    setIngredients([...ingredients, input]); 
     
     nextID2.current += 1; 		               
   }
 
-  function deleteMaterialItem(index) {                                    
+  function deleteIngredients(index) {                                    
     if (nextID2.current > 1) {
-      setMaterialItems(materialItems.filter(item => item.id !== index)); 
+      setIngredients(ingredients.filter(item => item.id !== index)); 
 
       nextID2.current -= 1;
     } 
   }
 
-  function handleChangeMaterial(e, index) {
-  if (index > materialItems.length) return;  
+  function handleChangeIngredients(e, index) {
+  if (index > ingredients.length) return;  
   
-  const materialItemsCopy = JSON.parse(JSON.stringify(materialItems));
-  materialItemsCopy[index].material = e.target.value;  
-  setMaterialItems(materialItemsCopy);		  
+  const ingredientsCopy = JSON.parse(JSON.stringify(ingredients));
+  ingredientsCopy[index].ingredient = e.target.value;  
+  setIngredients(ingredientsCopy);		  
   }
 
-  function handleChangeMaterialUnit(e, index) {
-    if (index > materialItems.length) return; 
+  function handleChangeIngredientUnit(e, index) {
+    if (index > ingredients.length) return; 
 
-  const materialItemsCopy = JSON.parse(JSON.stringify(materialItems));
-  materialItemsCopy[index].unit = e.target.value;  
-  setMaterialItems(materialItemsCopy);		  
+  const ingredientsCopy = JSON.parse(JSON.stringify(ingredients));
+  ingredientsCopy[index].unit = e.target.value;  
+  setIngredients(ingredientsCopy);		  
   }
 
-  function handleChangeMaterialValue(e, index) {
-    if (index > materialItems.length) return; 
+  function handleChangeIngredientValue(e, index) {
+    if (index > ingredients.length) return; 
 
-  const materialItemsCopy = JSON.parse(JSON.stringify(materialItems));
-  materialItemsCopy[index].value = e.target.value;  
-  setMaterialItems(materialItemsCopy);		  
+  const ingredientsCopy = JSON.parse(JSON.stringify(ingredients));
+  ingredientsCopy[index].value = e.target.value;  
+  setIngredients(ingredientsCopy);		  
   }
   // ------------------------------------------------------------------------------------------------------
 
@@ -236,6 +263,25 @@ function Addrecipe(props) {
             <input type="text" className='recipeTitle' onChange={e => handleChangeRecipeTitle(e)}></input>
           </div>
 
+          <span>간단한 요리 설명</span>
+          <span style={{color: 'red'}}>*</span>
+          <div>
+            <input type="text" className='recipeTitle' onChange={e => handleChangeRecipeSubTitle(e)}></input>
+          </div>
+
+          <span>해시태그</span>
+          <span style={{color: 'red'}}>*</span>
+          <div>
+            <input type="text" className='recipeTitle' placeholder=' , 로 구분 해시태그 입력 ...'
+                onChange={e => handleChangeHashtags(e)}></input>
+          </div>
+
+          <span>요리양 (인분)</span>
+          <span style={{color: 'red'}}>*</span>
+          <div>
+            <input type="text" className='timeRecipe' onChange={e => handleChangeMeals(e)}></input>
+          </div>
+
           <span>요리시간(분) / 난이도</span>
           <span style={{color: 'red'}}>*</span>
           <div>
@@ -249,27 +295,34 @@ function Addrecipe(props) {
             <span style={{color: 'red'}}>*</span>
           </div>
 
-          {materialItems.map((item, index) => {
+          {ingredients.map((item, index) => {
             return (
             <div className='materialBox'>
               <input type="text" className='materialRecipe' style={{marginTop: "10"}}
-                onChange={e => handleChangeMaterial(e, index)}
+                onChange={e => handleChangeIngredients(e, index)}
                 value={item.title}
               ></input>
-              <select onChange={e => handleChangeMaterialUnit(e, index) }>
+              <select onChange={e => handleChangeIngredientUnit(e, index) }>
                 <option value="단위">단위</option>
+                <option value="개">개</option>
+                <option value="공기">공기</option>                
+                <option value="포기">포기</option>                
                 <option value="컵">컵</option>
-                <option value="스푼">스푼</option>
+                <option value="큰 스푼">큰 스푼</option>
+                <option value="작은 스푼">작은 스푼</option>
+                <option value="장">장</option>
+                <option value="꼬집">꼬집</option>
+                <option value="g">g</option>
               </select>
               <input type="text" className='unitRecipe'
-                onChange={e => handleChangeMaterialValue(e, index)}
+                onChange={e => handleChangeIngredientValue(e, index)}
                 value={item.value}
               ></input>
 
               { index === 0 && 
                 <>
-                <button className='plusMinus' onClick={addMaterialItem}>+</button>
-                <button className='plusMinus' onClick={() => deleteMaterialItem(nextID2.current-1)}>-</button>
+                <button className='plusMinus' onClick={addIngredients}>+</button>
+                <button className='plusMinus' onClick={() => deleteIngredients(nextID2.current-1)}>-</button>
                 </> }
             </div>)})}
 

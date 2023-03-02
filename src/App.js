@@ -2,6 +2,7 @@ import './App.css';
 import Card from './components/Card';
 import CardList from './components/CardList';
 import Addrecipe from './pages/addrecipe/Addrecipe';
+import GetRecipeDB from './pages/addrecipe/GetRecipeDB';
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
       <div style={style}>
         {/* <Card /> */}
         {/* <CardList /> */}
-        <Addrecipe />
+        {/* <Addrecipe /> */}
+        <GetRecipeDB />
       </div>
     </div>
   );
