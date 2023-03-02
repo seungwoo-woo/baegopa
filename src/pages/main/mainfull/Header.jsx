@@ -1,10 +1,14 @@
 import React from 'react';
-import { Container, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SubHeader from './SubHeader';
 import { GiBowlOfRice } from "react-icons/gi";
 import Login from './Login';
 import Search from './Search';
 import styles from './Header.module.css'
+import RecipeDetail from '../../recipe/RecipeDetail';
+
+
 
 function Header(props) {
   return (
@@ -30,7 +34,16 @@ function Header(props) {
         </Container>
       </Navbar>
       {/* 서브메뉴영역 */}
-      <SubHeader />
+      <Navbar className={styles.stynav} bg="light" variant="light">
+        <Container>
+          <Nav className={styles.stylednav}>
+            <Nav.Link className={styles.ft} as={Link} to="/">Today's menu</Nav.Link>
+            <Nav.Link className={styles.ft} as={Link} to="/best-menu">Best menu</Nav.Link>
+            <Nav.Link className={styles.ft} as={Link} to="/view">ButtonKeepert</Nav.Link>
+            <Nav.Link className={styles.ft} as={Link} to="/recipe">RecipeDetail</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
     </>
   );
 }
