@@ -1,9 +1,12 @@
 import React from 'react';
+// import { Card } from 'react-bootstrap';
+// import CardList from '../../components/CardList';
 import styles from "./Search.module.css";
 
 
-
-
+// const [userInput, setUserInput] = useState('');
+// const getValue = (e) => {
+//     setUserInput(e.target.value.toLowerCase())};
 
 function SearchPage(props) {
 
@@ -31,7 +34,11 @@ function SearchPage(props) {
                 </div>
                 <div className={styles.search}>                    
                 <div className={styles.content}>
-                    <input type={'text'} placeholder={'검색 키워드 입력란'}/>
+                    <input 
+                    type={'text'} 
+                    placeholder={'검색 키워드 입력란'} 
+                    
+                    />
                     <img src={ require('../subpage/images/tabler_search.png') } alt={'검색'} title={'검색'}/> 
                     </div>
                 </div>
