@@ -3,6 +3,7 @@ import Card from './components/Card';
 import CardList from './components/CardList';
 import Addrecipe from './pages/addrecipe/Addrecipe';
 import GetRecipeDB from './pages/addrecipe/GetRecipeDB';
+import Login from './pages/login/Login';
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
         {/* <Card /> */}
         {/* <CardList /> */}
         {/* <Addrecipe /> */}
-        <GetRecipeDB />
+        {/* <GetRecipeDB /> */}
+        <Login />
       </div>
     </div>
   );
