@@ -32,9 +32,7 @@ function SearchPage(props) {
                 <div className={styles.search}>                    
                 <div className={styles.content}>
                     <input type={'text'} placeholder={'검색 키워드 입력'}/>
-                    <div className={styles.image}>
                     <img src={ require('../subpage/images/tabler_search.png') } alt={'검색'} title={'검색'}/> 
-                    </div>
                     </div>
                 </div>
             </div> 

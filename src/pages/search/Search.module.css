@@ -53,7 +53,7 @@
 
 .content {
     width: 250px;
-    /* height: 100px; */
+    height: 45px;
     display: flex;
     line-height: 50px;
     margin-left: 30px;
@@ -63,7 +63,6 @@
 } 
 input {
     width: 200px;
-    height: 45px;
     line-height: 45px;
     font-size: 20px;
     border: none;
@@ -73,11 +72,3 @@ input {
     background: none;
 }
 
-/* .image {
-    width: 10px;
-    height: 10px;    
-} */
-.image > img {
-    width: 40px;
-    height: 40px;
-}
