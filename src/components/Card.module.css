@@ -42,13 +42,14 @@
 
 .thumbnailBox {
   display: flex;
-  align-items: center;
+  margin-top: 10px;
   /* border: 1px solid orange; */
 }
 
 .thumbnailBox p {
+  margin-bottom: 8px;
   line-height: 0;
-  font-weight: 200;
+  font-weight: 600;
 }
 
 .thumbnailImage {
@@ -91,7 +92,7 @@
   height: 40px;
   margin: 40px 0 0 220px;
   font-size: 15px;
-  /* color: #F4F0EF; */
+  /* background-color: #F4F0EF; */
 }
 
 .commentBox {

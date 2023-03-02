@@ -3,20 +3,24 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import styled from "styled-components";
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// import 'swiper/css/pagination';
 import BestCard from './BestCard';
 
 
 const StyledSwiper = styled(Swiper)`
-  width: 1200px;
-  height: 330px;
+  width: 1250px;
+  height: 400px;
   display: flex;
+  margin-top: -10px;
   flex-wrap: nowrap;
   .swiper-button-next{
   background-image: url('../img/mingcute_bowl-line.png');
   }
   .swiper-button-next, .swiper-button-prev {
-    color: red; /* 원하는 색깔로 변경 */
+    width: 35px;
+    height: 50px;
+    color: #EEEEEE; /* 원하는 색깔로 변경 */
+    background-color: #bdbdbd5c;
   }
   .swiper-container {
   height: 100%;
@@ -33,20 +37,20 @@ function BestSlider(props) {
       spaceBetween={50}
       slidesPerView={4}
       navigation
-      pagination={{ clickable: true }}
+      // pagination={{ clickable: true }}
     >
 
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
+      <SwiperSlide className='swiperi'><BestCard/>#요리 종류 해시태그 <br/>요리 제목 <br/>닉네임</SwiperSlide>
 
 
 
