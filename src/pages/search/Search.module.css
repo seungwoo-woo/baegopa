@@ -53,17 +53,14 @@
 
 .content {
     width: 250px;
-    /* height: 100px; */
-    /* display: flex; */
+    height: 50px;
     line-height: 50px;
-    /* margin-top: 10px; */
     color: #F4F0EF;
     font-size: 30px;
     border-bottom: 1px solid #212121;
 } 
 input {
     width: 200px;
-    height: 45px;
     line-height: 45px;
     font-size: 20px;
     border: none;

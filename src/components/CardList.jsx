@@ -4,7 +4,7 @@ import React from 'react';
 import Card from './Card';
 
 
-const groupTitme = '배고플 때 생각나는...';
+const groupTitme = '레시피 검색결과';
 const cookItemList = [
   {id: 1,
   title: "애호박구이 간장조림",
@@ -106,7 +106,7 @@ const cookItemList = [
 function CardList(props) {
   // console.log(props);
   // const {groupTitme, cookItemList, viewIndex} = props;
-  const groupTitme = '배고플 때 생각나는...';
+  const groupTitme = '레시피 검색결과';
   const cookItemList = [ 
     {id: 1,
     title: "애호박구이 간장조림",
@@ -116,7 +116,7 @@ function CardList(props) {
     likeNo: 3657,
     userComment: [
       {
-      commentUserId: "삐리리",
+      commentUserId: "닉네임",
       comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
       } 
     ]},
@@ -128,7 +128,7 @@ function CardList(props) {
     likeNo: 3657,
     userComment: [
       {
-      commentUserId: "삐리리",
+      commentUserId: "닉네임",
       comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
       } 
     ]},
@@ -140,7 +140,7 @@ function CardList(props) {
     likeNo: 3657,
     userComment: [
       {
-      commentUserId: "삐리리",
+      commentUserId: "닉네임",
       comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
       } 
     ]},
@@ -152,7 +152,7 @@ function CardList(props) {
     likeNo: 3657,
     userComment: [
       {
-      commentUserId: "삐리리",
+      commentUserId: "닉네임",
       comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
       } 
     ]},
@@ -164,7 +164,7 @@ function CardList(props) {
     likeNo: 3657,
     userComment: [
       {
-      commentUserId: "삐리리",
+      commentUserId: "닉네임",
       comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
       } 
     ]},
@@ -176,7 +176,7 @@ function CardList(props) {
     likeNo: 3657,
     userComment: [
       {
-      commentUserId: "삐리리",
+      commentUserId: "닉네임",
       comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
       } 
     ]},
@@ -188,7 +188,7 @@ function CardList(props) {
     likeNo: 3657,
     userComment: [
       {
-      commentUserId: "삐리리",
+      commentUserId: "닉네임",
       comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
       } 
     ]},
@@ -200,7 +200,7 @@ function CardList(props) {
     likeNo: 3657,
     userComment: [
       {
-      commentUserId: "삐리리",
+      commentUserId: "닉네임",
       comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
       } 
     ]},
