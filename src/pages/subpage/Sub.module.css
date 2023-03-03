@@ -6,28 +6,7 @@
     width: 1200px;
     margin: 0 auto;
 }
-.menu {
-    height: 80px;
-    color: #212121;
-    text-align: center;
-    line-height: 80px;
-    font-size: 30px;
-    background-color: #937062;
-}
 
-.menu2 {
-    height: 50px;
-    color: #212121;
-    font-size: 20px;
-    line-height: 50px;
-    background-color: #F4F0EF;
-}
-.menu2 > ul {
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-}
 
 .recipe {
     width: 1200px;

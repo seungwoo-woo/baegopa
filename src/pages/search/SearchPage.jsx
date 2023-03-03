@@ -137,18 +137,6 @@ const cookItemList = [
         <>
         <div className={styles.wrapper}>
 
-            {/* 메뉴 */}
-            <div className={styles.menu}>
-                <nav>NAV영역</nav>
-            </div>
-            <div className={styles.menu2}>
-                <ul>
-                    <li>하위메뉴1</li>
-                    <li>하위메뉴2</li>
-                    <li>하위메뉴3</li>
-                    <li>하위메뉴4</li>
-                </ul>
-            </div>
 
             {/* 분류 */}
             <div className={styles.title}>
