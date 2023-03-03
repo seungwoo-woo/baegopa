@@ -1,3 +1,4 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css' //부트스트랩 적용 
 import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS 추가
 import './pages/search/Search.module.css';
@@ -17,9 +18,9 @@ import styles from './App.css'
 
 function App() {
 
-
   return (
-    <div >
+  <div className="App">
+
       <BrowserRouter>
         <Header />
         <Routes>
@@ -32,6 +33,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+
     </div>
   );
 }

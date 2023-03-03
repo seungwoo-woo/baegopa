@@ -17,6 +17,7 @@ import Card from './../../components/Card';
 import LikeCount from './components/LikeCount';
 import ViewCount from './components/ViewCount';
 import ButtonKeeper from './components/ButtonKeeper';
+import ReviewRegiter from './components/ReviewRegiter';
 
 
 
@@ -113,8 +114,9 @@ const userReviews = [
   }
 ];
 
+function RecipeDetail(props) {
 // const groupTitme = '배고플 때 생각나는...';
-const cookItemList = [
+const [cookItemList, setCookItemList] = useState([
   {
     id: 1,
     title: "애호박구이 간장조림",
@@ -227,14 +229,14 @@ const cookItemList = [
       } 
     ]
   },
-];
+]);
 
 const viewIndex = 'comment';
 
 // -------------------------------------------------------------------------------------------------
 
 
-function RecipeDetail(props) {
+
 
   const [recipeInfos, setrecipeInfos] = useState(recipeInfo);
 
@@ -243,50 +245,69 @@ function RecipeDetail(props) {
   // console.log(recipeInfo[0].hashtags[0]);
   // 도전! 요리-------------------------------------------------------------------------
   // const {groupTitme, cookItemLists, viewIndex} = props;
-  console.log(cookItemList);
+  // console.log(cookItemList);
 
 
   //-------------------------------------------------------------------------------------
-  const [reviewValue, setReviewValue] = useState('');
-  console.log(reviewValue);
+  const [reviewValue, setReviewValue] = React.useState({
+    id: "",
+    title: "",
+    cardImagePath: "",
+    userId: "",
+    viewNo: "",
+    likeNo: "",
+    userComment: [{
+      commentUserId: "",
+      comment: "",
+    }]
+  });
+  console.log(reviewValue.cardImagePath);
   const handleChange = (e) => {
-    setReviewValue(e.target.value);
-    console.log(e.target.value);
+    const value = e.target.value;
+    setReviewValue({
+      ...reviewValue,
+      [e.target.name] : value
+    });
   }
   // const handleSubmit = {};
   // const fileInput = useRef(null);  // fileInput에 초기값은 null
-  const handleSubmit = () => {
-    console.log(imgRef.current.value);
-    handleInsert(reviewValue);
-    saveImgFile();
+  const handleSubmit = (e) => {
+    // console.log(imgRef.current.value);
+    // handleInsert(reviewValue);
+    // saveImgFile();
+    console.log(reviewValue.userComment[0].comment);
+    // onInsert(reviewValue);
+    setReviewValue('');
+    e.preventDefault();
+    // onHide();
   };
   
 
 
-  const handleInsert = useCallback((data) => {
-    const { id, cardImagePath, commentUserId, comment } = data;
+  // const handleInsert = useCallback((data) => {
+  //   const { id, cardImagePath, commentUserId, comment } = data;
     
-    const cookItemListAdd = {
-      id: uuidv4(),
-      cardImagePath,
-      commentUserId,
-      comment,
-    };
+  //   const cookItemListAdd = {
+  //     id: uuidv4(),
+  //     cardImagePath,
+  //     commentUserId,
+  //     comment,
+  //   };
 
-    setReviewValue(cookItemList.concat(cookItemListAdd));
-    // localStorage.setItem('todos', JSON.stringify(todos.concat(todo)))
+  //   setReviewValue(cookItemList.concat(cookItemListAdd));
+  //   // localStorage.setItem('todos', JSON.stringify(todos.concat(todo)))
 
-  }, [cookItemList]);
+  // }, [cookItemList]);
 
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef(null);
-  console.log(imgRef.current);
-  console.log(imgRef);
+  // console.log(imgRef.current);
+  // console.log(imgRef);
 
   // 이미지 업로드 input의 onChange
   const saveImgFile = () => {
     const file = imgRef.current.files[0];
-    console.log(file);
+    console.log(file.name);
     const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
@@ -295,6 +316,7 @@ function RecipeDetail(props) {
   };
 
   const swiperRef = useRef();
+  const swiperMainRef = useRef();
 
   // 링크 복사 기능---------------------------------
   const handleCopyClipBoard = async (text) => {
@@ -305,9 +327,11 @@ function RecipeDetail(props) {
       alert('복사에 실패하였습니다');
     }
 };
-console.log(handleCopyClipBoard);
+// console.log(handleCopyClipBoard);
 let content = window.location.href;
 // console.log(content);
+console.log(reviewValue.cardImagePath);
+// console.log(imgRef.current.files[0].name);
 
   return (
     <div className={styles['recipe-page']}>
@@ -319,18 +343,18 @@ let content = window.location.href;
         <div className={styles.main}>
           <div className={styles['main--left']}>
             {/* <img src={recipes[0].image} alt="이미지" /> */}
-            <div className={styles['main--left--img']}>
+            <div className={styles['left--imgwrapper']}>
               <Swiper
-                modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination, Scrollbar]}
                 spaceBetween={0}
                 slidesPerView={1}
                 onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
+                // onSwiper={(swiper) => console.log(swiper)}
                 // pagination={{ clickable: true }}
                 // scrollbar={{ draggable: true }}
                 // navigation
                 onBeforeInit={(swiper) => {
-                swiperRef.current = swiper;
+                swiperMainRef.current = swiper;
                 }}
               >
                   {/* {recipes.map((recipe) => {
@@ -347,12 +371,13 @@ let content = window.location.href;
                   } */}
                 <SwiperSlide><img src={recipes[0].image01} alt="이미지1" /></SwiperSlide>
                 <SwiperSlide><img src={recipes[0].image02} alt="이미지2" /></SwiperSlide>
-                <SwiperSlide><img src={recipes[0].image03} alt="이미지3" /></SwiperSlide>
-                <SwiperSlide><img src={recipes[0].image04} alt="이미지4" /></SwiperSlide>
-                <SwiperSlide><img src={recipes[0].image05} alt="이미지5" /></SwiperSlide>
               </Swiper>
+              <div>
+                <button onClick={() => swiperMainRef.current?.slidePrev()} className={`${styles.btn_mainnavigation} ${styles.btn_mainprev}`}></button>
+                <button onClick={() => swiperMainRef.current?.slideNext()} className={`${styles.btn_mainnavigation} ${styles.btn_mainnext}`}></button>
+              </div>
             </div>
-            <div className={styles['main--left--counts']}>
+            <div className={styles['main--leftcounts']}>
                 {/* {
                   recipeInfos.map((info, index) => {
                     return <LikeCount index={[0]} likeCounts={info.likeCounts} setrecipeInfos={setrecipeInfos}/>
@@ -363,21 +388,21 @@ let content = window.location.href;
             </div>
           </div>
           <div className={styles['main--right']}>
-            <h2 className={styles['main--right--subtitle']}>{recipes[0].subtitle}</h2>
-            <h1 className={styles['main--right--title']}>{recipes[0].title}</h1>
-            <div className={styles['main--right--info']}>
+            <h2 className={styles['main--rightsubtitle']}>{recipes[0].subtitle}</h2>
+            <h1 className={styles['main--righttitle']}>{recipes[0].title}</h1>
+            <div className={styles['main--rightinfo']}>
               <span>난이도: {recipeInfo[0].level}</span>
               <span>양: {recipeInfo[0].meals} 인분</span>
               <span>조리시간: {recipeInfo[0].time}</span>
             </div>
-            <div className={styles['main--right--hashtag']}>
+            <div className={styles['main--righthashtag']}>
               {recipeInfo[0].hashtags.map((hashtag, index) => {
                 return (
                   <div key={index}>#{hashtag}</div>
                 )
               })}
             </div>
-            <div className={styles['main--right--buttons']}>
+            <div className={styles['main--rightbuttons']}>
               <ButtonKeeper />
               <button type='button' className={styles['btn-share']}>
                 <img src={ require('./images/btn-share_brown.png') } />
@@ -416,10 +441,10 @@ let content = window.location.href;
         <div className={styles['review--wrapper']}>
           <div className={styles['review--title']}>
             <h4 className={styles['font_eng']}>REVIEW</h4>
-            <div className={styles['review--title--bottom']}>
+            <div className={styles['review--titlebottom']}>
               <p>오늘의 주제</p>
-              <span className={styles['review--title--bottom--subject']}>김치찌개</span>
-              <p className={styles['review--title--bottom-subtitle']}>회원들이 만든 요리</p>
+              <span className={styles['review--titlesubject']}>김치찌개</span>
+              <p className={styles['review--titlesubtitle']}>회원들이 만든 요리</p>
             </div>
           </div>
           <div className={styles['review--inner']}>
@@ -430,7 +455,7 @@ let content = window.location.href;
               spaceBetween={0}
               slidesPerView={4}
               onSlideChange={() => console.log('slide change')}
-              onSwiper={(swiper) => console.log(swiper)}
+              // onSwiper={(swiper) => console.log(swiper)}
               // pagination={{ clickable: true }}
               // scrollbar={{ draggable: true }}
               // navigation
@@ -453,7 +478,7 @@ let content = window.location.href;
             </div>
           </div>
         </div>
-        <div className={styles['review--register']}>
+        {/* <div className={styles['review--register']}>
           {imgRef.current
             ? <img className={styles['review--register-image']} src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
             :<label className={styles['input-file-button']} for="input-file"></label>}
@@ -464,16 +489,17 @@ let content = window.location.href;
             onChange={saveImgFile}
             ref={imgRef}
             style={{display:"none"}} 
+            name={reviewValue.cardImagePath}
           />
           <label 
             htmlFor="review--content" 
             className={styles['review--register--write']}
           >
             <textarea 
-              value={reviewValue} 
+              // value={reviewValue.userComment}
               onChange={handleChange}
               id='review--content'
-              name="text" 
+              name={reviewValue.userComment[0].comment}
               cols="2" rows="8" 
               placeholder='가장 좋아하는 것에 대한 에세이를 장석하세요'
             />
@@ -484,7 +510,8 @@ let content = window.location.href;
             // onInsert={handleInsert} 
             className={styles['review--register--submit']}
           >SUBMIT</button>
-        </div>
+        </div> */}
+        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} />
       </section>
 
       <section className={styles.footer}>
