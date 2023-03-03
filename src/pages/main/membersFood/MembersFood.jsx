@@ -17,6 +17,7 @@ function MembersFood(props) {
     <div>
     <h1 className={styles.hd}>Members Food</h1>
     </div>
+    
     <div className={styles.header}>
       <CardList viewIndex={viewIndex}/>
     </div>

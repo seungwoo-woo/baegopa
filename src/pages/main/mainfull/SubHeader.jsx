@@ -13,9 +13,9 @@ export default function SubHeader() {
       <Navbar className={styles.stynav} bg="light" variant="light">
         <Container>
           <Nav className={styles.stylednav}>
-            <Nav.Link className={styles.ft} as={Link} to="/">Today's menu</Nav.Link>
-            <Nav.Link className={styles.ft} as={Link} to="/best-menu">Best menu</Nav.Link>
-            <Nav.Link className={styles.ft} as={Link} to="/view">ButtonKeepert</Nav.Link>
+            <Nav.Link className={styles.ft} as={Link} to="/today">Today's menu</Nav.Link>
+            <Nav.Link className={styles.ft} as={Link} to="/best">Best menu</Nav.Link>
+            <Nav.Link className={styles.ft} as={Link} to="/search">레시피 종류</Nav.Link>
             <Nav.Link className={styles.ft} as={Link} to="/recipe">RecipeDetail</Nav.Link>
           </Nav>
         </Container>
