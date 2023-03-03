@@ -9,6 +9,9 @@
   margin-top: 40px;
 }
 .hd{
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
+  color: rgb(147, 112, 98);
+  text-align: center;
 }

@@ -2,7 +2,7 @@
 .ft{
   margin-top: 100px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   border-bottom: 1px solid
 }
 h5{
@@ -17,9 +17,9 @@ h5{
 
 }
 .sns{
+  width: 185px;
   margin-top: 20px;
   white-space : nowrap;
-  width: 300px;
 }
 
 .snss{
@@ -35,14 +35,14 @@ h5{
 
 /* 인포 */
 .ff{
-  width: 1200px;
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 .info{
+  width: 1200px;
   color: #808080;
   font-size: 11px;
-  width: 100%;
   padding-top: 20px;
 }
 .cp{

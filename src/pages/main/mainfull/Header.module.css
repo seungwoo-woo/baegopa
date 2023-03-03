@@ -1,6 +1,7 @@
 .stymain {
-  width: 1200px;
   background-color: rgb(244, 240, 239);
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
