@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import Card from '../../components/Card';
 import CardList from '../../components/CardList';
@@ -19,6 +20,17 @@ import styles from "./Search.module.css";
 //     // 테스트 함수에서는 true 또는 false를 반환해야 하며, 여기서 true를 반환하는 경우만 새로운 배열에 포함됨
 //     setCardList(CardList.filter((card) => card.id !== id));
 //   }, [CardList]);
+=======
+import React from 'react';
+// import { Card } from 'react-bootstrap';
+// import CardList from '../../components/CardList';
+import styles from "./Search.module.css";
+
+
+// const [userInput, setUserInput] = useState('');
+// const getValue = (e) => {
+//     setUserInput(e.target.value.toLowerCase())};
+>>>>>>> main
 
 function SearchPage(props) {
 
