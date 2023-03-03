@@ -1,10 +1,14 @@
 import React from 'react';
-import { Container, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import SubHeader from './SubHeader';
 import { GiBowlOfRice } from "react-icons/gi";
 import Login from './Login';
 import Search from './Search';
 import styles from './Header.module.css'
+import RecipeDetail from '../../recipe/RecipeDetail';
+
+
 
 function Header(props) {
   return (
@@ -12,9 +16,9 @@ function Header(props) {
       {/* 헤더영역 */}
       <Navbar className={styles.stymain} collapseOnSelect expand="lg"  variant="dark">
         <Container className={styles.StyledContainer}>
-          <Navbar.Brand className={styles.logo} href="#home">
-          <h1 href="#home"><GiBowlOfRice /></h1>
-          <h1 href="#home">배고파</h1>
+          <Navbar.Brand className={styles.logo} href="/">
+          <h1 href="/"><GiBowlOfRice /></h1>
+          <h1 href="/">배고파</h1>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-dark-example" />
           <Navbar.Collapse className={styles.StyledNavbar} id="navbar-dark-example" style={{justifyContent:'inherit'}}>
@@ -30,7 +34,7 @@ function Header(props) {
         </Container>
       </Navbar>
       {/* 서브메뉴영역 */}
-      <SubHeader />
+      <SubHeader/>
     </>
   );
 }
