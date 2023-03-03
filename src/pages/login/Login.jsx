@@ -2,26 +2,31 @@ import React, {useState } from 'react';
 import 'firebase/compat/auth';
 import { firebaseConfig } from '../addrecipe/firestore';
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, setPersistence, getRedirectResult } from "firebase/auth";
 
 function Login(props) {
 
   const app = initializeApp(firebaseConfig);
   const provider = new GoogleAuthProvider();
-  const auth = getAuth(app);
+  const auth = getAuth();
+  const [user, setUser] = useState(auth.currentUser);
 
-  const [user, setUser] = useState('');
+  console.log(user);
 
   const handleSignin = () => {
-
+    
     signInWithPopup(auth, provider)
+    
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       // The signed-in user info.
       console.log(result.user);
-      setUser(result.user.email);      
+      console.log(token);
+      console.log(auth.currentUser);
+
+      setUser(result.user.displayName);      
       // ...
 
 
@@ -41,7 +46,12 @@ function Login(props) {
 
   const handleSignout = () => { 
     signOut(auth).then(() => {
+      console.log(user);
       console.log('Sign out');
+      console.log(auth.currentUser);
+      setUser(auth.currentUser);
+      
+
     });
 
   }
