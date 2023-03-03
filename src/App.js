@@ -21,8 +21,8 @@ function App() {
         {/* <Main /> */}
         {/* <Subpage/> */}
         <SearchPage/>
-        <CardList />
-        <Footer/>
+        {/* <CardList /> */}
+        {/* <Footer/> */}
         {/* <RecipeDetail /> */}
       </div>
     </div>
