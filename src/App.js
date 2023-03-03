@@ -1,3 +1,4 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css' //부트스트랩 적용 
 import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS 추가
 import './pages/search/Search.module.css';
@@ -8,6 +9,7 @@ import Header from './pages/main/mainfull/Header';
 import SubHeader from './pages/main/mainfull/SubHeader';
 import Today from './pages/main/best/Today';
 import Footer from './pages/main/mainfull/Footer';
+
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+
     </div>
   );
 }

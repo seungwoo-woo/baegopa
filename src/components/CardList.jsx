@@ -104,6 +104,7 @@ const cookItemList = [
   ]},
 ];
 function CardList(props) {
+
   // console.log(props);
   // const {groupTitme, cookItemList, viewIndex} = props;
   const groupTitme = '배고플 때 생각나는...';
@@ -209,6 +210,7 @@ function CardList(props) {
   const viewIndex = 'comment';
 
   return (
+
     <div className={styles.group}>
       <h1>{groupTitme}</h1>
       <div className={styles.cardList}>
