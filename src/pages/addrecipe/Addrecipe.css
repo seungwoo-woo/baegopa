@@ -1,0 +1,163 @@
+.addRecipeWrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  height: 90px;
+  background-color: rgb(30, 30, 30);
+
+  position: relative;
+  
+}
+
+.header h1 {
+  text-align: center;
+  line-height: 90px;
+  color: white;
+}
+
+.header button {
+  position: absolute;
+  right: 30px;
+  top: 35px;
+  cursor: pointer;
+}
+
+.addRecipeBody {
+  width: 650px;
+  margin: 100px auto;
+  margin-bottom: 150px;
+}
+
+.addRecipeBody div.input-file-button {
+  
+  display: inline-block;
+  text-align: center;
+  line-height: 68px;
+  color: #CCC;
+  width: 620px;
+  height: 68px;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.addRecipeBody div.input-file-button label, p {
+  cursor: pointer;
+}
+
+.addRecipeBody span {
+  font-size: 20px;
+  color: orange;
+  font-weight: 700;
+}
+
+.addRecipeBody input {
+  width: 480px;
+  height: 68px;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.addRecipeBody input.recipeTitle {
+  width: 600px;
+}
+
+.addRecipeBody input.timeRecipe {
+  width: 200px;
+  padding-left: 0;
+  text-align: center;
+}
+
+.addRecipeBody div.materialBox {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+.addRecipeBody input.materialRecipe {
+  width: 280px;
+  height: 40px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.addRecipeBody div.processlBox {
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+.addRecipeBody input.processRecipe {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 40px;
+}
+
+.addRecipeBody select {
+  text-align: center;
+  width: 87px;
+  height: 40px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  margin-right: 10px;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+}
+
+.addRecipeBody input.unitRecipe {
+  padding-left: 0;
+  text-align: center;
+  width: 90px;
+  height: 40px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+
+}
+
+.addRecipeBody button {
+  width: 110px;
+  height: 69px;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  /* padding-left: 20px; */
+}
+
+.addRecipeBody button.plusMinus {
+  width: 50px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 20px;
+  margin-top: 0px;
+  margin-bottom: 1px;
+  cursor: pointer;
+}
+
+.addRecipeFooter {
+  text-align: right;
+  width: 600px;
+  margin: 0px auto;
+  margin-bottom: 150px;
+  padding-left: 0px;
+}
+
+.addRecipeFooter button {
+  width: 200px;
+  height: 60px;
+  border: 1px solid #CCC;
+  border-radius: 40px;
+  margin-left: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.addRecipeFooter button.submitButton {
+  background-color: white;
+}
