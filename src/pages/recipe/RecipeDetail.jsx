@@ -114,8 +114,9 @@ const userReviews = [
   }
 ];
 
+function RecipeDetail(props) {
 // const groupTitme = '배고플 때 생각나는...';
-const cookItemList = [
+const [cookItemList, setCookItemList] = useState([
   {
     id: 1,
     title: "애호박구이 간장조림",
@@ -228,14 +229,14 @@ const cookItemList = [
       } 
     ]
   },
-];
+]);
 
 const viewIndex = 'comment';
 
 // -------------------------------------------------------------------------------------------------
 
 
-function RecipeDetail(props) {
+
 
   const [recipeInfos, setrecipeInfos] = useState(recipeInfo);
 
@@ -315,6 +316,7 @@ function RecipeDetail(props) {
   };
 
   const swiperRef = useRef();
+  const swiperMainRef = useRef();
 
   // 링크 복사 기능---------------------------------
   const handleCopyClipBoard = async (text) => {
@@ -341,9 +343,9 @@ console.log(reviewValue.cardImagePath);
         <div className={styles.main}>
           <div className={styles['main--left']}>
             {/* <img src={recipes[0].image} alt="이미지" /> */}
-            <div className={styles['main--left--img']}>
+            <div className={styles['left--imgwrapper']}>
               <Swiper
-                modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination, Scrollbar]}
                 spaceBetween={0}
                 slidesPerView={1}
                 onSlideChange={() => console.log('slide change')}
@@ -352,7 +354,7 @@ console.log(reviewValue.cardImagePath);
                 // scrollbar={{ draggable: true }}
                 // navigation
                 onBeforeInit={(swiper) => {
-                swiperRef.current = swiper;
+                swiperMainRef.current = swiper;
                 }}
               >
                   {/* {recipes.map((recipe) => {
@@ -369,12 +371,13 @@ console.log(reviewValue.cardImagePath);
                   } */}
                 <SwiperSlide><img src={recipes[0].image01} alt="이미지1" /></SwiperSlide>
                 <SwiperSlide><img src={recipes[0].image02} alt="이미지2" /></SwiperSlide>
-                <SwiperSlide><img src={recipes[0].image03} alt="이미지3" /></SwiperSlide>
-                <SwiperSlide><img src={recipes[0].image04} alt="이미지4" /></SwiperSlide>
-                <SwiperSlide><img src={recipes[0].image05} alt="이미지5" /></SwiperSlide>
               </Swiper>
+              <div>
+                <button onClick={() => swiperMainRef.current?.slidePrev()} className={`${styles.btn_mainnavigation} ${styles.btn_mainprev}`}></button>
+                <button onClick={() => swiperMainRef.current?.slideNext()} className={`${styles.btn_mainnavigation} ${styles.btn_mainnext}`}></button>
+              </div>
             </div>
-            <div className={styles['main--left--counts']}>
+            <div className={styles['main--leftcounts']}>
                 {/* {
                   recipeInfos.map((info, index) => {
                     return <LikeCount index={[0]} likeCounts={info.likeCounts} setrecipeInfos={setrecipeInfos}/>
@@ -385,21 +388,21 @@ console.log(reviewValue.cardImagePath);
             </div>
           </div>
           <div className={styles['main--right']}>
-            <h2 className={styles['main--right--subtitle']}>{recipes[0].subtitle}</h2>
-            <h1 className={styles['main--right--title']}>{recipes[0].title}</h1>
-            <div className={styles['main--right--info']}>
+            <h2 className={styles['main--rightsubtitle']}>{recipes[0].subtitle}</h2>
+            <h1 className={styles['main--righttitle']}>{recipes[0].title}</h1>
+            <div className={styles['main--rightinfo']}>
               <span>난이도: {recipeInfo[0].level}</span>
               <span>양: {recipeInfo[0].meals} 인분</span>
               <span>조리시간: {recipeInfo[0].time}</span>
             </div>
-            <div className={styles['main--right--hashtag']}>
+            <div className={styles['main--righthashtag']}>
               {recipeInfo[0].hashtags.map((hashtag, index) => {
                 return (
                   <div key={index}>#{hashtag}</div>
                 )
               })}
             </div>
-            <div className={styles['main--right--buttons']}>
+            <div className={styles['main--rightbuttons']}>
               <ButtonKeeper />
               <button type='button' className={styles['btn-share']}>
                 <img src={ require('./images/btn-share_brown.png') } />
@@ -438,10 +441,10 @@ console.log(reviewValue.cardImagePath);
         <div className={styles['review--wrapper']}>
           <div className={styles['review--title']}>
             <h4 className={styles['font_eng']}>REVIEW</h4>
-            <div className={styles['review--title--bottom']}>
+            <div className={styles['review--titlebottom']}>
               <p>오늘의 주제</p>
-              <span className={styles['review--title--bottom--subject']}>김치찌개</span>
-              <p className={styles['review--title--bottom-subtitle']}>회원들이 만든 요리</p>
+              <span className={styles['review--titlesubject']}>김치찌개</span>
+              <p className={styles['review--titlesubtitle']}>회원들이 만든 요리</p>
             </div>
           </div>
           <div className={styles['review--inner']}>
@@ -475,7 +478,7 @@ console.log(reviewValue.cardImagePath);
             </div>
           </div>
         </div>
-        <div className={styles['review--register']}>
+        {/* <div className={styles['review--register']}>
           {imgRef.current
             ? <img className={styles['review--register-image']} src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
             :<label className={styles['input-file-button']} for="input-file"></label>}
@@ -507,8 +510,8 @@ console.log(reviewValue.cardImagePath);
             // onInsert={handleInsert} 
             className={styles['review--register--submit']}
           >SUBMIT</button>
-        </div>
-        <ReviewRegiter />
+        </div> */}
+        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} />
       </section>
 
       <section className={styles.footer}>

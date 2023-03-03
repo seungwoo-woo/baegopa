@@ -9,64 +9,38 @@ import Card from '../../../components/Card';
 
 
 function ReviewRegiter(props) {
+  const {cookItemList, setCookItemList} = props;
 
-  const [cookItemList, setCookItemList] = useState([
-    {
-      id: 1,
-      title: "애호박구이 간장조림",
-      cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-      userId: "샬라라",
-      viewNo: 137479,
-      likeNo: 3657,
-      userComment: [
-        {
-        commentUserId: "삐리리",
-        comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-        }
-      ]
-    },
-    {
-      id: 2,
-      title: "애호박구이 간장조림",
-      cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-      userId: "샬라라",
-      viewNo: 137479,
-      likeNo: 3657,
-      userComment: [
-        {
-        commentUserId: "삐리리",
-        comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-        }
-      ]
-    },
-  ]);
   
   const [value, setValue] = useState('');
   const imgRef = useRef(null);
   const viewIndex = 'comment';
   const [imgFile, setImgFile] = useState(null);
   const [content, setContent] = useState('');
-
-  // --------------------------------------------------
-  // const hadleChange = (e) => {
-  //   setValue(e.target.value);
-  // }
+  // const [upload, setUpload] = React.useState({
+  //   cardImagePath: imgFile,
+  //   userComment: [{
+  //     commentUserId: "어우동",
+  //     comment: content,
+  //   }]
+  // });
   
-  const handleInsert = useCallback((text, cardImagePath, base64Sub) => {  //handleInsert로 호출될 때 
+  const handleInsert = useCallback((data) => {  //handleInsert로 호출될 때 
+    const {cardImagePath, commentUserId, comment} = data;
+    
     const cookItem = {
       id: uuidv4(),
       title: "",
-      cardImagePath: base64Sub,
+      cardImagePath,
       userId: "",
       viewNo: "",
       likeNo: "",
       userComment: [{
-        commentUserId: "",
-        comment: "",
+        commentUserId,
+        comment,
       }]
     };
-    setCookItemList(cookItemList.concat(cookItem));  // TODO: 새로운 배열을 반환함 그거를 setTodos함수에 넣음
-    // nextId.current += 1; // nextId에 1씩 더하기
+    setCookItemList(cookItemList.concat(cookItem));
     console.log(cardImagePath);
   }, [cookItemList]);
 
@@ -76,11 +50,13 @@ function ReviewRegiter(props) {
     imgRef.current = null;
     setImgFile('');
     setContent('');
+    // setUpload('');
     e.preventDefault();
+    handleInsert('');
   };
   // ----------------------------------------------------------
   const handleChangeFile = (event) => {
-    console.log(event.target.files.length)    // TODO: 이미지 이름 데이터!!!!
+    console.log(event.target.files.length)
     setValue(event.target.files);
     
     if (event.target.files[0]) {
@@ -96,17 +72,10 @@ function ReviewRegiter(props) {
   const contentChange = (e) => {
     setContent(e.target.value);
   }
-
-  console.log(imgRef.current);
-
+  // console.log(cookItemList);
   return (
     <>
-      <div style={{ display: 'flex', columnGap: 20 }}>
-        {cookItemList.map((cookItem) => {
-          return <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />
-        })}
-      </div>  
-      <div 
+      <div
         className={styles['review--register']}
         // onSubmit={handleSubmit}
       >

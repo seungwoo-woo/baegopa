@@ -55,22 +55,49 @@ a {
   overflow: hidden;
   position: relative;
 }
-.main--left > img {
+.main--left img {
   width:100%;
   height:100%;
   object-fit:cover;
 }
-.main--left--counts {
+.main--leftcounts {
   display: flex;
   position: absolute;
   z-index: 999;
   width: 100%;
+  height: 50px;
   box-sizing: border-box;
   bottom: 10px;
   flex-wrap: nowrap;
   justify-content: space-between;
   padding: 0px 10px;
 }
+.btn_mainnavigation {
+  position: absolute;
+  top: 220px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 30px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: 0.3s;
+  cursor: pointer;
+  padding: 0px;
+}
+.btn_mainprev {
+  left: 10px;
+  background-image: url(../images/btn-mainprev.png);
+}
+.btn_mainnext {
+  right: 10px;
+  background-image: url(../images/btn-mainnext.png);
+}
+
+
 .main--right {
   flex: 1;
   /* margin-left: 40px; */
@@ -84,7 +111,7 @@ a {
   background-color: #fff;
 
 }
-.main--right--subtitle{
+.main--rightsubtitle{
   /* white-space: nowrap; */
   font-size: 18px;
   font-weight: 300;
@@ -95,25 +122,19 @@ a {
   -webkit-line-clamp: 2; /* 영역 박스 안 내용의 최대 라인수 */
   -webkit-box-orient: vertical; 
 }
-/* .main--right--title {
-  margin: 40px 0px;
-} */
-.main--right--info {
+.main--rightinfo {
   display: flex;
   column-gap: 3.0rem;
   flex-wrap: wrap;
 }
-/* .main--right--info > span {
-  padding-right: 100px;
-} */
-.main--right--hashtag{
+.main--righthashtag{
   display: flex;
   flex-wrap: wrap;
   row-gap: 8px;
   column-gap: 8px;
   /* margin: 40px 0px; */
 }
-.main--right--hashtag > div {
+.main--righthashtag > div {
   height: 36px;
   line-height: 36px;
   font-size: 14px;
@@ -122,12 +143,12 @@ a {
   border-radius: 20px;
   background-color: rgb(244, 240, 239);
 }
-.main--right--buttons {
+.main--rightbuttons {
   display: flex;
   justify-content: flex-end;
   column-gap: 8px;
 }
-.main--right--buttons > button {
+.main--rightbuttons > button {
   /* width: 60px;
   height: 60px; */
   position: relative;
@@ -137,7 +158,7 @@ a {
   background-size: cover;
   cursor: pointer;
 }
-.main--right--buttons > button > img {
+.main--rightbuttons > button > img {
   width: 50px;
 }
 .btn-keeper:hover > p.arrow_box  {
@@ -192,6 +213,9 @@ a {
 .content--ingredients {
   margin: 22px 0px 80px 0px;
 }
+.content--ingredients > h4 {
+  color: #212121;
+}
 .content--ingredients > p {
   width: 50%;
   line-height: 28px;  /* TODO: html font-size 정해지면 px -> rem으로 변경  */
@@ -201,6 +225,7 @@ a {
   padding: 0px;
 }
 .content--method > h4 {
+  color: #212121;
   padding-bottom: 10px;
 }
 .content--method > li {
@@ -221,6 +246,7 @@ a {
 }
 .review--title{
   display: flex;
+  min-width: 240px;
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
@@ -230,14 +256,14 @@ a {
   font-size: 30px;
   color: rgb(147, 112, 98);
 }
-.review--title--bottom--subject {
+.review--titlesubject {
   display: inline-block;
   font-size: 27px;
   margin: 8px 0px 12px;
   letter-spacing:-0.5px;
   border-bottom: 1px solid rgb(147, 112, 98);
 }
-.review--title--bottom-subtitle {
+.review--titlesubtitle {
   font-size: 15px;
 }
 
@@ -352,14 +378,19 @@ a {
 
 /* -------------------------LikeCount---------------------------- */
 .likecount {
-  /* 부모 main--left--counts */
+  /* 부모 main--leftcounts */
   display: flex;
   column-gap: 6px;
+  align-items: center;
 }
 .likecount > img {
-  width: 30px;
+  flex: 1;
+  height: 40px;
+  object-fit:cover;
 }
 .likecount > span {
+  flex: 1;
+  font-size: 18px;
   color: rgb(147, 112, 98);
 }
 
@@ -372,20 +403,17 @@ a {
   color: #fff;
   font-size: 0px;
   padding: 0px 15px;
+  box-sizing: border-box;
   border-radius: 40px;
   background-color: rgba(147, 112, 98, 0.7);
   /* vertical-align:middle ; */
   text-align: center;
 }
 .viewcount > img {
-  /* width: 30px; */
-  font-size: inherit;
-  /* vertical-align:bottom;
-  margin-right: 6px;
-  padding-top: 2px; */
+  height: 40px;
 }
 .viewcount > span {
-  font-size: initial;
+  font-size: 18px;
   text-align:center;
   line-height: 100%;
 }

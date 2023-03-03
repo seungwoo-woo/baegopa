@@ -25,8 +25,8 @@ function App() {
         {/* <SearchPage/> */}
         {/* <CardList />
         <Footer/> */}
-        {/* <RecipeDetail /> */}
-        <ReviewRegiter />
+        <RecipeDetail />
+        {/* <ReviewRegiter /> */}
         {/* <LikeCount /> */}
       </div>
     </div>
