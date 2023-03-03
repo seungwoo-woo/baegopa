@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 import './Addrecipe.css';
-import { firebaseConfig } from './firestore.js';
 
-// === Firebase ======================================================
+// === Firebase ===========================================================================
+import { firebaseConfig } from './firestore.js';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-// -------------------------------------------------------------------
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+// ----------------------------------------------------------------------------------------
 
 
 
@@ -43,7 +43,7 @@ function Addrecipe(props) {
 
 
 // DB에 쓰기 함수 ---------------------------------------------------
-  const dbWrite = (recipe, ingredients, process, imageFilesPath) => {
+  const dbWrite = (recipe, ingredientItems, ingredientUnits, ingredientValues, process, imageFilesPath) => {
 
   try {
     const docRef = addDoc(collection(db, "RecipeDB"), {
@@ -54,7 +54,9 @@ function Addrecipe(props) {
       time: recipe['time'],
       difficulty: recipe['difficulty'],
       userId: "어우동",
-      ingredients: ingredients,
+      ingredientItems: ingredientItems,
+      ingredientUnits: ingredientUnits,
+      ingredientValues: ingredientValues,
       process: process,
       imageFilesPath: imageFilesPath,
       likeCount: 0,
@@ -96,7 +98,24 @@ function Addrecipe(props) {
           console.log(imageFilesPath.length);
 
           if(imageFiles[0].length === imageFilesPath.length) { 
-            dbWrite(recipeSummary, ingredients, processItems, imageFilesPath);
+          
+            const processItems2 = processItems.map((item) => {
+              return item['process'];
+            })
+            
+            const ingredientItems = ingredients.map((item) => {
+              return item['ingredient'];
+            })
+
+            const ingredientUnits = ingredients.map((item) => {
+              return item['unit'];
+            })
+
+            const ingredientValues = ingredients.map((item) => {
+              return item['value'];
+            })
+
+            dbWrite(recipeSummary, ingredientItems, ingredientUnits, ingredientValues, processItems2, imageFilesPath);
           }
         });
         }

@@ -3,7 +3,7 @@ import { firebaseConfig } from './firestore';
 
 // === Firebase ======================================================
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
 // -------------------------------------------------------------------
 
 
@@ -13,11 +13,15 @@ async function GetRecipeDB(props) {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+  // const q = query(collection(db, "RecipeDB"), where("ingredients", "array-contains", "고구마"), where("title", "==", "세가지샐러드"));
+  const q = query(collection(db, "RecipeDB"), where("ingredients", "array-contains-any", ["견과류(20g)", "개", "1"]));
 
 
-  const querySnapshot = await getDocs(collection(db, "RecipeDB"));
+  // const querySnapshot = await getDocs(collection(db, "RecipeDB"));
+  const querySnapshot = await getDocs(q);
 
-  console.log((Object.entries(querySnapshot)));
+
+  console.log((typeof(querySnapshot)));
 
   querySnapshot.forEach((doc) => {
     console.log('come in');
@@ -36,12 +40,6 @@ async function GetRecipeDB(props) {
     console.log("조회수", doc.data().viewCount);
     return;
   });
-
-
-
-
-
-
 
 
   return (

@@ -4,6 +4,7 @@ import CardList from './components/CardList';
 import Addrecipe from './pages/addrecipe/Addrecipe';
 import GetRecipeDB from './pages/addrecipe/GetRecipeDB';
 import Login from './pages/login/Login';
+import LecipeAPI2 from './temp/LecipeAPI2';
 
 function App() {
 
@@ -18,7 +19,8 @@ function App() {
         {/* <CardList /> */}
         {/* <Addrecipe /> */}
         {/* <GetRecipeDB /> */}
-        <Login />
+        <LecipeAPI2 />
+        {/* <Login /> */}
       </div>
     </div>
   );
