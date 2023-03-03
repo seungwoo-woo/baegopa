@@ -1,57 +1,39 @@
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import styled from "styled-components";
+import styles from './BestSlider.module.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import BestCard from './BestCard';
-
-
-const StyledSwiper = styled(Swiper)`
-  width: 1200px;
-  height: 330px;
-  display: flex;
-  flex-wrap: nowrap;
-  .swiper-button-next{
-  background-image: url('../img/mingcute_bowl-line.png');
-  }
-  .swiper-button-next, .swiper-button-prev {
-    color: red; /* 원하는 색깔로 변경 */
-  }
-  .swiper-container {
-  height: 100%;
-
-}
-`;
-
+import Best from './Best';
 
 function BestSlider(props) {
-
+  
   return (
-    <StyledSwiper className='swipers'
-      modules={[Navigation, Pagination]}
-      spaceBetween={50}
-      slidesPerView={4}
-      navigation
-      pagination={{ clickable: true }}
-    >
+    <>
+      <Best />
+      
+      <Swiper
+        className={styles.swipermain}
+        modules={[Navigation, Pagination]}
+        spaceBetween={40}
+        slidesPerView={4}
+        navigation={{ prevEl: `.${styles['prev-button']}`, nextEl: `.${styles['next-button']}` }}
+        pagination={{ clickable: true, }}
+      >
+        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
+        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
+        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
+        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
+        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
+        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
+        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
+        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
 
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-      <SwiperSlide className='swiperi'><BestCard/></SwiperSlide>
-
-
-
-
-    </StyledSwiper>
+        <button className={styles['prev-button']}></button>
+        <button className={styles['next-button']}></button>
+      </Swiper>
+    </>
   );
 }
 

@@ -9,14 +9,11 @@ import MainButton from './button/MainButton';
 function Main(props) {
   return (
     <>
-    <Header/>
     <Today/>
-    <Best/>
     <BestSlider/>
     {/* <LatestView/> */}
     <MembersFood/>
     <MainButton/> 
-    <Footer/>
     </>
   );
 }

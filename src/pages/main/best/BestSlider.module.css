@@ -1,0 +1,48 @@
+.swipermain {
+  width: 1400px;
+  height: 380px;
+  display: flex;
+  justify-content: center;
+}
+
+.swipers {
+  position: relative;
+  height: auto;
+  /* display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; */
+}
+
+.prev-button {
+  width: 65px;
+  height: 65px;
+  border: none;
+  position: absolute;
+  top:40%;
+  z-index: 1;
+  left:0px;
+  right: auto;
+  background: url('../img/prev.png');
+  background-repeat: no-repeat;
+  
+}
+
+.next-button {
+  width: 65px;
+  height: 65px;
+  border: none;
+  position: absolute;
+  top:40%;
+  z-index: 1;
+  left: auto;
+  right: 5px;
+  background: url('../img/next.png');
+  background-repeat: no-repeat;
+}
+.pagination {
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+  position: absolute;
+  transform: translateX(-50%);
+}

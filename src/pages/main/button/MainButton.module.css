@@ -12,9 +12,9 @@ border-color: rgb(147, 112, 98);
 color: rgb(147, 112, 98);
 }
 .wr{
-  width: 1200px;
   display: flex;
   /* flex-direction: column; */
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
 }

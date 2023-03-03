@@ -1,13 +1,13 @@
 .header{
-  width: 1200px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 }
 .img{
   margin-top: 40px;
 }
+
 .hd{
   margin-top: 100px;
   margin-bottom: 100px;
