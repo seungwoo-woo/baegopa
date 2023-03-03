@@ -1,5 +1,3 @@
-
-
 .hd {
   margin-top: 100px;
   margin-bottom: 100px;
@@ -9,9 +7,14 @@
 
 }
 
+.bg {
+  width: 100%;
+
+}
+
 .stymain {
-  width: 1200px;
   display: flex;
+  justify-content: center;
 }
 
 .styli {
@@ -29,8 +32,7 @@
 .boximg {
   display: flex;
   flex-wrap: wrap;
-  margin-left: 50px;
-  justify-content: space-between;
+  justify-content: start;
 
 
 }
@@ -39,10 +41,18 @@
   width: 278px;
   height: 278px;
   border-radius: 20px;
+  margin-right: 10px;
+}
+
+.stybigiamge {
+  width: 1200px;
+  display: flex;
+  justify-content: end;
+  margin-right: 50px;
 }
 
 .styimage {
-  width: 577px;
+  width: 650px;
   height: 577px;
   border-radius: 20px;
   font-size: 50px;
@@ -60,6 +70,7 @@
 .stylike {
   width: 25px;
 }
+
 /* .title{
   width: 100%;
   height: 100px;

@@ -9,7 +9,7 @@ import styles from './SubHeader.module.css';
 
 export default function SubHeader() {
   return (
-    <Router>
+
       <Navbar className={styles.stynav} bg="light" variant="light">
         <Container>
           <Nav className={styles.stylednav}>
@@ -20,10 +20,6 @@ export default function SubHeader() {
           </Nav>
         </Container>
       </Navbar>
-      <Routes>
-        <Route path="/recipe" element={<RecipeDetail />} />
-        <Route path="/view" element={<ButtonKeeper />} />
-      </Routes>
-    </Router>
+
   );
 }

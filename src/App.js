@@ -2,13 +2,12 @@ import 'bootstrap/dist/css/bootstrap.min.css' //부트스트랩 적용
 import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS 추가
 import './pages/search/Search.module.css';
 import './pages/subpage/Sub.module.css';
-
-import Main from './pages/main/Main';
-import Subpage from './pages/subpage/Subpage';
-import Footer from './pages/subpage/Footer';
-import SearchPage from './pages/search/SearchPage';
-import CardList from './components/CardList';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RecipeDetail from './pages/recipe/RecipeDetail';
+import Header from './pages/main/mainfull/Header';
+import SubHeader from './pages/main/mainfull/SubHeader';
+import Today from './pages/main/best/Today';
+import Footer from './pages/main/mainfull/Footer';
 
 
 function App() {
@@ -16,14 +15,14 @@ function App() {
 
   return (
     <div className="App">
-      <div>
-        <Main />
-        {/* <Subpage/> */}
-        {/* <SearchPage/> */}
-        {/* <CardList />
-        <Footer/> */}
-        {/* <RecipeDetail /> */}
-      </div>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/recipe" element={<RecipeDetail />} />
+          <Route path="/" element={<Today />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

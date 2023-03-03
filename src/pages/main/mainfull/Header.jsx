@@ -16,9 +16,9 @@ function Header(props) {
       {/* 헤더영역 */}
       <Navbar className={styles.stymain} collapseOnSelect expand="lg"  variant="dark">
         <Container className={styles.StyledContainer}>
-          <Navbar.Brand className={styles.logo} href="#home">
-          <h1 href="#home"><GiBowlOfRice /></h1>
-          <h1 href="#home">배고파</h1>
+          <Navbar.Brand className={styles.logo} href="/">
+          <h1 href="/"><GiBowlOfRice /></h1>
+          <h1 href="/">배고파</h1>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-dark-example" />
           <Navbar.Collapse className={styles.StyledNavbar} id="navbar-dark-example" style={{justifyContent:'inherit'}}>
@@ -34,16 +34,7 @@ function Header(props) {
         </Container>
       </Navbar>
       {/* 서브메뉴영역 */}
-      <Navbar className={styles.stynav} bg="light" variant="light">
-        <Container>
-          <Nav className={styles.stylednav}>
-            <Nav.Link className={styles.ft} as={Link} to="/">Today's menu</Nav.Link>
-            <Nav.Link className={styles.ft} as={Link} to="/best-menu">Best menu</Nav.Link>
-            <Nav.Link className={styles.ft} as={Link} to="/view">ButtonKeepert</Nav.Link>
-            <Nav.Link className={styles.ft} as={Link} to="/recipe">RecipeDetail</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+      <SubHeader/>
     </>
   );
 }
