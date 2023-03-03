@@ -1,4 +1,3 @@
-/* w 1200 */
 * {
     font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
 }
@@ -33,9 +32,7 @@
     width: 1200px;
     /* background-color: #F4F0EF; */
 }
-.title > div {
-    height: 120px;
-}
+
 .title h1 {
     font-size: 35px;
     line-height: 120px;
