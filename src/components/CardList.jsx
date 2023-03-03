@@ -6,6 +6,7 @@ import Card from './Card';
 
 
 function CardList(props) {
+
   // console.log(props);
   // const {groupTitme, cookItemList, viewIndex} = props;
   const groupTitme = '레시피 검색결과';
@@ -111,6 +112,7 @@ function CardList(props) {
   const viewIndex = 'comment';
 
   return (
+
     <div className={styles.group}>
       <h1>{groupTitme}</h1>
       <div className={styles.cardList}>

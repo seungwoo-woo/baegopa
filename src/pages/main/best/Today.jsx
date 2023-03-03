@@ -28,8 +28,10 @@ function Today(props) {
       <Fragment>
         <h1 className={styles.hd}>Today's menu</h1>
       </Fragment>
+      <div className={styles.bg}>
+
       <div className={styles.stymain}>
-        <div>
+        <div className={styles.stybigiamge}>
           <img className={styles.styimage} src={recipes[0].image} />
         </div>
         <div className={styles.boximg}>
@@ -54,6 +56,7 @@ function Today(props) {
             </div>
           </div>
         </div>
+      </div>
       </div>
 
     </>

@@ -20,7 +20,7 @@ function LikeCount(props) {
           const copyLikeCount = [...infos];
           copyLikeCount[0].likeCounts++;
           setrecipeInfos(copyLikeCount);
-          // console.log(infos);
+          console.log(infos);
           console.log(copyLikeCount);
           setIsClicked(true);
         }}
