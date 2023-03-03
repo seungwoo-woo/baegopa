@@ -1,0 +1,45 @@
+.stymain {
+  background-color: rgb(244, 240, 239);
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  cursor: pointer;
+  margin-right: 300px;
+  font-size: 30px;
+  text-align: center;
+  color: rgb(147, 112, 98);
+  font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
+  
+}
+
+.logo:hover{
+  color: rgb(207, 147, 121);
+}
+
+.StyledContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 스타일 네브 바 */
+.StyledNavbar{
+  display: flex;
+  align-items: center;
+}
+
+.Styleddiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.StyledLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

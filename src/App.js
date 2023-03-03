@@ -1,27 +1,31 @@
-import './App.css';
-import Card from './components/Card';
-import CardList from './components/CardList';
-import Addrecipe from './pages/addrecipe/Addrecipe';
-import GetRecipeDB from './pages/addrecipe/GetRecipeDB';
-import Login from './pages/login/Login';
-import LecipeAPI2 from './temp/LecipeAPI2';
+
+import 'bootstrap/dist/css/bootstrap.min.css' //부트스트랩 적용 
+import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS 추가
+import './pages/search/Search.module.css';
+import './pages/subpage/Sub.module.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import RecipeDetail from './pages/recipe/RecipeDetail';
+import Header from './pages/main/mainfull/Header';
+import SubHeader from './pages/main/mainfull/SubHeader';
+import Today from './pages/main/best/Today';
+import Footer from './pages/main/mainfull/Footer';
+
+
 
 function App() {
 
-  const style = {
-    width: "30",
-  }
-  
+
   return (
     <div className="App">
-      <div style={style}>
-        {/* <Card /> */}
-        {/* <CardList /> */}
-        {/* <Addrecipe /> */}
-        {/* <GetRecipeDB /> */}
-        <LecipeAPI2 />
-        {/* <Login /> */}
-      </div>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/recipe" element={<RecipeDetail />} />
+          <Route path="/" element={<Today />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+
     </div>
   );
 }

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../App.css';
-import TempWriteDB from './TempWriteDB';
 
+// import './App.css';
 
 
 function parseStr(dataSet) {
@@ -44,7 +43,9 @@ function LecipeAPI2(props) {
       <div className="lecipeMain">
       { data && 
         data.map((lecipe, index) => {
+
           return <TempWriteDB key={index} lecipe={lecipe} />          
+          // return <TempCard key={index} lecipe={lecipe} />
 
         })
       }
