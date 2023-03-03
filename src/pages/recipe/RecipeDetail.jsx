@@ -335,9 +335,6 @@ console.log(reviewValue.cardImagePath);
 
   return (
     <div className={styles['recipe-page']}>
-      <section className={styles.nav}>
-        NAV영역
-      </section>
 
       <section className={styles['main-wraper']}>
         <div className={styles.main}>
