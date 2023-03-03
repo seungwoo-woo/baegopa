@@ -14,8 +14,8 @@
 }
 
 .prev-button {
-  width: 65px;
-  height: 65px;
+  width: 55px;
+  height: 55px;
   border: none;
   position: absolute;
   top:40%;
@@ -24,12 +24,17 @@
   right: auto;
   background: url('../img/prev.png');
   background-repeat: no-repeat;
+  transition: 0.3s;
+  padding: 0px;
+  box-shadow: 1px 1px 5px #888888;
+  border-radius: 50%;
+
   
 }
 
 .next-button {
-  width: 65px;
-  height: 65px;
+  width: 55px;
+  height: 55px;
   border: none;
   position: absolute;
   top:40%;
@@ -38,11 +43,9 @@
   right: 5px;
   background: url('../img/next.png');
   background-repeat: no-repeat;
+  transition: 0.3s;
+  padding: 0px;
+  box-shadow: 1px 1px 5px #555;
+  border-radius: 50%;
 }
-.pagination {
-  width: 100px;
-  height: 100px;
-  z-index: 1;
-  position: absolute;
-  transform: translateX(-50%);
-}
+
