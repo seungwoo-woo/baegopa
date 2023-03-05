@@ -21,6 +21,7 @@ function CardList(props) {
 
   let recipeDbList = [];    
   const [ recipeList, setRecipeList ] = useState([]);
+  
   const readRecipeDB = async () => {
   // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -36,7 +37,7 @@ function CardList(props) {
   }
 
   readRecipeDB();
-ㄴㄴㄴ
+
 
   return (
 
