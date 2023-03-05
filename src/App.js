@@ -13,7 +13,8 @@ import BestSlider from './pages/main/best/BestSlider';
 import NomatchPage from './pages/main/NomatchPage';
 import Main from './pages/main/Main';
 import styles from './App.css'
-
+import GetRecipeDB from './pages/addrecipe/GetRecipeDB';
+import CardList from './components/CardList';
 
 
 function App() {
@@ -23,12 +24,12 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/today" element={<Today />} />
+          <Route path="/" element={<CardList />} />
+          {/* <Route path="/today" element={<Today />} />
           <Route path="/best" element={<BestSlider />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/recipe" element={<RecipeDetail />} />
-          <Route path="*" element={<NomatchPage />} />
+          <Route path="*" element={<NomatchPage />} /> */}
         </Routes>
         <Footer />
       </BrowserRouter>
