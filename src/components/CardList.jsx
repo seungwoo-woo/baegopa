@@ -15,6 +15,10 @@ import { getFirestore, collection, getDocs, query, where, doc, getDoc } from "fi
 
 function CardList(props) {
 
+  const { keyword } = props;
+  let keywordList = [];
+  keywordList = [...keyword];
+
   const groupTitme = '레시피 검색결과 Edit12';
   
   const viewIndex = 'view';
@@ -26,7 +30,8 @@ function CardList(props) {
   // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", ['닭고기', '양파', '두부', ' 당근', ' 오징어']));
+    // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", ['닭고기', '양파', '두부', ' 당근', ' 오징어']));
+    const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
     const queryAllSnapshot = await getDocs(q); 
 
     queryAllSnapshot.forEach((doc) => {

@@ -15,6 +15,7 @@ import Main from './pages/main/Main';
 import styles from './App.css'
 import GetRecipeDB from './pages/addrecipe/GetRecipeDB';
 import CardList from './components/CardList';
+import Subpage from './pages/subpage/Subpage';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<CardList />} />
+          <Route path="/" element={<Subpage />} />
           {/* <Route path="/today" element={<Today />} />
           <Route path="/best" element={<BestSlider />} />
           <Route path="/search" element={<SearchPage />} />
