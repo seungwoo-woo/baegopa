@@ -7,7 +7,7 @@ import styles from "./Sub.module.css";
 
 
 function Subpage(props) {
-    const keyword = ['양파'];
+    const keyword = ['닭고기', ' 닭고기'];
 
     return (
         <>

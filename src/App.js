@@ -16,6 +16,7 @@ import styles from './App.css'
 import GetRecipeDB from './pages/addrecipe/GetRecipeDB';
 import CardList from './components/CardList';
 import Subpage from './pages/subpage/Subpage';
+import Login from './pages/login/Login';
 
 
 function App() {
@@ -23,16 +24,17 @@ function App() {
   return (
   <div className="App">
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
         <Routes>
-          <Route path="/" element={<Subpage />} />
+          <Route path="/" element={<Login />} />
+          {/* <Route path="/" element={<Subpage />} /> */}
           {/* <Route path="/today" element={<Today />} />
           <Route path="/best" element={<BestSlider />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/recipe" element={<RecipeDetail />} />
           <Route path="*" element={<NomatchPage />} /> */}
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );

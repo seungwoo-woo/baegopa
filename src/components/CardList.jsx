@@ -19,7 +19,7 @@ function CardList(props) {
   let keywordList = [];
   keywordList = [...keyword];
 
-  const groupTitme = '레시피 검색결과 Edit12';
+  const groupTitme = '레시피 검색결과 Edit13';
   
   const viewIndex = 'view';
 
@@ -30,25 +30,25 @@ function CardList(props) {
 
     const readRecipeDB = async () => {
       // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", ['닭고기', '양파', '두부', ' 당근', ' 오징어']));
-        const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
-        const queryAllSnapshot = await getDocs(q); 
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", ['닭고기', '양파', '두부', ' 당근', ' 오징어']));
+      const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
+      const queryAllSnapshot = await getDocs(q); 
+  
+      queryAllSnapshot.forEach((doc) => {
+      const docCopy = {...doc.data(), docId: doc._document.key.path.segments[6]};
+      recipeDbList.push(docCopy);
+      });
+
+      setRecipeList(recipeDbList);
+    }
     
-        queryAllSnapshot.forEach((doc) => {
-        const docCopy = {...doc.data(), docId: doc._document.key.path.segments[6]};
-        recipeDbList.push(docCopy);
-        });
-        setRecipeList(recipeDbList);
-      }
-    
-      readRecipeDB();
+    readRecipeDB();
 
   }, []);
 
-
-
+  
   return (
 
     <div className={styles.group}>
