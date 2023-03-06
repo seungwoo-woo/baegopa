@@ -13,14 +13,16 @@ import BestSlider from './pages/main/best/BestSlider';
 import NomatchPage from './pages/main/NomatchPage';
 import Main from './pages/main/Main';
 import styles from './App.css'
-
+import Subpage from './pages/subpage/Subpage';
+import CardList from './components/CardList';
+import Mypage from './pages/mypage/Mypage';
 
 
 function App() {
 
   return (
   <div className="App">
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
@@ -31,7 +33,10 @@ function App() {
           <Route path="*" element={<NomatchPage />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
+      {/* <Mypage /> */}
+      <RecipeDetail />
+
     </div>
   );
 }
