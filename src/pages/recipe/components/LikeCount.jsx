@@ -9,7 +9,7 @@ function LikeCount(props) {
   
   // console.log(infos);
   const imgUrl = "../images/btn-likecount-off.png";
-  console.log(imgUrl);
+  // console.log(imgUrl);
   // console.log(copyLikeCount);
   return (
     <>
