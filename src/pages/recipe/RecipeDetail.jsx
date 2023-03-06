@@ -511,10 +511,6 @@ console.log(reviewValue.cardImagePath);
         <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} />
       </section>
 
-      <section className={styles.footer}>
-        Footer영역
-      </section>
-
     </div>
   );
 }
