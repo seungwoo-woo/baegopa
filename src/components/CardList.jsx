@@ -26,22 +26,27 @@ function CardList(props) {
   let recipeDbList = [];    
   const [ recipeList, setRecipeList ] = useState([]);
   
-  const readRecipeDB = async () => {
-  // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", ['닭고기', '양파', '두부', ' 당근', ' 오징어']));
-    const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
-    const queryAllSnapshot = await getDocs(q); 
+  useEffect (() => {
 
-    queryAllSnapshot.forEach((doc) => {
-    const docCopy = {...doc.data(), docId: doc._document.key.path.segments[6]};
-    recipeDbList.push(docCopy);
-    });
-    setRecipeList(recipeDbList);
-  }
+    const readRecipeDB = async () => {
+      // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", ['닭고기', '양파', '두부', ' 당근', ' 오징어']));
+        const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
+        const queryAllSnapshot = await getDocs(q); 
+    
+        queryAllSnapshot.forEach((doc) => {
+        const docCopy = {...doc.data(), docId: doc._document.key.path.segments[6]};
+        recipeDbList.push(docCopy);
+        });
+        setRecipeList(recipeDbList);
+      }
+    
+      readRecipeDB();
 
-  readRecipeDB();
+  }, []);
+
 
 
   return (
