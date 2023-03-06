@@ -7,7 +7,7 @@ import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebas
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
+// const auth = getAuth(app);
 
 
 function Login(props) {
@@ -18,15 +18,20 @@ function Login(props) {
   const [ userEmail, setUserEmail ] = useState('');
   const [ userPassword, setUserPassWord ] = useState('');
 
+  const [ user, setUser ] = useState('');
 
 
 
   const signIn = () => {
-    const auth = getAuth();
+    const auth = getAuth(app);
+    console.log(auth);
+    console.log(newUserEmail);
+    console.log(newUserPassword);
+
     createUserWithEmailAndPassword(auth, newUserEmail, newUserPassword)
     .then((userCredential) => {
       // Signed in
-      const user = userCredential.user;    
+      setUser(userCredential.user);    
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -36,11 +41,16 @@ function Login(props) {
 
 
   const logIn = () => {
-    const auth = getAuth();
+    const auth = getAuth(app);
+    console.log(auth);
+    console.log(userEmail);
+    console.log(userPassword);
+
     signInWithEmailAndPassword(auth, userEmail, userPassword)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
+        console.log('성공');
+        setUser(userCredential.user);    
         // ...
       })
       .catch((error) => {
@@ -61,7 +71,7 @@ function Login(props) {
         <input type="text" onChange={(e) => {
           setUserPassWord(e.target.value);
         }} />
-        <button onClick={logIn}></button>
+        <button onClick={logIn}>signin</button>
 
         <div>{user?.email}</div>
 
