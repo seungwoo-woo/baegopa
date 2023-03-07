@@ -114,7 +114,6 @@ function CardList(props) {
   return (
 
     <div className={styles.group}>
-      <h1>{groupTitme}</h1>
       <div className={styles.cardList}>
         {cookItemList.map((cookItem) => {
           return <Card key={cookItem.id} cookItem={cookItem} viewIndex={viewIndex} />

@@ -24,10 +24,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/today" element={<Today />} />
+          <Route path="/recipe" element={<RecipeDetail />} />
           <Route path="/best" element={<BestSlider />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/recipe" element={<RecipeDetail />} />
           <Route path="*" element={<NomatchPage />} />
         </Routes>
         <Footer />
