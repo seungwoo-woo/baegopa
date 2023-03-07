@@ -1,10 +1,12 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
+import { getAllRecipes, selectedRecipe } from './features/recipelistdb/recipeSlice';
+import { getRecipes, getRecipeById } from "./api/recipeListAPI";
+import { useDispatch, useSelector } from 'react-redux';
+
 import styles from "./css/recipeDetail.module.css";
-
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
@@ -18,7 +20,46 @@ import LikeCount from './components/LikeCount';
 import ViewCount from './components/ViewCount';
 import ButtonKeeper from './components/ButtonKeeper';
 import ReviewRegiter from './components/ReviewRegiter';
+import { async } from 'q';
 
+
+// TODO : 데이터 연결 했다는 가정(나중에 삭제)-------------------------------------------------- 
+const recipeLists  = [
+  {
+    "difficulty" : "상",
+    "docId" : "38B431UkKcmFl18XnntZ",
+    "hashtags": ["해시태그1", "해시태그2", "해시태그3"],
+    "imageFilesPath" : ["http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00639_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_2.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_3.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_4.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_5.png"],
+    "ingredientItems" :  ["호박잎", " 닭고기", " 찹쌀", " 대추", "\n미나리", " 인삼", " 소금", " 후춧가루"], 
+    "ingredientUnits" : ["개", "개", "개", "개", "개", "개", "개", "개"],
+    "ingredientValues" : ["1", "1", "1", "1", "1", "1", "1", "1"],
+    "likeCount": 0,
+    "meals" : 2,
+    "process" : ["1. 찹쌀은 깨끗이 씻어 30분 정도 불린다", "2. 불린 찹쌀은 냄비에 넣고 질게 밥을\n한다.", "3. 닭가슴살은 넓게 펴서 소금,\n후춧가루를 뿌린다.", "4. 호박잎과 미나리는 끓는 물에 살짝\n데치고, 대추는 돌려 깎아 씨를\n제거하고 인삼은 뇌두를 제거한 뒤\n채를 썰어둔다.", "5. 데친 호박잎에 닭 가슴살을 올린다.", "6. 닭 가슴살위에 찹쌀밥과 준비한 야채와\n대추를 올려 돌돌 말아 질게 된\n찹쌀밥에 넣고 약 20분 정도 더 쪄낸다."],
+    "subtitle" : "임시 서브 타이틀 - 호박잎 삼계탕",
+    "time" : 30,
+    "title" : "호박잎 삼계탕",
+    "userId" : "어우동",
+    "viewCount" : 0
+  },
+  {
+    "difficulty": "상",
+    "docId":"BJPYOBjpamTiDSo9W5Il",
+    "hashtags":["해시태그1", "해시태그2", "해시태그3"],
+    "imageFilesPath":["http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00585_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_2.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_3.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_4.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_5.png"],
+    "ingredientItems":["닭고기", " 인삼", " 찹쌀", " 대추", " 마늘", "\n대파", " 양파", " 통후추", " 저염간장"]	,
+    "ingredientUnits":["개", "개", "개", "개", "개", "개", "개", "개", "개"]	,
+    "ingredientValues":["1", "1", "1", "1", "1", "1", "1", "1", "1"]	,
+    "likeCount":0,
+    "meals":2,
+    "process":["1. 닭은 깨끗이 씻고 포를 뜬다.", "2. 닭고기는 15분 정도 삶아 식으면 곱게\n다져 다진 마늘, 대파, 저염간장을 넣고\n완자를 만든다.", "3. 인삼은 뇌두를 제거하고 깨끗이\n씻는다.", "4. 찹쌀은 약 30분 정도 충분히 불린다", "5. 대추는 소금물에 깨끗이 씻고 씨를\n제거한다.", "6. 믹서에 인삼과 대추, 불린 찹쌀, 물을\n정도 넣고 곱게 간 뒤, 냄비에 담아 죽을\n쑤다가 다 익으면 만들어 놓은 완자를\n넣고 한소끔 더 끓인다."],
+    "subtitle":"임시 서브 타이틀 - 닭고기 완자삼계죽",
+    "time":30,
+    "title":"닭고기 완자삼계죽",
+    "userId":"어우동",
+    "viewCount":0	
+  }
+];
 
 
 // --------------------------------------------임의 데이터------------------------------------------
@@ -115,6 +156,61 @@ const userReviews = [
 ];
 
 function RecipeDetail(props) {
+  const dispatch = useDispatch();
+  const recipeId = "38B431UkKcmFl18XnntZ";
+  console.log(recipeId);
+  const recipeData = () => {
+  }
+  useEffect(() => {
+    const recipeDB = async () => {
+      const data = await getRecipes();
+      console.log(data);
+      return data;
+    }
+    recipeDB();
+    const recipeSelect = async () => {
+      const data = await getRecipeById();
+      console.log(data);
+      return data;
+    }
+    recipeSelect();
+
+
+
+    // const foundRecipe = data.find((recipe) => {
+      // console.log(recipe);
+      // return recipe.id === docId;
+    // });
+    // dispatch(getRecipeById(foundRecipe));
+
+    // // F12 > Application에서 볼 수 있음
+    // // 상세페이지에 들어오면 해당 상품의 id를 localStorage에 추가 (추가할 때는 getItem이고 데이터가 문자이기 때문에 JSON.parse로 JSON값으로 변경해줌)
+    // let latestViewed = JSON.parse(localStorage.getItem('latestViewed')) || [] ;  // 키 값이 없으면 []빈배열을 넣어준다
+    // // 문제발생(id가 중복된 것도 DB에 들어가짐)
+    // // id를 넣기 전에 기존 배열에 존재하는지 검사하거나
+    // // 또는 일단 넣고 Set 자료형을 이용하여 중복 제거
+    // latestViewed.push(docId);
+    // latestViewed = new Set(latestViewed);  // Set객체로 반환한걸 배열로 바꿔줘야 함  (14_Set_map 에 자료 있음)
+    // console.log(latestViewed);
+    // // Array.from(latestViewed)  // Array.from() 배열로 바꿔주고 싶은 걸 괄호에 넣기 또는 ...스프레드 연산자로 배열로 변경
+    // latestViewed = [...latestViewed];
+    // localStorage.setItem('latestViewed', JSON.stringify(latestViewed));  // (넣어줄 때는 setItem이고 JSON을 문자열로 변경해줌 )
+
+    // // Alert가 3초뒤에 없어지도록-----------------
+    // const timeout = setTimeout(() => {
+    //   setShowInfo(false);
+    // }, 3000);
+    // // 불필요하게 타이머가 계속 생기는 것을 정리하는 뒷정리 함수!!
+    // return () => {
+    //   clearTimeout(timeout);
+    // };
+    // ---------------------------------------------------
+  }, []);
+
+
+
+
+
 // const groupTitme = '배고플 때 생각나는...';
 const [cookItemList, setCookItemList] = useState([
   {
@@ -230,10 +326,8 @@ const [cookItemList, setCookItemList] = useState([
     ]
   },
 ]);
-
 const viewIndex = 'comment';
-
-// -------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------
 
 
 
@@ -447,7 +541,7 @@ let content = window.location.href;
           <div className={styles['review--inner']}>
             {/* TODO: 카드 컴포넌트 연결  */}
             {/* <CardList cookItemList={cookItemLists} viewIndex="comment" /> */}
-            <Swiper
+            {/* <Swiper
               modules={[Navigation, Pagination, Scrollbar]}
               spaceBetween={0}
               slidesPerView={4}
@@ -461,14 +555,16 @@ let content = window.location.href;
               }}
             >
                 {cookItemList.map((cookItem) => {
+                {recipeList.map((recipe) => {
                   return (
                     <SwiperSlide key={cookItem.id}>
                       <Card cookItem={cookItem} viewIndex={viewIndex} />
+                      <Card key={recipe.docId} recipe={recipe} viewIndex={viewIndex} />
                     </SwiperSlide>
                     )
                   })
                 }
-            </Swiper>
+            </Swiper> */}
             <div>
               <button onClick={() => swiperRef.current?.slidePrev()} className={`${styles.btn_navigation} ${styles.btn_prev}`}></button>
               <button onClick={() => swiperRef.current?.slideNext()} className={`${styles.btn_navigation} ${styles.btn_next}`}></button>

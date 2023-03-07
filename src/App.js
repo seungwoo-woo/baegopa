@@ -20,13 +20,14 @@ import Signin from './pages/login/Signin';
 import Signup from './pages/login/Signup';
 import MovePage from './pages/login/MovePage';
 import Mypage from './pages/mypage/Mypage';
+// import recipeListAPI from './pages/recipe/api/recipeListAPI';
 
 
 function App() {
 
   return (
   <div className="App">
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/signin" element={<Signin />} />
@@ -41,7 +42,9 @@ function App() {
           <Route path="*" element={<NomatchPage />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <RecipeDetail />
+      {/* <recipeListAPI /> */}
     </div>
   );
 }
