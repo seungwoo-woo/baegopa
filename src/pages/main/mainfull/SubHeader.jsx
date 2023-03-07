@@ -1,9 +1,6 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ButtonKeeper from '../../recipe/components/ButtonKeeper';
-import ViewCount from '../../recipe/components/ViewCount';
-import RecipeDetail from '../../recipe/RecipeDetail';
 
 import styles from './SubHeader.module.css';
 

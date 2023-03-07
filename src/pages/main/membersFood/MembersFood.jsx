@@ -21,7 +21,6 @@ function MembersFood(props) {
     </div>
     
     <div className={styles.header}>
-      <CardList  viewIndex={viewIndex}/>
     </div>
     </Fragment> 
   );
