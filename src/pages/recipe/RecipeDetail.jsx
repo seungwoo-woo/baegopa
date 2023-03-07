@@ -19,47 +19,30 @@ import Card from './../../components/Card';
 import LikeCount from './components/LikeCount';
 import ViewCount from './components/ViewCount';
 import ButtonKeeper from './components/ButtonKeeper';
+
 import ReviewRegiter from './components/ReviewRegiter';
 import { async } from 'q';
 
 
 // TODO : 데이터 연결 했다는 가정(나중에 삭제)-------------------------------------------------- 
-const recipeLists  = [
+const recipeee  = 
   {
-    "difficulty" : "상",
-    "docId" : "38B431UkKcmFl18XnntZ",
-    "hashtags": ["해시태그1", "해시태그2", "해시태그3"],
-    "imageFilesPath" : ["http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00639_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_2.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_3.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_4.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_5.png"],
-    "ingredientItems" :  ["호박잎", " 닭고기", " 찹쌀", " 대추", "\n미나리", " 인삼", " 소금", " 후춧가루"], 
-    "ingredientUnits" : ["개", "개", "개", "개", "개", "개", "개", "개"],
-    "ingredientValues" : ["1", "1", "1", "1", "1", "1", "1", "1"],
-    "likeCount": 0,
-    "meals" : 2,
-    "process" : ["1. 찹쌀은 깨끗이 씻어 30분 정도 불린다", "2. 불린 찹쌀은 냄비에 넣고 질게 밥을\n한다.", "3. 닭가슴살은 넓게 펴서 소금,\n후춧가루를 뿌린다.", "4. 호박잎과 미나리는 끓는 물에 살짝\n데치고, 대추는 돌려 깎아 씨를\n제거하고 인삼은 뇌두를 제거한 뒤\n채를 썰어둔다.", "5. 데친 호박잎에 닭 가슴살을 올린다.", "6. 닭 가슴살위에 찹쌀밥과 준비한 야채와\n대추를 올려 돌돌 말아 질게 된\n찹쌀밥에 넣고 약 20분 정도 더 쪄낸다."],
-    "subtitle" : "임시 서브 타이틀 - 호박잎 삼계탕",
-    "time" : 30,
-    "title" : "호박잎 삼계탕",
-    "userId" : "어우동",
-    "viewCount" : 0
-  },
-  {
-    "difficulty": "상",
-    "docId":"BJPYOBjpamTiDSo9W5Il",
-    "hashtags":["해시태그1", "해시태그2", "해시태그3"],
-    "imageFilesPath":["http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00585_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_2.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_3.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_4.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00585_5.png"],
-    "ingredientItems":["닭고기", " 인삼", " 찹쌀", " 대추", " 마늘", "\n대파", " 양파", " 통후추", " 저염간장"]	,
-    "ingredientUnits":["개", "개", "개", "개", "개", "개", "개", "개", "개"]	,
-    "ingredientValues":["1", "1", "1", "1", "1", "1", "1", "1", "1"]	,
-    "likeCount":0,
-    "meals":2,
-    "process":["1. 닭은 깨끗이 씻고 포를 뜬다.", "2. 닭고기는 15분 정도 삶아 식으면 곱게\n다져 다진 마늘, 대파, 저염간장을 넣고\n완자를 만든다.", "3. 인삼은 뇌두를 제거하고 깨끗이\n씻는다.", "4. 찹쌀은 약 30분 정도 충분히 불린다", "5. 대추는 소금물에 깨끗이 씻고 씨를\n제거한다.", "6. 믹서에 인삼과 대추, 불린 찹쌀, 물을\n정도 넣고 곱게 간 뒤, 냄비에 담아 죽을\n쑤다가 다 익으면 만들어 놓은 완자를\n넣고 한소끔 더 끓인다."],
-    "subtitle":"임시 서브 타이틀 - 닭고기 완자삼계죽",
-    "time":30,
-    "title":"닭고기 완자삼계죽",
-    "userId":"어우동",
-    "viewCount":0	
-  }
-];
+    difficulty : "상",
+    docId : "38B431UkKcmFl18XnntZ",
+    hashtags: ["해시태그1", "해시태그2", "해시태그3"],
+    imageFilesPath : ["http://www.foodsafetykorea.go.kr/uploadimg/cook/10_00639_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_1.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_2.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_3.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_4.png", "http://www.foodsafetykorea.go.kr/uploadimg/cook/20_00639_5.png"],
+    ingredientItems :  ["호박잎", " 닭고기", " 찹쌀", " 대추", "\n미나리", " 인삼", " 소금", " 후춧가루"], 
+    ingredientUnits : ["개", "개", "개", "개", "개", "개", "개", "개"],
+    ingredientValues : ["1", "1", "1", "1", "1", "1", "1", "1"],
+    likeCount: 0,
+    meals : 2,
+    process : ["1. 찹쌀은 깨끗이 씻어 30분 정도 불린다", "2. 불린 찹쌀은 냄비에 넣고 질게 밥을\n한다.", "3. 닭가슴살은 넓게 펴서 소금,\n후춧가루를 뿌린다.", "4. 호박잎과 미나리는 끓는 물에 살짝\n데치고, 대추는 돌려 깎아 씨를\n제거하고 인삼은 뇌두를 제거한 뒤\n채를 썰어둔다.", "5. 데친 호박잎에 닭 가슴살을 올린다.", "6. 닭 가슴살위에 찹쌀밥과 준비한 야채와\n대추를 올려 돌돌 말아 질게 된\n찹쌀밥에 넣고 약 20분 정도 더 쪄낸다."],
+    subtitle : "임시 서브 타이틀 - 호박잎 삼계탕",
+    time : 30,
+    title : "호박잎 삼계탕",
+    userId : "어우동",
+    viewCount : 0
+  };
 
 
 // --------------------------------------------임의 데이터------------------------------------------
@@ -156,6 +139,8 @@ const userReviews = [
 ];
 
 function RecipeDetail(props) {
+  console.log(recipeee);
+
   const dispatch = useDispatch();
   const recipeId = "38B431UkKcmFl18XnntZ";
   console.log(recipeId);
@@ -168,12 +153,12 @@ function RecipeDetail(props) {
       return data;
     }
     recipeDB();
-    const recipeSelect = async () => {
-      const data = await getRecipeById();
-      console.log(data);
-      return data;
-    }
-    recipeSelect();
+    // const recipeSelect = async () => {
+    //   const data = await getRecipeById();
+    //   console.log(data);
+    //   return data;
+    // }
+    // recipeSelect();
 
 
 
@@ -332,7 +317,8 @@ const viewIndex = 'comment';
 
 
 
-  const [recipeInfos, setrecipeInfos] = useState(recipeInfo);
+  // const [recipeInfos, setrecipeInfos] = useState(recipeInfo);
+  const [recipeInfos, setrecipeInfos] = useState(recipeee);
 
   // console.log(recipes[0].subtitle);
   // console.log(recipeInfo[0].level);
@@ -460,8 +446,9 @@ let content = window.location.href;
                       )
                     })
                   } */}
-                <SwiperSlide><img src={recipes[0].image01} alt="이미지1" /></SwiperSlide>
-                <SwiperSlide><img src={recipes[0].image02} alt="이미지2" /></SwiperSlide>
+                {recipeee.imageFilesPath.map((image, index) => {
+                  return <SwiperSlide key={index}><img src={image} alt='레시피이미지' /></SwiperSlide>
+                })}
               </Swiper>
               <div>
                 <button onClick={() => swiperMainRef.current?.slidePrev()} className={`${styles.btn_mainnavigation} ${styles.btn_mainprev}`}></button>
@@ -474,20 +461,20 @@ let content = window.location.href;
                     return <LikeCount index={[0]} likeCounts={info.likeCounts} setrecipeInfos={setrecipeInfos}/>
                   })
                 } */}
-                <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos}/>
-                <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos}/>
+                <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} /> {/* // TODO : 2023-03-08 likecount 안먹음 */}
+                <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} />
             </div>
           </div>
           <div className={styles['main--right']}>
-            <h2 className={styles['main--rightsubtitle']}>{recipes[0].subtitle}</h2>
-            <h1 className={styles['main--righttitle']}>{recipes[0].title}</h1>
+            <h2 className={styles['main--rightsubtitle']}>{recipeee.subtitle}</h2>
+            <h1 className={styles['main--righttitle']}>{recipeee.title}</h1>
             <div className={styles['main--rightinfo']}>
-              <span>난이도: {recipeInfo[0].level}</span>
-              <span>양: {recipeInfo[0].meals} 인분</span>
-              <span>조리시간: {recipeInfo[0].time}</span>
+              <span>난이도: {recipeee.difficulty}</span>
+              <span>양: {recipeee.meals} 인분</span>
+              <span>조리시간: {recipeee.time}</span>
             </div>
             <div className={styles['main--righthashtag']}>
-              {recipeInfo[0].hashtags.map((hashtag, index) => {
+              {recipeee.hashtags.map((hashtag, index) => {
                 return (
                   <div key={index}>#{hashtag}</div>
                 )
@@ -515,16 +502,16 @@ let content = window.location.href;
       <section className={styles.content}>
         <div className={styles['content--ingredients']}>
           <h4>재료</h4>
-          <p>{recipes[0].ingredients}</p>
+          {recipeee.ingredientItems.map((ingredientItem)=>{
+            return <span>{ingredientItem}, </span>   // TODO : 2023-03-08 재료는 가져왔는데, 다른 배열에 있는 ingredientUnits, ingredientValues는 어떻게 불러오나,,, map 쓰면 안되는 건가...
+          })}
+          {/* <p>{recipes[0].ingredients}</p> */}
         </div>
         <ul className={styles['content--method']}>
           <h4>조리 방법</h4>
-          <li>{recipes[0].manual01}</li>
-          <li>{recipes[0].manual02}</li>
-          <li>{recipes[0].manual03}</li>
-          <li>{recipes[0].manual04}</li>
-          <li>{recipes[0].manual05}</li>
-          <li>{recipes[0].manual06}</li>
+          {recipeee.process.map((pro) => {
+            return <li>{pro}</li>
+          })}
         </ul>
       </section>
 
