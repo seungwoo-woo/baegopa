@@ -19,8 +19,6 @@ import Subpage from './pages/subpage/Subpage';
 import Signin from './pages/login/Signin';
 import Signup from './pages/login/Signup';
 import MovePage from './pages/login/MovePage';
-import Subpage from './pages/subpage/Subpage';
-import CardList from './components/CardList';
 import Mypage from './pages/mypage/Mypage';
 
 
@@ -34,13 +32,13 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/movepage" element={<MovePage />} />
-          {/* <Route path="/" element={<Main />} /> */}
-          {/* <Route path="/" element={<Subpage />} /> */}
-          {/* <Route path="/today" element={<Today />} />
-          <Route path="/best" element={<BestSlider />} /> */}
-          {/* <Route path="/search" element={<SearchPage />} /> */}
-          {/* <Route path="/recipe" element={<RecipeDetail />} /> */}
-          {/* <Route path="*" element={<NomatchPage />} /> */}
+          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Subpage />} />
+          <Route path="/today" element={<Today />} />
+          <Route path="/best" element={<BestSlider />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/recipe" element={<RecipeDetail />} />
+          <Route path="*" element={<NomatchPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
