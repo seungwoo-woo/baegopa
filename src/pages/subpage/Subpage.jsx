@@ -1,4 +1,5 @@
 import React from 'react';
+import CardList from '../../components/CardList';
 import styles from "./Sub.module.css";
 
 
@@ -6,6 +7,7 @@ import styles from "./Sub.module.css";
 
 
 function Subpage(props) {
+    const keyword = ['닭고기', ' 닭고기'];
 
     return (
         <>
@@ -19,24 +21,25 @@ function Subpage(props) {
                 <div className={styles.value}>                    
                 <div>
                     #한식
-                    </div>
+                </div>
                 <div>
                     #분식
-                    </div>
-                    <div>
+                </div>
+                <div>
                     #야식
-                    </div>
+                </div>
                 <div>
                     #중식
-                    </div>
+                </div>
                 <div>
                     #일식
-                    </div>
+                </div>
                 <div>
                     #양식
-                    </div>
+                </div>
                 </div>
             </div> 
+            <CardList keyword={keyword} />
         </div>
         </>
         

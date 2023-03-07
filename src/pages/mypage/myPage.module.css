@@ -1,0 +1,34 @@
+.recipekeeps-wrap {
+  text-align: center;
+  margin: 100px 0px;
+  position: relative;
+}
+.recipekeeps-wrap > h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.recipekeeps-wrap > h3::after {
+  display: block;
+  margin-left: 50px;
+  content: "";
+  width: 1px;
+  height: 15px;
+  background-color: #212121;
+}
+.recipekeeps-wrap > h3::before {
+  display: block;
+  margin-right: 50px;
+  content: "";
+  width: 1px;
+  height: 15px;
+  background-color: #212121;
+}
+.recipekeeps {
+  display: flex;
+  max-width: 1200px;
+  margin: 0px auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
