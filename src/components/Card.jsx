@@ -23,7 +23,9 @@ function Card(props) {
   // const viewIndex = "view";
   // -----------------------------------------
 
-  const {cookItem, viewIndex} = props;
+  const {recipe, viewIndex} = props;
+
+  console.log(recipe);
 
   let view = true;
   let comment = false;
@@ -42,7 +44,7 @@ function Card(props) {
 
     <div className={styles.card}>
       
-      <img src={cookItem.cardImagePath} width={285} height={285}/>
+      <img src={recipe.imageFilesPath[0]} width={285} height={285}/>
 
       { view && 
       <div className={styles.bottomTextBox}>
@@ -83,11 +85,11 @@ function Card(props) {
           <img scr={require ('../img/bi_person-fill.png')}/>
           <i className="fa-solid fa-user"></i>
         </div> */}
-        <p>{cookItem.userComment[0].commentUserId}</p>
+        {/* <p>{cookItem.userComment[0].commentUserId}</p> */}
       </div>
 
       <div className={styles.userComment}>
-        <p>{cookItem.userComment[0].comment}</p>
+        {/* <p>{cookItem.userComment[0].comment}</p> */}
       </div>
 
     </div>
