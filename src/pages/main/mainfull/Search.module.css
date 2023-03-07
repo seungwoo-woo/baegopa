@@ -20,8 +20,16 @@
   width: 80px;
   border-color: rgb(147, 112, 98);
   color: rgb(147, 112, 98);
+  font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
+  border-radius: 10%;
+  background-color: rgb(244, 240, 239);
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .btn:hover{
   background-color: rgb(207, 147, 121);
   border-color: rgb(207, 147, 121);
+  color: white;
 }

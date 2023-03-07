@@ -23,7 +23,7 @@ function BestCard(props) {
   return (
     <Fragment>
         {cookItemList.map((cookItem) => {
-          return <Card key={cookItem.id} cookItem={cookItem} />
+          return <Card key={cookItem.id} cookItem={cookItem}  />
         })
         }      
     </Fragment>

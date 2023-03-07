@@ -1,6 +1,13 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import styles from './Today.module.css'
 import likeIconImage from "../img/like_icon.png";
+import LikeCount from '../../recipe/components/LikeCount';
+import ViewCount from '../../recipe/components/ViewCount';
+import Counters from '../app/Counters';
+import View from '../app/View';
+import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+
 
 
 const recipes = [
@@ -23,24 +30,29 @@ const recipes = [
 ]
 
 function Today(props) {
+  const [views, setViews] = useState(0);
+
+  const incrementViews = () => {
+    setViews(views + 1);
+  }
   return (
     <>
       <Fragment>
-        <h1 className={styles.hd}>Today's menu</h1>
+        <Nav.Link className={styles.hd} as={Link}  to="/recipe">Today's menu</Nav.Link>
       </Fragment>
       <div className={styles.bg}>
 
       <div className={styles.stymain}>
-        <div className={styles.stybigiamge}>
+        <Nav.Link className={styles.stybigiamge} as={Link}  to="/recipe">
           <img className={styles.styimage} src={recipes[0].image} />
-        </div>
+        </Nav.Link>
         <div className={styles.boximg}>
-          <div className={styles.box}>
+          <Nav.Link className={styles.box} as={Link}  to="/recipe">
             <img src={recipes[0].image} alt="이미지" />
-          </div>
-          <div className={styles.box}>
+          </Nav.Link>
+          <Nav.Link className={styles.box} as={Link}  to="/recipe">
             <img src={recipes[0].image} alt="이미지" />
-          </div>
+          </Nav.Link>
           <div className={styles.styli}>
             <div>
             <h1 >{recipes[0].title}</h1>
@@ -50,8 +62,9 @@ function Today(props) {
             </div>
             <div>
             <div className={styles.styicon}>
-              <span><img className={styles.stylike} src={likeIconImage} /> 3000</span>
-              <span>👁‍🗨 200</span>
+              {/* <Counters/> */}
+              {/* <button onClick={incrementViews}>글을 클릭하면 조회수가 오르게</button> */}
+              {/* <View className={styles.vie} views={views}/> */}
             </div>
             </div>
           </div>

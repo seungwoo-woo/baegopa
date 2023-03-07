@@ -1,24 +1,9 @@
-.wrap:active .ic{
-  display: block;
-}
-.wrap:active .lo{
-  display: none;
-}
-.wrap:active .ic{
-  display: block;
-}
-.wrap .ic{
-  display: none;
-}
-.ic{
-  width: 72px;
- 
-}
+
 h4{
   color: white;
 }
-.keeper{
-  background-image: url('../img/mingcute_bowl-line.png');
+.my{
+  background-image: url('../img/my.png');
   width: 30px;
   height: 30px;
   border: none;
@@ -26,13 +11,29 @@ h4{
   background-repeat: no-repeat;
   background-size: cover;
   margin: auto;
-  display: block;
+  cursor: pointer;
+
   
 }
 .lo{
   color: rgb(147, 112, 98);
-  font-family: "Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif"
+  font-family: "Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif";
+  cursor: pointer;
+  
 }
 .lo:hover{
   color:rgb(207, 147, 121)
+}
+
+.out{
+  cursor: pointer;
+  color: rgb(147, 112, 98);
+  font-family: "Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif";
+  
+}
+.out:hover{
+  color:rgb(207, 147, 121);
+}
+.ou{
+  display: flex !important;
 }
