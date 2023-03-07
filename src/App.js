@@ -19,8 +19,6 @@ import Subpage from './pages/subpage/Subpage';
 import Signin from './pages/login/Signin';
 import Signup from './pages/login/Signup';
 import MovePage from './pages/login/MovePage';
-import Subpage from './pages/subpage/Subpage';
-import CardList from './components/CardList';
 import Mypage from './pages/mypage/Mypage';
 
 

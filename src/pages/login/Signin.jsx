@@ -3,55 +3,72 @@ import { firebaseConfig } from '../addrecipe/firestore';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import styles from "../login/Login.module.css";
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 function Signin(props) {
 
-  const [ userEmail, setUserEmail ] = useState('');
-  const [ userPassword, setUserPassWord ] = useState('');
-  const [ user, setUser ] = useState('');
+const [ userEmail, setUserEmail ] = useState('');
+const [ userPassword, setUserPassWord ] = useState('');
+const [ user, setUser ] = useState('');
 
-  const handleSignin = () => {
-    const auth = getAuth();
-    console.log(auth);
-    console.log(userEmail);
-    console.log(userPassword);
+const handleSignin = () => {
+  const auth = getAuth();
+  console.log(auth);
+  console.log(userEmail);
+  console.log(userPassword);
 
-    signInWithEmailAndPassword(auth, userEmail, userPassword)
-      .then((userCredential) => {
-        // Signed in
-        console.log('1');
-        setUser(userCredential.user);    
-        // ...
-      })
-      .catch((error) => {
-        console.log(error.code);
-        alert(error.message);
-      });
-  }  
+  signInWithEmailAndPassword(auth, userEmail, userPassword)
+    .then((userCredential) => {
+      // Signed in
+      console.log('1');
+      setUser(userCredential.user);    
+      // ...
+    })
+    .catch((error) => {
+      console.log(error.code);
+      alert(error.message);
+    });
+}  
 
 
-  return (
-    <>
-      <div >
-        <h3>Sign in</h3>
-        <input type="text" onChange={(e) => {
-          setUserEmail(e.target.value);
-        }} placeholder='email' />
-        <br/>
-        <input type="password" onChange={(e) => {
-          setUserPassWord(e.target.value);
-        }} placeholder='password' />
-        <br/>
-        <button onClick={handleSignin}>Sign in</button>
-        <div>{user?.email}</div>
-
-      </div>    
-    </>
-);
+return (
+  <>
+    <div className={styles.wrapper}>
+      <h1 className={styles.title}>로그인</h1>
+    
+      <div className={styles.from}>
+      <input type="text" onChange={(e) => {
+        setUserEmail(e.target.value);
+      }} placeholder='example@naver.com' />
+      </div>
   
+      <div className={styles.from}>
+      <input type="password" onChange={(e) => {
+        setUserPassWord(e.target.value);
+      }} placeholder='password' />
+      </div>
+  
+
+      <div className={styles.login}>
+      <button onClick={handleSignin}>로그인</button>
+      </div>
+      <div>{user?.email}</div>
+      <div className={styles.option}>
+        <ul>
+          <li>아이디 찾기</li>
+          <li>비밀번호 찾기</li>
+          <li><a href='./Signup'>회원가입</a></li>
+        </ul>
+      </div>
+
+    </div>    
+  </>
+);
+
 }
 
 export default Signin;
