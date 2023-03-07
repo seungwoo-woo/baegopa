@@ -32,13 +32,13 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/movepage" element={<MovePage />} />
-          {/* <Route path="/" element={<Main />} /> */}
-          {/* <Route path="/" element={<Subpage />} /> */}
-          {/* <Route path="/today" element={<Today />} />
-          <Route path="/best" element={<BestSlider />} /> */}
-          {/* <Route path="/search" element={<SearchPage />} /> */}
-          {/* <Route path="/recipe" element={<RecipeDetail />} /> */}
-          {/* <Route path="*" element={<NomatchPage />} /> */}
+          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Subpage />} />
+          <Route path="/today" element={<Today />} />
+          <Route path="/best" element={<BestSlider />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/recipe" element={<RecipeDetail />} />
+          <Route path="*" element={<NomatchPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
