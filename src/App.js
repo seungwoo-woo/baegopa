@@ -33,10 +33,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/movepage" element={<MovePage />} />
           <Route path="/" element={<Main />} />
-
           <Route path="/recipe" element={<RecipeDetail />} />
-
-          <Route path="/" element={<Subpage />} />
+          <Route path="/sub" element={<Subpage />} />
           <Route path="/today" element={<Today />} />
 
           <Route path="/best" element={<BestSlider />} />
