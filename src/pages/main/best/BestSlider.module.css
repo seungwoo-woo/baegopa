@@ -8,9 +8,6 @@
 .swipers {
   position: relative;
   height: auto;
-  /* display: flex;
-  justify-content: center;
-  flex-wrap: nowrap; */
 }
 
 .prev-button {
