@@ -62,7 +62,7 @@ return (
   
 
       <div className={styles.login}>
-      <button onClick={handleSignin}>로그인</button>
+      <button onClick={handleSignin} className={styles.sign}>로그인</button>
       </div>
       <div>{user?.email}</div>
       <div className={styles.option}>

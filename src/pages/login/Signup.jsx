@@ -72,7 +72,7 @@ return (
       </div>
 
       <div className={styles.login}>
-      <button onClick={handleSignup}>가입하기</button>
+      <button onClick={handleSignup} className={styles.sign}>가입하기</button>
       </div>
       <div>{user?.email}</div>
       
