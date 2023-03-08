@@ -14,6 +14,7 @@ input {
     padding: 0 64px 0 16px;
     border: 1px solid #E5E5E5;
     font-size: 17px;
+    text-align: start;
 }
 .title {
     font-size: 28px;
@@ -26,6 +27,7 @@ input {
 }
 
 .login {
+    color: #212121;
     padding: 20px 0 16px 0;
 }
 
@@ -49,6 +51,7 @@ button:hover {
 .option {
     width: 320px;
     margin: 0 auto;
+    color: #212121;
 }
 
 .option > ul {
@@ -58,6 +61,7 @@ button:hover {
 
 li {
     padding-right: 10px;
+    list-style: none;
     /* border-right: 1px solid #E5E5E5; */
 }
 a {

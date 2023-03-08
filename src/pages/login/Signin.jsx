@@ -15,11 +15,17 @@ const [ userEmail, setUserEmail ] = useState('');
 const [ userPassword, setUserPassWord ] = useState('');
 const [ user, setUser ] = useState('');
 
+
+
+
+
 const handleSignin = () => {
   const auth = getAuth();
   console.log(auth);
   console.log(userEmail);
   console.log(userPassword);
+  // alert(`환영합니다❤ ${userEmail}`);
+
 
   signInWithEmailAndPassword(auth, userEmail, userPassword)
     .then((userCredential) => {
@@ -32,7 +38,9 @@ const handleSignin = () => {
       console.log(error.code);
       alert(error.message);
     });
+    
 }  
+
 
 
 return (
@@ -43,13 +51,13 @@ return (
       <div className={styles.from}>
       <input type="email" onChange={(e) => {
         setUserEmail(e.target.value);
-      }} placeholder='example@naver.com' maxlength = "30"/>
+      }} placeholder='example@naver.com' maxlength = "30" onKeyUp={Signin}/>
       </div>
   
       <div className={styles.from}>
       <input type="password" onChange={(e) => {
         setUserPassWord(e.target.value);
-      }} placeholder='password' maxlength = "12" />
+      }} placeholder='password' maxlength = "12" onKeyUp={Signin}/>
       </div>
   
 

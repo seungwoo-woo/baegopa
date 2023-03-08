@@ -18,12 +18,12 @@ const [ newUserPassword2, setNewUserPassWord2 ] = useState('');
 const [ user, setUser ] = useState('');
 
 
-
 const handleSignup = () => {
   const auth = getAuth();
   console.log(auth);
   console.log(newUserEmail);
   console.log(newUserPassword);
+  alert(`환영합니다❤ ${newUserEmail}`);
 
   if (newUserPassword === newUserPassword2) {
     createUserWithEmailAndPassword(auth, newUserEmail, newUserPassword)
