@@ -261,7 +261,7 @@ const viewIndex = 'comment';
       comment: "",
     }]
   });
-  console.log(reviewValue.cardImagePath);
+  // console.log(reviewValue.cardImagePath);
   const handleChange = (e) => {
     const value = e.target.value;
     setReviewValue({
@@ -330,7 +330,7 @@ const viewIndex = 'comment';
 // console.log(handleCopyClipBoard);
 let content = window.location.href;
 // console.log(content);
-console.log(reviewValue.cardImagePath);
+// console.log(reviewValue.cardImagePath);
 // console.log(imgRef.current.files[0].name);
 
   return (
