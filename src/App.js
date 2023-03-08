@@ -30,9 +30,9 @@ function App() {
       <BrowserRouter>
         <Header />``
         <Routes>
+          <Route path="/movepage" element={<MovePage />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/movepage" element={<MovePage />} />
 
           <Route path="/" element={<Main />} />
           <Route path="/recipe" element={<RecipeDetail />} />
