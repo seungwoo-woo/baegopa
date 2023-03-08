@@ -162,7 +162,7 @@ function SearchPage(props) {
                     <div className={styles.search}>
                         <div className={styles.content}>
                             <input type={'text'} placeholder={'검색 키워드 입력란'} value={textValue} onChange={contentChange} />
-                            <img src={require('../subpage/images/tabler_search.png')} alt={'검색'} title={'검색'} />
+                            <img src={require('../img/tabler_search.png')} alt={'검색'} title={'검색'} />
                         </div>
                     </div>
                     {textValue}
