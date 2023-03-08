@@ -88,9 +88,7 @@ function CardList(props) {
   return (
 
     <div className={styles.group}>
-
       {/* <h1>{groupTitme}</h1> */}
-
       <div className={styles.cardList}>
         {recipeList.map((recipe) => {
           return <Card key={recipe.docId} recipe={recipe} viewIndex={viewIndex} />
