@@ -3,11 +3,8 @@ import CardList from '../../components/CardList';
 import styles from "./Sub.module.css";
 
 
-
-
-
 function Subpage(props) {
-    const keyword = ['닭고기', ' 닭고기'];
+    const keyword = ['닭고기', '양파'];
 
     return (
         <>
