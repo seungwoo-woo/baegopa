@@ -12,7 +12,7 @@ import SearchPage from './pages/search/SearchPage';
 import BestSlider from './pages/main/best/BestSlider';
 import NomatchPage from './pages/main/NomatchPage';
 import Main from './pages/main/Main';
-import styles from './App.css'
+import styles from './App.css';
 import GetRecipeDB from './pages/addrecipe/GetRecipeDB';
 import CardList from './components/CardList';
 import Subpage from './pages/subpage/Subpage';
@@ -20,6 +20,7 @@ import Signin from './pages/login/Signin';
 import Signup from './pages/login/Signup';
 import MovePage from './pages/login/MovePage';
 import Mypage from './pages/mypage/Mypage';
+import Addrecipe from './pages/addrecipe/Addrecipe';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/movepage" element={<MovePage />} />
+
           <Route path="/" element={<Main />} />
           <Route path="/recipe" element={<RecipeDetail />} />
           <Route path="/sub" element={<Subpage />} />
