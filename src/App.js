@@ -34,7 +34,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
 
           <Route path="/" element={<Subpage />} />
-          <Route path="/recipe" element={<RecipeDetail />} />
+          <Route path="/recipe/:docId" element={<RecipeDetail />} />
           <Route path="/sub" element={<Subpage />} />
           <Route path="/today" element={<Today />} />
 

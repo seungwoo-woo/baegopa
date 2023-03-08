@@ -3,6 +3,9 @@ import Addrecipe from '../pages/addrecipe/Addrecipe';
 import MovePage from '../pages/login/MovePage';
 import RecipeDetail from '../pages/recipe/RecipeDetail';
 import styles from './Card.module.css';
+
+import { Link, useNavigate } from 'react-router-dom';
+
 // import likeIconImage from "../img/ph_heart.png";
 
 function Card(props) {
@@ -28,6 +31,8 @@ function Card(props) {
 
   const {recipe, viewIndex} = props;
 
+   const navigate = useNavigate(); 
+
   console.log(recipe);
 
   let view = true;
@@ -41,11 +46,9 @@ function Card(props) {
     comment = true;
   }  
 
-
   const handleRecipeClick = () => {
-    console.log(recipe.docId);
+    navigate('/recipe/'+ recipe.docId);
   }
-
 
   return (
     <>
