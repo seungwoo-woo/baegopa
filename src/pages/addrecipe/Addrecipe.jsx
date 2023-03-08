@@ -12,17 +12,6 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 
 function Addrecipe(props) {
 
-  // Your web app's Firebase configuration
-  // const firebaseConfig = {
-  //   apiKey: "AIzaSyDT5M_fwLAtIvcInwdTXni3wQIWW5JUx2A",
-  //   authDomain: "baegopa-e886a.firebaseapp.com",
-  //   projectId: "baegopa-e886a",
-  //   storageBucket: "baegopa-e886a.appspot.com",
-  //   messagingSenderId: "30036889772",
-  //   appId: "1:30036889772:web:fabf6d0ba28fc8eaf4cf09",
-  //   measurementId: "G-DKGSL9EP7X"
-  // };
-
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -51,6 +40,7 @@ function Addrecipe(props) {
       subtitle: recipe['subtitle'],
       hashtags: recipe['hashtags'],
       meals: recipe['meals'],
+      division: recipe['division'],
       time: recipe['time'],
       difficulty: recipe['difficulty'],
       userId: "어우동",
@@ -126,7 +116,7 @@ function Addrecipe(props) {
 
 
   // 1. 요리명, 요리시간/난이도  ------------------------------------------------------------
-  const [recipeSummary, setRecipeSummary] = useState({ title: '', subtitle: '', hashtags: [] , meals: '', time: '', difficulty: '' });
+  const [recipeSummary, setRecipeSummary] = useState({ title: '', subtitle: '', hashtags: [] , meals: '', division: '', time: '', difficulty: '' });
 
   // 요리명 변경 -------------------------------------------------------------
   function handleChangeRecipeTitle(e) {    
@@ -153,6 +143,13 @@ function Addrecipe(props) {
   function handleChangeMeals(e) {    
     const recipeSummaryCopy = JSON.parse(JSON.stringify(recipeSummary));
     recipeSummaryCopy.meals = e.target.value;  
+    setRecipeSummary(recipeSummaryCopy);		            
+  }
+
+  // 요리분류(한식/중식/일식/양식/분식/야식)변경 -----------------------------------------
+  function handleChangeDivision(e) {    
+    const recipeSummaryCopy = JSON.parse(JSON.stringify(recipeSummary));
+    recipeSummaryCopy.division = e.target.value;  
     setRecipeSummary(recipeSummaryCopy);		            
   }
 
@@ -295,10 +292,13 @@ function Addrecipe(props) {
                 onChange={e => handleChangeHashtags(e)}></input>
           </div>
 
-          <span>요리양 (인분)</span>
+          <span>요리양 (인분) / 요리분류 (한식/중식/일식/양식/분식/야식)</span>
           <span style={{color: 'red'}}>*</span>
           <div>
             <input type="text" className='timeRecipe' onChange={e => handleChangeMeals(e)}></input>
+            <span style={{color: 'black', fontWeight: 400}}>/ </span>
+            <input type="text" className='timeRecipe' onChange={e => handleChangeDivision(e)}></input>
+
           </div>
 
           <span>요리시간(분) / 난이도</span>
