@@ -8,10 +8,15 @@
   margin-top: 40px;
 }
 
-.hd{
+.hd {
   margin-top: 100px;
   margin-bottom: 100px;
   font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
   color: rgb(147, 112, 98);
   text-align: center;
+  font-size: 40px;
+}
+.hd:hover {
+  color: rgb(207, 147, 121);
+
 }
