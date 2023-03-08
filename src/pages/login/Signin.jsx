@@ -41,15 +41,15 @@ return (
       <h1 className={styles.title}>로그인</h1>
     
       <div className={styles.from}>
-      <input type="text" onChange={(e) => {
+      <input type="email" onChange={(e) => {
         setUserEmail(e.target.value);
-      }} placeholder='example@naver.com' />
+      }} placeholder='example@naver.com' maxlength = "30"/>
       </div>
   
       <div className={styles.from}>
       <input type="password" onChange={(e) => {
         setUserPassWord(e.target.value);
-      }} placeholder='password' />
+      }} placeholder='password' maxlength = "12" />
       </div>
   
 
