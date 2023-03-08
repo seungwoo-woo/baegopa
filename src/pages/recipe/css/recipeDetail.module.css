@@ -51,7 +51,6 @@ a {
 }
 .main--left {
   flex: 1;
-  height: 500px;
   overflow: hidden;
   position: relative;
 }
