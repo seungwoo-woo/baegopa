@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
-import BestCard4 from '../best/BestCard4';
+import CardList from '../../../components/CardList';
+import BestCard from '../best/BestCard';
 import styles from './MainButton.module.css'
 
 // const handleGetMoreProducts = async () => {
@@ -16,7 +17,7 @@ function MainButton(props) {
   const [showComponents, setShowComponents] = useState([]);
 
   const handleClick = () => {
-    setShowComponents([...showComponents, <BestCard4 key={showComponents.length} />]);
+    setShowComponents([...showComponents, <CardList key={showComponents.length} />]);
   };
 
   return (

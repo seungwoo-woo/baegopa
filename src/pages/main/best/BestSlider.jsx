@@ -8,6 +8,7 @@ import BestCard from './BestCard';
 
 
 import Best from './Best';
+import CardList from '../../../components/CardList';
 
 
 function BestSlider(props) {
@@ -25,14 +26,7 @@ function BestSlider(props) {
         navigation={{ prevEl: `.${styles['prev-button']}`, nextEl: `.${styles['next-button']}` }}
         pagination={{ clickable: true }}
       >
-        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
-        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
-        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
-        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
-        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
-        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
-        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
-        <SwiperSlide className={styles.swiperi}><BestCard /></SwiperSlide>
+        <SwiperSlide className={styles.swiperi}></SwiperSlide>
 
         <button className={styles['prev-button']}></button>
         <button className={styles['next-button']}></button>
