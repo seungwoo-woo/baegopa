@@ -28,13 +28,12 @@ function App() {
   return (
   <div className="App">
       <BrowserRouter>
-        <Header />``
+        <Header />
         <Routes>
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/movepage" element={<MovePage />} />
 
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Subpage />} />
           <Route path="/recipe" element={<RecipeDetail />} />
           <Route path="/sub" element={<Subpage />} />
           <Route path="/today" element={<Today />} />

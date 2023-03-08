@@ -1,4 +1,7 @@
 import React from 'react';
+import Addrecipe from '../pages/addrecipe/Addrecipe';
+import MovePage from '../pages/login/MovePage';
+import RecipeDetail from '../pages/recipe/RecipeDetail';
 import styles from './Card.module.css';
 // import likeIconImage from "../img/ph_heart.png";
 
@@ -38,41 +41,29 @@ function Card(props) {
     comment = true;
   }  
 
+
+  const handleRecipeClick = () => {
+    console.log(recipe.docId);
+  }
+
+
   return (
     <>
     <div>
 
     <div className={styles.card}>
       
-      <img src={recipe.imageFilesPath[0]} width={285} height={285}/>
+      <img className={styles.cardimg} src={recipe.imageFilesPath[0]} width={285} height={285}
+        onClick={handleRecipeClick}
+      />
 
       { view && 
       <div className={styles.bottomTextBox}>
-        {/* <div className={styles.bottomTtextTitle}>{cookItem.title}</div> */}
-      
-        {/* <div className={styles.thumbnailBox}>
-          <div className={styles.thumbnailImage}> 
-            <img scr={thumbnailImagePath} width={25} height={25}></img>
-            <i className="fa-solid fa-user"></i>
-          </div>
-          <p>{cookItem.userId}</p>
-        </div> */}
-
         <div className={styles.noBox}>
-
-          {/* <div className={styles.viewNoBox}>
-            <img src={viewIconImage} width={25} style={{margin: 10}}></img>
-            <i className="fa-regular fa-eye"></i>
-            {cookItem.viewNo.toLocaleString('ko-KR')}
-          </div> */}
-
           <div className={styles.likeNoBox}>
             <img src={require ('../img/ph_heart.png')} width={35}/>
-            {/* {cookItem.likeNo.toLocaleString('ko-KR')} */}
           </div>
-
         </div>
-
       </div> }
       
     </div>
