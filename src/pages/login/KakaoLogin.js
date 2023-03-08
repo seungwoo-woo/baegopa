@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
+import styles from "./Login.module.css";
+
 
 const KakaoLogin = () => {
 
@@ -14,10 +16,12 @@ const KakaoLogin = () => {
   }
 
   return (
-    <React.Fragment>
-      <button
-        onClick={kakaoLogin} className={styled.kakao}>카카오계정으로 로그인</button>
-    </React.Fragment>
+    <div className={styles.kakao}>
+      <a onClick={kakaoLogin}>
+      <img src="https://croket.s3.ap-northeast-2.amazonaws.com/icon/auth_kakaotalk.png"
+     />
+    </a >
+    </div>
   )
 }
 

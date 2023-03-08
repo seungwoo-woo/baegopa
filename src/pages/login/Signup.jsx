@@ -6,7 +6,7 @@ import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebas
 import { useParams } from 'react-router-dom';
 import styles from "./Login.module.css";
 
-// Initialize Firebase 회원가입 페이지
+// Initialize Firebase 회원가입 페이지 
 const app = initializeApp(firebaseConfig);
 
 function Signup(props) {
@@ -70,7 +70,7 @@ return (
         setNewUserPassWord2(e.target.value);
       }} placeholder='Confirm password'  maxlength = "12"/>
       </div>
-
+      {/* 개인정보 체크박스 만들기 */}
       <div className={styles.login}>
       <button onClick={handleSignup} className={styles.sign}>가입하기</button>
       </div>
