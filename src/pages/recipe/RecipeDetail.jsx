@@ -575,7 +575,7 @@ let content = window.location.href;
             <h4 className={styles['font_eng']}>REVIEW</h4>
             <div className={styles['review--titlebottom']}>
               <p>오늘의 주제</p>
-              <span className={styles['review--titlesubject']}>김치찌개</span>
+              <span className={styles['review--titlesubject']}>{recipeItem.title}</span>
               <p className={styles['review--titlesubtitle']}>회원들이 만든 요리</p>
             </div>
           </div>
