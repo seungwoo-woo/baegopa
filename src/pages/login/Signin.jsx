@@ -3,7 +3,7 @@ import { firebaseConfig } from '../addrecipe/firestore';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
-import styles from "../login/Login.module.css";
+import styles from "./Login.module.css";
 
 
 // Initialize Firebase

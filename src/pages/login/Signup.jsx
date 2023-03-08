@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import { useParams } from 'react-router-dom';
-import styles from "../login/Login.module.css";
+import styles from "./Login.module.css";
 
 // Initialize Firebase 회원가입 페이지
 const app = initializeApp(firebaseConfig);
