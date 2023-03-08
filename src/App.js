@@ -20,6 +20,7 @@ import Signin from './pages/login/Signin';
 import Signup from './pages/login/Signup';
 import MovePage from './pages/login/MovePage';
 import Mypage from './pages/mypage/Mypage';
+import Addrecipe from './pages/addrecipe/Addrecipe';
 
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/movepage" element={<MovePage />} />
           <Route path="/" element={<Main />} /> */}
-          <Route path="/" element={<Subpage />} />
+          {/* <Route path="/" element={<Subpage />} /> */}
+          <Route path="/" element={<Addrecipe />} />
           <Route path="/today" element={<Today />} />
           <Route path="/best" element={<BestSlider />} />
           <Route path="/search" element={<SearchPage />} />
