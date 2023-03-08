@@ -9,8 +9,8 @@ import styles from "../css/recipeDetail.module.css";
 function ButtonKeeper(props) {
   const dispatch = useDispatch();
   const recipeList = useSelector(selectRecipeList);
-  console.log(recipeList);
-  console.log('dd');
+  // console.log(recipeList);
+  // console.log('dd');
   // const product = useSelector(selectSelectedProduct);
   // console.log(product);
 

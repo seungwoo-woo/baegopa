@@ -20,6 +20,7 @@ import Signin from './pages/login/Signin';
 import Signup from './pages/login/Signup';
 import MovePage from './pages/login/MovePage';
 import Mypage from './pages/mypage/Mypage';
+// import recipeListAPI from './pages/recipe/api/recipeListAPI';
 import Addrecipe from './pages/addrecipe/Addrecipe';
 
 
@@ -27,8 +28,8 @@ function App() {
 
   return (
   <div className="App">
-      <BrowserRouter>
-        <Header />``
+      {/* <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/movepage" element={<MovePage />} />
           <Route path="/signin" element={<Signin />} />
@@ -44,7 +45,9 @@ function App() {
           <Route path="*" element={<NomatchPage />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <RecipeDetail />
+      {/* <recipeListAPI /> */}
     </div>
   );
 }

@@ -69,7 +69,9 @@ function CardList(props) {
       queryAllSnapshot.forEach((doc) => {
       const docCopy = {...doc.data(), docId: doc._document.key.path.segments[6]};
       recipeDbList.push(docCopy);
+      console.log(docCopy);
       });
+      console.log(queryAllSnapshot);
 
       if (randomCount >= 0) {
         setRecipeList(recipeDbList.slice(randomCount, randomCount + keywordList[0]));
