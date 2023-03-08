@@ -2,15 +2,23 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
-import { getAllRecipes, selectedRecipe } from './features/recipelistdb/recipeSlice';
-import { getRecipes, getRecipeById } from "./api/recipeListAPI";
-import { useDispatch, useSelector } from 'react-redux';
+// import { getAllRecipes, selectedRecipe } from './features/recipelistdb/recipeSlice';
+// import { getRecipes, getRecipeById } from "./api/recipeListAPI";
+// import { useDispatch, useSelector } from 'react-redux';
 
 import styles from "./css/recipeDetail.module.css";
 import 'swiper/css';
 import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+
+
+// === Firebase ======================================================
+import { firebaseConfig } from '../addrecipe/firestore';
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs, query, where, doc, getDoc, orderBy, limit } from "firebase/firestore";
+import { number } from 'prop-types';
+// -------------------------------------------------------------------
 
 
 
@@ -22,6 +30,7 @@ import ButtonKeeper from './components/ButtonKeeper';
 
 import ReviewRegiter from './components/ReviewRegiter';
 import { async } from 'q';
+import { forEach } from 'lodash';
 
 
 // TODO : 데이터 연결 했다는 가정(나중에 삭제)-------------------------------------------------- 
@@ -139,58 +148,108 @@ const userReviews = [
 ];
 
 function RecipeDetail(props) {
-  console.log(recipeee);
-
-  const dispatch = useDispatch();
-  const recipeId = "38B431UkKcmFl18XnntZ";
-  console.log(recipeId);
-  const recipeData = () => {
-  }
-  useEffect(() => {
-    const recipeDB = async () => {
-      const data = await getRecipes();
-      console.log(data);
-      return data;
+  
+  
+  let recipeDbList = [];
+  const [ recipeItem, setRecipeItem ] = useState(
+    {
+      difficulty : "",
+      docId : "",
+      hashtags: [],
+      imageFilesPath : [],
+      ingredientItems :  [], 
+      ingredientUnits : [],
+      ingredientValues : [],
+      likeCount: 0,
+      meals : 0,
+      process : [],
+      subtitle : "",
+      time : 0,
+      title : "",
+      userId : "",
+      viewCount : 0
+    },
+  );
+  const recipeItemId = "Nxavqaojp0n13RMsL50l";
+  
+  useEffect (() => {
+    const readRecipeDB = async () => {
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      // console.log(db);
+      const querySelectSnapshot = await getDoc(doc(db, "RecipeDB", recipeItemId)); 
+      // console.log(querySelectSnapshot.exists());
+      // console.log(querySelectSnapshot.data());
+      const recipeItemCall = querySelectSnapshot.data();
+      // console.log(recipeSelectItem.title);
+      setRecipeItem(recipeItemCall);
     }
-    recipeDB();
-    // const recipeSelect = async () => {
-    //   const data = await getRecipeById();
-    //   console.log(data);
-    //   return data;
-    // }
-    // recipeSelect();
-
-
-
-    // const foundRecipe = data.find((recipe) => {
-      // console.log(recipe);
-      // return recipe.id === docId;
-    // });
-    // dispatch(getRecipeById(foundRecipe));
-
-    // // F12 > Application에서 볼 수 있음
-    // // 상세페이지에 들어오면 해당 상품의 id를 localStorage에 추가 (추가할 때는 getItem이고 데이터가 문자이기 때문에 JSON.parse로 JSON값으로 변경해줌)
-    // let latestViewed = JSON.parse(localStorage.getItem('latestViewed')) || [] ;  // 키 값이 없으면 []빈배열을 넣어준다
-    // // 문제발생(id가 중복된 것도 DB에 들어가짐)
-    // // id를 넣기 전에 기존 배열에 존재하는지 검사하거나
-    // // 또는 일단 넣고 Set 자료형을 이용하여 중복 제거
-    // latestViewed.push(docId);
-    // latestViewed = new Set(latestViewed);  // Set객체로 반환한걸 배열로 바꿔줘야 함  (14_Set_map 에 자료 있음)
-    // console.log(latestViewed);
-    // // Array.from(latestViewed)  // Array.from() 배열로 바꿔주고 싶은 걸 괄호에 넣기 또는 ...스프레드 연산자로 배열로 변경
-    // latestViewed = [...latestViewed];
-    // localStorage.setItem('latestViewed', JSON.stringify(latestViewed));  // (넣어줄 때는 setItem이고 JSON을 문자열로 변경해줌 )
-
-    // // Alert가 3초뒤에 없어지도록-----------------
-    // const timeout = setTimeout(() => {
-    //   setShowInfo(false);
-    // }, 3000);
-    // // 불필요하게 타이머가 계속 생기는 것을 정리하는 뒷정리 함수!!
-    // return () => {
-    //   clearTimeout(timeout);
-    // };
-    // ---------------------------------------------------
+    readRecipeDB();
   }, []);
+
+  console.log(recipeItem);
+  console.log(recipeItem.hashtags);
+
+  const inredientSum = [];
+  recipeItem.ingredientItems.forEach((item, index) => {
+    inredientSum.push(`${item} ${recipeItem.ingredientValues[index]}${recipeItem.ingredientUnits[index]}`)
+  });
+  console.log(inredientSum);
+
+// -----팀장님 DB-----------------------------------------------------------
+
+
+  // const dispatch = useDispatch();
+  // const recipeId = "38B431UkKcmFl18XnntZ";
+  // console.log(recipeId);
+  // const recipeData = () => {
+  // }
+  // useEffect(() => {
+  //   const recipeDB = async () => {
+  //     const data = await getRecipes();
+  //     console.log(data);
+  //     return data;
+  //   }
+  //   recipeDB();
+  //   // const recipeSelect = async () => {
+  //   //   const data = await getRecipeById();
+  //   //   console.log(data);
+  //   //   return data;
+  //   // }
+  //   // recipeSelect();
+
+
+
+  //   // const foundRecipe = data.find((recipe) => {
+  //     // console.log(recipe);
+  //     // return recipe.id === docId;
+  //   // });
+  //   // dispatch(getRecipeById(foundRecipe));
+
+  //   // // F12 > Application에서 볼 수 있음
+  //   // // 상세페이지에 들어오면 해당 상품의 id를 localStorage에 추가 (추가할 때는 getItem이고 데이터가 문자이기 때문에 JSON.parse로 JSON값으로 변경해줌)
+  //   // let latestViewed = JSON.parse(localStorage.getItem('latestViewed')) || [] ;  // 키 값이 없으면 []빈배열을 넣어준다
+  //   // // 문제발생(id가 중복된 것도 DB에 들어가짐)
+  //   // // id를 넣기 전에 기존 배열에 존재하는지 검사하거나
+  //   // // 또는 일단 넣고 Set 자료형을 이용하여 중복 제거
+  //   // latestViewed.push(docId);
+  //   // latestViewed = new Set(latestViewed);  // Set객체로 반환한걸 배열로 바꿔줘야 함  (14_Set_map 에 자료 있음)
+  //   // console.log(latestViewed);
+  //   // // Array.from(latestViewed)  // Array.from() 배열로 바꿔주고 싶은 걸 괄호에 넣기 또는 ...스프레드 연산자로 배열로 변경
+  //   // latestViewed = [...latestViewed];
+  //   // localStorage.setItem('latestViewed', JSON.stringify(latestViewed));  // (넣어줄 때는 setItem이고 JSON을 문자열로 변경해줌 )
+
+  //   // // Alert가 3초뒤에 없어지도록-----------------
+  //   // const timeout = setTimeout(() => {
+  //   //   setShowInfo(false);
+  //   // }, 3000);
+  //   // // 불필요하게 타이머가 계속 생기는 것을 정리하는 뒷정리 함수!!
+  //   // return () => {
+  //   //   clearTimeout(timeout);
+  //   // };
+  //   // ---------------------------------------------------
+  // }, []);
 
 
 
@@ -318,7 +377,7 @@ const viewIndex = 'comment';
 
 
   // const [recipeInfos, setrecipeInfos] = useState(recipeInfo);
-  const [recipeInfos, setrecipeInfos] = useState(recipeee);
+  const [recipeInfos, setrecipeInfos] = useState(recipeItem);
 
   // console.log(recipes[0].subtitle);
   // console.log(recipeInfo[0].level);
@@ -446,7 +505,7 @@ let content = window.location.href;
                       )
                     })
                   } */}
-                {recipeee.imageFilesPath.map((image, index) => {
+                {recipeItem.imageFilesPath.map((image, index) => {
                   return <SwiperSlide key={index}><img src={image} alt='레시피이미지' /></SwiperSlide>
                 })}
               </Swiper>
@@ -456,25 +515,20 @@ let content = window.location.href;
               </div>
             </div>
             <div className={styles['main--leftcounts']}>
-                {/* {
-                  recipeInfos.map((info, index) => {
-                    return <LikeCount index={[0]} likeCounts={info.likeCounts} setrecipeInfos={setrecipeInfos}/>
-                  })
-                } */}
                 <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} /> {/* // TODO : 2023-03-08 likecount 안먹음 */}
                 <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} />
             </div>
           </div>
           <div className={styles['main--right']}>
-            <h2 className={styles['main--rightsubtitle']}>{recipeee.subtitle}</h2>
-            <h1 className={styles['main--righttitle']}>{recipeee.title}</h1>
+            <h2 className={styles['main--rightsubtitle']}>{recipeItem.subtitle}</h2>
+            <h1 className={styles['main--righttitle']}>{recipeItem.title}</h1>
             <div className={styles['main--rightinfo']}>
-              <span>난이도: {recipeee.difficulty}</span>
-              <span>양: {recipeee.meals} 인분</span>
-              <span>조리시간: {recipeee.time}</span>
+              <span>난이도: {recipeItem.difficulty}</span>
+              <span>양: {recipeItem.meals} 인분</span>
+              <span>조리시간: {recipeItem.time}</span>
             </div>
             <div className={styles['main--righthashtag']}>
-              {recipeee.hashtags.map((hashtag, index) => {
+              {recipeItem.hashtags.map((hashtag, index) => {
                 return (
                   <div key={index}>#{hashtag}</div>
                 )
@@ -502,14 +556,14 @@ let content = window.location.href;
       <section className={styles.content}>
         <div className={styles['content--ingredients']}>
           <h4>재료</h4>
-          {recipeee.ingredientItems.map((ingredientItem)=>{
-            return <span>{ingredientItem}, </span>   // TODO : 2023-03-08 재료는 가져왔는데, 다른 배열에 있는 ingredientUnits, ingredientValues는 어떻게 불러오나,,, map 쓰면 안되는 건가...
+          {inredientSum.map((ingredientItem)=>{
+            return <span>{ingredientItem}, </span>
           })}
           {/* <p>{recipes[0].ingredients}</p> */}
         </div>
         <ul className={styles['content--method']}>
           <h4>조리 방법</h4>
-          {recipeee.process.map((pro) => {
+          {recipeItem.process.map((pro) => {
             return <li>{pro}</li>
           })}
         </ul>
@@ -593,11 +647,6 @@ let content = window.location.href;
         </div> */}
         <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} />
       </section>
-
-      <section className={styles.footer}>
-        Footer영역
-      </section>
-
     </div>
   );
 }

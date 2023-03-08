@@ -6,8 +6,8 @@ import styles from "../css/recipeDetail.module.css";
 function LikeCount(props) {
   const { infos, setrecipeInfos } = props;
   const [isClicked, setIsClicked] = React.useState(false);
-  console.log(typeof infos);
-  console.log(infos);
+  // console.log(typeof infos);
+  // console.log(infos);
 
   // console.log(infos);
   const imgUrl = "../images/btn-likecount-off.png";
