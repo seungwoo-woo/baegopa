@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import styles from "./Login.module.css";
+import KakaoLogin from "./KakaoLogin";
 
 
 // Initialize Firebase
@@ -63,6 +64,7 @@ return (
 
       <div className={styles.login}>
       <button onClick={handleSignin} className={styles.sign}>로그인</button>
+      <KakaoLogin/>
       </div>
       <div>{user?.email}</div>
       <div className={styles.option}>
