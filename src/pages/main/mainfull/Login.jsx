@@ -4,6 +4,7 @@ import styles from './Login.module.css'
 import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function Login(props) {
+  const { display, setDisplay } = props;
   const [vis, setVis] = useState(true);
 
   function handleClick() {

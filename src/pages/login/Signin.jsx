@@ -3,8 +3,9 @@ import { firebaseConfig } from '../addrecipe/firestore';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
-import styles from "../login/Login.module.css";
-
+import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+import styles from './Signin.module.css'
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -53,8 +54,9 @@ return (
       </div>
   
 
+    
       <div className={styles.login}>
-      <button onClick={handleSignin}>로그인</button>
+      <Nav.Link className={styles.bttn} onClick={handleSignin} as={Link}  to={user ? '/' : '/signin'} >로그인</Nav.Link>
       </div>
       <div>{user?.email}</div>
       <div className={styles.option}>
