@@ -51,6 +51,8 @@ h4{
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select:none;
+
 }
 .plus{
   background-image: url('../../../img/plus.png');
@@ -71,8 +73,8 @@ h4{
   cursor: pointer;
 }
 .ids:hover {
-  transform: scale(1.2);
-  cursor: pointer;
+  /* transform: scale(1.2); */
+  cursor:auto;
 }
 .my:hover{
   transform: scale(1.2);
