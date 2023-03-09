@@ -6,7 +6,7 @@ import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebas
 import { useParams } from 'react-router-dom';
 import styles from "./Login.module.css";
 
-// Initialize Firebase 회원가입 페이지
+// Initialize Firebase 회원가입 페이지 
 const app = initializeApp(firebaseConfig);
 
 function Signup(props) {
@@ -59,7 +59,7 @@ return (
     <h3>비밀번호</h3>
       <input type="password" onChange={(e) => {
         setNewUserPassWord(e.target.value);
-      }} placeholder='password'  maxlength = "12"/>
+      }} placeholder='password'/>
       <p>6자 이상 입력해주세요.</p>
       </div>
 
@@ -68,9 +68,10 @@ return (
 
       <input type="password" onChange={(e) => {
         setNewUserPassWord2(e.target.value);
-      }} placeholder='Confirm password'  maxlength = "12"/>
+      }} placeholder='Confirm password'/>
       </div>
-
+      {/* 개인정보 동의 체크박스 만들기 */}
+    {/* <input type="checkbox" name="agreement"/> 개인정보 수집 동의 필수 */}
       <div className={styles.login}>
       <button onClick={handleSignup} className={styles.sign}>가입하기</button>
       </div>

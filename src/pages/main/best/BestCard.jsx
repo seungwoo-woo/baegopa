@@ -34,12 +34,21 @@ function BestCard(props) {
       const db = getFirestore(app);
       let q = '';
       // 조건별 검색 식 설정
+<<<<<<< HEAD
       // console.log(typeof(keywordList[0]));
       let randomCount = -1;
       if( !isNaN(keywordList[0])) {
 
         // console.log('숫자에 들어옴')
         randomCount = Math.floor(Math.random()*50);
+=======
+      console.log(typeof(keywordList[0]));
+      let randomCount = -1;
+      if( !isNaN(keywordList[0])) {
+
+        console.log('숫자에 들어옴')
+        randomCount = Math.floor(Math.random()*120);
+>>>>>>> feature/CardCss
         if (keywordList[0] !== 1) {
           if( randomCount > (120 - keywordList[0])) {
             randomCount = randomCount - keywordList[0];
@@ -48,17 +57,29 @@ function BestCard(props) {
         q = query(collection(db, "RecipeDB"));
 
       } else if (keywordList[0] === 'like') {
+<<<<<<< HEAD
         // console.log('like에 들오옴');
         q = query(collection(db, "RecipeDB"), orderBy("likeCount", "desc"), limit(4));
       } else if (keywordList[0].slice(-1) === '식') {
         // console.log('식에 들어옴');
+=======
+        console.log('like에 들오옴');
+        q = query(collection(db, "RecipeDB"), orderBy("likeCount", "desc"), limit(4));
+      } else if (keywordList[0].slice(-1) === '식') {
+        console.log('식에 들어옴');
+>>>>>>> feature/CardCss
         q = query(collection(db, "RecipeDB"), where("division", "in", keywordList), limit(8));
       } else {
         q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
       }
             
+<<<<<<< HEAD
       // console.log(keywordList[0]);
       // console.log(q);
+=======
+      console.log(keywordList[0]);
+      console.log(q);
+>>>>>>> feature/CardCss
 
       // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", ['닭고기', '양파', '두부', ' 당근', ' 오징어']));
       // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
@@ -75,7 +96,11 @@ function BestCard(props) {
       } else {
         setRecipeList(recipeDbList);
       };
+<<<<<<< HEAD
       // console.log(recipeDbList);
+=======
+      console.log(recipeDbList);
+>>>>>>> feature/CardCss
       
     }
     
@@ -83,7 +108,11 @@ function BestCard(props) {
     
   }, []);
   
+<<<<<<< HEAD
   // console.log(recipeList);
+=======
+  console.log(recipeList);
+>>>>>>> feature/CardCss
   
   return (
 

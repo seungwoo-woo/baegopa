@@ -1,5 +1,6 @@
 import { Nav } from 'react-bootstrap';
 import styles from './Login.module.css'
+<<<<<<< HEAD
 import { Link, useNavigate } from 'react-router-dom'; // useHistory -> useNavigate
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useState } from 'react';
@@ -10,6 +11,14 @@ function Login(props) {
   const auth = getAuth();
   const navigate = useNavigate(); // useHistory -> useNavigate
 
+=======
+import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Signin from '../../login/Signin';
+
+function Login(props) {
+  const [vis, setVis] = useState(true);
+  const [user, setUser] = useState('');
+>>>>>>> feature/CardCss
   function handleClick() {
     setVis(!vis);
 
@@ -57,6 +66,7 @@ function Login(props) {
         Sign up
       </Nav.Link>
       <div className={styles.ou} style={{ display: vis ? 'none' : 'block' }}>
+<<<<<<< HEAD
         {signinUser && (
           <div className={styles.ids}>
             {signinUser.split('@')[0]}님 환영합니다.
@@ -74,15 +84,29 @@ function Login(props) {
           style={{ display: vis ? 'none' : 'block' }}
         >
         </Nav.Link>
+=======
+        <Nav.Link
+          className={styles.my}
+          href="#deets"
+          style={{ display: vis ? 'none' : 'block' }}
+        ></Nav.Link>
+>>>>>>> feature/CardCss
         <Nav.Link
           className={styles.out}
           href="#141414ts"
           style={{ display: vis ? 'none' : 'block' }}
+<<<<<<< HEAD
           onClick={handleSignout}
         >
           Log out
         </Nav.Link>
 
+=======
+        >
+          Log out
+        </Nav.Link>
+        
+>>>>>>> feature/CardCss
       </div>
     </Nav>
   );
