@@ -38,7 +38,7 @@ function CardList(props) {
       if( !isNaN(keywordList[0])) {
 
         console.log('숫자에 들어옴')
-        randomCount = Math.floor(Math.random()*15);
+        randomCount = Math.floor(Math.random()*50);
         if (keywordList[0] !== 1) {
           if( randomCount > (120 - keywordList[0])) {
             randomCount = randomCount - keywordList[0];
