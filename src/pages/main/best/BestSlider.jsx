@@ -68,6 +68,9 @@ function BestSlider(props) {
         slidesPerView={4}
         navigation={{ prevEl: `.${styles['prev-button']}`, nextEl: `.${styles['next-button']}` }}
         pagination={{ clickable: true }}
+        autoplay={{
+          delay: 1000, // 넘어가는 간격(ms)
+        }}
       >
         {recipeList.map((recipe) => {
           return (

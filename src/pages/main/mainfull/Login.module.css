@@ -37,3 +37,11 @@ h4{
 .ou{
   display: flex !important;
 }
+.ids{
+  cursor: pointer;
+  color: rgb(147, 112, 98);
+  font-family: "Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -57,7 +57,7 @@ return (
       <div className={styles.login}>
       <Nav.Link className={styles.bttn} onClick={handleSignin} as={Link}  to={user ? '/' : '/signin'} >로그인</Nav.Link>
       </div>
-      <div>{user?.email}</div>
+      {/* <div>{user?.email}</div> */}
       <div className={styles.option}>
         <ul>
           <li>아이디 찾기</li>

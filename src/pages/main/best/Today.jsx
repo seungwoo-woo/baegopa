@@ -137,6 +137,9 @@ function Today(props) {
                 <p  >{recipeList[0].subtitle}</p>
               </div>
               <div>
+                <p>{recipeList[0].process}</p>
+              </div>
+              <div>
                 <div className={styles.styicon}>
                   {/* <Counters/> */}
                   {/* <button onClick={incrementViews}>글을 클릭하면 조회수가 오르게</button> */}
