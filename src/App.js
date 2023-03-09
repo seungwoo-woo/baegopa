@@ -28,14 +28,13 @@ function App() {
   const [vis, setVis] = useState(true);
   return (
   <div className="App">
-      <BrowserRouter>
+<BrowserRouter>
         <Header />
-
         <Routes vis={vis} setVis={setVis}>
           <Route setVis={setVis} path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
 
-          <Route path="/" element={<Subpage />} />
+          <Route path="/" element={<Main />} />
           <Route path="/recipe/:docId" element={<RecipeDetail />} />
           <Route path="/sub" element={<Subpage />} />
           <Route path="/today" element={<Today />} />
@@ -45,7 +44,7 @@ function App() {
           <Route path="*" element={<NomatchPage />} />
         </Routes>
         <Footer />
-      </BrowserRouter> 
+      </BrowserRouter>
       {/* <RecipeDetail />
       <recipeListAPI /> */}
     </div>
