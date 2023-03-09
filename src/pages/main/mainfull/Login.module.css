@@ -23,7 +23,10 @@ h4{
   
 }
 .lo:hover{
-  color:rgb(207, 147, 121)
+  color:rgb(207, 147, 121);
+  transform: scale(1.2);
+  cursor: pointer;
+  
 }
 
 .out{
@@ -34,6 +37,8 @@ h4{
 }
 .out:hover{
   color:rgb(207, 147, 121);
+  transform: scale(1.2);
+  cursor: pointer;
 }
 .ou{
   display: flex !important;
@@ -58,5 +63,18 @@ h4{
   margin: auto;
   cursor: pointer;
   margin-right: 10px;
+  
 
+}
+.plus:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.ids:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.my:hover{
+  transform: scale(1.2);
+  cursor: pointer;
 }

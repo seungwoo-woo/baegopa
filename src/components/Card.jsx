@@ -84,7 +84,7 @@ function Card(props) {
       {/* </div> */}
 
       <div className={styles.userComment}>
-        <p>{recipe.userComment[0].comment}</p>
+        {/* <p>{recipe.userComment[0].comment}</p> */}
       </div>
 
     </div>
