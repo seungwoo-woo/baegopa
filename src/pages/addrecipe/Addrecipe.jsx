@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './Addrecipe.css';
-
+import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
 // === Firebase ===========================================================================
 import { firebaseConfig } from './firestore.js';
 import { initializeApp } from "firebase/app";
@@ -259,8 +260,9 @@ function Addrecipe(props) {
       <div className='addRecipeWrapper'> 
         <div className='header'>
           <h1>레시피 등록하기</h1>
-          <button>X</button>
+          <Nav.Link type='button' className='button' as={Link} to="/" >X</Nav.Link>
         </div>
+        
 
         <div className='addRecipeBody'>
           <span>사진첨부</span>

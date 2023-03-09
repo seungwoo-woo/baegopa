@@ -64,15 +64,14 @@ function Login(props) {
         )}
         <Nav.Link
           className={styles.my}
-          href="#deets"
+          as={Link}  to="/search"
           style={{ display: vis ? 'none' : 'block' }}
         ></Nav.Link>
 
         <Nav.Link
           className={styles.plus}
-          href="#141414ts"
+          as={Link}  to="/add"
           style={{ display: vis ? 'none' : 'block' }}
-          onClick={handleSignout}
         >
         </Nav.Link>
         <Nav.Link
