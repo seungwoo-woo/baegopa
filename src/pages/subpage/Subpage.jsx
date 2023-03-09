@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CardList from '../../components/CardList';
 import styles from "./Sub.module.css";
 
 
 function Subpage(props) {
-    const keyword = ['닭가슴살'];
-
+    const keyword = [''];
+    
     return (
         <>
         <div className={styles.wrapper}>
@@ -13,7 +13,7 @@ function Subpage(props) {
             {/* 분류 */}
             <div className={styles.recipe}>
                 <div>
-                <h1>오늘의 레시피</h1>
+                <h1>레시피 분류</h1>
                 </div>
                 <div className={styles.value}>                    
                 <div>
