@@ -118,8 +118,8 @@ function Today(props) {
       </Fragment>
       <div className={styles.bg}>
         <div className={styles.stymain}>
-          <Nav.Link className={styles.stybigiamge} as={Link} to="/recipe">
-        <img src={recipeList[0].imageFilesPath[0]} alt="이미지" />
+          <Nav.Link className={styles.stybigiamge} as={Link} to={'/recipe/' + recipeList[0].docId}>
+            <img className={styles.imgone} onClick={() => handleRecipeClick(recipeList[0].docId)} src={recipeList[0].imageFilesPath[0]} alt="이미지" />
           </Nav.Link>
           <div className={styles.boximg}>
             <Nav.Link className={styles.box} as={Link} to="/recipe">
