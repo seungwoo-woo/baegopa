@@ -104,6 +104,8 @@
 .userComment {
   margin-top: 10px;
 }
-
+.cardimg{
+  cursor: pointer;
+}
 
 /* 새로 CSS 수정합니다 */

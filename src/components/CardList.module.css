@@ -4,8 +4,8 @@
   align-items: center;
   width: 1200px;
   margin: 0 auto;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  /* padding-top: 30px;
+  padding-bottom: 30px; */
   /* border-bottom: 1px solid gray; */
   /* background-color: rgb(245, 245, 234); */
 }
@@ -16,4 +16,7 @@
   justify-content: space-between;
   width: 1200px;
   flex-wrap:wrap;
+}
+.cardimg{
+  cursor: pointer;
 }
