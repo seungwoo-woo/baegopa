@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import styles from "./Login.module.css";
+import KakaoLogin from "./KakaoLogin";
 
 
 // Initialize Firebase
@@ -75,8 +76,10 @@ return (
           <li>비밀번호 찾기</li>
           <li><a href='./Signup'>회원가입</a></li>
         </ul>
+        쇼셜계정으로 로그인하기
       </div>
-
+      <KakaoLogin/>
+      {/* 아이디 기억 체크박스만들기 */}
     </div>    
   </>
 );
