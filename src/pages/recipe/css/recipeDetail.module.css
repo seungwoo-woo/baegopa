@@ -272,6 +272,21 @@ a {
   /* margin: 0 auto; */
   flex: 4;
 }
+.review-image{
+  width: 285px;
+}
+.review-image > img{
+  width: 100%;
+}
+.review-text > span {
+  display: inline-block;
+  padding: 10px 0px;
+  font-size: 18px;
+}
+.review-text > p {
+  font-size: 16px;
+}
+
 .btn_navigation {
   position: absolute;
   top: 200px;
