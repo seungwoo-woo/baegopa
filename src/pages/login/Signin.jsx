@@ -65,7 +65,7 @@ return (
       <div className={styles.login}>
 
       <button onClick={handleSignin} className={styles.sign}>로그인</button>
-=======
+
       {/* <Nav.Link className={styles.bttn} onClick={handleSignin} as={Link}  to={user ? '/' : '/signin'} >로그인</Nav.Link> */}
 
       </div>

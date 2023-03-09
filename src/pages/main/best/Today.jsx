@@ -8,10 +8,6 @@ import View from '../app/View';
 import { Link, BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import BestCard from './BestCard';
-<<<<<<< HEAD
-import { useNavigate } from 'react-router-dom';
-=======
->>>>>>> feature/CardCss
 
 import { firebaseConfig } from '../../../pages/addrecipe/firestore';
 
@@ -31,19 +27,10 @@ import { number } from 'prop-types';
 
 
 function Today(props) {
-<<<<<<< HEAD
-  const navigate = useNavigate(); 
-
-=======
->>>>>>> feature/CardCss
   const keyword = [1];
   let keywordList = [];
   keywordList = [...keyword];
   // const groupTitme = '레시피 검색결과 Edit13';
-<<<<<<< HEAD
-=======
-
->>>>>>> feature/CardCss
   const viewIndex = 'view';
 
   let recipeDbList = [];
@@ -65,11 +52,6 @@ function Today(props) {
     viewCount: 0
   }]);
 
-<<<<<<< HEAD
-  console.log(recipeList);
-
-=======
->>>>>>> feature/CardCss
   useEffect(() => {
 
     const readRecipeDB = async () => {
@@ -83,11 +65,7 @@ function Today(props) {
       if (!isNaN(keywordList[0])) {
 
         console.log('숫자에 들어옴')
-<<<<<<< HEAD
-        randomCount = Math.floor(Math.random() * 50);
-=======
         randomCount = Math.floor(Math.random() * 120);
->>>>>>> feature/CardCss
         if (keywordList[0] !== 1) {
           if (randomCount > (120 - keywordList[0])) {
             randomCount = randomCount - keywordList[0];
@@ -132,14 +110,6 @@ function Today(props) {
     readRecipeDB();
 
   }, []);
-<<<<<<< HEAD
-
-  const handleRecipeClick = (docId) => {
-    console.log(docId);
-    navigate('/recipe/' + docId);
-  };
-=======
->>>>>>> feature/CardCss
 
   return (
     <>
@@ -148,17 +118,6 @@ function Today(props) {
       </Fragment>
       <div className={styles.bg}>
         <div className={styles.stymain}>
-<<<<<<< HEAD
-          <Nav.Link className={styles.stybigiamge} as={Link} to={'/recipe/' + recipeList[0].docId}>
-            <img onClick={() => handleRecipeClick(recipeList[0].docId)} src={recipeList[0].imageFilesPath[0]} alt="이미지" />
-          </Nav.Link>
-          <div className={styles.boximg}>
-            <Nav.Link className={styles.box} as={Link} to={'/recipe/' + recipeList[0].docId}>
-              <img onClick={() => handleRecipeClick(recipeList[0].docId)} src={recipeList[0].imageFilesPath[1]} alt="이미지" />
-            </Nav.Link>
-            <Nav.Link className={styles.box} as={Link} to={'/recipe/' + recipeList[0].docId}>
-              <img onClick={() => handleRecipeClick(recipeList[0].docId)} src={recipeList[0].imageFilesPath[2]} alt="이미지" />
-=======
           <Nav.Link className={styles.stybigiamge} as={Link} to="/recipe">
         <img src={recipeList[0].imageFilesPath[0]} alt="이미지" />
           </Nav.Link>
@@ -168,7 +127,6 @@ function Today(props) {
             </Nav.Link>
             <Nav.Link className={styles.box} as={Link} to="/recipe">
               <img src={recipeList[0].imageFilesPath[2]} alt="이미지" />
->>>>>>> feature/CardCss
             </Nav.Link>
             <div className={styles.styli}>
               <div>
@@ -178,12 +136,6 @@ function Today(props) {
                 <p  >{recipeList[0].subtitle}</p>
               </div>
               <div>
-<<<<<<< HEAD
-                <p>{recipeList[0].process}</p>
-              </div>
-              <div>
-=======
->>>>>>> feature/CardCss
                 <div className={styles.styicon}>
                   {/* <Counters/> */}
                   {/* <button onClick={incrementViews}>글을 클릭하면 조회수가 오르게</button> */}
