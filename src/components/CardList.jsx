@@ -19,10 +19,8 @@ function CardList(props) {
   const { keyword } = props;
   let keywordList = [];
   keywordList = [...keyword];
-
-  // const groupTitme = '레시피 검색결과 Edit13';
   
-  const viewIndex = 'view';
+  const viewIndex = 'comment';
 
   let recipeDbList = [];    
   const [ recipeList, setRecipeList ] = useState([]);
@@ -90,7 +88,6 @@ function CardList(props) {
   return (
 
     <div className={styles.group}>
-      {/* <h1>{groupTitme}</h1> */}
       <div className={styles.cardList}>
         {recipeList.map((recipe) => {
           return <Card key={recipe.docId} recipe={recipe} viewIndex={viewIndex} />
