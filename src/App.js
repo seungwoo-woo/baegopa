@@ -28,7 +28,7 @@ function App() {
 
   return (
   <div className="App">
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Header />
         <Routes>
           <Route path="/movepage" element={<MovePage />} />
@@ -36,7 +36,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
 
           <Route path="/" element={<Main />} />
-          <Route path="/recipe" element={<RecipeDetail />} />
+          <Route path="/recipe/:docId" element={<RecipeDetail />} />
           <Route path="/sub" element={<Subpage />} />
           <Route path="/today" element={<Today />} />
 
@@ -45,8 +45,8 @@ function App() {
           <Route path="*" element={<NomatchPage />} />
         </Routes>
         <Footer />
-      </BrowserRouter> */}
-      <RecipeDetail />
+      </BrowserRouter>
+      {/* <RecipeDetail /> */}
       {/* <recipeListAPI /> */}
     </div>
   );

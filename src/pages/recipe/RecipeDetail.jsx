@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState, useParams } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
@@ -150,7 +150,13 @@ const userReviews = [
 function RecipeDetail(props) {
   
   
-  let recipeDbList = [];
+  const { docId } = useParams();
+  console.log(docId);
+
+  // const post = recipeItem.find((item) => {
+  //   return item.id == poId;
+  // });
+  
   const [ recipeItem, setRecipeItem ] = useState(
     {
       difficulty : "",
