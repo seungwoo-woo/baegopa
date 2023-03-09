@@ -38,7 +38,7 @@ function CardList(props) {
       if( !isNaN(keywordList[0])) {
 
         console.log('숫자에 들어옴')
-        randomCount = Math.floor(Math.random()*15);
+        randomCount = Math.floor(Math.random()*50);
         if (keywordList[0] !== 1) {
           if( randomCount > (120 - keywordList[0])) {
             randomCount = randomCount - keywordList[0];
@@ -56,8 +56,8 @@ function CardList(props) {
         q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
       }
             
-      console.log(keywordList[0]);
-      console.log(q);
+      // console.log(keywordList[0]);
+      // console.log(q);
 
       // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", ['닭고기', '양파', '두부', ' 당근', ' 오징어']));
       // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
@@ -67,9 +67,9 @@ function CardList(props) {
       queryAllSnapshot.forEach((doc) => {
       const docCopy = {...doc.data(), docId: doc._document.key.path.segments[6]};
       recipeDbList.push(docCopy);
-      console.log(docCopy);
+      // console.log(docCopy);
       });
-      console.log(queryAllSnapshot);
+      // console.log(queryAllSnapshot);
 
       if (randomCount >= 0) {
         setRecipeList(recipeDbList.slice(randomCount, randomCount + keywordList[0]));
@@ -77,7 +77,7 @@ function CardList(props) {
         setRecipeList(recipeDbList);
       };
       
-      console.log(recipeList);
+      // console.log(recipeList);
     }
     
     readRecipeDB();

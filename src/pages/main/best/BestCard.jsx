@@ -34,12 +34,12 @@ function BestCard(props) {
       const db = getFirestore(app);
       let q = '';
       // 조건별 검색 식 설정
-      console.log(typeof(keywordList[0]));
+      // console.log(typeof(keywordList[0]));
       let randomCount = -1;
       if( !isNaN(keywordList[0])) {
 
-        console.log('숫자에 들어옴')
-        randomCount = Math.floor(Math.random()*120);
+        // console.log('숫자에 들어옴')
+        randomCount = Math.floor(Math.random()*50);
         if (keywordList[0] !== 1) {
           if( randomCount > (120 - keywordList[0])) {
             randomCount = randomCount - keywordList[0];
@@ -48,17 +48,17 @@ function BestCard(props) {
         q = query(collection(db, "RecipeDB"));
 
       } else if (keywordList[0] === 'like') {
-        console.log('like에 들오옴');
+        // console.log('like에 들오옴');
         q = query(collection(db, "RecipeDB"), orderBy("likeCount", "desc"), limit(4));
       } else if (keywordList[0].slice(-1) === '식') {
-        console.log('식에 들어옴');
+        // console.log('식에 들어옴');
         q = query(collection(db, "RecipeDB"), where("division", "in", keywordList), limit(8));
       } else {
         q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
       }
             
-      console.log(keywordList[0]);
-      console.log(q);
+      // console.log(keywordList[0]);
+      // console.log(q);
 
       // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", ['닭고기', '양파', '두부', ' 당근', ' 오징어']));
       // const q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
@@ -75,7 +75,7 @@ function BestCard(props) {
       } else {
         setRecipeList(recipeDbList);
       };
-      console.log(recipeDbList);
+      // console.log(recipeDbList);
       
     }
     
@@ -83,7 +83,7 @@ function BestCard(props) {
     
   }, []);
   
-  console.log(recipeList);
+  // console.log(recipeList);
   
   return (
 
