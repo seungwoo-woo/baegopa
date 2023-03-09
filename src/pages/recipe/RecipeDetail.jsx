@@ -170,7 +170,8 @@ function RecipeDetail(props) {
       viewCount : 0
     },
   );
-  const recipeItemId = "Nxavqaojp0n13RMsL50l";
+
+  const recipeItemId = "3AdVlL6NdukB0nBsLwQH";
   
   useEffect (() => {
     const readRecipeDB = async () => {
@@ -373,6 +374,7 @@ const viewIndex = 'comment';
 
   // const [recipeInfos, setrecipeInfos] = useState(recipeInfo);
   const [recipeInfos, setrecipeInfos] = useState(recipeItem);
+  
 
   // console.log(recipes[0].subtitle);
   // console.log(recipeInfo[0].level);
@@ -466,6 +468,7 @@ let content = window.location.href;
 // console.log(content);
 // console.log(reviewValue.cardImagePath);
 // console.log(imgRef.current.files[0].name);
+console.log(recipeItem);
 
   return (
     <div className={styles['recipe-page']}>
@@ -498,7 +501,7 @@ let content = window.location.href;
               </div>
             </div>
             <div className={styles['main--leftcounts']}>
-                <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} recipeItem={recipeItem}/> {/* // TODO : 2023-03-08 likecount 안먹음 */}
+                <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} recipeItem={recipeItem} setRecipeItem={setRecipeItem}/> {/* // TODO : 2023-03-08 likecount 안먹음 */}
                 <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} />
             </div>
           </div>
