@@ -4,8 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import { useParams } from 'react-router-dom';
-import styles from "../login/Login.module.css";
-
+import styles from './Signup.module.css'
 // Initialize Firebase 회원가입 페이지
 const app = initializeApp(firebaseConfig);
 
@@ -72,7 +71,7 @@ return (
       </div>
 
       <div className={styles.login}>
-      <button onClick={handleSignup}>가입하기</button>
+      <button className={styles.bttn} onClick={handleSignup}>가입하기</button>
       </div>
       <div>{user?.email}</div>
       

@@ -9,7 +9,7 @@ import { Nav } from 'react-bootstrap';
 
 
 const viewIndex = 'comment';
-
+const keyword = [8]
 function MembersFood(props) {
 
   // const {viewIndex, groupTitme, cookItemList} = props;
@@ -21,6 +21,7 @@ function MembersFood(props) {
     </div>
     
     <div className={styles.header}>
+      <CardList keyword={keyword}/>
     </div>
     </Fragment> 
   );
