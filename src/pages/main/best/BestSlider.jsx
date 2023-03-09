@@ -69,7 +69,7 @@ function BestSlider(props) {
         navigation={{ prevEl: `.${styles['prev-button']}`, nextEl: `.${styles['next-button']}` }}
         pagination={{ clickable: true }}
         autoplay={{
-          delay: 1000, // 넘어가는 간격(ms)
+          delay: 5000,
         }}
       >
         {recipeList.map((recipe) => {

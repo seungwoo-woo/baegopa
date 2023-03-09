@@ -12,6 +12,7 @@ h4{
   background-size: cover;
   margin: auto;
   cursor: pointer;
+  margin-right: 10px;
 
   
 }
@@ -38,10 +39,24 @@ h4{
   display: flex !important;
 }
 .ids{
+  margin-right: 10px;
   cursor: pointer;
   color: rgb(147, 112, 98);
   font-family: "Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif";
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.plus{
+  background-image: url('../../../img/plus.png');
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  cursor: pointer;
+  margin-right: 10px;
+
 }

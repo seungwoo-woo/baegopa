@@ -67,6 +67,14 @@ function Login(props) {
           href="#deets"
           style={{ display: vis ? 'none' : 'block' }}
         ></Nav.Link>
+
+        <Nav.Link
+          className={styles.plus}
+          href="#141414ts"
+          style={{ display: vis ? 'none' : 'block' }}
+          onClick={handleSignout}
+        >
+        </Nav.Link>
         <Nav.Link
           className={styles.out}
           href="#141414ts"
@@ -74,13 +82,6 @@ function Login(props) {
           onClick={handleSignout}
         >
           Log out
-        </Nav.Link>
-        <Nav.Link
-          className={styles.out}
-          href="#141414ts"
-          style={{ display: vis ? 'none' : 'block' }}
-        >
-
         </Nav.Link>
 
       </div>
