@@ -5,9 +5,10 @@ import LikeCount from '../../recipe/components/LikeCount';
 import ViewCount from '../../recipe/components/ViewCount';
 import Counters from '../app/Counters';
 import View from '../app/View';
-import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Link, BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import BestCard from './BestCard';
+import { useNavigate } from 'react-router-dom';
 
 import { firebaseConfig } from '../../../pages/addrecipe/firestore';
 
@@ -27,11 +28,12 @@ import { number } from 'prop-types';
 
 
 function Today(props) {
+  const navigate = useNavigate(); 
+
   const keyword = [1];
   let keywordList = [];
   keywordList = [...keyword];
   // const groupTitme = '레시피 검색결과 Edit13';
-
   const viewIndex = 'view';
 
   let recipeDbList = [];
@@ -52,6 +54,8 @@ function Today(props) {
     userId: "",
     viewCount: 0
   }]);
+
+  console.log(recipeList);
 
   useEffect(() => {
 
@@ -112,6 +116,11 @@ function Today(props) {
 
   }, []);
 
+  const handleRecipeClick = (docId) => {
+    console.log(docId);
+    navigate('/recipe/' + docId);
+  };
+
   return (
     <>
       <Fragment>
@@ -119,14 +128,14 @@ function Today(props) {
       </Fragment>
       <div className={styles.bg}>
         <div className={styles.stymain}>
-          <Nav.Link className={styles.stybigiamge} as={Link} to="/recipe">
-        <img src={recipeList[0].imageFilesPath[0]} alt="이미지" />
+          <Nav.Link className={styles.stybigiamge} as={Link} to={'/recipe/' + recipeList[0].docId}>
+            <img onClick={() => handleRecipeClick(recipeList[0].docId)} src={recipeList[0].imageFilesPath[0]} alt="이미지" />
           </Nav.Link>
           <div className={styles.boximg}>
-            <Nav.Link className={styles.box} as={Link} to="/recipe">
+            <Nav.Link className={styles.box} as={Link} to={'/recipe/' + recipeList[0].docId}>
               <img src={recipeList[0].imageFilesPath[1]} alt="이미지" />
             </Nav.Link>
-            <Nav.Link className={styles.box} as={Link} to="/recipe">
+            <Nav.Link className={styles.box} as={Link} to={'/recipe/' + recipeList[0].docId}>
               <img src={recipeList[0].imageFilesPath[2]} alt="이미지" />
             </Nav.Link>
             <div className={styles.styli}>

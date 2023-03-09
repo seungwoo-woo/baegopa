@@ -33,7 +33,7 @@ function Card(props) {
 
    const navigate = useNavigate(); 
 
-  console.log(recipe);
+  // console.log(recipe);
 
   let view = true;
   let comment = false;
