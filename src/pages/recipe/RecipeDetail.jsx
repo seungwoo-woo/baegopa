@@ -31,6 +31,7 @@ import ButtonKeeper from './components/ButtonKeeper';
 import ReviewRegiter from './components/ReviewRegiter';
 import { async } from 'q';
 import { forEach } from 'lodash';
+import { useParams } from 'react-router';
 
 
 // TODO : 데이터 연결 했다는 가정(나중에 삭제)-------------------------------------------------- 
@@ -150,7 +151,13 @@ const userReviews = [
 function RecipeDetail(props) {
   
   
-  let recipeDbList = [];
+  const { docId } = useParams();
+  console.log(docId);
+
+  // const post = recipeItem.find((item) => {
+  //   return item.id == poId;
+  // });
+  
   const [ recipeItem, setRecipeItem ] = useState(
     {
       difficulty : "",
@@ -167,10 +174,17 @@ function RecipeDetail(props) {
       time : 0,
       title : "",
       userId : "",
-      viewCount : 0
+      viewCount : 0,
+      userComment : [
+        {
+          commentUserId: '',
+          comment: '',
+          imgPath: '',
+        },
+      ]
     },
   );
-  const recipeItemId = "Nxavqaojp0n13RMsL50l";
+
   
   useEffect (() => {
     const readRecipeDB = async () => {
@@ -178,7 +192,7 @@ function RecipeDetail(props) {
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
       // console.log(db);
-      const querySelectSnapshot = await getDoc(doc(db, "RecipeDB", recipeItemId)); 
+      const querySelectSnapshot = await getDoc(doc(db, "RecipeDB", docId)); 
       // console.log(querySelectSnapshot.exists());
       // console.log(querySelectSnapshot.data());
       const recipeItemCall = querySelectSnapshot.data();
@@ -186,6 +200,12 @@ function RecipeDetail(props) {
       setRecipeItem(recipeItemCall);
     }
     readRecipeDB();
+    
+    
+
+    // const foundRecipe = data.find((item) => {
+    //   return item.id == docId;
+    // })
   }, []);
 
   console.log(recipeItem);
@@ -250,9 +270,6 @@ function RecipeDetail(props) {
   //   // };
   //   // ---------------------------------------------------
   // }, []);
-
-
-
 
 
 // const groupTitme = '배고플 때 생각나는...';
@@ -374,10 +391,9 @@ const viewIndex = 'comment';
 //---------------------------------------------------------------------------------------
 
 
-
-
   // const [recipeInfos, setrecipeInfos] = useState(recipeInfo);
   const [recipeInfos, setrecipeInfos] = useState(recipeItem);
+  
 
   // console.log(recipes[0].subtitle);
   // console.log(recipeInfo[0].level);
@@ -398,6 +414,7 @@ const viewIndex = 'comment';
     userComment: [{
       commentUserId: "",
       comment: "",
+      imgPath: "",
     }]
   });
   // console.log(reviewValue.cardImagePath);
@@ -471,6 +488,7 @@ let content = window.location.href;
 // console.log(content);
 // console.log(reviewValue.cardImagePath);
 // console.log(imgRef.current.files[0].name);
+console.log(recipeItem);
 
   return (
     <div className={styles['recipe-page']}>
@@ -493,18 +511,6 @@ let content = window.location.href;
                 swiperMainRef.current = swiper;
                 }}
               >
-                  {/* {recipes.map((recipe) => {
-                    return (
-                      <>
-                        <SwiperSlide><img src={recipe.image01} alt="이미지1" /></SwiperSlide>
-                        <SwiperSlide><img src={recipe.image02} alt="이미지2" /></SwiperSlide>
-                        <SwiperSlide><img src={recipe.image03} alt="이미지3" /></SwiperSlide>
-                        <SwiperSlide><img src={recipe.image04} alt="이미지4" /></SwiperSlide>
-                        <SwiperSlide><img src={recipe.image05} alt="이미지5" /></SwiperSlide>
-                      </>
-                      )
-                    })
-                  } */}
                 {recipeItem.imageFilesPath.map((image, index) => {
                   return <SwiperSlide key={index}><img src={image} alt='레시피이미지' /></SwiperSlide>
                 })}
@@ -515,7 +521,7 @@ let content = window.location.href;
               </div>
             </div>
             <div className={styles['main--leftcounts']}>
-                <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} /> {/* // TODO : 2023-03-08 likecount 안먹음 */}
+                <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} recipeItem={recipeItem} setRecipeItem={setRecipeItem}/> {/* // TODO : 2023-03-08 likecount 안먹음 */}
                 <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} />
             </div>
           </div>
@@ -559,7 +565,6 @@ let content = window.location.href;
           {inredientSum.map((ingredientItem)=>{
             return <span>{ingredientItem}, </span>
           })}
-          {/* <p>{recipes[0].ingredients}</p> */}
         </div>
         <ul className={styles['content--method']}>
           <h4>조리 방법</h4>
@@ -575,14 +580,14 @@ let content = window.location.href;
             <h4 className={styles['font_eng']}>REVIEW</h4>
             <div className={styles['review--titlebottom']}>
               <p>오늘의 주제</p>
-              <span className={styles['review--titlesubject']}>김치찌개</span>
+              <span className={styles['review--titlesubject']}>{recipeItem.title}</span>
               <p className={styles['review--titlesubtitle']}>회원들이 만든 요리</p>
             </div>
           </div>
           <div className={styles['review--inner']}>
             {/* TODO: 카드 컴포넌트 연결  */}
             {/* <CardList cookItemList={cookItemLists} viewIndex="comment" /> */}
-            {/* <Swiper
+            <Swiper
               modules={[Navigation, Pagination, Scrollbar]}
               spaceBetween={0}
               slidesPerView={4}
@@ -595,23 +600,34 @@ let content = window.location.href;
               swiperRef.current = swiper;
               }}
             >
-                {cookItemList.map((cookItem) => {
-                {recipeList.map((recipe) => {
+                {/* {cookItemList.map((cookItem) => { */}
+                {/* {recipeItem.userComment.map((Item) => {
                   return (
-                    <SwiperSlide key={cookItem.id}>
+                    <SwiperSlide key={Item.id}>
                       <Card cookItem={cookItem} viewIndex={viewIndex} />
-                      <Card key={recipe.docId} recipe={recipe} viewIndex={viewIndex} />
+                      <Card key={Item.docId} recipe={recipeItem} viewIndex={viewIndex} />
                     </SwiperSlide>
                     )
                   })
-                }
-            </Swiper> */}
+                } */}
+                {/* <SwiperSlide> */}
+                  <div className={styles['review-image']}>
+                    <img src={recipeItem.userComment[0].imgPath} alt="회원들이미지" />
+                    <div className={styles['review-text']}>
+                      <span>{recipeItem.userComment[0].commentUserId}</span>
+                      <p>{recipeItem.userComment[0].comment}</p>
+                    </div>
+                  </div>
+                {/* </SwiperSlide> */}
+
+            </Swiper>
             <div>
               <button onClick={() => swiperRef.current?.slidePrev()} className={`${styles.btn_navigation} ${styles.btn_prev}`}></button>
               <button onClick={() => swiperRef.current?.slideNext()} className={`${styles.btn_navigation} ${styles.btn_next}`}></button>
             </div>
           </div>
         </div>
+        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} />
         {/* <div className={styles['review--register']}>
           {imgRef.current
             ? <img className={styles['review--register-image']} src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
@@ -645,7 +661,6 @@ let content = window.location.href;
             className={styles['review--register--submit']}
           >SUBMIT</button>
         </div> */}
-        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} />
       </section>
     </div>
   );

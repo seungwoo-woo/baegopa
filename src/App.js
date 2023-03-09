@@ -28,26 +28,26 @@ function App() {
   const [vis, setVis] = useState(true);
   return (
   <div className="App">
-<BrowserRouter>
-        <Header />
-        <Routes vis={vis} setVis={setVis}>
-          <Route setVis={setVis} path="/signin" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
+    <BrowserRouter>
+      <Header />
+      <Routes vis={vis} setVis={setVis}>
+        <Route setVis={setVis} path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
+        
+        <Route path="/" element={<Main />} />
+        <Route path="/recipe/:docId" element={<RecipeDetail />} />
+        <Route path="/sub" element={<Subpage />} />
+        <Route path="/today" element={<Today />} />
+        <Route path="/add" element={<Addrecipe/>} />
 
-          <Route path="/" element={<Main />} />
-          <Route path="/recipe/:docId" element={<RecipeDetail />} />
-          <Route path="/sub" element={<Subpage />} />
-          <Route path="/today" element={<Today />} />
-          <Route path="/add" element={<Addrecipe/>} />
-
-          <Route path="/best" element={<BestSlider />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="*" element={<NomatchPage />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-      {/* <RecipeDetail />
-      <recipeListAPI /> */}
+        <Route path="/best" element={<BestSlider />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="*" element={<NomatchPage />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+    {/* <RecipeDetail /> */}
+    {/* <recipeListAPI /> */}
     </div>
   );
 }
