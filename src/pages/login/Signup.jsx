@@ -4,8 +4,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import { useParams } from 'react-router-dom';
-import styles from "../login/Login.module.css";
-
+import styles from './Signup.module.css'
 // Initialize Firebase 회원가입 페이지
 const app = initializeApp(firebaseConfig);
 
@@ -50,16 +49,16 @@ return (
 
     <div className={styles.from}>
       <h3>아이디</h3>
-      <input type="text" onChange={(e) => {
+      <input type="email" onChange={(e) => {
         setNewUserEmail(e.target.value);
-      }} placeholder='example@naver.com' />
+      }} placeholder='example@naver.com' maxlength = "30"/>
     </div>
 
     <div className={styles.from}>
     <h3>비밀번호</h3>
       <input type="password" onChange={(e) => {
         setNewUserPassWord(e.target.value);
-      }} placeholder='password' />
+      }} placeholder='password'  maxlength = "12"/>
       <p>6자 이상 입력해주세요.</p>
       </div>
 
@@ -68,11 +67,11 @@ return (
 
       <input type="password" onChange={(e) => {
         setNewUserPassWord2(e.target.value);
-      }} placeholder='Confirm password' />
+      }} placeholder='Confirm password'  maxlength = "12"/>
       </div>
 
       <div className={styles.login}>
-      <button onClick={handleSignup}>가입하기</button>
+      <button className={styles.bttn} onClick={handleSignup}>가입하기</button>
       </div>
       <div>{user?.email}</div>
       

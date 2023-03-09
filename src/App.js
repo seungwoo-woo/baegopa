@@ -20,17 +20,19 @@ import Signin from './pages/login/Signin';
 import Signup from './pages/login/Signup';
 import MovePage from './pages/login/MovePage';
 import Mypage from './pages/mypage/Mypage';
+// import recipeListAPI from './pages/recipe/api/recipeListAPI';
 import Addrecipe from './pages/addrecipe/Addrecipe';
-
+import React, { useState } from 'react';
 
 function App() {
-
+  const [vis, setVis] = useState(true);
   return (
   <div className="App">
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/signin" element={<Signin />} />
+
+        <Routes vis={vis} setVis={setVis}>
+          <Route setVis={setVis} path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
 
           <Route path="/" element={<Subpage />} />
@@ -43,7 +45,9 @@ function App() {
           <Route path="*" element={<NomatchPage />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> 
+      {/* <RecipeDetail />
+      <recipeListAPI /> */}
     </div>
   );
 }

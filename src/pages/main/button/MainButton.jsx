@@ -11,13 +11,14 @@ import styles from './MainButton.module.css'
 //   // 스토어에 dispatch로 요청 보내기
 //   dispatch(getMoreProducts(reauest));
 // };
-
+const viewIndex = 'comment';
+const keyword = [8]
   
 function MainButton(props) {
   const [showComponents, setShowComponents] = useState([]);
 
   const handleClick = () => {
-    setShowComponents([...showComponents, <CardList key={showComponents.length} />]);
+    setShowComponents([...showComponents, <CardList keyword={keyword} />]);
   };
 
   return (
