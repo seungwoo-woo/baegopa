@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState, useParams } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar } from 'swiper';
@@ -31,6 +31,7 @@ import ButtonKeeper from './components/ButtonKeeper';
 import ReviewRegiter from './components/ReviewRegiter';
 import { async } from 'q';
 import { forEach } from 'lodash';
+import { useParams } from 'react-router';
 
 
 // TODO : 데이터 연결 했다는 가정(나중에 삭제)-------------------------------------------------- 
@@ -177,7 +178,6 @@ function RecipeDetail(props) {
     },
   );
 
-  const recipeItemId = "3AdVlL6NdukB0nBsLwQH";
   
   useEffect (() => {
     const readRecipeDB = async () => {
@@ -185,7 +185,7 @@ function RecipeDetail(props) {
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
       // console.log(db);
-      const querySelectSnapshot = await getDoc(doc(db, "RecipeDB", recipeItemId)); 
+      const querySelectSnapshot = await getDoc(doc(db, "RecipeDB", docId)); 
       // console.log(querySelectSnapshot.exists());
       // console.log(querySelectSnapshot.data());
       const recipeItemCall = querySelectSnapshot.data();
@@ -193,6 +193,12 @@ function RecipeDetail(props) {
       setRecipeItem(recipeItemCall);
     }
     readRecipeDB();
+    
+    
+
+    // const foundRecipe = data.find((item) => {
+    //   return item.id == docId;
+    // })
   }, []);
 
   console.log(recipeItem);
@@ -401,6 +407,7 @@ const viewIndex = 'comment';
     userComment: [{
       commentUserId: "",
       comment: "",
+      imgPath: "",
     }]
   });
   // console.log(reviewValue.cardImagePath);
@@ -573,7 +580,7 @@ console.log(recipeItem);
           <div className={styles['review--inner']}>
             {/* TODO: 카드 컴포넌트 연결  */}
             {/* <CardList cookItemList={cookItemLists} viewIndex="comment" /> */}
-            {/* <Swiper
+            <Swiper
               modules={[Navigation, Pagination, Scrollbar]}
               spaceBetween={0}
               slidesPerView={4}
@@ -586,17 +593,27 @@ console.log(recipeItem);
               swiperRef.current = swiper;
               }}
             >
-                {cookItemList.map((cookItem) => {
-                {recipeList.map((recipe) => {
+                {/* {cookItemList.map((cookItem) => { */}
+                {/* {recipeItem.userComment.map((Item) => {
                   return (
-                    <SwiperSlide key={cookItem.id}>
+                    <SwiperSlide key={Item.id}>
                       <Card cookItem={cookItem} viewIndex={viewIndex} />
-                      <Card key={recipe.docId} recipe={recipe} viewIndex={viewIndex} />
+                      <Card key={Item.docId} recipe={recipeItem} viewIndex={viewIndex} />
                     </SwiperSlide>
                     )
                   })
-                }
-            </Swiper> */}
+                } */}
+                <SwiperSlide>
+                  <div className={styles['review-image']}>
+                    <img src={recipeItem.userComment[0].imgPath} alt="회원들이미지" />
+                    <div className={styles['review-text']}>
+                      <span>{recipeItem.userComment[0].commentUserId}</span>
+                      <p>{recipeItem.userComment[0].comment}</p>
+                    </div>
+                  </div>
+                </SwiperSlide>
+
+            </Swiper>
             <div>
               <button onClick={() => swiperRef.current?.slidePrev()} className={`${styles.btn_navigation} ${styles.btn_prev}`}></button>
               <button onClick={() => swiperRef.current?.slideNext()} className={`${styles.btn_navigation} ${styles.btn_next}`}></button>
