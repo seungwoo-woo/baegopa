@@ -65,7 +65,6 @@ return (
       <div className={styles.login}>
 
       <button onClick={handleSignin} className={styles.sign}>로그인</button>
-=======
       {/* <Nav.Link className={styles.bttn} onClick={handleSignin} as={Link}  to={user ? '/' : '/signin'} >로그인</Nav.Link> */}
 
       </div>
@@ -76,7 +75,7 @@ return (
           <li>비밀번호 찾기</li>
           <li><a href='./Signup'>회원가입</a></li>
         </ul>
-        쇼셜계정으로 로그인하기
+        {/* 쇼셜계정으로 로그인하기 */}
       </div>
       <KakaoLogin/>
       {/* 아이디 기억 체크박스만들기 */}

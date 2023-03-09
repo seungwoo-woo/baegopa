@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components';
 import styles from "./Login.module.css";
+
 
 
 const KakaoLogin = () => {
@@ -16,9 +16,11 @@ const KakaoLogin = () => {
   }
 
   return (
-    <div className={styles.kakao}>
+
+    <div>
       <a onClick={kakaoLogin}>
       <img src="https://croket.s3.ap-northeast-2.amazonaws.com/icon/auth_kakaotalk.png"
+      width={'45px'}
      />
     </a >
     </div>
