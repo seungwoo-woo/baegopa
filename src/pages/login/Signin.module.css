@@ -65,18 +65,13 @@ p {
   cursor: pointer;
   font-size: 17px;
   font-weight: 600;
-<<<<<<< HEAD
   display: flex;
   justify-content: center;
   align-items: center;
-=======
-  text-align: center;
->>>>>>> feature/CardCss
 }
 
 .bttn:hover {
   /* background-color: #937062; */
-<<<<<<< HEAD
   background-color:rgb(207, 147, 121);
   color: white;
 
@@ -93,9 +88,3 @@ ul li a:hover{
   color:rgb(207, 147, 121)
 
 }
-=======
-  background-color: #F4F0EF;
-  color: #212121;
-
-}
->>>>>>> feature/CardCss

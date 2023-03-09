@@ -4,9 +4,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import { useParams } from 'react-router-dom';
-import styles from "./Login.module.css";
-
-// Initialize Firebase 회원가입 페이지 
+import styles from './Signup.module.css'
+// Initialize Firebase 회원가입 페이지
 const app = initializeApp(firebaseConfig);
 
 function Signup(props) {
@@ -18,12 +17,12 @@ const [ newUserPassword2, setNewUserPassWord2 ] = useState('');
 const [ user, setUser ] = useState('');
 
 
+
 const handleSignup = () => {
   const auth = getAuth();
   console.log(auth);
   console.log(newUserEmail);
   console.log(newUserPassword);
-  alert(`환영합니다❤ ${newUserEmail}`);
 
   if (newUserPassword === newUserPassword2) {
     createUserWithEmailAndPassword(auth, newUserEmail, newUserPassword)
@@ -59,7 +58,7 @@ return (
     <h3>비밀번호</h3>
       <input type="password" onChange={(e) => {
         setNewUserPassWord(e.target.value);
-      }} placeholder='password'/>
+      }} placeholder='password'  maxlength = "12"/>
       <p>6자 이상 입력해주세요.</p>
       </div>
 
@@ -68,12 +67,11 @@ return (
 
       <input type="password" onChange={(e) => {
         setNewUserPassWord2(e.target.value);
-      }} placeholder='Confirm password'/>
+      }} placeholder='Confirm password'  maxlength = "12"/>
       </div>
-      {/* 개인정보 동의 체크박스 만들기 */}
-    {/* <input type="checkbox" name="agreement"/> 개인정보 수집 동의 필수 */}
+
       <div className={styles.login}>
-      <button onClick={handleSignup} className={styles.sign}>가입하기</button>
+      <button className={styles.bttn} onClick={handleSignup}>가입하기</button>
       </div>
       <div>{user?.email}</div>
       

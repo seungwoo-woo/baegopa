@@ -8,6 +8,7 @@ import View from '../app/View';
 import { Link, BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import BestCard from './BestCard';
+import { useNavigate } from 'react-router-dom';
 
 import { firebaseConfig } from '../../../pages/addrecipe/firestore';
 
@@ -27,6 +28,8 @@ import { number } from 'prop-types';
 
 
 function Today(props) {
+  const navigate = useNavigate(); 
+
   const keyword = [1];
   let keywordList = [];
   keywordList = [...keyword];
@@ -52,6 +55,8 @@ function Today(props) {
     viewCount: 0
   }]);
 
+  console.log(recipeList);
+
   useEffect(() => {
 
     const readRecipeDB = async () => {
@@ -65,7 +70,7 @@ function Today(props) {
       if (!isNaN(keywordList[0])) {
 
         console.log('숫자에 들어옴')
-        randomCount = Math.floor(Math.random() * 120);
+        randomCount = Math.floor(Math.random() * 50);
         if (keywordList[0] !== 1) {
           if (randomCount > (120 - keywordList[0])) {
             randomCount = randomCount - keywordList[0];
@@ -111,6 +116,11 @@ function Today(props) {
 
   }, []);
 
+  const handleRecipeClick = (docId) => {
+    console.log(docId);
+    navigate('/recipe/' + docId);
+  };
+
   return (
     <>
       <Fragment>
@@ -122,11 +132,11 @@ function Today(props) {
             <img className={styles.imgone} onClick={() => handleRecipeClick(recipeList[0].docId)} src={recipeList[0].imageFilesPath[0]} alt="이미지" />
           </Nav.Link>
           <div className={styles.boximg}>
-            <Nav.Link className={styles.box} as={Link} to="/recipe">
-              <img src={recipeList[0].imageFilesPath[1]} alt="이미지" />
+            <Nav.Link className={styles.box} as={Link} to={'/recipe/' + recipeList[0].docId}>
+              <img onClick={() => handleRecipeClick(recipeList[0].docId)} src={recipeList[0].imageFilesPath[1]} alt="이미지" />
             </Nav.Link>
-            <Nav.Link className={styles.box} as={Link} to="/recipe">
-              <img src={recipeList[0].imageFilesPath[2]} alt="이미지" />
+            <Nav.Link className={styles.box} as={Link} to={'/recipe/' + recipeList[0].docId}>
+              <img onClick={() => handleRecipeClick(recipeList[0].docId)} src={recipeList[0].imageFilesPath[2]} alt="이미지" />
             </Nav.Link>
             <div className={styles.styli}>
               <div>
@@ -134,6 +144,9 @@ function Today(props) {
               </div>
               <div>
                 <p  >{recipeList[0].subtitle}</p>
+              </div>
+              <div>
+                <p>{recipeList[0].process}</p>
               </div>
               <div>
                 <div className={styles.styicon}>
