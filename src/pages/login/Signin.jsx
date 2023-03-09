@@ -10,7 +10,6 @@ import styles from "./Login.module.css";
 const app = initializeApp(firebaseConfig);
 
 function Signin(props) {
-
 const [ userEmail, setUserEmail ] = useState('');
 const [ userPassword, setUserPassWord ] = useState('');
 const [ user, setUser ] = useState('');
@@ -61,8 +60,13 @@ return (
       </div>
   
 
+    
       <div className={styles.login}>
+
       <button onClick={handleSignin} className={styles.sign}>로그인</button>
+=======
+      {/* <Nav.Link className={styles.bttn} onClick={handleSignin} as={Link}  to={user ? '/' : '/signin'} >로그인</Nav.Link> */}
+
       </div>
       <div>{user?.email}</div>
       <div className={styles.option}>

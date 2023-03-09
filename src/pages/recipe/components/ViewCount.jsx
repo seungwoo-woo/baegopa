@@ -7,7 +7,7 @@ function ViewCount(props) {
   return (
     <div className={styles.viewcount}>
       <img src={ require('../images/viewcount.png') } />
-      <span>{infos[0].viewCount}</span>
+      <span>{infos.viewCount}</span>
     </div>
   );
 }
