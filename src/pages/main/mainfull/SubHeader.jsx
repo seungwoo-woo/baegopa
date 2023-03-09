@@ -12,7 +12,7 @@ export default function SubHeader() {
           <Nav className={styles.stylednav}>
             <Nav.Link className={styles.ft} as={Link} to="/recipe">Today's menu</Nav.Link>
             <Nav.Link className={styles.ft} as={Link} to="/best">Best menu</Nav.Link>
-            <Nav.Link className={styles.ft} as={Link} to="/search">Recipes</Nav.Link>
+            {/* <Nav.Link className={styles.ft} as={Link} to="/search">Recipes</Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
