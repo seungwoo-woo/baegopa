@@ -61,11 +61,14 @@
   display: flex;
   justify-content: end;
   margin-right: 50px;
+
 }
 
-.imgone {
+.stybigiamge > img {
   width: 650px !important;
   height: 577px !important;
+  border-radius: 10%;
+
 }
 
 .styimage {
