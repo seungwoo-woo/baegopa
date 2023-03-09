@@ -60,30 +60,31 @@ function Card(props) {
         onClick={handleRecipeClick}
       />
 
-      { view && 
       <div className={styles.bottomTextBox}>
         <div className={styles.noBox}>
           <div className={styles.likeNoBox}>
+            <p>{recipe.likeCount}</p>
             <img src={require ('../img/ph_heart.png')} width={35}/>
           </div>
-        </div>
-      </div> }
+        </div> 
+      </div>
+      {/* { view &&  */}
       
     </div>
 
     { comment &&
     <div className={styles.commentBox}>
 
-      <div className={styles.thumbnailBox}>
+      {/* <div className={styles.thumbnailBox}> */}
         {/* <div className={styles.thumbnailImage}> 
           <img scr={require ('../img/bi_person-fill.png')}/>
           <i className="fa-solid fa-user"></i>
         </div> */}
         {/* <p>{cookItem.userComment[0].commentUserId}</p> */}
-      </div>
+      {/* </div> */}
 
       <div className={styles.userComment}>
-        {/* <p>{cookItem.userComment[0].comment}</p> */}
+        <p>{recipe.userComment[0].comment}</p>
       </div>
 
     </div>
