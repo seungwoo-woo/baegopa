@@ -174,7 +174,14 @@ function RecipeDetail(props) {
       time : 0,
       title : "",
       userId : "",
-      viewCount : 0
+      viewCount : 0,
+      userComment : [
+        {
+          commentUserId: '',
+          comment: '',
+          imgPath: '',
+        },
+      ]
     },
   );
 
@@ -603,7 +610,7 @@ console.log(recipeItem);
                     )
                   })
                 } */}
-                <SwiperSlide>
+                {/* <SwiperSlide> */}
                   <div className={styles['review-image']}>
                     <img src={recipeItem.userComment[0].imgPath} alt="회원들이미지" />
                     <div className={styles['review-text']}>
@@ -611,7 +618,7 @@ console.log(recipeItem);
                       <p>{recipeItem.userComment[0].comment}</p>
                     </div>
                   </div>
-                </SwiperSlide>
+                {/* </SwiperSlide> */}
 
             </Swiper>
             <div>
