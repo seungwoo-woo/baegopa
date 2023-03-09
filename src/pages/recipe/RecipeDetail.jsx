@@ -252,9 +252,6 @@ function RecipeDetail(props) {
   // }, []);
 
 
-
-
-
 // const groupTitme = '배고플 때 생각나는...';
 const [cookItemList, setCookItemList] = useState([
   {
@@ -374,8 +371,6 @@ const viewIndex = 'comment';
 //---------------------------------------------------------------------------------------
 
 
-
-
   // const [recipeInfos, setrecipeInfos] = useState(recipeInfo);
   const [recipeInfos, setrecipeInfos] = useState(recipeItem);
 
@@ -493,18 +488,6 @@ let content = window.location.href;
                 swiperMainRef.current = swiper;
                 }}
               >
-                  {/* {recipes.map((recipe) => {
-                    return (
-                      <>
-                        <SwiperSlide><img src={recipe.image01} alt="이미지1" /></SwiperSlide>
-                        <SwiperSlide><img src={recipe.image02} alt="이미지2" /></SwiperSlide>
-                        <SwiperSlide><img src={recipe.image03} alt="이미지3" /></SwiperSlide>
-                        <SwiperSlide><img src={recipe.image04} alt="이미지4" /></SwiperSlide>
-                        <SwiperSlide><img src={recipe.image05} alt="이미지5" /></SwiperSlide>
-                      </>
-                      )
-                    })
-                  } */}
                 {recipeItem.imageFilesPath.map((image, index) => {
                   return <SwiperSlide key={index}><img src={image} alt='레시피이미지' /></SwiperSlide>
                 })}
@@ -515,7 +498,7 @@ let content = window.location.href;
               </div>
             </div>
             <div className={styles['main--leftcounts']}>
-                <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} /> {/* // TODO : 2023-03-08 likecount 안먹음 */}
+                <LikeCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} recipeItem={recipeItem}/> {/* // TODO : 2023-03-08 likecount 안먹음 */}
                 <ViewCount infos={recipeInfos} setrecipeInfos={setrecipeInfos} />
             </div>
           </div>
@@ -559,7 +542,6 @@ let content = window.location.href;
           {inredientSum.map((ingredientItem)=>{
             return <span>{ingredientItem}, </span>
           })}
-          {/* <p>{recipes[0].ingredients}</p> */}
         </div>
         <ul className={styles['content--method']}>
           <h4>조리 방법</h4>
@@ -612,6 +594,7 @@ let content = window.location.href;
             </div>
           </div>
         </div>
+        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} />
         {/* <div className={styles['review--register']}>
           {imgRef.current
             ? <img className={styles['review--register-image']} src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
@@ -645,7 +628,6 @@ let content = window.location.href;
             className={styles['review--register--submit']}
           >SUBMIT</button>
         </div> */}
-        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} />
       </section>
     </div>
   );
