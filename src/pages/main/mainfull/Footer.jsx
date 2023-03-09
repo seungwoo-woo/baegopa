@@ -26,20 +26,20 @@ function Footer(props) {
           </div>
           <div className={styles.sns}>
             <div className={styles.header}>
-              <h1><GiBowlOfRice className={styles.ri} /></h1>
-              <h1>배고파</h1>
+              <a href="/"><GiBowlOfRice className={styles.ri} /></a>
+              <a  href="/" className={styles.ri}>배고파</a>
             </div>
             <div className={styles.snss}>
-              <h1 style={{
+              <a style={{
                 color:'rgb(175, 21, 175)',
-              }}><AiFillInstagram /></h1>
-              <h1 style={{
+              }} href="https://www.instagram.com/"><AiFillInstagram /></a>
+              <a style={{
                 color:'red',
-              }}><AiFillYoutube /></h1>
-              <h1
+              }} href="https://www.youtube.com/"><AiFillYoutube /></a>
+              <a
               style={{
                 color:'blue',
-              }}><AiFillFacebook /></h1>
+              }} href="https://ko-kr.facebook.com/"><AiFillFacebook /></a>
             </div>
           </div>
         </div>

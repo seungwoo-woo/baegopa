@@ -17,3 +17,6 @@
   width: 1200px;
   flex-wrap:wrap;
 }
+.cardimg{
+  cursor: pointer;
+}
