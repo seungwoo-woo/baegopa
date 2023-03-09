@@ -61,7 +61,10 @@
   justify-content: end;
   margin-right: 50px;
 }
-
+.imgone{
+  width: 650px;
+  height: 577px;
+}
 .styimage {
   width: 650px;
   height: 577px;
