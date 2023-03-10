@@ -60,7 +60,7 @@ function Card(props) {
         onClick={handleRecipeClick}
       />
 
-      <div className={styles.bottomTextBox}>
+      <div className={styles.bottomTextBox} >
         <div className={styles.noBox}>
           <div className={styles.likeNoBox}>
             <p>{recipe.likeCount}</p>
