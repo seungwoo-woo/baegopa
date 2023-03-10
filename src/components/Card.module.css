@@ -107,6 +107,9 @@
 .cardimg{
   cursor: pointer;
 }
+.cardimg:hover{
+  opacity: 0.7;
 
+}
 /* 새로 CSS 수정합니다 */
 
