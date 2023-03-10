@@ -2,6 +2,7 @@
 .ft {
   margin-top: 100px;
   display: flex;
+  align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid
 }
@@ -13,17 +14,19 @@ h5 {
 /* 배고파 sns구간 */
 .ri {
   font-size: 40px;
-  margin-right: 20px;
 }
-.ri:hover{
-  color:rgb(207, 147, 121);
+
+.ri:hover {
+  color: rgb(207, 147, 121);
 }
+
 .logo {
   font-size: 30px;
 }
 
 .header {
   display: flex;
+  justify-content: center;
   align-items: center;
 
 }
@@ -60,6 +63,7 @@ h5 {
   color: #808080;
   font-size: 11px;
   padding-top: 20px;
+  
 }
 
 .cp {

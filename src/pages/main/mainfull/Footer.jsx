@@ -26,8 +26,7 @@ function Footer(props) {
           </div>
           <div className={styles.sns}>
             <div className={styles.header}>
-              <a href="/"><GiBowlOfRice className={styles.ri} /></a>
-              <a  href="/" className={styles.ri}>배고파</a>
+              <a  href="/" className={styles.ri}><GiBowlOfRice/> 배고파</a>
             </div>
             <div className={styles.snss}>
               <a style={{

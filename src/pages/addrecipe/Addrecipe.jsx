@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './Addrecipe.css';
-
+import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
 // === Firebase ===========================================================================
 import { firebaseConfig } from './firestore.js';
 import { initializeApp } from "firebase/app";
@@ -264,12 +265,13 @@ function Addrecipe(props) {
       <div className='addRecipeWrapper'> 
         <div className='header'>
           <h1>레시피 등록하기</h1>
-          <button>X</button>
+          <Nav.Link type='button' className='button' as={Link} to="/" >X</Nav.Link>
         </div>
+        
 
         <div className='addRecipeBody'>
           <span>사진첨부</span>
-          <span style={{color: 'red'}}>*</span>
+          <span style={{color: 'red' }}>*</span>
           <div>
             <input type="file" name='photo' id='upload-photo' onChange={handleChangeImage} accept="image/*" multiple style={{ display: "none" }}/>
             <div className='input-file-button'>
@@ -296,21 +298,24 @@ function Addrecipe(props) {
             <input type="text" className='recipeTitle' placeholder=' , 로 구분 해시태그 입력 ...'
                 onChange={e => handleChangeHashtags(e)}></input>
           </div>
-
+    <div className='textcenter'>
           <span>요리양 (인분) / 요리분류 (한식/중식/일식/양식/분식/야식)</span>
           <span style={{color: 'red'}}>*</span>
-          <div>
+    </div>
+          <div className='textcenter'>
             <input type="text" className='timeRecipe' onChange={e => handleChangeMeals(e)}></input>
-            <span style={{color: 'black', fontWeight: 400}}>/ </span>
+            <span style={{color: 'black', fontWeight: 400, display:'flex', alignItems:'center'}}>/ </span>
             <input type="text" className='timeRecipe' onChange={e => handleChangeDivision(e)}></input>
 
           </div>
-
+<div className='textcenter'>
           <span>요리시간(분) / 난이도</span>
           <span style={{color: 'red'}}>*</span>
-          <div>
+
+</div>
+          <div className='textcenter'>
             <input type="text" className='timeRecipe' onChange={e => handleChangeTimeDifficulty(e)}></input>
-            <span style={{color: 'black', fontWeight: 400}}>분 / </span>
+            <span style={{color: 'black', fontWeight: 400, display:'flex', alignItems:'center' }}>분 / </span>
             <input type="text" className='timeRecipe' value={recipeSummary.difficulty || '난이도'}></input>
           </div>
 
@@ -378,7 +383,7 @@ function Addrecipe(props) {
         </div>
 
         <div className='addRecipeFooter'> 
-          <button>CANCLE</button>
+          <button className='submitButton' >CANCLE</button>
           <button className='submitButton' onClick={handleClickSubmit}>SUBMIT</button>
         </div>
 

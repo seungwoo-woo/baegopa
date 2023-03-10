@@ -33,7 +33,7 @@ function Card(props) {
 
   const navigate = useNavigate(); 
 
-  console.log(recipe);
+  // console.log(recipe);
 
   let view = true;
   let comment = false;
@@ -84,7 +84,7 @@ function Card(props) {
       {/* </div> */}
 
       <div className={styles.userComment}>
-        <p>{recipe.userComment[0].comment}</p>
+        {/* <p>{recipe.userComment[0].comment}</p> */}
       </div>
 
     </div>
