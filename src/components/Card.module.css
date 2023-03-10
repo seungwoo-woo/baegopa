@@ -1,5 +1,6 @@
 * {
   font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
+  text-decoration: none;
 }
 
 .card {
@@ -68,7 +69,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
+  width: 285px;
 }
 
 .viewNoBox {
@@ -106,7 +107,14 @@
 }
 .cardimg{
   cursor: pointer;
+  object-fit: cover;
 }
+.cardimg:hover{
+  opacity: 0.7;
 
+}
 /* 새로 CSS 수정합니다 */
 
+.likec{
+  cursor: pointer;
+}

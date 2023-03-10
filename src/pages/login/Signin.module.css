@@ -88,3 +88,17 @@ ul li a:hover{
   color:rgb(207, 147, 121)
 
 }
+
+.sns {
+  /* margin: 0 auto; */
+  /* width: 100%; */
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  display: flex;
+  cursor: pointer
+}
+
+.sns img {
+  width: 45px;
+}

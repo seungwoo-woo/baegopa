@@ -2,6 +2,7 @@
 * {
     font-family: "Noto Serif KR", serif, Helvetica, "Helvetica Neue", Arial;
 }
+
 .wrapper {
     width: 1200px;
     margin: 0 auto;
@@ -13,6 +14,7 @@
     height: 50px;
     background-color: antiquewhite;
 }
+
 .recipe h1 {
     font-size: 40px;
     margin: 0;
@@ -24,9 +26,10 @@
     /* margin: 0 100px; */
     display: flex;
     justify-content: center;
+
 }
 
-.value > div {
+.value>div {
     width: 200px;
     height: 30px;
     line-height: 30px;
@@ -37,23 +40,31 @@
     font-size: 30px;
     /* border: 1px solid #000000; */
     border-radius: 100px
-} 
+}
 
-.value > div > img {
+.value>div>img {
     width: 200px;
     height: 200px;
     border-radius: 100px;
-    
+
 }
 
-.value > div > p { 
+.value>div>p {
     font-size: 20px;
+    color: rgb(147, 112, 98);
+    font-family: "Noto Sans KR", Helvetica, "Helvetica Neue", Arial, "sans-serif";
+
+}
+
+.value>div>p:hover {
+    color: rgb(207, 147, 121);
+    transform: scale(1.2);
+
 }
 
 .cardList {
     display: flex;
     justify-content: space-between;
     width: 1200px;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 }
-

@@ -40,7 +40,6 @@ function Login(props) {
     <Nav className={styles.wrap}>
       <Nav.Link
         className={styles.lo}
-        href="#deets"
         style={{ display: vis ? 'block' : 'none' }}
         onClick={handleClick}
         as={Link} to="/signin"
@@ -49,7 +48,6 @@ function Login(props) {
       </Nav.Link>
       <Nav.Link
         className={styles.lo}
-        href="#memes"
         style={{ display: vis ? 'block' : 'none' }}
         onClick={handleClick}
         as={Link} to="/signup"
