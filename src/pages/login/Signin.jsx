@@ -6,6 +6,7 @@ import { onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebas
 import { Link, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import styles from './Signin.module.css'
+import KakaoLogin from './KakaoLogin';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -64,6 +65,18 @@ return (
           <li>비밀번호 찾기</li>
           <li><a href='./Signup'>회원가입</a></li>
         </ul>
+      </div>
+
+      
+
+ <div className={styles.sns}>  
+      <KakaoLogin/>
+      <div className={styles.sns}>
+      <img src="https://croket.s3.ap-northeast-2.amazonaws.com/icon/auth_naver.png"/>
+      </div>
+      <div className={styles.sns}>
+      <img src="https://croket.s3.ap-northeast-2.amazonaws.com/icon/auth_facebook.png"/>
+      </div>
       </div>
 
     </div>    
