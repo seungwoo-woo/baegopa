@@ -5,7 +5,7 @@ import axios,{ post } from 'axios';
 
 import { firebaseConfig } from '../../addrecipe/firestore';
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { getFirestore, collection, addDoc, doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -16,7 +16,7 @@ import Card from '../../../components/Card';
 
 function ReviewRegiter(props) {
   const [ reloadComment, setReloadComment ] = useState();
-  const { docId } = props;
+  const { docId, setRecipeItem } = props;
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const reviewRef = doc(db, "RecipeDB", docId)
@@ -76,6 +76,9 @@ function ReviewRegiter(props) {
     console.log(imgRef.current.files[0].name);   // TODO: 댓글 이미지 데이터
     console.log(content);    // TODO : 댓글 text 데이터
 
+    const querySelectSnapshot = await getDoc(doc(db, "RecipeDB", docId)); 
+    const recipeItemCall = querySelectSnapshot.data();
+
     await updateDoc(reviewRef, {
       userComment: arrayUnion({
         imgPath : "https://static.wtable.co.kr/image/production/service/recipe/2176/27e786f0-1eed-49d7-9012-4a1efb6bf7b8.jpg?size=500x500",
@@ -83,7 +86,10 @@ function ReviewRegiter(props) {
         comment: content
       })
     });
-    setReloadComment(content);
+
+    // API에서 DB를 정보를 불러와서
+    // setRecipeItem() 함수에 담아서 보내주어 렌더링이 일어나게 한다
+    setRecipeItem(recipeItemCall);
     imgRef.current = null;
     setImgFile('');
     setContent('');

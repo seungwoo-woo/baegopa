@@ -632,7 +632,7 @@ console.log(recipeItem);
             </div>
           </div>
         </div>
-        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} docId={docId}/>
+        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} docId={docId} setRecipeItem={setRecipeItem}/>
         {/* <div className={styles['review--register']}>
           {imgRef.current
             ? <img className={styles['review--register-image']} src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>
