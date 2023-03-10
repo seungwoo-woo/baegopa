@@ -68,7 +68,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
+  width: 285px;
 }
 
 .viewNoBox {
@@ -106,6 +106,7 @@
 }
 .cardimg{
   cursor: pointer;
+  object-fit: cover;
 }
 .cardimg:hover{
   opacity: 0.7;
@@ -113,3 +114,6 @@
 }
 /* 새로 CSS 수정합니다 */
 
+.likec{
+  cursor: pointer;
+}
