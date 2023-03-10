@@ -31,7 +31,7 @@ function Card(props) {
 
   const {recipe, viewIndex} = props;
 
-   const navigate = useNavigate(); 
+  const navigate = useNavigate(); 
 
   console.log(recipe);
 
