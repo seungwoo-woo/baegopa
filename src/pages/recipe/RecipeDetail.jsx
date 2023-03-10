@@ -21,7 +21,6 @@ import { number } from 'prop-types';
 // -------------------------------------------------------------------
 
 
-
 import CardList from '../../components/CardList';
 import Card from './../../components/Card';
 import LikeCount from './components/LikeCount';
@@ -601,25 +600,31 @@ console.log(recipeItem);
               }}
             >
                 {/* {cookItemList.map((cookItem) => { */}
-                {/* {recipeItem.userComment.map((Item) => {
+                {recipeItem.userComment.map((Item, index) => {
                   return (
-                    <SwiperSlide key={Item.id}>
-                      <Card cookItem={cookItem} viewIndex={viewIndex} />
-                      <Card key={Item.docId} recipe={recipeItem} viewIndex={viewIndex} />
+                    <SwiperSlide key={index}>
+                      <div className={styles['review-image']}>
+                        <img src={Item.imgPath} alt="회원들이미지" />
+                        <div className={styles['review-text']}>
+                          <span>{Item.commentUserId}</span>
+                          <p>{Item.comment}</p>
+                        </div>
+                      </div>
                     </SwiperSlide>
                     )
                   })
-                } */}
+                }
                 {/* <SwiperSlide> */}
-                  <div className={styles['review-image']}>
+                  {/* <div className={styles['review-image']}>
                     <img src={recipeItem.userComment[0].imgPath} alt="회원들이미지" />
                     <div className={styles['review-text']}>
                       <span>{recipeItem.userComment[0].commentUserId}</span>
                       <p>{recipeItem.userComment[0].comment}</p>
                     </div>
-                  </div>
+                  </div> */}
                 {/* </SwiperSlide> */}
 
+                {}
             </Swiper>
             <div>
               <button onClick={() => swiperRef.current?.slidePrev()} className={`${styles.btn_navigation} ${styles.btn_prev}`}></button>
@@ -627,7 +632,7 @@ console.log(recipeItem);
             </div>
           </div>
         </div>
-        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} />
+        <ReviewRegiter cookItemList={cookItemList} setCookItemList={setCookItemList} docId={docId}/>
         {/* <div className={styles['review--register']}>
           {imgRef.current
             ? <img className={styles['review--register-image']} src={imgFile ? imgFile :`/images/icon/user.png`} alt="프로필 이미지"/>

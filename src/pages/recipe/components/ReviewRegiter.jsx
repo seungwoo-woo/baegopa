@@ -3,12 +3,24 @@ import styles from "../css/recipeDetail.module.css";
 import { v4 as uuidv4 } from 'uuid';
 import axios,{ post } from 'axios';
 
+import { firebaseConfig } from '../../addrecipe/firestore';
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc, doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+
 import Card from '../../../components/Card';
 
 // 참고 사이트 : https://cookinghoil.tistory.com/114
 
 
 function ReviewRegiter(props) {
+  const { docId } = props;
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const reviewRef = doc(db, "RecipeDB", docId)
+
+
   const {cookItemList, setCookItemList} = props;
 
   
@@ -24,6 +36,21 @@ function ReviewRegiter(props) {
   //     comment: content,
   //   }]
   // });
+
+      // -------------------사용자 계정 인식---------------------
+      // const [ signinUser, setSigninUser ] = useState('1');
+
+      // const auth = getAuth();
+    
+      // onAuthStateChanged(auth, (user) => {
+      //   if (user) {
+      //     setSigninUser(user.email);
+      //   } else {
+      //     setSigninUser(user);
+      //   }
+      // }); 
+  
+      // ------------------------------------------------------------
   
   const handleInsert = useCallback((data) => {  //handleInsert로 호출될 때 
     const {cardImagePath, commentUserId, comment} = data;
@@ -44,15 +71,24 @@ function ReviewRegiter(props) {
     console.log(cardImagePath);
   }, [cookItemList]);
 
-  const handleSubmit = (e) => {
-    // console.log(imgRef.current.files[0].name);   // TODO: 댓글 이미지 데이터
+  const handleSubmit = async (e) => {
+    console.log(imgRef.current.files[0].name);   // TODO: 댓글 이미지 데이터
     console.log(content);    // TODO : 댓글 text 데이터
+
+    await updateDoc(reviewRef, {
+      userComment: arrayUnion({
+        imgPath : "https://static.wtable.co.kr/image/production/service/recipe/2176/27e786f0-1eed-49d7-9012-4a1efb6bf7b8.jpg?size=500x500",
+        commentUserId: 'aicha1202@naver.com',
+        comment: content
+      })
+    });
+
     imgRef.current = null;
     setImgFile('');
     setContent('');
     // setUpload('');
     e.preventDefault();
-    handleInsert('');
+    // handleInsert('');
   };
   // ----------------------------------------------------------
   const handleChangeFile = (event) => {
