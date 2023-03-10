@@ -15,6 +15,7 @@ import Card from '../../../components/Card';
 
 
 function ReviewRegiter(props) {
+  const [ reloadComment, setReloadComment ] = useState();
   const { docId } = props;
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -82,7 +83,7 @@ function ReviewRegiter(props) {
         comment: content
       })
     });
-
+    setReloadComment(content);
     imgRef.current = null;
     setImgFile('');
     setContent('');
