@@ -49,7 +49,9 @@ function CardList(props) {
         // console./log('like에 들오옴');
         q = query(collection(db, "RecipeDB"), orderBy("likeCount", "desc"), limit(8));
       } else if (keywordList[0].slice(-1) === '식') {
+
         // console.log('식에 들어옴');
+
         q = query(collection(db, "RecipeDB"), where("division", "in", keywordList), limit(8));
       } else {
         q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
@@ -83,7 +85,7 @@ function CardList(props) {
 
   }, []);
 
-  
+  console.log(recipeList);
   return (
 
     <div className={styles.group}>

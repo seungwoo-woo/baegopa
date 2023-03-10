@@ -10,7 +10,7 @@
 
 .recipe {
     width: 1200px;
-    height: 120px;
+    height: 50px;
     background-color: antiquewhite;
 }
 .recipe h1 {
@@ -28,8 +28,8 @@
 
 .value > div {
     width: 200px;
-    height: 50px;
-    line-height: 50px;
+    height: 30px;
+    line-height: 30px;
     margin-top: 10px;
     align-items: center;
     text-align: center;
@@ -44,5 +44,16 @@
     height: 200px;
     border-radius: 100px;
     
+}
+
+.value > div > p { 
+    font-size: 20px;
+}
+
+.cardList {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    flex-wrap:wrap;
 }
 

@@ -31,7 +31,7 @@ function Card(props) {
 
   const {recipe, viewIndex} = props;
 
-   const navigate = useNavigate(); 
+  const navigate = useNavigate(); 
 
   // console.log(recipe);
 
@@ -60,7 +60,7 @@ function Card(props) {
         onClick={handleRecipeClick}
       />
 
-      <div className={styles.bottomTextBox}>
+      <div className={styles.bottomTextBox} >
         <div className={styles.noBox}>
           <div className={styles.likeNoBox}>
             <img className={styles.likec} src={require ('../img/ph_heart.png')} width={35}/>
