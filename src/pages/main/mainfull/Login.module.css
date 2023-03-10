@@ -1,7 +1,8 @@
 
-h4{
+
+/* h4{
   color: white;
-}
+} */
 .my{
   background-image: url('../img/my.png');
   width: 30px;
@@ -27,6 +28,9 @@ h4{
   transform: scale(1.2);
   cursor: pointer;
   
+}
+.lo:active{
+  color: rgb(147, 112, 98);
 }
 
 .out{
