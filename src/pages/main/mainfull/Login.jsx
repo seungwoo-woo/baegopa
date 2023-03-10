@@ -74,7 +74,7 @@ function Login(props) {
         </Nav.Link>
         <Nav.Link
           className={styles.out}
-          href="#141414ts"
+          href="/"
           style={{ display: vis ? 'none' : 'block' }}
           onClick={handleSignout}
         >
