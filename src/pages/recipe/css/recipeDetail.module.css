@@ -273,7 +273,8 @@ a {
   flex: 4;
 }
 .review-image{
-  width: 285px;
+  width: 270px;
+  padding: 0px 10px;
 }
 .review-image > img{
   width: 100%;
