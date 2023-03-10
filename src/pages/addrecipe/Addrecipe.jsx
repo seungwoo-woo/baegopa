@@ -48,6 +48,11 @@ function Addrecipe(props) {
       time: recipe['time'],
       difficulty: recipe['difficulty'],
       userId: "어우동",
+      userComment: [{
+        userId: '',
+        comment: '',
+        imgPath: ''
+      }],
       ingredientItems: ingredientItems,
       ingredientUnits: ingredientUnits,
       ingredientValues: ingredientValues,
