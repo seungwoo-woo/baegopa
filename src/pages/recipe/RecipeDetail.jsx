@@ -601,19 +601,20 @@ console.log(recipeItem);
             >
                 {/* {cookItemList.map((cookItem) => { */}
                 {recipeItem.userComment.map((Item, index) => {
-                  return (
-                    <SwiperSlide key={index}>
-                      <div className={styles['review-image']}>
-                        <img src={Item.imgPath} alt="회원들이미지" />
-                        <div className={styles['review-text']}>
-                          <span>{Item.commentUserId}</span>
-                          <p>{Item.comment}</p>
-                        </div>
-                      </div>
-                    </SwiperSlide>
-                    )
-                  })
-                }
+  return (
+    <SwiperSlide key={index}>
+      <div className={styles['review-image']}>
+        {Item.imgPath ? (
+          <img src={Item.imgPath} alt="회원들이미지" />
+        ) : null}
+        <div className={styles['review-text']}>
+          <span>{Item.commentUserId}</span>
+          <p>{Item.comment}</p>
+        </div>
+      </div>
+    </SwiperSlide>
+  )
+})}
                 {/* <SwiperSlide> */}
                   {/* <div className={styles['review-image']}>
                     <img src={recipeItem.userComment[0].imgPath} alt="회원들이미지" />
