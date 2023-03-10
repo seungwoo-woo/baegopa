@@ -21,3 +21,7 @@
 .ft:hover {
   color: rgb(207, 147, 121);
 }
+.ft:active{
+  color: rgb(207, 147, 121);
+
+}
