@@ -17,8 +17,7 @@ import { number } from 'prop-types';
 function CardList(props) {
 
   const { keyword } = props;
-  let keywordList = [];
-  keywordList = [...keyword];
+  let keywordList = Array.isArray(keyword) ? [...keyword] : [keyword];
   
   const viewIndex = 'comment';
 
@@ -33,7 +32,7 @@ function CardList(props) {
       const db = getFirestore(app);
       let q = '';
       // 조건별 검색 식 설정
-      console.log(typeof(keywordList[0]));
+      // console.log(typeof(keywordList[0]));
       let randomCount = -1;
       if( !isNaN(keywordList[0])) {
 
@@ -47,10 +46,10 @@ function CardList(props) {
         q = query(collection(db, "RecipeDB"));
 
       } else if (keywordList[0] === 'like') {
-        console.log('like에 들오옴');
+        // console./log('like에 들오옴');
         q = query(collection(db, "RecipeDB"), orderBy("likeCount", "desc"), limit(8));
       } else if (keywordList[0].slice(-1) === '식') {
-        console.log('식에 들어옴');
+        // console.log('식에 들어옴');
         q = query(collection(db, "RecipeDB"), where("division", "in", keywordList), limit(8));
       } else {
         q = query(collection(db, "RecipeDB"), where("ingredientItems", "array-contains-any", keywordList));
@@ -67,9 +66,9 @@ function CardList(props) {
       queryAllSnapshot.forEach((doc) => {
       const docCopy = {...doc.data(), docId: doc._document.key.path.segments[6]};
       recipeDbList.push(docCopy);
-      console.log(docCopy);
+      // console.log(docCopy);
       });
-      console.log(queryAllSnapshot);
+      // console.log(queryAllSnapshot);
 
       if (randomCount >= 0) {
         setRecipeList(recipeDbList.slice(randomCount, randomCount + keywordList[0]));
