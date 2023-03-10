@@ -33,6 +33,7 @@ function App() {
         <Routes vis={vis} setVis={setVis}>
           <Route setVis={setVis} path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/add" element={<Addrecipe />} />
 
           <Route path="/" element={<Main />} />
           <Route path="/recipe/:docId" element={<RecipeDetail />} />

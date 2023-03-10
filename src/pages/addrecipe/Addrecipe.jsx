@@ -6,6 +6,7 @@ import { firebaseConfig } from './firestore.js';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { useNavigate } from 'react-router';
 // ----------------------------------------------------------------------------------------
 
 
@@ -16,6 +17,8 @@ function Addrecipe(props) {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   const storage = getStorage(app);
+  const navigate = useNavigate(); 
+
 
 
   // image files 선택 ------------------------------------------ 
@@ -32,10 +35,11 @@ function Addrecipe(props) {
 
 
 // DB에 쓰기 함수 ---------------------------------------------------
-  const dbWrite = (recipe, ingredientItems, ingredientUnits, ingredientValues, process, imageFilesPath) => {
+  const dbWrite = async (recipe, ingredientItems, ingredientUnits, ingredientValues, process, imageFilesPath) => {
+
 
   try {
-    const docRef = addDoc(collection(db, "RecipeDB"), {
+    const docRef = await addDoc(collection(db, "RecipeDB"), {
       title: recipe['title'],
       subtitle: recipe['subtitle'],
       hashtags: recipe['hashtags'],
@@ -52,7 +56,9 @@ function Addrecipe(props) {
       likeCount: 0,
       viewCount: 0
     });
+    console.log("Document written with ID: ", docRef.id);
     alert("레시피가 저장되었습니다.");
+    navigate('/recipe/'+ docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }

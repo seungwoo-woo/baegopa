@@ -7,6 +7,7 @@ import { firebaseConfig } from '../addrecipe/firestore';
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, query, where, doc, getDoc, orderBy, limit } from "firebase/firestore";
 import Card from '../../components/Card';
+import { useNavigate } from 'react-router';
 // -------------------------------------------------------------------
 
 
@@ -14,6 +15,9 @@ import Card from '../../components/Card';
 function Subpage(props) {
 
     const viewIndex = 'comment';
+
+    const navigate = useNavigate(); 
+
 
     let recipeDbList = [];    
     const [ recipeList, setRecipeList ] = useState([]);
