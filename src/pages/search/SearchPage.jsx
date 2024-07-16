@@ -1,10 +1,7 @@
-
-import React, { useState } from 'react';
-import Card from '../../components/Card';
-import CardList from '../../components/CardList';
+import React, { useState } from "react";
+import Card from "../../components/Card";
+import CardList from "../../components/CardList";
 import styles from "./Search.module.css";
-
-
 
 // 또는 배열의 filter() 함수 사용
 // const filteredPosts = posts.filter((value, idx) => {
@@ -21,160 +18,180 @@ import styles from "./Search.module.css";
 //     setCardList(CardList.filter((card) => card.id !== id));
 //   }, [CardList]);
 
-
-
 function SearchPage(props) {
+  const cookItemList = [
+    {
+      id: 1,
+      title: "김현정",
+      cardImagePath:
+        "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+      userId: "샬라라",
+      viewNo: 137479,
+      likeNo: 3657,
+      userComment: [
+        {
+          commentUserId: "현정",
+          comment:
+            "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "필터",
+      cardImagePath:
+        "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+      userId: "샬라라",
+      viewNo: 137479,
+      likeNo: 3657,
+      userComment: [
+        {
+          commentUserId: "이회은",
+          comment:
+            "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!",
+        },
+      ],
+    },
+    {
+      id: 3,
+      title: "애호박구이 간장조림",
+      cardImagePath:
+        "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+      userId: "샬라라",
+      viewNo: 137479,
+      likeNo: 3657,
+      userComment: [
+        {
+          commentUserId: "닉네임",
+          comment:
+            "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!",
+        },
+      ],
+    },
+    {
+      id: 4,
+      title: "애호박구이 간장조림",
+      cardImagePath:
+        "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+      userId: "샬라라",
+      viewNo: 137479,
+      likeNo: 3657,
+      userComment: [
+        {
+          commentUserId: "닉네임",
+          comment:
+            "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!",
+        },
+      ],
+    },
+    {
+      id: 5,
+      title: "애호박구이 간장조림",
+      cardImagePath:
+        "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+      userId: "샬라라",
+      viewNo: 137479,
+      likeNo: 3657,
+      userComment: [
+        {
+          commentUserId: "닉네임",
+          comment:
+            "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!",
+        },
+      ],
+    },
+    {
+      id: 6,
+      title: "애호박구이 간장조림",
+      cardImagePath:
+        "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+      userId: "샬라라",
+      viewNo: 137479,
+      likeNo: 3657,
+      userComment: [
+        {
+          commentUserId: "닉네임",
+          comment:
+            "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!",
+        },
+      ],
+    },
+    {
+      id: 7,
+      title: "애호박구이 간장조림",
+      cardImagePath:
+        "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+      userId: "샬라라",
+      viewNo: 137479,
+      likeNo: 3657,
+      userComment: [
+        {
+          commentUserId: "닉네임",
+          comment:
+            "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!",
+        },
+      ],
+    },
+    {
+      id: 8,
+      title: "애호박구이 간장조림",
+      cardImagePath:
+        "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
+      userId: "샬라라",
+      viewNo: 137479,
+      likeNo: 3657,
+      userComment: [
+        {
+          commentUserId: "닉네임",
+          comment:
+            "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!",
+        },
+      ],
+    },
+  ];
+  const [textValue, setTextValue] = useState("");
+  console.log(textValue);
+  const contentChange = (e) => {
+    setTextValue(e.target.value);
+  };
+  const searchRecipes = cookItemList.filter((cookItem) => {
+    return cookItem.title == textValue;
+  });
+  const viewIndex = "comment";
 
-    const cookItemList = [
-        {
-            id: 1,
-            title: "김현정",
-            cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-            userId: "샬라라",
-            viewNo: 137479,
-            likeNo: 3657,
-            userComment: [
-                {
-                    commentUserId: "현정",
-                    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-                }
-            ]
-        },
-        {
-            id: 2,
-            title: "필터",
-            cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-            userId: "샬라라",
-            viewNo: 137479,
-            likeNo: 3657,
-            userComment: [
-                {
-                    commentUserId: "이회은",
-                    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-                }
-            ]
-        },
-        {
-            id: 3,
-            title: "애호박구이 간장조림",
-            cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-            userId: "샬라라",
-            viewNo: 137479,
-            likeNo: 3657,
-            userComment: [
-                {
-                    commentUserId: "닉네임",
-                    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-                }
-            ]
-        },
-        {
-            id: 4,
-            title: "애호박구이 간장조림",
-            cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-            userId: "샬라라",
-            viewNo: 137479,
-            likeNo: 3657,
-            userComment: [
-                {
-                    commentUserId: "닉네임",
-                    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-                }
-            ]
-        },
-        {
-            id: 5,
-            title: "애호박구이 간장조림",
-            cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-            userId: "샬라라",
-            viewNo: 137479,
-            likeNo: 3657,
-            userComment: [
-                {
-                    commentUserId: "닉네임",
-                    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-                }
-            ]
-        },
-        {
-            id: 6,
-            title: "애호박구이 간장조림",
-            cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-            userId: "샬라라",
-            viewNo: 137479,
-            likeNo: 3657,
-            userComment: [
-                {
-                    commentUserId: "닉네임",
-                    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-                }
-            ]
-        },
-        {
-            id: 7,
-            title: "애호박구이 간장조림",
-            cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-            userId: "샬라라",
-            viewNo: 137479,
-            likeNo: 3657,
-            userComment: [
-                {
-                    commentUserId: "닉네임",
-                    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-                }
-            ]
-        },
-        {
-            id: 8,
-            title: "애호박구이 간장조림",
-            cardImagePath: "https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/4dit/image/NOs1ajU_u2GUfLb-aWQk9Z6oxPs",
-            userId: "샬라라",
-            viewNo: 137479,
-            likeNo: 3657,
-            userComment: [
-                {
-                    commentUserId: "닉네임",
-                    comment: "스팸이랑 팽이버섯도 넣어서 해봤어요 진짜 맛있네요ㅋㅋㅋ좋은 레시피 감사해요!"
-                }
-            ]
-        },
-    ];
-    const [textValue, setTextValue] = useState('');
-    console.log(textValue);
-    const contentChange = (e) => {
-        setTextValue(e.target.value);
-    }
-    const searchRecipes = cookItemList.filter((cookItem) => {
-        return cookItem.title == textValue;
-    })
-    const viewIndex = 'comment';
-
-    return (
-        <>
-            <div className={styles.wrapper}>
-
-
-                {/* 분류 */}
-                <div className={styles.title}>
-                    <div>
-                        <h1>레시피 검색</h1>
-                    </div>
-                    <div className={styles.search}>
-                        <div className={styles.content}>
-                            <input type={'text'} placeholder={'검색 키워드 입력란'} value={textValue} onChange={contentChange} />
-                            <img src={require('../img/tabler_search.png')} alt={'검색'} title={'검색'} />
-                        </div>
-                    </div>
-                    {textValue}
-                    <CardList />
-                    {searchRecipes.map((searchRecipe) => {
-                        return <Card key={searchRecipe.id} cookItem={searchRecipe} viewIndex={viewIndex} />
-                    })}
-                </div>
+  return (
+    <>
+      <div className={styles.wrapper}>
+        {/* 분류 */}
+        <div className={styles.title}>
+          <div>
+            <h1>레시피 검색</h1>
+          </div>
+          <div className={styles.search}>
+            <div className={styles.content}>
+              <input
+                type={"text"}
+                placeholder={"레시피를 검색해주세요."}
+                value={textValue}
+                onChange={contentChange}
+              />
             </div>
-        </>
-
-    );
+          </div>
+          {textValue}
+          <CardList />
+          {searchRecipes.map((searchRecipe) => {
+            return (
+              <Card
+                key={searchRecipe.id}
+                cookItem={searchRecipe}
+                viewIndex={viewIndex}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default SearchPage;
