@@ -150,6 +150,7 @@ function SearchPage(props) {
     },
   ];
   const [textValue, setTextValue] = useState("");
+
   console.log(textValue);
   const contentChange = (e) => {
     setTextValue(e.target.value);
@@ -157,6 +158,7 @@ function SearchPage(props) {
   const searchRecipes = cookItemList.filter((cookItem) => {
     return cookItem.title == textValue;
   });
+
   const viewIndex = "comment";
 
   return (
